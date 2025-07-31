@@ -13,141 +13,100 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: #f5f5f5;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         h1 {
-            color: white;
+            color: #333;
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 5px;
+            font-size: 1.8em;
         }
 
         .subtitle {
-            color: #e0e0e0;
+            color: #666;
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-size: 0.9em;
         }
 
         .controls {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-        }
-
-        .filter-section {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            align-items: center;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             margin-bottom: 20px;
         }
 
-        select, input {
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             font-size: 16px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        select:hover, input:hover {
-            border-color: #2a5298;
-        }
-
-        select:focus, input:focus {
-            outline: none;
-            border-color: #2a5298;
-            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 200px;
         }
 
         .stats {
             display: flex;
-            gap: 30px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .stat-item {
+            justify-content: space-around;
+            margin-top: 15px;
             text-align: center;
         }
 
+        .stat-item {
+            flex: 1;
+        }
+
         .stat-number {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             color: #2a5298;
         }
 
         .stat-label {
             color: #666;
-            font-size: 0.9em;
+            font-size: 0.8em;
         }
 
         .results {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .platform-card {
             background: #f8f9fa;
             border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .platform-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
         }
 
         .platform-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
+            gap: 10px;
+            margin-bottom: 8px;
         }
 
         .platform-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 20px;
-            background: #f0f0f0;
         }
 
         .platform-name {
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: bold;
             color: #333;
             flex: 1;
@@ -157,14 +116,14 @@
             display: inline-block;
             background: #2a5298;
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            margin-bottom: 15px;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            margin-bottom: 10px;
         }
 
         .banned-countries {
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .country-item {
@@ -174,13 +133,11 @@
         .country-tag {
             display: inline-block;
             color: white;
-            padding: 5px 12px;
-            margin: 3px;
-            border-radius: 5px;
-            font-size: 0.9em;
+            padding: 4px 10px;
+            margin: 2px;
+            border-radius: 4px;
+            font-size: 0.85em;
             cursor: pointer;
-            position: relative;
-            transition: all 0.2s ease;
         }
 
         .country-tag.complete {
@@ -192,53 +149,27 @@
         }
 
         .country-tag:hover {
-            transform: scale(1.05);
             filter: brightness(0.9);
+            transform: scale(1.05);
         }
 
-        .country-tag .tooltip {
-            visibility: hidden;
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.85em;
-            white-space: nowrap;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
+        .country-tag:active {
+            transform: scale(0.95);
         }
 
-        .country-tag .tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #333 transparent transparent transparent;
-        }
-
-        .country-tag:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+        .tooltip {
+            display: none;
         }
 
         .more-info {
             display: none;
             background: #f0f8ff;
-            border-left: 3px solid #2a5298;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            font-size: 0.9em;
-            line-height: 1.6;
+            border-left: 2px solid #2a5298;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-size: 0.85em;
+            line-height: 1.5;
         }
 
         .more-info.expanded {
@@ -247,96 +178,82 @@
 
         .more-info h4 {
             color: #2a5298;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            font-size: 1em;
         }
 
         .more-info p {
             color: #555;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .source-ref {
             color: #2a5298;
             font-weight: bold;
             vertical-align: super;
-            font-size: 0.8em;
-            cursor: pointer;
-        }
-
-        .source-ref:hover {
-            text-decoration: underline;
+            font-size: 0.7em;
         }
 
         .no-results {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: #666;
-            font-size: 1.1em;
         }
 
         .export-btn {
             background: #28a745;
-            margin-top: 20px;
+            margin-top: 15px;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .export-btn:hover {
-            background: #218838;
-            transform: translateY(-2px);
+            width: 100%;
         }
 
         .info-note {
             background: #e8f4f8;
-            border-left: 4px solid #2a5298;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 5px;
+            border-left: 3px solid #2a5298;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 3px;
             color: #333;
-            font-size: 0.95em;
+            font-size: 0.85em;
         }
 
         /* Sources section */
         .sources-section {
-            margin-top: 30px;
+            margin-top: 20px;
             background: #f8f9fa;
-            border-radius: 10px;
+            border-radius: 5px;
             overflow: hidden;
         }
 
         .sources-header {
-            padding: 15px 20px;
+            padding: 12px;
             background: #e9ecef;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.3s ease;
-        }
-
-        .sources-header:hover {
-            background: #dee2e6;
         }
 
         .sources-title {
             font-weight: bold;
             color: #333;
+            font-size: 0.9em;
         }
 
         .sources-toggle {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
+            font-size: 1em;
         }
 
         .sources-content {
-            padding: 20px;
+            padding: 15px;
             display: none;
-            line-height: 1.8;
+            font-size: 0.85em;
+            line-height: 1.6;
             color: #555;
         }
 
@@ -349,8 +266,8 @@
         }
 
         .source-item {
-            margin-bottom: 10px;
-            padding-left: 20px;
+            margin-bottom: 8px;
+            padding-left: 15px;
             position: relative;
         }
 
@@ -362,8 +279,8 @@
         }
 
         .numbered-source {
-            margin-bottom: 10px;
-            padding-left: 30px;
+            margin-bottom: 8px;
+            padding-left: 25px;
             position: relative;
         }
 
@@ -373,38 +290,42 @@
             color: #2a5298;
             font-weight: bold;
         }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 5px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .stat-label {
+                font-size: 0.7em;
+            }
+            
+            .platform-card {
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🌐 Global Censorship Tracker</h1>
-        <p class="subtitle">Track which apps and websites are banned around the world</p>
+        <p class="subtitle">Track banned apps and websites worldwide</p>
 
         <div class="controls">
-            <div class="filter-section">
-                <select id="countryFilter">
-                    <option value="">All Countries</option>
-                </select>
-                <select id="typeFilter">
-                    <option value="">All Types</option>
-                    <option value="Social Media">Social Media</option>
-                    <option value="Messaging">Messaging</option>
-                    <option value="News">News</option>
-                    <option value="Video Streaming">Video Streaming</option>
-                    <option value="Search Engine">Search Engine</option>
-                    <option value="VPN">VPN</option>
-                </select>
-                <input type="text" id="searchBox" class="search-box" placeholder="Search platforms...">
-            </div>
-
+            <input type="text" id="searchBox" placeholder="Search platforms...">
+            
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-number" id="totalPlatforms">0</div>
-                    <div class="stat-label">Total Platforms</div>
+                    <div class="stat-label">Platforms</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" id="totalCountries">0</div>
-                    <div class="stat-label">Countries Tracked</div>
+                    <div class="stat-label">Countries</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" id="totalBans">0</div>
@@ -414,34 +335,30 @@
         </div>
 
         <div class="results">
-            <h2>Censorship Data</h2>
             <div id="platformGrid" class="platform-grid"></div>
 
             <div class="info-note">
-                💡 <strong>Tip:</strong> Click on any country tag to see detailed information about the ban. Red = complete ban, Orange = partial ban.
+                💡 <strong>Tip:</strong> Tap any country to see details. Red = complete ban, Orange = partial ban.
             </div>
 
-            <button class="export-btn" onclick="exportData()">📥 Export Data as JSON</button>
+            <button class="export-btn" onclick="exportData()">📥 Export Data</button>
 
             <div class="sources-section">
                 <div class="sources-header" onclick="toggleSources()">
-                    <span class="sources-title">📚 Data Sources & References</span>
+                    <span class="sources-title">📚 Sources & References</span>
                     <span class="sources-toggle">▼</span>
                 </div>
                 <div class="sources-content" id="sourcesContent">
                     <p><strong>General Sources:</strong></p>
-                    <div class="source-item">Freedom House - Freedom on the Net Reports (2020-2024)</div>
-                    <div class="source-item">Reporters Without Borders - Internet Censorship Map</div>
-                    <div class="source-item">OpenNet Initiative Archives</div>
-                    <div class="source-item">Access Now - #KeepItOn Campaign Data</div>
-                    <div class="source-item">Comparitech - Global Censorship Research</div>
-                    <div class="source-item">Various news reports from Reuters, BBC, CNN, and The Guardian</div>
-                    <div class="source-item">Country-specific government announcements and regulatory filings</div>
+                    <div class="source-item">Freedom House - Freedom on the Net Reports</div>
+                    <div class="source-item">Reporters Without Borders</div>
+                    <div class="source-item">Access Now - #KeepItOn Campaign</div>
+                    <div class="source-item">Government announcements and regulatory filings</div>
                     
-                    <p style="margin-top: 20px;"><strong>Numbered References:</strong></p>
+                    <p style="margin-top: 15px;"><strong>Numbered References:</strong></p>
                     <div id="numberedSources"></div>
                     
-                    <p style="margin-top: 15px;"><em>Note: Censorship status can change frequently. This data represents known blocks as of early 2025. Some blocks may be intermittent or partial.</em></p>
+                    <p style="margin-top: 10px;"><em>Data as of early 2025. Status may change.</em></p>
                 </div>
             </div>
         </div>
@@ -455,8 +372,8 @@
                 icon: "📘",
                 type: "Social Media",
                 bannedIn: [
-                    { country: "China", since: "July 2009", type: "complete", moreInfo: "Facebook has been banned in the People's Republic of China ever since the July 2009 riots in Xinjiang", source: "https://abcnews.go.com/theworldnewser/2009/07/chinas-facebook-status-blocked.html" },
-                    { country: "Iran", since: "2009", type: "complete", moreInfo: "As a result of the 2009 Presidential Elections in Iran coupled with the subsequent protests - Facebook has been blocked in the nation ever since then.", source: "http://news.bbc.co.uk/1/hi/8065578.stm" },
+                    { country: "China", since: "July 2009", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "2009", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null },
                     { country: "Syria", since: "2007", type: "complete", moreInfo: "", source: null }
                 ]
@@ -668,28 +585,14 @@
             `).join('');
         }
 
-        function getAllCountries() {
+        function updateStats() {
+            document.getElementById('totalPlatforms').textContent = censorshipData.length;
+            
             const countries = new Set();
             censorshipData.forEach(platform => {
                 platform.bannedIn.forEach(ban => countries.add(ban.country));
             });
-            return Array.from(countries).sort();
-        }
-
-        function populateCountryFilter() {
-            const select = document.getElementById('countryFilter');
-            select.innerHTML = '<option value="">All Countries</option>';
-            getAllCountries().forEach(country => {
-                const option = document.createElement('option');
-                option.value = country;
-                option.textContent = country;
-                select.appendChild(option);
-            });
-        }
-
-        function updateStats() {
-            document.getElementById('totalPlatforms').textContent = censorshipData.length;
-            document.getElementById('totalCountries').textContent = getAllCountries().length;
+            document.getElementById('totalCountries').textContent = countries.size;
             
             let totalBans = 0;
             censorshipData.forEach(platform => {
@@ -708,27 +611,22 @@
 
         function renderPlatforms() {
             const grid = document.getElementById('platformGrid');
-            const countryFilter = document.getElementById('countryFilter').value;
-            const typeFilter = document.getElementById('typeFilter').value;
             const searchTerm = document.getElementById('searchBox').value.toLowerCase();
 
             const filteredData = censorshipData.filter(platform => {
-                const matchesCountry = !countryFilter || platform.bannedIn.some(ban => ban.country === countryFilter);
-                const matchesType = !typeFilter || platform.type === typeFilter;
-                const matchesSearch = !searchTerm || platform.name.toLowerCase().includes(searchTerm);
-                return matchesCountry && matchesType && matchesSearch;
+                return !searchTerm || platform.name.toLowerCase().includes(searchTerm);
             });
 
             if (filteredData.length === 0) {
-                grid.innerHTML = '<div class="no-results">No platforms found matching your criteria.</div>';
+                grid.innerHTML = '<div class="no-results">No platforms found.</div>';
                 return;
             }
 
             grid.innerHTML = filteredData.map(platform => `
                 <div class="platform-card">
                     <div class="platform-header">
-                        <div class="platform-icon">${platform.icon}</div>
-                        <div class="platform-name">${platform.name}</div>
+                        <span class="platform-icon">${platform.icon}</span>
+                        <span class="platform-name">${platform.name}</span>
                     </div>
                     <span class="platform-type">${platform.type}</span>
                     <div class="banned-countries">
@@ -740,7 +638,6 @@
                                 <div class="country-item">
                                     <span class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}')">
                                         ${ban.country}
-                                        <span class="tooltip">Blocked since ${ban.since}</span>
                                     </span>
                                     <div id="${infoId}" class="more-info">
                                         <h4>${ban.country} - ${ban.type === 'complete' ? 'Complete Ban' : 'Partial Ban'}</h4>
@@ -775,12 +672,9 @@
         }
 
         // Event listeners
-        document.getElementById('countryFilter').addEventListener('change', renderPlatforms);
-        document.getElementById('typeFilter').addEventListener('change', renderPlatforms);
         document.getElementById('searchBox').addEventListener('input', renderPlatforms);
 
         // Initialize
-        populateCountryFilter();
         updateStats();
         renderPlatforms();
     </script>
