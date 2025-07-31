@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Censorship Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: #e0e0e0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        select, input {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        select:hover, input:hover {
+            border-color: #2a5298;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2a5298;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .results {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .platform-card {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .platform-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            background: #f0f0f0;
+        }
+
+        .platform-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            flex: 1;
+        }
+
+        .platform-type {
+            display: inline-block;
+            background: #2a5298;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+        }
+
+        .banned-countries {
+            margin-top: 10px;
+        }
+
+        .country-item {
+            margin: 5px 0;
+        }
+
+        .country-tag {
+            display: inline-block;
+            color: white;
+            padding: 5px 12px;
+            margin: 3px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .country-tag.complete {
+            background: #dc3545;
+        }
+
+        .country-tag.partial {
+            background: #ff6b35;
+        }
+
+        .country-tag:hover {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+
+        .country-tag .tooltip {
+            visibility: hidden;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            white-space: nowrap;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .country-tag .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        .country-tag:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .more-info {
+            display: none;
+            background: #f0f8ff;
+            border-left: 3px solid #2a5298;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .more-info.expanded {
+            display: block;
+        }
+
+        .more-info h4 {
+            color: #2a5298;
+            margin-bottom: 8px;
+        }
+
+        .more-info p {
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .source-ref {
+            color: #2a5298;
+            font-weight: bold;
+            vertical-align: super;
+            font-size: 0.8em;
+            cursor: pointer;
+        }
+
+        .source-ref:hover {
+            text-decoration: underline;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .export-btn {
+            background: #28a745;
+            margin-top: 20px;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .info-note {
+            background: #e8f4f8;
+            border-left: 4px solid #2a5298;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        /* Sources section */
+        .sources-section {
+            margin-top: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .sources-header {
+            padding: 15px 20px;
+            background: #e9ecef;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .sources-header:hover {
+            background: #dee2e6;
+        }
+
+        .sources-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .sources-toggle {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .sources-content {
+            padding: 20px;
+            display: none;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .sources-content.expanded {
+            display: block;
+        }
+
+        .sources-header.expanded .sources-toggle {
+            transform: rotate(180deg);
+        }
+
+        .source-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .source-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2a5298;
+        }
+
+        .numbered-source {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .numbered-source .source-number {
+            position: absolute;
+            left: 0;
+            color: #2a5298;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 Global Censorship Tracker</h1>
+        <p class="subtitle">Track which apps and websites are banned around the world</p>
+
+        <div class="controls">
+            <div class="filter-section">
+                <select id="countryFilter">
+                    <option value="">All Countries</option>
+                </select>
+                <select id="typeFilter">
+                    <option value="">All Types</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Messaging">Messaging</option>
+                    <option value="News">News</option>
+                    <option value="Video Streaming">Video Streaming</option>
+                    <option value="Search Engine">Search Engine</option>
+                    <option value="VPN">VPN</option>
+                </select>
+                <input type="text" id="searchBox" class="search-box" placeholder="Search platforms...">
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalPlatforms">0</div>
+                    <div class="stat-label">Total Platforms</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalCountries">0</div>
+                    <div class="stat-label">Countries Tracked</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalBans">0</div>
+                    <div class="stat-label">Total Bans</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results">
+            <h2>Censorship Data</h2>
+            <div id="platformGrid" class="platform-grid"></div>
+
+            <div class="info-note">
+                💡 <strong>Tip:</strong> Click on any country tag to see detailed information about the ban. Red = complete ban, Orange = partial ban.
+            </div>
+
+            <button class="export-btn" onclick="exportData()">📥 Export Data as JSON</button>
+
+            <div class="sources-section">
+                <div class="sources-header" onclick="toggleSources()">
+                    <span class="sources-title">📚 Data Sources & References</span>
+                    <span class="sources-toggle">▼</span>
+                </div>
+                <div class="sources-content" id="sourcesContent">
+                    <p><strong>General Sources:</strong></p>
+                    <div class="source-item">Freedom House - Freedom on the Net Reports (2020-2024)</div>
+                    <div class="source-item">Reporters Without Borders - Internet Censorship Map</div>
+                    <div class="source-item">OpenNet Initiative Archives</div>
+                    <div class="source-item">Access Now - #KeepItOn Campaign Data</div>
+                    <div class="source-item">Comparitech - Global Censorship Research</div>
+                    <div class="source-item">Various news reports from Reuters, BBC, CNN, and The Guardian</div>
+                    <div class="source-item">Country-specific government announcements and regulatory filings</div>
+                    
+                    <p style="margin-top: 20px;"><strong>Numbered References:</strong></p>
+                    <div id="numberedSources"></div>
+                    
+                    <p style="margin-top: 15px;"><em>Note: Censorship status can change frequently. This data represents known blocks as of early 2025. Some blocks may be intermittent or partial.</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Censorship data with blocking dates and detailed information
+        const censorshipData = [
+            {
+                name: "Facebook",
+                icon: "📘",
+                type: "Social Media",
+                bannedIn: [
+                    { country: "China", since: "July 2009", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "2009", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null },
+                    { country: "Syria", since: "2007", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "X",
+                icon: "✖️",
+                type: "Social Media",
+                bannedIn: [
+                    { country: "China", since: "June 2009", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "2009", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null },
+                    { country: "Turkey", since: "Intermittent since 2014", type: "partial", moreInfo: "", source: null },
+                    { country: "Russia", since: "March 2022", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "YouTube",
+                icon: "📺",
+                type: "Video Streaming",
+                bannedIn: [
+                    { country: "China", since: "March 2009", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "2012", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null },
+                    { country: "Eritrea", since: "2017", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "WhatsApp",
+                icon: "💬",
+                type: "Messaging",
+                bannedIn: [
+                    { country: "China", since: "September 2017", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "Intermittent blocks", type: "partial", moreInfo: "", source: null },
+                    { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null },
+                    { country: "Syria", since: "2011", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Telegram",
+                icon: "✈️",
+                type: "Messaging",
+                bannedIn: [
+                    { country: "China", since: "July 2015", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "April 2018", type: "complete", moreInfo: "", source: null },
+                    { country: "Russia", since: "2018-2020, lifted", type: "partial", moreInfo: "", source: null },
+                    { country: "India", since: "2022", type: "partial", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Google",
+                icon: "🔍",
+                type: "Search Engine",
+                bannedIn: [
+                    { country: "China", since: "2010", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "Always blocked", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "DuckDuckGo",
+                icon: "🦆",
+                type: "Search Engine",
+                bannedIn: [
+                    { country: "China", since: "September 2014", type: "complete", moreInfo: "", source: null },
+                    { country: "India", since: "July 2020 (brief block)", type: "partial", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Wikipedia",
+                icon: "📚",
+                type: "News",
+                bannedIn: [
+                    { country: "China", since: "April 2019 (all languages)", type: "complete", moreInfo: "", source: null },
+                    { country: "Turkey", since: "2017-2020", type: "partial", moreInfo: "", source: null },
+                    { country: "Russia", since: "2022", type: "partial", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "BBC News",
+                icon: "📰",
+                type: "News",
+                bannedIn: [
+                    { country: "China", since: "1999", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "2006", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "Always blocked", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Netflix",
+                icon: "🎬",
+                type: "Video Streaming",
+                bannedIn: [
+                    { country: "China", since: "Never allowed to operate", type: "complete", moreInfo: "", source: null },
+                    { country: "Syria", since: "2016 (U.S. sanctions)", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "Never allowed", type: "complete", moreInfo: "", source: null },
+                    { country: "Russia", since: "2022 (suspended operations)", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Instagram",
+                icon: "📷",
+                type: "Social Media",
+                bannedIn: [
+                    { country: "China", since: "September 2014", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "2018", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "LinkedIn",
+                icon: "💼",
+                type: "Social Media",
+                bannedIn: [
+                    { country: "China", since: "October 2021", type: "complete", moreInfo: "", source: null },
+                    { country: "Russia", since: "November 2016", type: "complete", moreInfo: "", source: null },
+                    { country: "North Korea", since: "Always blocked", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "TikTok",
+                icon: "🎵",
+                type: "Social Media",
+                bannedIn: [
+                    { country: "India", since: "June 2020", type: "complete", moreInfo: "", source: null },
+                    { country: "Afghanistan", since: "2022", type: "complete", moreInfo: "", source: null },
+                    { country: "Pakistan", since: "Intermittent blocks", type: "partial", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Signal",
+                icon: "🔐",
+                type: "Messaging",
+                bannedIn: [
+                    { country: "China", since: "March 2021", type: "complete", moreInfo: "", source: null },
+                    { country: "Iran", since: "January 2021", type: "complete", moreInfo: "", source: null },
+                    { country: "Egypt", since: "December 2016", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Reddit",
+                icon: "🤖",
+                type: "Social Media",
+                bannedIn: [
+                    { country: "China", since: "August 2018", type: "complete", moreInfo: "", source: null },
+                    { country: "Indonesia", since: "Intermittent blocks", type: "partial", moreInfo: "", source: null },
+                    { country: "Turkey", since: "2015 (intermittent)", type: "partial", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Discord",
+                icon: "🎮",
+                type: "Messaging",
+                bannedIn: [
+                    { country: "China", since: "July 2018", type: "complete", moreInfo: "", source: null },
+                    { country: "UAE", since: "2020", type: "complete", moreInfo: "", source: null },
+                    { country: "Egypt", since: "2022", type: "partial", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Twitch",
+                icon: "🎯",
+                type: "Video Streaming",
+                bannedIn: [
+                    { country: "China", since: "September 2018", type: "complete", moreInfo: "", source: null },
+                    { country: "Russia", since: "May 2024", type: "complete", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "ProtonMail",
+                icon: "📧",
+                type: "Messaging",
+                bannedIn: [
+                    { country: "Russia", since: "July 2022", type: "complete", moreInfo: "", source: null },
+                    { country: "Belarus", since: "2021", type: "complete", moreInfo: "", source: null },
+                    { country: "Turkey", since: "2018 (intermittent)", type: "partial", moreInfo: "", source: null }
+                ]
+            },
+            {
+                name: "Spotify",
+                icon: "🎶",
+                type: "Video Streaming",
+                bannedIn: [
+                    { country: "China", since: "Never launched", type: "complete", moreInfo: "", source: null },
+                    { country: "Pakistan", since: "Not available", type: "complete", moreInfo: "", source: null }
+                ]
+            }
+        ];
+
+        // Store sources with their reference numbers
+        let sourceReferences = [];
+
+        function addSourceReference(source) {
+            const existingIndex = sourceReferences.findIndex(s => s === source);
+            if (existingIndex !== -1) {
+                return existingIndex + 1;
+            } else {
+                sourceReferences.push(source);
+                return sourceReferences.length;
+            }
+        }
+
+        function updateNumberedSources() {
+            const container = document.getElementById('numberedSources');
+            container.innerHTML = sourceReferences.map((source, index) => `
+                <div class="numbered-source">
+                    <span class="source-number">[${index + 1}]</span>
+                    ${source}
+                </div>
+            `).join('');
+        }
+
+        function getAllCountries() {
+            const countries = new Set();
+            censorshipData.forEach(platform => {
+                platform.bannedIn.forEach(ban => countries.add(ban.country));
+            });
+            return Array.from(countries).sort();
+        }
+
+        function populateCountryFilter() {
+            const select = document.getElementById('countryFilter');
+            select.innerHTML = '<option value="">All Countries</option>';
+            getAllCountries().forEach(country => {
+                const option = document.createElement('option');
+                option.value = country;
+                option.textContent = country;
+                select.appendChild(option);
+            });
+        }
+
+        function updateStats() {
+            document.getElementById('totalPlatforms').textContent = censorshipData.length;
+            document.getElementById('totalCountries').textContent = getAllCountries().length;
+            
+            let totalBans = 0;
+            censorshipData.forEach(platform => {
+                totalBans += platform.bannedIn.length;
+            });
+            document.getElementById('totalBans').textContent = totalBans;
+        }
+
+        function toggleMoreInfo(platformName, countryName) {
+            const infoId = `info-${platformName}-${countryName}`.replace(/\s+/g, '-');
+            const infoElement = document.getElementById(infoId);
+            if (infoElement) {
+                infoElement.classList.toggle('expanded');
+            }
+        }
+
+        function renderPlatforms() {
+            const grid = document.getElementById('platformGrid');
+            const countryFilter = document.getElementById('countryFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+
+            const filteredData = censorshipData.filter(platform => {
+                const matchesCountry = !countryFilter || platform.bannedIn.some(ban => ban.country === countryFilter);
+                const matchesType = !typeFilter || platform.type === typeFilter;
+                const matchesSearch = !searchTerm || platform.name.toLowerCase().includes(searchTerm);
+                return matchesCountry && matchesType && matchesSearch;
+            });
+
+            if (filteredData.length === 0) {
+                grid.innerHTML = '<div class="no-results">No platforms found matching your criteria.</div>';
+                return;
+            }
+
+            grid.innerHTML = filteredData.map(platform => `
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-icon">${platform.icon}</div>
+                        <div class="platform-name">${platform.name}</div>
+                    </div>
+                    <span class="platform-type">${platform.type}</span>
+                    <div class="banned-countries">
+                        <strong>Banned in ${platform.bannedIn.length} countries:</strong><br>
+                        ${platform.bannedIn.map(ban => {
+                            const infoId = `info-${platform.name}-${ban.country}`.replace(/\s+/g, '-');
+                            const sourceRef = ban.source ? `<span class="source-ref">[${ban.source}]</span>` : '';
+                            return `
+                                <div class="country-item">
+                                    <span class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}')">
+                                        ${ban.country}
+                                        <span class="tooltip">Blocked since ${ban.since}</span>
+                                    </span>
+                                    <div id="${infoId}" class="more-info">
+                                        <h4>${ban.country} - ${ban.type === 'complete' ? 'Complete Ban' : 'Partial Ban'}</h4>
+                                        <p><strong>Since:</strong> ${ban.since}</p>
+                                        ${ban.moreInfo ? `<p>${ban.moreInfo}${sourceRef}</p>` : '<p><em>No additional information available.</em></p>'}
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            updateNumberedSources();
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify(censorshipData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'censorship_data.json';
+            link.click();
+        }
+
+        function toggleSources() {
+            const content = document.getElementById('sourcesContent');
+            const header = document.querySelector('.sources-header');
+            content.classList.toggle('expanded');
+            header.classList.toggle('expanded');
+        }
+
+        // Event listeners
+        document.getElementById('countryFilter').addEventListener('change', renderPlatforms);
+        document.getElementById('typeFilter').addEventListener('change', renderPlatforms);
+        document.getElementById('searchBox').addEventListener('input', renderPlatforms);
+
+        // Initialize
+        populateCountryFilter();
+        updateStats();
+        renderPlatforms();
+    </script>
+</body>
+</html>
