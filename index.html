@@ -98,11 +98,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .platform-icon {
-            font-size: 20px;
+            margin-bottom: 15px;
         }
 
         .platform-name {
@@ -110,16 +106,6 @@
             font-weight: bold;
             color: #333;
             flex: 1;
-        }
-
-        .platform-type {
-            display: inline-block;
-            background: #2a5298;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 15px;
-            font-size: 0.75em;
-            margin-bottom: 10px;
         }
 
         .banned-countries {
@@ -312,7 +298,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🌐 Global Censorship Tracker</h1>
+        <h1>Global Censorship Tracker</h1>
         <p class="subtitle">Track banned apps and websites worldwide</p>
 
         <div class="controls">
@@ -338,14 +324,14 @@
             <div id="platformGrid" class="platform-grid"></div>
 
             <div class="info-note">
-                💡 <strong>Tip:</strong> Tap any country to see details. Red = complete ban, Orange = partial ban.
+                <strong>Tip:</strong> Tap any country to see details. Red = complete ban, Orange = partial ban.
             </div>
 
-            <button class="export-btn" onclick="exportData()">📥 Export Data</button>
+            <button class="export-btn" onclick="exportData()">Export Data</button>
 
             <div class="sources-section">
                 <div class="sources-header" onclick="toggleSources()">
-                    <span class="sources-title">📚 Sources & References</span>
+                    <span class="sources-title">Sources & References</span>
                     <span class="sources-toggle">▼</span>
                 </div>
                 <div class="sources-content" id="sourcesContent">
@@ -369,8 +355,6 @@
         const censorshipData = [
             {
                 name: "Facebook",
-                icon: "📘",
-                type: "Social Media",
                 bannedIn: [
                     { country: "China", since: "July 2009", type: "complete", moreInfo: "China has banned Facebook ever since the 2009 riots in Xinjiang.", source: null },
                     { country: "Iran", since: "2009", type: "complete", moreInfo: "Iran has banned Facebook since the 2009 Presidential elections and the subsequent protests.", source: null },
@@ -379,8 +363,6 @@
             },
             {
                 name: "X",
-                icon: "✖️",
-                type: "Social Media",
                 bannedIn: [
                     { country: "China", since: "June 2009", type: "complete", moreInfo: "", source: null },
                     { country: "Iran", since: "2009", type: "complete", moreInfo: "", source: null },
@@ -391,8 +373,6 @@
             },
             {
                 name: "YouTube",
-                icon: "📺",
-                type: "Video Streaming",
                 bannedIn: [
                     { country: "China", since: "March 2009", type: "complete", moreInfo: "", source: null },
                     { country: "Iran", since: "2012", type: "complete", moreInfo: "", source: null },
@@ -402,8 +382,6 @@
             },
             {
                 name: "WhatsApp",
-                icon: "💬",
-                type: "Messaging",
                 bannedIn: [
                     { country: "China", since: "September 2017", type: "complete", moreInfo: "", source: null },
                     { country: "Iran", since: "Intermittent blocks", type: "partial", moreInfo: "", source: null },
@@ -413,8 +391,6 @@
             },
             {
                 name: "Telegram",
-                icon: "✈️",
-                type: "Messaging",
                 bannedIn: [
                     { country: "China", since: "July 2015", type: "complete", moreInfo: "", source: null },
                     { country: "Iran", since: "April 2018", type: "complete", moreInfo: "", source: null },
@@ -424,8 +400,6 @@
             },
             {
                 name: "Google",
-                icon: "🔍",
-                type: "Search Engine",
                 bannedIn: [
                     { country: "China", since: "2010", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "Always blocked", type: "complete", moreInfo: "", source: null }
@@ -433,8 +407,6 @@
             },
             {
                 name: "DuckDuckGo",
-                icon: "🦆",
-                type: "Search Engine",
                 bannedIn: [
                     { country: "China", since: "September 2014", type: "complete", moreInfo: "", source: null },
                     { country: "India", since: "July 2020 (brief block)", type: "partial", moreInfo: "", source: null }
@@ -442,8 +414,6 @@
             },
             {
                 name: "Wikipedia",
-                icon: "📚",
-                type: "News",
                 bannedIn: [
                     { country: "China", since: "April 2019 (all languages)", type: "complete", moreInfo: "", source: null },
                     { country: "Turkey", since: "2017-2020", type: "partial", moreInfo: "", source: null },
@@ -452,8 +422,6 @@
             },
             {
                 name: "BBC News",
-                icon: "📰",
-                type: "News",
                 bannedIn: [
                     { country: "China", since: "1999", type: "complete", moreInfo: "", source: null },
                     { country: "Iran", since: "2006", type: "complete", moreInfo: "", source: null },
@@ -462,8 +430,6 @@
             },
             {
                 name: "Netflix",
-                icon: "🎬",
-                type: "Video Streaming",
                 bannedIn: [
                     { country: "China", since: "Never allowed to operate", type: "complete", moreInfo: "", source: null },
                     { country: "Syria", since: "2016 (U.S. sanctions)", type: "complete", moreInfo: "", source: null },
@@ -473,8 +439,6 @@
             },
             {
                 name: "Instagram",
-                icon: "📷",
-                type: "Social Media",
                 bannedIn: [
                     { country: "China", since: "September 2014", type: "complete", moreInfo: "", source: null },
                     { country: "Iran", since: "2018", type: "complete", moreInfo: "", source: null },
@@ -483,8 +447,6 @@
             },
             {
                 name: "LinkedIn",
-                icon: "💼",
-                type: "Social Media",
                 bannedIn: [
                     { country: "China", since: "October 2021", type: "complete", moreInfo: "", source: null },
                     { country: "Russia", since: "November 2016", type: "complete", moreInfo: "", source: null },
@@ -493,8 +455,6 @@
             },
             {
                 name: "TikTok",
-                icon: "🎵",
-                type: "Social Media",
                 bannedIn: [
                     { country: "India", since: "June 2020", type: "complete", moreInfo: "", source: null },
                     { country: "Afghanistan", since: "2022", type: "complete", moreInfo: "", source: null },
@@ -503,8 +463,6 @@
             },
             {
                 name: "Signal",
-                icon: "🔐",
-                type: "Messaging",
                 bannedIn: [
                     { country: "China", since: "March 2021", type: "complete", moreInfo: "", source: null },
                     { country: "Iran", since: "January 2021", type: "complete", moreInfo: "", source: null },
@@ -513,8 +471,6 @@
             },
             {
                 name: "Reddit",
-                icon: "🤖",
-                type: "Social Media",
                 bannedIn: [
                     { country: "China", since: "August 2018", type: "complete", moreInfo: "", source: null },
                     { country: "Indonesia", since: "Intermittent blocks", type: "partial", moreInfo: "", source: null },
@@ -523,8 +479,6 @@
             },
             {
                 name: "Discord",
-                icon: "🎮",
-                type: "Messaging",
                 bannedIn: [
                     { country: "China", since: "July 2018", type: "complete", moreInfo: "", source: null },
                     { country: "UAE", since: "2020", type: "complete", moreInfo: "", source: null },
@@ -533,8 +487,6 @@
             },
             {
                 name: "Twitch",
-                icon: "🎯",
-                type: "Video Streaming",
                 bannedIn: [
                     { country: "China", since: "September 2018", type: "complete", moreInfo: "", source: null },
                     { country: "Russia", since: "May 2024", type: "complete", moreInfo: "", source: null }
@@ -542,8 +494,6 @@
             },
             {
                 name: "ProtonMail",
-                icon: "📧",
-                type: "Messaging",
                 bannedIn: [
                     { country: "Russia", since: "July 2022", type: "complete", moreInfo: "", source: null },
                     { country: "Belarus", since: "2021", type: "complete", moreInfo: "", source: null },
@@ -552,8 +502,6 @@
             },
             {
                 name: "Spotify",
-                icon: "🎶",
-                type: "Video Streaming",
                 bannedIn: [
                     { country: "China", since: "Never launched", type: "complete", moreInfo: "", source: null },
                     { country: "Pakistan", since: "Not available", type: "complete", moreInfo: "", source: null }
@@ -624,10 +572,8 @@
             grid.innerHTML = filteredData.map(platform => `
                 <div class="platform-card">
                     <div class="platform-header">
-                        <span class="platform-icon">${platform.icon}</span>
                         <span class="platform-name">${platform.name}</span>
                     </div>
-                    <span class="platform-type">${platform.type}</span>
                     <div class="banned-countries">
                         <strong>Banned in ${platform.bannedIn.length} countries:</strong><br>
                         ${platform.bannedIn.map(ban => {
