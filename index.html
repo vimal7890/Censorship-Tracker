@@ -310,10 +310,6 @@
                     <div class="stat-label">Platforms</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" id="totalCountries">0</div>
-                    <div class="stat-label">Countries</div>
-                </div>
-                <div class="stat-item">
                     <div class="stat-number" id="totalBans">0</div>
                     <div class="stat-label">Total Bans</div>
                 </div>
@@ -534,12 +530,6 @@
 
         function updateStats() {
             document.getElementById('totalPlatforms').textContent = censorshipData.length;
-            
-            const countries = new Set();
-            censorshipData.forEach(platform => {
-                platform.bannedIn.forEach(ban => countries.add(ban.country));
-            });
-            document.getElementById('totalCountries').textContent = countries.size;
             
             let totalBans = 0;
             censorshipData.forEach(platform => {
