@@ -4,347 +4,755 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Censorship Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --paper-white: #ffffff;
+            --background: #f9f9f9;
+            --surface-bright: #f9f9f9;
+            --surface-container-low: #f3f3f3;
+            --surface-container: #eeeeee;
+            --surface-container-high: #e8e8e8;
+            --primary: #1e1e1e;
+            --redaction-black: #000000;
+            --on-primary: #ffffff;
+            --secondary: #b6152e;       /* censorship red / complete */
+            --alert-orange: #fd7e14;    /* partial */
+            --tertiary-green: #35b14d;  /* available / resolved */
+            --muted-gray: #6c757d;
+            --on-surface-variant: #444748;
+            --outline-variant: #c4c7c7;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html { -webkit-text-size-adjust: 100%; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--primary);
             min-height: 100vh;
-            padding: 10px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 5px;
-            font-size: 1.8em;
-        }
-
-        .subtitle {
-            color: #666;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-        }
-
-        .controls {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .stats {
             display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-            text-align: center;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .stat-item {
-            flex: 1;
+        /* Shared type helpers */
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .label-caps {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        .stat-number {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #2a5298;
+        /* ---------- Top App Bar ---------- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            background: var(--paper-white);
+            border-bottom: 2px solid var(--primary);
         }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.8em;
+        .topbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            gap: 16px;
         }
-
-        .results {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .wordmark {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--redaction-black);
+            white-space: nowrap;
         }
-
-        .platform-grid {
-            margin-top: 15px;
-        }
-
-        .platform-card {
-            background: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .platform-header {
+        .topnav {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
         }
-
-        .platform-name {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #333;
-            flex: 1;
-        }
-
-        .banned-countries {
-            margin-top: 8px;
-        }
-
-        .country-item {
-            margin: 5px 0;
-        }
-
-        .country-tag {
+        .live-dot {
+            width: 8px; height: 8px;
+            background: var(--secondary);
             display: inline-block;
-            color: white;
-            padding: 4px 10px;
-            margin: 2px;
-            border-radius: 4px;
-            font-size: 0.85em;
+            animation: blink 1.6s steps(1) infinite;
+        }
+        @keyframes blink { 50% { opacity: 0.25; } }
+
+        /* ---------- Status ticker strip ---------- */
+        .ticker {
+            width: 100%;
+            background: var(--redaction-black);
+            color: var(--paper-white);
+        }
+        .ticker-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #d0d0d0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+        }
+        .ticker-inner b { color: var(--paper-white); }
+
+        /* ---------- Layout ---------- */
+        .layout {
+            flex: 1 0 auto;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: stretch;
+        }
+
+        /* ---------- Sidebar ---------- */
+        .sidebar {
+            display: none;
+            flex-direction: column;
+            width: 256px;
+            flex-shrink: 0;
+            border-right: 2px solid var(--primary);
+            background: var(--paper-white);
+        }
+        .sidebar-head {
+            padding: 24px;
+            border-bottom: 2px solid var(--primary);
+        }
+        .sidebar-os {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+        }
+        .redaction {
+            display: inline-block;
+            background: var(--redaction-black);
+            color: var(--redaction-black);
+            padding: 1px 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            user-select: none;
+        }
+        .sidebar-badge {
+            margin-top: 14px;
+            display: inline-block;
+            border: 1px solid var(--primary);
+            padding: 4px 8px;
+        }
+        .sidebar-nav { padding: 12px 0; flex: 1; }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            border: none;
+            background: none;
+            text-align: left;
+            padding: 12px 20px;
             cursor: pointer;
+            color: var(--muted-gray);
+            transition: background 0.12s, color 0.12s;
         }
-
-        .country-tag.complete {
-            background: #dc3545;
+        .nav-item:hover { color: var(--primary); background: var(--surface-container-high); }
+        .nav-item.active {
+            background: var(--primary);
+            color: var(--on-primary);
         }
-
-        .country-tag.partial {
-            background: #ff6b35;
+        .nav-item .dot {
+            width: 8px; height: 8px; flex-shrink: 0;
         }
-
-        .country-tag:hover {
-            filter: brightness(0.9);
-            transform: scale(1.05);
+        .nav-item[data-filter="all"] .dot { background: currentColor; }
+        .nav-item[data-filter="complete"] .dot { background: var(--secondary); }
+        .nav-item[data-filter="partial"] .dot { background: var(--alert-orange); }
+        .nav-count {
+            margin-left: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 500;
         }
-
-        .country-tag:active {
-            transform: scale(0.95);
+        .sidebar-foot {
+            padding: 16px;
+            border-top: 2px solid var(--primary);
         }
-
-        .tooltip {
-            display: none;
+        .sidebar-links {
+            border-top: 2px solid var(--primary);
+            padding: 12px 0;
         }
+        .sidebar-links a {
+            display: block;
+            padding: 8px 20px;
+            color: var(--muted-gray);
+            text-decoration: none;
+            transition: color 0.12s;
+        }
+        .sidebar-links a:hover { color: var(--secondary); }
 
-        .more-info {
-            display: none;
-            background: #f0f8ff;
-            border-left: 2px solid #2a5298;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 3px;
-            font-size: 0.85em;
+        /* ---------- Buttons ---------- */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: var(--on-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+        .btn:hover { background: var(--paper-white); color: var(--primary); }
+        .btn-ghost {
+            background: var(--paper-white);
+            color: var(--primary);
+        }
+        .btn-ghost:hover { background: var(--primary); color: var(--on-primary); }
+
+        /* ---------- Main content ---------- */
+        .main {
+            flex: 1;
+            min-width: 0;
+            background: var(--paper-white);
+            padding: 24px 16px 40px;
+        }
+        .page-head {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+        .page-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 34px;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .page-sub {
+            font-size: 16px;
+            color: var(--muted-gray);
+            max-width: 620px;
             line-height: 1.5;
         }
 
-        .more-info.expanded {
-            display: block;
+        /* ---------- Controls ---------- */
+        .controls { margin-bottom: 28px; }
+        .search-wrap { position: relative; margin-bottom: 20px; }
+        .search-label {
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            background: var(--paper-white);
+            padding: 0 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+        }
+        #searchBox {
+            width: 100%;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            padding: 14px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            color: var(--primary);
+            outline: none;
+            border-radius: 0;
+        }
+        #searchBox:focus { border-width: 2px; padding: 13px 15px; }
+        #searchBox::placeholder { color: var(--muted-gray); }
+
+        /* Stat readouts */
+        .stats {
+            display: flex;
+            border: 1px solid var(--primary);
+            margin-bottom: 20px;
+        }
+        .stat-item {
+            flex: 1;
+            padding: 14px 16px;
+            border-right: 1px solid var(--primary);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-number {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 1;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+            margin-top: 6px;
         }
 
-        .more-info h4 {
-            color: #2a5298;
-            margin-bottom: 5px;
-            font-size: 1em;
+        /* Filter chips */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
         }
-
-        .more-info p {
-            color: #555;
-            margin-bottom: 3px;
+        .filters-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+            margin-right: 4px;
         }
+        .filter-chip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: background 0.12s, color 0.12s;
+        }
+        .filter-chip:hover { background: var(--surface-container); }
+        .filter-chip.active { background: var(--primary); color: var(--on-primary); }
+        .filter-chip[data-filter="complete"].active { background: var(--secondary); border-color: var(--secondary); }
+        .filter-chip[data-filter="partial"].active { background: var(--alert-orange); border-color: var(--alert-orange); }
 
+        /* ---------- Platform list ---------- */
+        .platform-list {
+            border-top: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        .platform-row {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid var(--primary);
+        }
+        .platform-row:last-child { border-bottom: none; }
+        .platform-row:hover { background: var(--surface-container-low); }
+        .platform-meta {
+            flex-shrink: 0;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--primary);
+            background: var(--surface-bright);
+        }
+        .platform-name {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            color: var(--primary);
+        }
+        .platform-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+            margin-top: 8px;
+        }
+        .platform-body { padding: 18px 20px; }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .country-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--paper-white);
+            border: none;
+            padding: 7px 12px;
+            cursor: pointer;
+            transition: filter 0.12s, transform 0.06s;
+        }
+        .country-tag.complete { background: var(--secondary); }
+        .country-tag.partial { background: var(--alert-orange); }
+        .country-tag:hover { filter: brightness(1.1); }
+        .country-tag:active { transform: translateY(1px); }
+        .country-tag.open { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+        /* Expandable info panel */
+        .more-info {
+            display: none;
+            border: 1px solid var(--primary);
+            border-left: 4px solid var(--secondary);
+            margin-top: 12px;
+            background: var(--paper-white);
+        }
+        .more-info.partial-info { border-left-color: var(--alert-orange); }
+        .more-info.expanded { display: block; }
+        .more-info-head {
+            background: var(--redaction-black);
+            color: var(--paper-white);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .more-info-head .status-complete { color: #ff9a9a; }
+        .more-info-head .status-partial { color: #ffcf9a; }
+        .more-info-body {
+            padding: 12px;
+            font-size: 15px;
+            line-height: 1.55;
+            color: var(--on-surface-variant);
+        }
+        .more-info-body .since {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
         .source-ref {
-            color: #2a5298;
-            font-weight: bold;
+            color: var(--secondary);
+            font-weight: 700;
             vertical-align: super;
             font-size: 0.7em;
         }
 
         .no-results {
+            padding: 40px 20px;
             text-align: center;
-            padding: 30px;
-            color: #666;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
         }
 
-        .export-btn {
-            background: #28a745;
-            margin-top: 15px;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-            width: 100%;
-        }
-
+        /* ---------- Info note / tip ---------- */
         .info-note {
-            background: #e8f4f8;
-            border-left: 3px solid #2a5298;
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 3px;
-            color: #333;
-            font-size: 0.85em;
+            border: 1px solid var(--primary);
+            border-left: 4px solid var(--primary);
+            padding: 12px 14px;
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--on-surface-variant);
         }
+        .info-note b { color: var(--primary); }
+        .swatch {
+            display: inline-block;
+            width: 10px; height: 10px;
+            vertical-align: middle;
+            margin: 0 2px 2px;
+        }
+        .swatch.complete { background: var(--secondary); }
+        .swatch.partial { background: var(--alert-orange); }
 
-        /* Sources section */
+        /* Actions row (mobile export lives here too) */
+        .actions { margin-top: 20px; }
+
+        /* ---------- Sources ---------- */
         .sources-section {
-            margin-top: 20px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            overflow: hidden;
+            margin-top: 24px;
+            border: 1px solid var(--primary);
         }
-
         .sources-header {
-            padding: 12px;
-            background: #e9ecef;
+            padding: 12px 14px;
+            background: var(--surface-container);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary);
+            border-bottom: 1px solid transparent;
         }
-
-        .sources-title {
-            font-weight: bold;
-            color: #333;
-            font-size: 0.9em;
-        }
-
-        .sources-toggle {
-            font-size: 1em;
-        }
-
+        .sources-header.expanded { border-bottom-color: var(--primary); }
+        .sources-toggle { transition: transform 0.15s; }
+        .sources-header.expanded .sources-toggle { transform: rotate(180deg); }
         .sources-content {
-            padding: 15px;
             display: none;
-            font-size: 0.85em;
+            padding: 16px 14px;
+            font-size: 14px;
             line-height: 1.6;
-            color: #555;
+            color: var(--on-surface-variant);
         }
-
-        .sources-content.expanded {
-            display: block;
-        }
-
-        .sources-header.expanded .sources-toggle {
-            transform: rotate(180deg);
-        }
-
-        .source-item {
-            margin-bottom: 8px;
-            padding-left: 15px;
+        .sources-content.expanded { display: block; }
+        .sources-content p { margin-bottom: 4px; }
+        .sources-content strong { color: var(--primary); }
+        .source-item, .numbered-source {
             position: relative;
+            padding-left: 22px;
+            margin-bottom: 8px;
         }
-
         .source-item:before {
-            content: "•";
+            content: "\00BB";
             position: absolute;
-            left: 0;
-            color: #2a5298;
+            left: 4px;
+            color: var(--secondary);
+            font-weight: 700;
         }
-
-        .numbered-source {
-            margin-bottom: 8px;
-            padding-left: 25px;
-            position: relative;
-        }
-
         .numbered-source .source-number {
             position: absolute;
             left: 0;
-            color: #2a5298;
-            font-weight: bold;
+            color: var(--secondary);
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 5px;
+        /* ---------- Footer ---------- */
+        .footer {
+            flex-shrink: 0;
+            width: 100%;
+            border-top: 2px solid var(--primary);
+            background: var(--paper-white);
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .footer-brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+        .footer-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+            text-decoration: none;
+            transition: color 0.12s;
+        }
+        .footer-links a:hover { color: var(--secondary); }
+
+        /* ---------- Responsive ---------- */
+        @media (min-width: 768px) {
+            .topbar-inner, .ticker-inner, .footer-inner { padding-left: 40px; padding-right: 40px; }
+            .wordmark { font-size: 26px; }
+            .main { padding: 40px; }
+            .page-title { font-size: 48px; }
+            .platform-row { flex-direction: row; }
+            .platform-meta {
+                width: 220px;
+                border-bottom: none;
+                border-right: 1px solid var(--primary);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
-            
-            h1 {
-                font-size: 1.5em;
-            }
-            
-            .stat-label {
-                font-size: 0.7em;
-            }
-            
-            .platform-card {
-                padding: 12px;
-            }
+            .footer-inner { flex-direction: row; align-items: center; }
+        }
+        @media (min-width: 1024px) {
+            .sidebar { display: flex; }
+            .main { border-right: 2px solid var(--primary); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Global Censorship Tracker</h1>
-        <p class="subtitle">Track banned apps and websites worldwide</p>
+    <!-- Top App Bar -->
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="wordmark">Censorship Tracker</div>
+            <nav class="topnav">
+                <span class="live-dot"></span>
+                <span>Live&nbsp;Index</span>
+            </nav>
+        </div>
+    </header>
 
-        <div class="controls">
-            <input type="text" id="searchBox" placeholder="Search platforms...">
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalPlatforms">0</div>
-                    <div class="stat-label">Platforms</div>
+    <!-- Status ticker -->
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span>&#9632;&nbsp; Global Digital Ban Index</span>
+            <span>Platforms Monitored: <b id="tickerPlatforms">--</b></span>
+            <span>Total Restrictions: <b id="tickerBans">--</b></span>
+            <span>Data As Of: <b>2025</b></span>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="layout">
+        <!-- Sidebar (desktop) -->
+        <aside class="sidebar">
+            <div class="sidebar-head">
+                <div class="sidebar-os">TRACKER_OS</div>
+                <span class="redaction">v1.0.0-stable</span>
+                <div class="sidebar-badge label-caps">Open Intelligence</div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-filter="all">
+                    <span class="dot"></span>
+                    <span class="label-caps">All Platforms</span>
+                    <span class="nav-count" id="navCountAll">0</span>
+                </button>
+                <button class="nav-item" data-filter="complete">
+                    <span class="dot"></span>
+                    <span class="label-caps">Complete Bans</span>
+                    <span class="nav-count" id="navCountComplete">0</span>
+                </button>
+                <button class="nav-item" data-filter="partial">
+                    <span class="dot"></span>
+                    <span class="label-caps">Partial Bans</span>
+                    <span class="nav-count" id="navCountPartial">0</span>
+                </button>
+            </nav>
+            <div class="sidebar-foot">
+                <button class="btn" onclick="exportData()">Generate Report</button>
+            </div>
+            <div class="sidebar-links">
+                <a class="label-caps" href="#sources" onclick="openSources();return false;">Sources</a>
+                <a class="label-caps" href="https://github.com/" target="_blank" rel="noopener">Documentation</a>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+            <div class="page-head">
+                <h1 class="page-title">Global Censorship Tracker</h1>
+                <p class="page-sub">Real-time reference index of banned apps and websites worldwide &mdash; tracking government blocks, throttling, and platform restrictions across nations.</p>
+            </div>
+
+            <div class="controls">
+                <div class="search-wrap">
+                    <span class="search-label">SEARCH_</span>
+                    <input type="text" id="searchBox" placeholder="Query platform... e.g. Telegram" autocomplete="off">
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="totalBans">0</div>
-                    <div class="stat-label">Total Bans</div>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalPlatforms">0</div>
+                        <div class="stat-label">Platforms</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalBans">0</div>
+                        <div class="stat-label">Total Bans</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalCountries">0</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <span class="filters-label">Filter:</span>
+                    <button class="filter-chip active" data-filter="all">All</button>
+                    <button class="filter-chip" data-filter="complete">Complete</button>
+                    <button class="filter-chip" data-filter="partial">Partial</button>
                 </div>
             </div>
-        </div>
 
-        <div class="results">
-            <div id="platformGrid" class="platform-grid"></div>
+            <div id="platformGrid" class="platform-list"></div>
 
             <div class="info-note">
-                <strong>Tip:</strong> Tap any country to see details. Red = complete ban, Orange = partial ban.
+                <b>Tip:</b> Tap any country to reveal the case file.
+                <span class="swatch complete"></span> Complete ban &nbsp;
+                <span class="swatch partial"></span> Partial / intermittent.
             </div>
 
-            <button class="export-btn" onclick="exportData()">Export Data</button>
+            <div class="actions">
+                <button class="btn btn-ghost" onclick="exportData()">Export Data &#8595; JSON</button>
+            </div>
 
-            <div class="sources-section">
+            <div class="sources-section" id="sources">
                 <div class="sources-header" onclick="toggleSources()">
-                    <span class="sources-title">Sources & References</span>
-                    <span class="sources-toggle">▼</span>
+                    <span>Sources &amp; References</span>
+                    <span class="sources-toggle">&#9660;</span>
                 </div>
                 <div class="sources-content" id="sourcesContent">
                     <p><strong>General Sources:</strong></p>
-                    <div class="source-item">Freedom House - Freedom on the Net Reports</div>
+                    <div class="source-item">Freedom House &mdash; Freedom on the Net Reports</div>
                     <div class="source-item">Reporters Without Borders</div>
-                    <div class="source-item">Access Now - #KeepItOn Campaign</div>
+                    <div class="source-item">Access Now &mdash; #KeepItOn Campaign</div>
                     <div class="source-item">Government announcements and regulatory filings</div>
-                    
+
                     <p style="margin-top: 15px;"><strong>Numbered References:</strong></p>
                     <div id="numberedSources"></div>
-                    
+
                     <p style="margin-top: 10px;"><em>Data as of early 2025. Status may change.</em></p>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">&copy; 2025 Censorship_Tracker &middot; Data Is Resistance</div>
+            <nav class="footer-links">
+                <a href="#sources" onclick="openSources();return false;">Sources</a>
+                <a href="#" onclick="exportData();return false;">API / Export</a>
+                <span class="redaction">redacted</span>
+            </nav>
+        </div>
+    </footer>
 
     <script>
         // Censorship data with blocking dates and detailed information
@@ -472,7 +880,7 @@
                     { country: "Pakistan", since: "Intermittent blocks", type: "partial", moreInfo: "", source: null },
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
                     { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
- 
+
                 ]
             },
             {
@@ -509,7 +917,7 @@
                 bannedIn: [
                     { country: "China", since: "September 2018", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "May 2024", type: "complete", moreInfo: "", source: null }, 
+                    { country: "Russia", since: "May 2024", type: "complete", moreInfo: "", source: null },
                     { country: "South Korea", since: "2024", type: "complete", moreInfo: "Twitch left the South Korean market due to high costs.", source: null }
                 ]
             },
@@ -534,6 +942,7 @@
 
         // Store sources with their reference numbers
         let sourceReferences = [];
+        let currentFilter = 'all';
 
         function addSourceReference(source) {
             const existingIndex = sourceReferences.findIndex(s => s === source);
@@ -556,61 +965,100 @@
         }
 
         function updateStats() {
-            document.getElementById('totalPlatforms').textContent = censorshipData.length;
-            
             let totalBans = 0;
+            let completeBans = 0;
+            let partialBans = 0;
+            const countries = new Set();
+
             censorshipData.forEach(platform => {
                 totalBans += platform.bannedIn.length;
+                platform.bannedIn.forEach(ban => {
+                    countries.add(ban.country);
+                    if (ban.type === 'partial') partialBans++; else completeBans++;
+                });
             });
+
+            document.getElementById('totalPlatforms').textContent = censorshipData.length;
             document.getElementById('totalBans').textContent = totalBans;
+            document.getElementById('totalCountries').textContent = countries.size;
+
+            document.getElementById('tickerPlatforms').textContent = censorshipData.length;
+            document.getElementById('tickerBans').textContent = totalBans;
+
+            document.getElementById('navCountAll').textContent = totalBans;
+            document.getElementById('navCountComplete').textContent = completeBans;
+            document.getElementById('navCountPartial').textContent = partialBans;
         }
 
         function toggleMoreInfo(platformName, countryName) {
             const infoId = `info-${platformName}-${countryName}`.replace(/\s+/g, '-');
+            const tagId = `tag-${platformName}-${countryName}`.replace(/\s+/g, '-');
             const infoElement = document.getElementById(infoId);
-            if (infoElement) {
-                infoElement.classList.toggle('expanded');
-            }
+            const tagElement = document.getElementById(tagId);
+            if (infoElement) infoElement.classList.toggle('expanded');
+            if (tagElement) tagElement.classList.toggle('open');
+        }
+
+        function setFilter(type) {
+            currentFilter = type;
+            document.querySelectorAll('[data-filter]').forEach(el => {
+                el.classList.toggle('active', el.getAttribute('data-filter') === type);
+            });
+            renderPlatforms();
         }
 
         function renderPlatforms() {
             const grid = document.getElementById('platformGrid');
             const searchTerm = document.getElementById('searchBox').value.toLowerCase();
 
-            const filteredData = censorshipData.filter(platform => {
-                return !searchTerm || platform.name.toLowerCase().includes(searchTerm);
-            });
+            const filteredData = censorshipData
+                .map(platform => {
+                    const bans = platform.bannedIn.filter(ban =>
+                        currentFilter === 'all' || ban.type === currentFilter);
+                    return { name: platform.name, bannedIn: bans };
+                })
+                .filter(platform => {
+                    const matchesSearch = !searchTerm || platform.name.toLowerCase().includes(searchTerm);
+                    return matchesSearch && platform.bannedIn.length > 0;
+                });
 
             if (filteredData.length === 0) {
-                grid.innerHTML = '<div class="no-results">No platforms found.</div>';
+                grid.innerHTML = '<div class="no-results">// No platforms match your query.</div>';
                 return;
             }
 
             grid.innerHTML = filteredData.map(platform => `
-                <div class="platform-card">
-                    <div class="platform-header">
-                        <span class="platform-name">${platform.name}</span>
+                <article class="platform-row">
+                    <div class="platform-meta">
+                        <div class="platform-name">${platform.name}</div>
+                        <div class="platform-count">Banned in ${platform.bannedIn.length} ${platform.bannedIn.length === 1 ? 'country' : 'countries'}</div>
                     </div>
-                    <div class="banned-countries">
-                        <strong>Banned in ${platform.bannedIn.length} countries:</strong><br>
+                    <div class="platform-body">
+                        <div class="chip-row">
+                            ${platform.bannedIn.map(ban => {
+                                const tagId = `tag-${platform.name}-${ban.country}`.replace(/\s+/g, '-');
+                                return `<button id="${tagId}" class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}')">${ban.country}</button>`;
+                            }).join('')}
+                        </div>
                         ${platform.bannedIn.map(ban => {
                             const infoId = `info-${platform.name}-${ban.country}`.replace(/\s+/g, '-');
                             const sourceRef = ban.source ? `<span class="source-ref">[${ban.source}]</span>` : '';
+                            const isPartial = ban.type === 'partial';
                             return `
-                                <div class="country-item">
-                                    <span class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}')">
-                                        ${ban.country}
-                                    </span>
-                                    <div id="${infoId}" class="more-info">
-                                        <h4>${ban.country} - ${ban.type === 'complete' ? 'Complete Ban' : 'Partial Ban'}</h4>
-                                        <p><strong>Since:</strong> ${ban.since}</p>
+                                <div id="${infoId}" class="more-info ${isPartial ? 'partial-info' : ''}">
+                                    <div class="more-info-head">
+                                        <span>${ban.country}</span>
+                                        <span class="${isPartial ? 'status-partial' : 'status-complete'}">${isPartial ? 'Partial Ban' : 'Complete Ban'}</span>
+                                    </div>
+                                    <div class="more-info-body">
+                                        <div class="since">Since: ${ban.since}</div>
                                         ${ban.moreInfo ? `<p>${ban.moreInfo}${sourceRef}</p>` : '<p><em>No additional information available.</em></p>'}
                                     </div>
                                 </div>
                             `;
                         }).join('')}
                     </div>
-                </div>
+                </article>
             `).join('');
 
             updateNumberedSources();
@@ -624,6 +1072,7 @@
             link.href = url;
             link.download = 'censorship_data.json';
             link.click();
+            URL.revokeObjectURL(url);
         }
 
         function toggleSources() {
@@ -633,8 +1082,19 @@
             header.classList.toggle('expanded');
         }
 
+        function openSources() {
+            const content = document.getElementById('sourcesContent');
+            const header = document.querySelector('.sources-header');
+            content.classList.add('expanded');
+            header.classList.add('expanded');
+            document.getElementById('sources').scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Event listeners
         document.getElementById('searchBox').addEventListener('input', renderPlatforms);
+        document.querySelectorAll('[data-filter]').forEach(el => {
+            el.addEventListener('click', () => setFilter(el.getAttribute('data-filter')));
+        });
 
         // Initialize
         updateStats();
