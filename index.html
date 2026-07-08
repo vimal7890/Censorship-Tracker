@@ -232,6 +232,11 @@
             max-width: 620px;
             line-height: 1.5;
         }
+        .title-word.redacted {
+            background: var(--redaction-black);
+            color: var(--redaction-black);
+            user-select: none;
+        }
 
         /* ---------- Controls ---------- */
         .controls { margin-bottom: 28px; }
@@ -595,7 +600,7 @@
         <!-- Main content -->
         <main class="main">
             <div class="page-head">
-                <h1 class="page-title">Global Censorship Tracker</h1>
+                <h1 class="page-title"><span class="title-word">Global</span> <span class="title-word">Censorship</span> <span class="title-word">Tracker</span></h1>
                 <p class="page-sub">Real-time reference index of banned apps and websites worldwide &mdash; tracking government blocks, throttling, and platform restrictions across nations.</p>
             </div>
 
@@ -992,6 +997,9 @@
 
         let currentFilter = 'all';
 
+        // Keep platforms in alphabetical order
+        censorshipData.sort((a, b) => a.name.localeCompare(b.name));
+
         // Attach sources to entries and assign stable reference numbers
         const sourceIndex = new Map();
         censorshipData.forEach(platform => platform.bannedIn.forEach(ban => {
@@ -1124,6 +1132,23 @@
         // Initialize
         updateStats();
         renderPlatforms();
+
+        // Title redaction cycle: one random word redacts, unredacts, repeats.
+        // The sequential chain guarantees at most one word is redacted at a time.
+        (function cycleTitleRedaction() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const words = document.querySelectorAll('.page-title .title-word');
+            if (!words.length) return;
+            function step() {
+                const word = words[Math.floor(Math.random() * words.length)];
+                word.classList.add('redacted');
+                setTimeout(() => {
+                    word.classList.remove('redacted');
+                    setTimeout(step, 900 + Math.random() * 2100);
+                }, 600 + Math.random() * 1200);
+            }
+            setTimeout(step, 1500);
+        })();
     </script>
 </body>
 </html>
