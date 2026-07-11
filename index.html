@@ -699,218 +699,10 @@
             "Turkmenistan": "Turkmenistan's state-monopoly ISP blocks most foreign platforms and roughly 75% of all IP addresses by default, and VPN use is actively suppressed."
         };
 
-        // Shared notes for age-verification regimes in force
-        const AGE_AU = "Australia's under-16 social media ban took effect on 10 December 2025, requiring covered platforms to prevent under-16s from holding accounts. In June 2026 the government moved to double fines amid evidence children were bypassing the ban.";
-        const AGE_MY = "Malaysia's under-16 social media ban took effect on 1 June 2026. Platforms must verify users' ages and remove under-16 accounts or face fines of up to RM1 million.";
-
-        // Censorship data with blocking dates and detailed information
-        const censorshipData = [
-            {
-                name: "Facebook",
-                bannedIn: [
-                    { country: "China", since: "July 2009", type: "complete", moreInfo: "Facebook has been banned since the 2009 riots in Xinjiang.", source: null },
-                    { country: "Iran", since: "2009", type: "complete", moreInfo: "Facebook has been banned since the 2009 Presidential elections and the subsequent protests.", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Myanmar", since: "2021", type: "complete", moreInfo: "Facebook has been banned since the 2021 Military takeover.", source: null },
-                    { country: "Russia", since: "2022", type: "complete", moreInfo: "Facebook has been banned since the Russian Invasion of Ukraine. The Russian government has restricted or banned social media platforms since then.", source: null },
-                    { country: "Turkmenistan", since: "2008", type: "complete", moreInfo: "", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
-                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
-                ]
-            },
-            {
-                name: "X (formerly Twitter)",
-                bannedIn: [
-                    { country: "China", since: "June 2009", type: "complete", moreInfo: "", source: null },
-                    { country: "Iran", since: "2009", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Turkey", since: "July 2025", type: "partial", moreInfo: "A Turkish court ordered blocks on content from X's Grok chatbot in July 2025 after it generated posts insulting President Erdogan.", source: null },
-                    { country: "Myanmar", since: "2021", type: "partial", moreInfo: "X has been banned since the military takeover", source: null },
-                    { country: "Russia", since: "March 2022", type: "complete", moreInfo: "Since the Russian Invasion of Ukraine, Russia has banned X. ", source: null },
-                    { country: "Turkmenistan", since: "2008", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
-                    { country: "Malaysia", since: "January 2026", type: "partial", moreInfo: "Malaysia blocked X's Grok chatbot in January 2026 after it was used to generate non-consensual sexualised deepfake images, including of minors.", source: null },
-                    { country: "Indonesia", since: "January 2026", type: "partial", moreInfo: "Indonesia became the first country to block X's Grok chatbot in January 2026 over non-consensual sexualised deepfake images.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
-                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: 'https://www.malaymail.com/news/malaysia/2026/06/01/malaysias-under-16-social-media-rule-starts-today-what-parents-need-to-know/221674' },
-                    { country: "UK", since: "25/07/2025", type: "age", moreInfo: "Under the UK Online Safety Act, X has required age assurance (face scan or ID) for adult content since 25 July 2025; unverified UK users have sensitive media filtered.", source: null }
-                ]
-            },
-            {
-                name: "YouTube",
-                bannedIn: [
-                    { country: "China", since: "March 2009", type: "complete", moreInfo: "", source: null },
-                    { country: "Iran", since: "2012", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Eritrea", since: "2017", type: "complete", moreInfo: "", source: null },
-                    { country: "Turkmenistan", since: "2009", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
-                    { country: "Russia", since: "12/02/2026", type: "complete", moreInfo: "After throttling YouTube to near-unusable speeds since July 2024, Russia fully blocked it on 12 February 2026, removing it from the national DNS alongside WhatsApp as users are pushed to state-approved alternatives.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
-                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
-                ]
-            },
-            {
-                name: "WhatsApp",
-                bannedIn: [
-                    { country: "China", since: "September 2017", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null },
-                    { country: "Russia", since: "11/02/2026", type: "complete", moreInfo: "Russia blocked WhatsApp voice and video calls in August 2025, throttled the app nationwide from November, then fully blocked it on 11 February 2026 — pushing its roughly 100 million Russian users toward the state-run Max messenger.", source: null },
-                    { country: "Iran", since: "June 2025", type: "complete", moreInfo: "Iran briefly lifted its WhatsApp ban in December 2024, then cut access again amid the June 2025 conflict with Israel; as of May 2026 authorities say reinstatement is not under consideration.", source: null },
-                    { country: "UAE", since: "Longstanding", type: "partial", moreInfo: "WhatsApp voice and video calls are blocked in the UAE, where unlicensed VoIP services are prohibited; messaging works normally.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
-                ]
-            },
-            {
-                name: "Telegram",
-                bannedIn: [
-                    { country: "China", since: "July 2015", type: "complete", moreInfo: "", source: null },
-                    { country: "Cuba", since: "13/07/2021", type: "complete", moreInfo: "The Cuban Government has decided to shut off access to Telegram ever since the 2021 anti-government protests.", source: null },
-                    { country: "Iran", since: "01/05/2018", type: "complete", moreInfo: "", source: null },
-                    { country: "Kenya", since: "November 2023", type: "partial", moreInfo: "Kenya has repeatedly restricted Telegram during national KCSE exam periods (2023, 2024 and 2025) to curb exam-paper leaks, restoring access afterwards.", source: null },
-                    { country: "Nepal", since: "18/07/2025", type: "partial", moreInfo: "Nepal banned Telegram in July 2025 over fraud and money-laundering concerns. Most ISPs have quietly restored access, but the regulator says the restriction formally remains while Telegram completes local registration.", source: null },
-                    { country: "Pakistan", since: "18/11/2017", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "10/02/2026", type: "complete", moreInfo: "After regional blocks in Chechnya and Dagestan and nationwide call restrictions from August 2025, Roskomnadzor moved to block Telegram outright on 10 February 2026, citing non-compliance with Russian law.", source: null },
-                    { country: "Somalia", since: "20/08/2023", type: "complete", moreInfo: "", source: null },
-                    { country: "Vietnam", since: "21/05/2025", type: "complete", moreInfo: "Vietnam banned Telegram in 2025 due to failures from Telegram to stop illegal activities.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
-                ]
-            },
-            {
-                name: "Google",
-                bannedIn: [
-                    { country: "China", since: "2010", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Always blocked", type: "complete", moreInfo: "", source: null }
-                ]
-            },
-            {
-                name: "DuckDuckGo",
-                bannedIn: [
-                    { country: "China", since: "September 2014", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Indonesia", since: "2024", type: "complete", moreInfo: "", source: null }
-                ]
-            },
-            {
-                name: "Wikipedia",
-                bannedIn: [
-                    { country: "China", since: "April 2019 (all languages)", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Myanmar", since: "February 2021", type: "complete", moreInfo: "The military junta blocked Wikipedia in all languages following the February 2021 coup.", source: null },
-                    { country: "Russia", since: "2022", type: "partial", moreInfo: "Wikipedia remains accessible in Russia but faces repeated fines and state pressure over war-related articles.", source: null }
-                ]
-            },
-            {
-                name: "Netflix",
-                bannedIn: [
-                    { country: "China", since: "Never allowed to operate", type: "complete", moreInfo: "", source: null },
-                    { country: "Syria", since: "2016 (U.S. sanctions)", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "2022 (suspended operations)", type: "complete", moreInfo: "", source: null }
-                ]
-            },
-            {
-                name: "Instagram",
-                bannedIn: [
-                    { country: "China", since: "September 2014", type: "complete", moreInfo: "", source: null },
-                    { country: "Iran", since: "2018", type: "complete", moreInfo: "Instagram has been blocked since 2018 apart from a brief easing from December 2024; access was cut again around the June 2025 conflict and, as of May 2026, is not under consideration for reinstatement.", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "Russia", since: "March 2022", type: "complete", moreInfo: "Since the Russian Invasion of Ukraine, Russia has banned Instagram. ", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
-                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
-                ]
-            },
-            {
-                name: "LinkedIn",
-                bannedIn: [
-                    { country: "China", since: "October 2021", type: "complete", moreInfo: "", source: null },
-                    { country: "Russia", since: "November 2016", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
-
-                ]
-            },
-            {
-                name: "TikTok",
-                bannedIn: [
-                    { country: "India", since: "June 2020", type: "complete", moreInfo: "India blocked TikTok and a number of other Chinese apps in the wake of the 2020 Sino-Indian border skirmishes.", source: null },
-                    { country: "Afghanistan", since: "2022", type: "complete", moreInfo: "", source: null },
-                    { country: "Pakistan", since: "Intermittent blocks", type: "partial", moreInfo: "", source: null },
-                    { country: "Jordan", since: "December 2022", type: "complete", moreInfo: "Jordan banned TikTok in December 2022 after a police officer was killed during protests; the ban remains in force pending compliance talks.", source: null },
-                    { country: "Uzbekistan", since: "July 2021", type: "complete", moreInfo: "TikTok has been blocked since 2021 under Uzbekistan's personal-data localisation law.", source: null },
-                    { country: "Kyrgyzstan", since: "2024", type: "complete", moreInfo: "Kyrgyzstan blocked TikTok over content-moderation concerns; a February 2026 government proposal to lift the ban remains unresolved.", source: null },
-                    { country: "Somalia", since: "August 2023", type: "partial", moreInfo: "Somalia ordered TikTok blocked in August 2023 over explicit content and extremism, but enforcement has been inconsistent.", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
-                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
-                ]
-            },
-            {
-                name: "Signal",
-                bannedIn: [
-                    { country: "China", since: "March 2021", type: "complete", moreInfo: "", source: null },
-                    { country: "Iran", since: "January 2021", type: "complete", moreInfo: "", source: null },
-                    { country: "Egypt", since: "December 2016", type: "complete", moreInfo: "", source: null },
-                    { country: "Russia", since: "August 2024", type: "complete", moreInfo: "Roskomnadzor blocked Signal in August 2024, citing anti-terrorism legislation.", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
-                ]
-            },
-            {
-                name: "Reddit",
-                bannedIn: [
-                    { country: "China", since: "August 2018", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Indonesia", since: "2014", type: "complete", moreInfo: "Reddit has been blocked in Indonesia since 2014 under anti-pornography rules.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
-                    { country: "UK", since: "14/07/2025", type: "age", moreInfo: "Under the UK Online Safety Act, Reddit has required age verification for mature content since 14 July 2025, using selfie or ID checks run by a third-party provider.", source: null }
-                ]
-            },
-            {
-                name: "Discord",
-                bannedIn: [
-                    { country: "China", since: "July 2018", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "October 2024", type: "complete", moreInfo: "Roskomnadzor blocked Discord in October 2024, citing violations of Russian law.", source: null },
-                    { country: "Turkey", since: "October 2024", type: "complete", moreInfo: "An Ankara court blocked Discord in October 2024 over child-safety concerns. As of June 2026 it remains blocked — ministers say Discord has met compliance criteria, but a fresh court ruling is required to restore access.", source: null },
-                    { country: "UAE", since: "2020", type: "complete", moreInfo: "Discord is blocked by major UAE ISPs under rules against unlicensed VoIP services.", source: null },
-                    { country: "Egypt", since: "2022", type: "partial", moreInfo: "", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "UK", since: "25/07/2025", type: "age", moreInfo: "Discord rolled out UK age checks (face scan or ID) for sensitive content under the Online Safety Act in July 2025; a later breach at a third-party verification vendor exposed ID photos of about 70,000 users.", source: null }
-                ]
-            },
-            {
-                name: "Twitch",
-                bannedIn: [
-                    { country: "China", since: "September 2018", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "2024", type: "partial", moreInfo: "Twitch is not formally blocked, but faces heavy state fines and has itself capped Russian users at 720p and ended monetisation, with reports it may exit the market.", source: null },
-                    { country: "South Korea", since: "2024", type: "complete", moreInfo: "Twitch left the South Korean market due to high costs.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null }
-                ]
-            },
-            {
-                name: "Spotify",
-                bannedIn: [
-                    { country: "China", since: "Never launched", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "Russia", since: "April 2022", type: "complete", moreInfo: "Spotify fully suspended its service in Russia in April 2022 following the invasion of Ukraine.", source: null },
-                    { country: "UK", since: "August 2025", type: "age", moreInfo: "Spotify introduced facial age checks (via Yoti) for UK users in August 2025 to comply with the Online Safety Act, gating 18+ content such as explicit music videos.", source: null }
-                ]
-            },
-            {
-                name: "Snapchat",
-                bannedIn: [
-                    { country: "China", since: "Never launched", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "October 2025", type: "complete", moreInfo: "Roskomnadzor blocked Snapchat in October 2025 (confirmed that December), accusing it of use for terrorist activity and fraud, as part of a wider crackdown on foreign platforms.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null }
-                ]
-            }
-        ];
+        // Censorship data is loaded at runtime from censorship_data.csv.
+        // Edit that CSV (platform,country,since,type,more_info,source) to
+        // add, change or remove entries — no code changes needed.
+        let censorshipData = [];
 
         // Brand icons (Simple Icons), monochrome, inherit currentColor
         const PLATFORM_ICONS = {
@@ -953,148 +745,71 @@
             "X (formerly Twitter)": "#000000"
         };
 
-        // Source references: "Platform|Country" -> URL
-        const SRC = {
-            esafety: 'https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions',
-            myBan: 'https://www.malaymail.com/news/malaysia/2026/06/01/malaysias-under-16-social-media-rule-starts-today-what-parents-need-to-know/221674',
-            ruCrackdown: 'https://en.zona.media/article/2026/04/07/russian_internet_censorship_2026',
-            wikiCN: 'https://en.wikipedia.org/wiki/Internet_censorship_in_China',
-            wikiIR: 'https://en.wikipedia.org/wiki/Internet_censorship_in_Iran',
-            wikiNK: 'https://en.wikipedia.org/wiki/Internet_in_North_Korea',
-            wikiTM: 'https://en.wikipedia.org/wiki/Internet_in_Turkmenistan',
-            wikiRU: 'https://en.wikipedia.org/wiki/List_of_websites_blocked_in_Russia'
-        };
-        const SOURCE_URLS = {
-            "Facebook|China": 'https://en.wikipedia.org/wiki/Censorship_of_Facebook',
-            "Facebook|Iran": 'https://en.wikipedia.org/wiki/Censorship_of_Facebook',
-            "Facebook|North Korea": SRC.wikiNK,
-            "Facebook|Myanmar": 'https://en.wikipedia.org/wiki/Censorship_of_Facebook',
-            "Facebook|Russia": SRC.wikiRU,
-            "Facebook|Turkmenistan": SRC.wikiTM,
-            "Facebook|Australia": SRC.esafety,
-            "Facebook|Malaysia": SRC.myBan,
-            "X (formerly Twitter)|China": 'https://en.wikipedia.org/wiki/Censorship_of_Twitter',
-            "X (formerly Twitter)|Iran": 'https://en.wikipedia.org/wiki/Censorship_of_Twitter',
-            "X (formerly Twitter)|North Korea": SRC.wikiNK,
-            "X (formerly Twitter)|Turkey": 'https://balkaninsight.com/2025/07/09/turkish-court-orders-block-on-xs-grok-for-insulting-leaders/bi/',
-            "X (formerly Twitter)|Myanmar": 'https://en.wikipedia.org/wiki/Censorship_of_Twitter',
-            "X (formerly Twitter)|Russia": 'https://en.wikipedia.org/wiki/Censorship_of_Twitter',
-            "X (formerly Twitter)|Turkmenistan": SRC.wikiTM,
-            "X (formerly Twitter)|Malaysia": 'https://www.cnbc.com/2026/01/12/malaysia-indonesia-block-elon-musks-grok-obscene-non-consensual-content.html',
-            "X (formerly Twitter)|Indonesia": 'https://techcrunch.com/2026/01/11/indonesia-blocks-grok-over-non-consensual-sexualized-deepfakes/',
-            "X (formerly Twitter)|Australia": SRC.esafety,
-            "X (formerly Twitter)|UK": 'https://www.tomsguide.com/computing/vpns/here-are-6-sites-requiring-age-verification-will-you-be-affected',
-            "YouTube|China": 'https://en.wikipedia.org/wiki/Censorship_of_YouTube',
-            "YouTube|Iran": 'https://en.wikipedia.org/wiki/Censorship_of_YouTube',
-            "YouTube|North Korea": SRC.wikiNK,
-            "YouTube|Eritrea": 'https://en.wikipedia.org/wiki/Censorship_of_YouTube',
-            "YouTube|Turkmenistan": SRC.wikiTM,
-            "YouTube|Russia": 'https://www.techradar.com/vpn/vpn-privacy-security/russia-is-using-dns-and-dpi-to-block-youtube-telegram-and-whatsapp-while-pushing-state-controlled-max-as-alternative',
-            "YouTube|Australia": SRC.esafety,
-            "YouTube|Malaysia": SRC.myBan,
-            "WhatsApp|China": SRC.wikiCN,
-            "WhatsApp|North Korea": SRC.wikiNK,
-            "WhatsApp|Russia": 'https://www.cnn.com/2026/02/12/tech/russia-whatsapp-social-media-clampdown-intl',
-            "WhatsApp|Iran": 'https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most',
-            "WhatsApp|UAE": 'https://roamless.com/blog/does-whatsapp-work-in-dubai',
-            "WhatsApp|Turkmenistan": SRC.wikiTM,
-            "Telegram|China": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
-            "Telegram|Cuba": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
-            "Telegram|Iran": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
-            "Telegram|Kenya": 'https://ooni.org/post/2025-kenya-blocked-telegram-kcse-exams/',
-            "Telegram|Nepal": 'https://kathmandupost.com/science-technology/2025/08/27/telegram-moves-to-register-in-nepal-after-government-ban',
-            "Telegram|Pakistan": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
-            "Telegram|North Korea": SRC.wikiNK,
-            "Telegram|Russia": SRC.ruCrackdown,
-            "Telegram|Somalia": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
-            "Telegram|Vietnam": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
-            "Telegram|Turkmenistan": SRC.wikiTM,
-            "Google|China": SRC.wikiCN,
-            "Google|North Korea": SRC.wikiNK,
-            "DuckDuckGo|China": 'https://en.wikipedia.org/wiki/DuckDuckGo',
-            "DuckDuckGo|North Korea": SRC.wikiNK,
-            "DuckDuckGo|Indonesia": 'https://en.wikipedia.org/wiki/DuckDuckGo',
-            "Wikipedia|China": 'https://en.wikipedia.org/wiki/Censorship_of_Wikipedia',
-            "Wikipedia|North Korea": SRC.wikiNK,
-            "Wikipedia|Myanmar": 'https://www.business-standard.com/article/international/myanmar-blocks-wikipedia-in-all-languages-internet-suspended-121022100112_1.html',
-            "Wikipedia|Russia": 'https://en.wikipedia.org/wiki/Censorship_of_Wikipedia',
-            "Netflix|China": 'https://en.wikipedia.org/wiki/Netflix',
-            "Netflix|Syria": 'https://en.wikipedia.org/wiki/Netflix',
-            "Netflix|North Korea": SRC.wikiNK,
-            "Netflix|Russia": 'https://en.wikipedia.org/wiki/Netflix',
-            "Instagram|China": SRC.wikiCN,
-            "Instagram|Iran": 'https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most',
-            "Instagram|North Korea": SRC.wikiNK,
-            "Instagram|Russia": SRC.wikiRU,
-            "Instagram|Turkmenistan": SRC.wikiTM,
-            "Instagram|Australia": SRC.esafety,
-            "Instagram|Malaysia": SRC.myBan,
-            "LinkedIn|China": 'https://en.wikipedia.org/wiki/LinkedIn',
-            "LinkedIn|Russia": 'https://en.wikipedia.org/wiki/LinkedIn',
-            "LinkedIn|North Korea": SRC.wikiNK,
-            "LinkedIn|Turkmenistan": SRC.wikiTM,
-            "TikTok|India": 'https://en.wikipedia.org/wiki/Censorship_of_TikTok',
-            "TikTok|Afghanistan": 'https://en.wikipedia.org/wiki/Censorship_of_TikTok',
-            "TikTok|Pakistan": 'https://en.wikipedia.org/wiki/Censorship_of_TikTok',
-            "TikTok|Jordan": 'https://en.royanews.tv/news/63626/Government-source-clarifies-TikTok-ban-in-Jordan',
-            "TikTok|Uzbekistan": 'https://kun.uz/en/news/2025/10/31/banned-but-paying-taxes-tiktok-listed-among-uzbekistans-major-e-service-taxpayers',
-            "TikTok|Kyrgyzstan": 'https://www.demandsage.com/tiktok-banned-countries/',
-            "TikTok|Somalia": 'https://en.wikipedia.org/wiki/Censorship_of_TikTok',
-            "TikTok|North Korea": SRC.wikiNK,
-            "TikTok|Turkmenistan": SRC.wikiTM,
-            "TikTok|Australia": SRC.esafety,
-            "TikTok|Malaysia": SRC.myBan,
-            "Signal|China": SRC.wikiCN,
-            "Signal|Iran": SRC.wikiIR,
-            "Signal|Egypt": 'https://en.wikipedia.org/wiki/Signal_(software)',
-            "Signal|Russia": 'https://www.themoscowtimes.com/2024/08/09/russia-blocks-signal-messenger-for-violating-countrys-legislation-a85983',
-            "Signal|North Korea": SRC.wikiNK,
-            "Signal|Turkmenistan": SRC.wikiTM,
-            "Reddit|China": SRC.wikiCN,
-            "Reddit|North Korea": SRC.wikiNK,
-            "Reddit|Indonesia": 'https://en.wikipedia.org/wiki/Reddit',
-            "Reddit|Turkmenistan": SRC.wikiTM,
-            "Reddit|Australia": SRC.esafety,
-            "Reddit|UK": 'https://www.eff.org/deeplinks/2025/08/americans-be-warned-lessons-reddits-chaotic-uk-age-verification-rollout',
-            "Discord|China": SRC.wikiCN,
-            "Discord|North Korea": SRC.wikiNK,
-            "Discord|Russia": 'https://www.themoscowtimes.com/2024/10/09/russia-bans-messaging-platform-discord-a86618',
-            "Discord|Turkey": 'https://www.turkiyetoday.com/business/turkiye-to-restore-discord-access-soon-minister-says-3221382',
-            "Discord|UK": 'https://www.bleepingcomputer.com/news/security/uk-to-require-id-or-face-scan-before-you-can-make-social-media-accounts/',
-            "Discord|UAE": 'https://www.comparitech.com/blog/vpn-privacy/use-discord-uae/',
-            "Discord|Egypt": 'https://en.wikipedia.org/wiki/Discord',
-            "Discord|Turkmenistan": SRC.wikiTM,
-            "Twitch|China": SRC.wikiCN,
-            "Twitch|North Korea": SRC.wikiNK,
-            "Twitch|Russia": 'https://leave-russia.org/twitch',
-            "Twitch|South Korea": 'https://en.wikipedia.org/wiki/Twitch_(service)',
-            "Twitch|Australia": SRC.esafety,
-            "Spotify|China": 'https://en.wikipedia.org/wiki/Spotify',
-            "Spotify|North Korea": SRC.wikiNK,
-            "Spotify|Russia": 'https://en.wikipedia.org/wiki/Spotify',
-            "Spotify|UK": 'https://www.computing.co.uk/news/2025/legislation-regulation/spotify-introduces-facial-age-checks-in-uk',
-            "Snapchat|China": 'https://en.wikipedia.org/wiki/Snapchat',
-            "Snapchat|North Korea": SRC.wikiNK,
-            "Snapchat|Russia": 'https://www.themoscowtimes.com/2025/12/04/roskomnadzor-confirms-its-blocking-snapchat-and-facetime-calls-a91336',
-            "Snapchat|Turkmenistan": SRC.wikiTM,
-            "Snapchat|Australia": SRC.esafety
-        };
-
         let currentFilter = 'all';
 
-        // Keep platforms in alphabetical order
-        censorshipData.sort((a, b) => a.name.localeCompare(b.name));
-
-        // Apply the heavy-censorship boilerplate, attach sources and assign
-        // stable reference numbers. Inline sources on entries take precedence.
         const sourceIndex = new Map();
-        censorshipData.forEach(platform => platform.bannedIn.forEach(ban => {
-            if (HEAVY_CENSORSHIP[ban.country]) ban.moreInfo = HEAVY_CENSORSHIP[ban.country];
-            ban.source = ban.source || SOURCE_URLS[`${platform.name}|${ban.country}`] || null;
-            if (ban.source && !sourceIndex.has(ban.source)) {
-                sourceIndex.set(ban.source, sourceIndex.size + 1);
+
+        // Minimal RFC 4180 CSV parser (handles quoted fields containing
+        // commas, quotes and newlines)
+        function parseCSV(text) {
+            const rows = [];
+            let row = [], field = '', inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                if (inQuotes) {
+                    if (c === '"') {
+                        if (text[i + 1] === '"') { field += '"'; i++; }
+                        else inQuotes = false;
+                    } else field += c;
+                } else if (c === '"') {
+                    inQuotes = true;
+                } else if (c === ',') {
+                    row.push(field); field = '';
+                } else if (c === '\n' || c === '\r') {
+                    if (c === '\r' && text[i + 1] === '\n') i++;
+                    row.push(field); field = '';
+                    if (row.some(v => v !== '')) rows.push(row);
+                    row = [];
+                } else {
+                    field += c;
+                }
             }
-        }));
+            row.push(field);
+            if (row.some(v => v !== '')) rows.push(row);
+            return rows;
+        }
+
+        // Fetch the dataset from censorship_data.csv, apply the
+        // heavy-censorship boilerplate and assign source reference numbers.
+        async function loadData() {
+            try {
+                const res = await fetch('censorship_data.csv');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const rows = parseCSV(await res.text());
+                rows.shift(); // header: platform,country,since,type,more_info,source
+                const byPlatform = new Map();
+                rows.forEach(([platform, country, since, type, moreInfo, source]) => {
+                    if (!platform || !country) return;
+                    if (!byPlatform.has(platform)) byPlatform.set(platform, { name: platform, bannedIn: [] });
+                    byPlatform.get(platform).bannedIn.push({
+                        country, since, type,
+                        moreInfo: HEAVY_CENSORSHIP[country] || moreInfo || '',
+                        source: source || null
+                    });
+                });
+                censorshipData = [...byPlatform.values()].sort((a, b) => a.name.localeCompare(b.name));
+                censorshipData.forEach(platform => platform.bannedIn.forEach(ban => {
+                    if (ban.source && !sourceIndex.has(ban.source)) {
+                        sourceIndex.set(ban.source, sourceIndex.size + 1);
+                    }
+                }));
+                updateStats();
+                renderPlatforms();
+            } catch (err) {
+                document.getElementById('platformGrid').innerHTML =
+                    '<div class="no-results">// Failed to load censorship_data.csv — ' + err.message + '</div>';
+            }
+        }
 
         function updateStats() {
             let totalBans = 0;
@@ -1224,9 +939,8 @@
             el.addEventListener('click', () => setFilter(el.getAttribute('data-filter')));
         });
 
-        // Initialize
-        updateStats();
-        renderPlatforms();
+        // Initialize: fetch the dataset, then render
+        loadData();
 
         // Title redaction: a censor's marker sweeps across a word, holds, then
         // sweeps off — with a brief RGB glitch as it strikes. Occasionally all
