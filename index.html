@@ -235,10 +235,45 @@
             max-width: 620px;
             line-height: 1.5;
         }
-        .title-word.redacted {
+        .title-word {
+            position: relative;
+            display: inline-block;
+        }
+        .title-word::after {
+            content: "";
+            position: absolute;
+            left: -5px;
+            right: -5px;
+            top: 0.05em;
+            bottom: 0.08em;
             background: var(--redaction-black);
-            color: var(--redaction-black);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.17s cubic-bezier(0.7, 0, 0.25, 1);
+            pointer-events: none;
+            z-index: 2;
+        }
+        /* wipe the bar in from the left to cover the word */
+        .title-word.redacting::after {
+            transform: scaleX(1);
+            transform-origin: left center;
+        }
+        /* wipe the bar off to the right to reveal the word */
+        .title-word.revealing::after {
+            transform: scaleX(0);
+            transform-origin: right center;
+        }
+        /* brief RGB-split judder as the marker strikes */
+        .title-word.glitching {
+            animation: titleGlitch 0.2s steps(2, end) 1;
             user-select: none;
+        }
+        @keyframes titleGlitch {
+            0%   { transform: translate(0, 0);      text-shadow: none; }
+            25%  { transform: translate(-2px, 1px); text-shadow: 2px 0 var(--secondary), -2px 0 #1b7fb8; }
+            50%  { transform: translate(2px, -1px); text-shadow: -2px 0 var(--secondary), 2px 0 #1b7fb8; }
+            75%  { transform: translate(-1px, 0);   text-shadow: 1px 0 var(--secondary), -1px 0 #1b7fb8; }
+            100% { transform: translate(0, 0);      text-shadow: none; }
         }
 
         /* ---------- Controls ---------- */
@@ -654,9 +689,6 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand">&copy; 2026 Censorship_Tracker</div>
-            <nav class="footer-links">
-                <span class="redaction">redacted</span>
-            </nav>
         </div>
     </footer>
 
@@ -1155,21 +1187,46 @@
         updateStats();
         renderPlatforms();
 
-        // Title redaction cycle: one random word redacts, unredacts, repeats.
-        // The sequential chain guarantees at most one word is redacted at a time.
+        // Title redaction: a censor's marker sweeps across a word, holds, then
+        // sweeps off — with a brief RGB glitch as it strikes. Occasionally all
+        // three words redact in a quick staggered cascade for extra drama.
         (function cycleTitleRedaction() {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            const words = document.querySelectorAll('.page-title .title-word');
+            const words = Array.from(document.querySelectorAll('.page-title .title-word'));
             if (!words.length) return;
-            function step() {
-                const word = words[Math.floor(Math.random() * words.length)];
-                word.classList.add('redacted');
+
+            function redactWord(word, holdMs) {
+                word.classList.remove('revealing');
+                word.classList.add('glitching', 'redacting');
+                setTimeout(() => word.classList.remove('glitching'), 220);
                 setTimeout(() => {
-                    word.classList.remove('redacted');
-                    setTimeout(step, 900 + Math.random() * 2100);
-                }, 600 + Math.random() * 1200);
+                    // sweep the bar off to the right, revealing the word
+                    word.classList.remove('redacting');
+                    word.classList.add('revealing');
+                    setTimeout(() => word.classList.remove('revealing'), 300);
+                }, holdMs);
             }
-            setTimeout(step, 1500);
+
+            function single() {
+                const word = words[Math.floor(Math.random() * words.length)];
+                redactWord(word, 520 + Math.random() * 900);
+            }
+
+            function cascade() {
+                [...words]
+                    .sort(() => Math.random() - 0.5)
+                    .forEach((word, i) => {
+                        setTimeout(() => redactWord(word, 340 + Math.random() * 320), i * 160);
+                    });
+            }
+
+            function step() {
+                // ~1 in 4 cycles runs a full cascade, otherwise a single strike
+                if (Math.random() < 0.25) cascade();
+                else single();
+                setTimeout(step, 1600 + Math.random() * 2200);
+            }
+            setTimeout(step, 1200);
         })();
     </script>
 </body>
