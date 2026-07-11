@@ -123,8 +123,8 @@ def main() -> int:
 
     assert has("DuckDuckGo", "Indonesia", "complete"), "DuckDuckGo Indonesia ban missing"
     assert has("Reddit", "Indonesia", "complete"), "Reddit Indonesia ban missing"
-    assert has("X (formerly Twitter)", "Indonesia", "partial"), "X Grok Indonesia partial missing"
-    # Age may coexist with partial for X+Indonesia
+    # Grok partial ban (Jan 2026) was lifted in early 2026 — must not reappear
+    assert not has("X (formerly Twitter)", "Indonesia", "partial"), "stale X Grok Indonesia partial"
     assert has("X (formerly Twitter)", "Indonesia", "age"), "X Indonesia age missing"
 
     print("OK: Brazil age platforms:", sorted(brazil_platforms))
