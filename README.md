@@ -1,4 +1,4 @@
-# Banned Websites Tracker
+# Global Censorship Tracker
 
 A live index of banned, restricted and age-gated platforms worldwide.
 
