@@ -1,0 +1,204 @@
+{
+  "timeline": [
+    {
+      "country": "United Kingdom",
+      "law": "Online Safety Act age assurance",
+      "passed_label": "2023 (duties phased in)",
+      "status": "implemented",
+      "implementation_date": "2025-07-25",
+      "implementation_label": "July 2025",
+      "threshold": "Age checks for adult / sensitive content",
+      "summary": "Platforms rolled out face-scan or ID age checks for mature content under the Online Safety Act (e.g. Reddit from 14 July 2025; X and Discord from 25 July 2025; Spotify facial checks August 2025).",
+      "source": "https://www.eff.org/deeplinks/2025/08/americans-be-warned-lessons-reddits-chaotic-uk-age-verification-rollout"
+    },
+    {
+      "country": "Australia",
+      "law": "Under-16 social media ban",
+      "passed_label": "November 2024",
+      "status": "implemented",
+      "implementation_date": "2025-12-10",
+      "implementation_label": "10 December 2025",
+      "threshold": "Under 16 barred from covered social accounts",
+      "summary": "Nationwide ban requiring covered platforms to prevent under-16s from holding accounts. Took effect 10 December 2025; later fine-doubling proposals followed evidence of bypasses.",
+      "source": "https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions"
+    },
+    {
+      "country": "Brazil",
+      "law": "ECA Digital (Law 15,211/2025)",
+      "passed_label": "17 September 2025",
+      "status": "implemented",
+      "implementation_date": "2026-03-17",
+      "implementation_label": "17 March 2026",
+      "threshold": "Under-16 social accounts linked to guardian; reliable age verification",
+      "summary": "Digital Statute of Children and Adolescents requires reliable age verification (no self-declaration alone) and linking under-16 social media accounts to a legal guardian.",
+      "source": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15211.htm"
+    },
+    {
+      "country": "Indonesia",
+      "law": "High-risk platform under-16 curbs",
+      "passed_label": "March 2026 (ministerial regulation)",
+      "status": "implemented",
+      "implementation_date": "2026-03-28",
+      "implementation_label": "28 March 2026",
+      "threshold": "Under 16 barred on designated high-risk platforms",
+      "summary": "Gradual deactivation of under-16 accounts on high-risk platforms including YouTube, TikTok, Facebook, Instagram, Threads, X, Bigo Live and Roblox.",
+      "source": "https://www.bbc.com/news/articles/cvg50168ddgo"
+    },
+    {
+      "country": "Malaysia",
+      "law": "Under-16 social media rule",
+      "passed_label": "2025–2026 policy / enforcement",
+      "status": "implemented",
+      "implementation_date": "2026-06-01",
+      "implementation_label": "1 June 2026",
+      "threshold": "Under 16; platforms must verify age or face fines",
+      "summary": "Under-16 social media ban took effect 1 June 2026. Platforms must verify ages and remove under-16 accounts or face fines of up to RM1 million.",
+      "source": "https://www.malaymail.com/news/malaysia/2026/06/01/malaysias-under-16-social-media-rule-starts-today-what-parents-need-to-know/221674"
+    },
+    {
+      "country": "Turkey",
+      "law": "Under-15 social media ban + age verification",
+      "passed_label": "April 2026 (parliament)",
+      "status": "scheduled",
+      "implementation_date": "2026-10-01",
+      "implementation_label": "Late 2026 (6 months after Official Gazette)",
+      "threshold": "Under 15 barred; age verification + parental tools for older minors",
+      "summary": "Parliament banned social media services for under-15s and required age-verification systems. Enters force six months after Official Gazette publication. Separate e-Devlet real-ID login for all users remained a draft as of April 2026.",
+      "source": "https://www.aljazeera.com/news/2026/4/23/turkiye-mps-pass-bill-to-restrict-social-media-use-for-children-under-15"
+    },
+    {
+      "country": "France",
+      "law": "Under-15 social media restriction",
+      "passed_label": "January 2026 (Assembly; Senate process)",
+      "status": "scheduled",
+      "implementation_date": "2026-09-01",
+      "implementation_label": "September 2026 (targeted)",
+      "threshold": "Under 15 restricted from social media",
+      "summary": "Government-backed measure to ban or tightly restrict social media for under-15s, with age-verification systems; targeted for the 2026 school year.",
+      "source": "https://www.theguardian.com/world/2026/jan/27/france-social-media-ban-under-15s"
+    },
+    {
+      "country": "Gabon",
+      "law": "Ordinance No. 0011/PR/2026",
+      "passed_label": "26 February 2026 (published April 2026)",
+      "status": "scheduled",
+      "implementation_date": "2027-02-01",
+      "implementation_label": "February 2027",
+      "threshold": "Digital majority 16; name, address and NIP verification",
+      "summary": "Digital age of majority 16 with parental consent for younger users. Platforms must verify full identity (name, address, Personal Identification Number), not a bare age check. 12-month transition to February 2027.",
+      "source": "https://www.biometricupdate.com/202604/gabon-institutes-social-media-age-verification-for-under-16s"
+    },
+    {
+      "country": "United Arab Emirates",
+      "law": "Cabinet resolution on children's social media access",
+      "passed_label": "18 June 2026",
+      "status": "scheduled",
+      "implementation_date": "2027-06-01",
+      "implementation_label": "June 2027",
+      "threshold": "Under 15 barred; digital ID / AI age checks",
+      "summary": "Minimum age 15 for personal social accounts; robust verification including digital identity and AI-supported methods (no self-declaration). Phase one names X, Facebook, Instagram, Snapchat and TikTok. 12-month transition to June 2027.",
+      "source": "https://www.alusra.gov.ae/en/news/cabinet-children-social-media-access/"
+    }
+  ],
+  "legislative_efforts": [
+    {
+      "jurisdiction": "United States — Utah",
+      "level": "subnational",
+      "country": "United States",
+      "title": "Utah Minor Protection in Social Media Act / Social Media Regulation Act",
+      "status": "Enacted; largely enjoined — litigation ongoing",
+      "summary": "Requires age assurance and parental consent for minors on social media, plus curfew-style use limits. Federal courts have enjoined key provisions; state continues appeals and related bills.",
+      "source": "https://le.utah.gov/~2024/bills/static/SB0194.html"
+    },
+    {
+      "jurisdiction": "United States — Arkansas",
+      "level": "subnational",
+      "country": "United States",
+      "title": "Social Media Safety Act and successor bills",
+      "status": "Enacted / re-enacted; court blocks and new packages pending enforcement",
+      "summary": "Requires third-party age verification and parental consent for under-18 users on covered social platforms. Earlier law permanently enjoined; 2025 successor packages face preliminary injunctions while litigation continues.",
+      "source": "https://www.multistate.us/insider/2025/10/8/eight-states-enact-minor-social-media-bans-despite-court-fights"
+    },
+    {
+      "jurisdiction": "United States — Florida",
+      "level": "subnational",
+      "country": "United States",
+      "title": "HB 3 Online Protections for Minors",
+      "status": "Enacted; enforceable pending continued litigation",
+      "summary": "Requires social platforms to verify ages, obtain parental consent for younger users, and limit minors' exposure to certain features. District injunction later stayed on appeal; merits still contested.",
+      "source": "https://www.flsenate.gov/Session/Bill/2024/3"
+    },
+    {
+      "jurisdiction": "United States — Texas",
+      "level": "subnational",
+      "country": "United States",
+      "title": "SCOPE Act / parental-consent and app-store age rules",
+      "status": "Enacted measures + active challenges",
+      "summary": "Texas has layered minor-protection rules for digital services and app stores, including commercially reasonable age/parental mechanisms. Industry and civil-society suits challenge later app-store identity packages (e.g. SB 2420).",
+      "source": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=88R&Bill=HB18"
+    },
+    {
+      "jurisdiction": "United States — California",
+      "level": "subnational",
+      "country": "United States",
+      "title": "SB 976 Protecting Our Kids from Social Media Addiction Act",
+      "status": "Enacted; temporarily blocked pending litigation",
+      "summary": "Restricts addictive feeds and default settings for minors with parental-consent overrides. Courts have temporarily halted key provisions as First Amendment challenges proceed.",
+      "source": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202320240SB976"
+    },
+    {
+      "jurisdiction": "United States — Nebraska",
+      "level": "subnational",
+      "country": "United States",
+      "title": "Parental consent for under-18 social media accounts",
+      "status": "Enacted (2025)",
+      "summary": "Among the stricter US state approaches: parental consent required for minors under 18 to open social media accounts, extending beyond younger-teen-only thresholds used elsewhere.",
+      "source": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=59569"
+    },
+    {
+      "jurisdiction": "Canada (federal)",
+      "level": "national",
+      "country": "Canada",
+      "title": "Bill C-34 Safe Social Media Act",
+      "status": "Introduced — not yet enacted",
+      "summary": "Would require platforms to prohibit accounts for under-16s, with possible exemptions if strong child-safety safeguards are demonstrated. Introduced June 2026; still needs parliamentary approval.",
+      "source": "https://www.reuters.com/legal/litigation/canada-introduces-legislation-ban-social-media-children-under-16-2026-06-10/"
+    },
+    {
+      "jurisdiction": "Spain",
+      "level": "national",
+      "country": "Spain",
+      "title": "Under-16 social media access + mandatory age verification",
+      "status": "Proposed / drafting",
+      "summary": "Government plans to ban under-16 access and force platforms to implement mandatory age-verification systems as part of a broader child online-safety agenda.",
+      "source": "https://www.bbc.com/news/articles/c5y2nddvmryo"
+    },
+    {
+      "jurisdiction": "Denmark",
+      "level": "national",
+      "country": "Denmark",
+      "title": "Under-15 social media ban with age tools",
+      "status": "Political agreement — legislation progressing",
+      "summary": "Cross-party support for barring under-15s from social media, paired with digital evidence / age-verification tooling. Targeted toward mid-2026 lawmaking.",
+      "source": "https://apnews.com/article/denmark-social-media-ban-australia-1e96a3df3276cc2033a6f04effb89f51"
+    },
+    {
+      "jurisdiction": "European Union",
+      "level": "supranational",
+      "country": "European Union",
+      "title": "EU age-verification blueprint and Jutland Declaration",
+      "status": "Commission tools + member-state political commitment",
+      "summary": "Commission age-verification app pilots and political push for privacy-preserving age checks and a digital legal age across platforms; many member states considering national under-15/16 limits in parallel.",
+      "source": "https://www.interface-eu.org/publications/social-media-age-gating-eu"
+    },
+    {
+      "jurisdiction": "Portugal",
+      "level": "national",
+      "country": "Portugal",
+      "title": "Under-13 ban; parental consent 13–15 via Digital Mobile Key",
+      "status": "Parliamentary process (not fully in force)",
+      "summary": "Assembly approved a framework banning under-13 accounts and requiring verified parental consent for 13–15s via Digital Mobile Key, with large fines for non-compliance; final steps still tracked as pending full implementation.",
+      "source": "https://www.reuters.com/world/europe/portugal-approves-restrictions-social-media-access-children-2026-02-12/"
+    }
+  ]
+}

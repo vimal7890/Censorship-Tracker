@@ -96,6 +96,32 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--muted-gray);
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .site-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px 12px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: var(--muted-gray);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            transition: color 0.15s, border-color 0.15s;
+        }
+        .nav-link:hover { color: var(--primary); }
+        .nav-link.active {
+            color: var(--redaction-black);
+            border-bottom-color: var(--age-purple);
+        }
+        .nav-sep {
+            width: 1px;
+            height: 14px;
+            background: var(--outline-variant);
+            margin: 0 4px;
         }
         .live-dot {
             width: 8px; height: 8px;
@@ -586,7 +612,12 @@
     <header class="topbar">
         <div class="topbar-inner">
             <div class="wordmark">Censorship Tracker</div>
-            <nav class="topnav">
+            <nav class="topnav" aria-label="Site">
+                <div class="site-nav-links">
+                    <a href="index.html" class="nav-link active">Global Censorship Tracker</a>
+                    <a href="age-verification.html" class="nav-link">Age Verification Tracker</a>
+                </div>
+                <span class="nav-sep" aria-hidden="true"></span>
                 <span class="live-dot"></span>
                 <span>Live&nbsp;Index</span>
             </nav>

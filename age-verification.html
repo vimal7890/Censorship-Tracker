@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification Tracker</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-white: #ffffff;
+            --background: #f9f9f9;
+            --surface-bright: #f9f9f9;
+            --surface-container-low: #f3f3f3;
+            --surface-container: #eeeeee;
+            --surface-container-high: #e8e8e8;
+            --primary: #1e1e1e;
+            --redaction-black: #000000;
+            --on-primary: #ffffff;
+            --secondary: #b6152e;
+            --alert-orange: #fd7e14;
+            --age-purple: #7d3ac1;
+            --tertiary-green: #35b14d;
+            --muted-gray: #6c757d;
+            --on-surface-variant: #444748;
+            --outline-variant: #c4c7c7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .label-caps {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            background: var(--paper-white);
+            border-bottom: 2px solid var(--primary);
+        }
+        .topbar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            gap: 16px;
+        }
+        .wordmark {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--redaction-black);
+            white-space: nowrap;
+        }
+        .topnav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .site-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px 12px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: var(--muted-gray);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            transition: color 0.15s, border-color 0.15s;
+        }
+        .nav-link:hover { color: var(--primary); }
+        .nav-link.active {
+            color: var(--redaction-black);
+            border-bottom-color: var(--age-purple);
+        }
+        .nav-sep {
+            width: 1px;
+            height: 14px;
+            background: var(--outline-variant);
+            margin: 0 4px;
+        }
+        .live-dot {
+            width: 8px; height: 8px;
+            background: var(--age-purple);
+            display: inline-block;
+            animation: blink 1.6s steps(1) infinite;
+        }
+        @keyframes blink { 50% { opacity: 0.25; } }
+
+        .ticker {
+            width: 100%;
+            background: var(--redaction-black);
+            color: var(--paper-white);
+        }
+        .ticker-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #d0d0d0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+        }
+        .ticker-inner b { color: var(--paper-white); }
+
+        .main-wrap {
+            flex: 1 0 auto;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
+        }
+
+        .page-head { margin-bottom: 28px; }
+        .page-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .page-title .accent { color: var(--age-purple); }
+        .page-sub {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--on-surface-variant);
+            max-width: 40em;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+        .section-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 0;
+            list-style: none;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: var(--age-purple);
+            opacity: 0.35;
+        }
+        .timeline-item {
+            position: relative;
+            padding: 0 0 22px 40px;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            width: 18px;
+            height: 18px;
+            border: 3px solid var(--age-purple);
+            background: var(--paper-white);
+            border-radius: 50%;
+        }
+        .timeline-item.implemented .timeline-dot {
+            background: var(--age-purple);
+        }
+        .timeline-item.scheduled .timeline-dot {
+            background: var(--paper-white);
+            border-style: dashed;
+        }
+        .timeline-card {
+            background: var(--paper-white);
+            border: 2px solid var(--primary);
+            padding: 14px 16px;
+        }
+        .timeline-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border: 1px solid currentColor;
+        }
+        .badge.implemented {
+            color: var(--paper-white);
+            background: var(--age-purple);
+            border-color: var(--age-purple);
+        }
+        .badge.scheduled {
+            color: var(--age-purple);
+            background: transparent;
+        }
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .timeline-country {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .timeline-law {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .timeline-threshold {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted-gray);
+            margin-bottom: 8px;
+        }
+        .timeline-summary {
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--on-surface-variant);
+            margin-bottom: 8px;
+        }
+        .timeline-source {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .timeline-source a {
+            color: var(--age-purple);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+        .timeline-source a:hover { border-bottom-color: var(--age-purple); }
+
+        /* Legislative efforts */
+        .effort-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .effort-card {
+            background: var(--paper-white);
+            border: 2px solid var(--primary);
+            border-left: 6px solid var(--alert-orange);
+            padding: 14px 16px;
+        }
+        .effort-card.subnational { border-left-color: var(--secondary); }
+        .effort-card.supranational { border-left-color: var(--age-purple); }
+        .effort-head {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .effort-jurisdiction {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        .effort-level {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+        }
+        .effort-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .effort-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--alert-orange);
+            margin-bottom: 8px;
+        }
+        .effort-summary {
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--on-surface-variant);
+            margin-bottom: 8px;
+        }
+        .effort-source a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--age-purple);
+            text-decoration: none;
+        }
+        .effort-source a:hover { text-decoration: underline; }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--on-surface-variant);
+        }
+        .legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .legend i {
+            width: 12px; height: 12px;
+            border: 2px solid var(--age-purple);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .legend i.filled { background: var(--age-purple); }
+        .legend i.dashed { border-style: dashed; background: transparent; }
+
+        .error-box {
+            border: 2px solid var(--secondary);
+            background: var(--paper-white);
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .footer {
+            border-top: 2px solid var(--primary);
+            background: var(--paper-white);
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--muted-gray);
+        }
+
+        @media (min-width: 768px) {
+            .topbar-inner, .ticker-inner, .footer-inner, .main-wrap {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            .main-wrap { padding-top: 40px; }
+            .wordmark { font-size: 26px; }
+            .page-title { font-size: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="wordmark">Censorship Tracker</div>
+            <nav class="topnav" aria-label="Site">
+                <div class="site-nav-links">
+                    <a href="index.html" class="nav-link">Global Censorship Tracker</a>
+                    <a href="age-verification.html" class="nav-link active">Age Verification Tracker</a>
+                </div>
+                <span class="nav-sep" aria-hidden="true"></span>
+                <span class="live-dot"></span>
+                <span>Live&nbsp;Index</span>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span>&#9632;&nbsp; Age Verification Index</span>
+            <span>Passed regimes: <b id="tickerTimeline">--</b></span>
+            <span>Legislative efforts: <b id="tickerEfforts">--</b></span>
+            <span>Data As Of: <b>JUL 2026</b></span>
+        </div>
+    </div>
+
+    <main class="main-wrap">
+        <div class="page-head">
+            <h1 class="page-title">Age <span class="accent">Verification</span> Tracker</h1>
+            <p class="page-sub">Country-level timeline of passed social-media age verification laws — implemented or scheduled — plus current national and subnational legislative efforts, with emphasis on U.S. state ID-based proposals.</p>
+        </div>
+
+        <section class="section" id="timeline-section" aria-labelledby="timeline-heading">
+            <h2 class="section-title" id="timeline-heading">Passed-law timeline</h2>
+            <div class="legend">
+                <span><i class="filled"></i> Implemented</span>
+                <span><i class="dashed"></i> Scheduled / transition</span>
+            </div>
+            <ol class="timeline" id="timelineList"></ol>
+        </section>
+
+        <section class="section" id="legislative-section" aria-labelledby="legislative-heading">
+            <h2 class="section-title" id="legislative-heading">Current Legislative Efforts</h2>
+            <p class="page-sub" style="margin-bottom: 16px;">Proposals, enacted-but-litigated measures, and political agreements where age verification by ID (or equivalent robust checks) for social media is under discussion or not yet fully settled — especially U.S. states.</p>
+            <div class="effort-list" id="effortList"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">&copy; 2026 Censorship_Tracker &mdash; Age Verification module</div>
+    </footer>
+
+    <script>
+        function statusLabel(status) {
+            return status === 'implemented' ? 'Implemented' : 'Scheduled';
+        }
+
+        function renderTimeline(items) {
+            const list = document.getElementById('timelineList');
+            const sorted = items.slice().sort((a, b) =>
+                (a.implementation_date || '').localeCompare(b.implementation_date || '')
+            );
+            list.innerHTML = sorted.map(item => {
+                const st = item.status === 'implemented' ? 'implemented' : 'scheduled';
+                const src = item.source
+                    ? `<div class="timeline-source"><a href="${item.source}" target="_blank" rel="noopener noreferrer">Source</a></div>`
+                    : '';
+                return `
+                    <li class="timeline-item ${st}">
+                        <span class="timeline-dot" aria-hidden="true"></span>
+                        <article class="timeline-card">
+                            <div class="timeline-meta">
+                                <span class="badge ${st}">${statusLabel(st)}</span>
+                                <span class="timeline-date">${item.implementation_label || item.implementation_date}</span>
+                            </div>
+                            <h3 class="timeline-country">${item.country}</h3>
+                            <div class="timeline-law">${item.law}</div>
+                            <div class="timeline-threshold">${item.threshold || ''}${item.passed_label ? ' · Passed: ' + item.passed_label : ''}</div>
+                            <p class="timeline-summary">${item.summary || ''}</p>
+                            ${src}
+                        </article>
+                    </li>`;
+            }).join('');
+        }
+
+        function renderEfforts(items) {
+            const list = document.getElementById('effortList');
+            list.innerHTML = items.map(item => {
+                const levelClass = item.level === 'subnational' ? 'subnational'
+                    : item.level === 'supranational' ? 'supranational' : '';
+                const src = item.source
+                    ? `<div class="effort-source"><a href="${item.source}" target="_blank" rel="noopener noreferrer">Source</a></div>`
+                    : '';
+                return `
+                    <article class="effort-card ${levelClass}">
+                        <div class="effort-head">
+                            <h3 class="effort-jurisdiction">${item.jurisdiction}</h3>
+                            <span class="effort-level">${item.level || 'national'}</span>
+                        </div>
+                        <div class="effort-title">${item.title}</div>
+                        <div class="effort-status">${item.status}</div>
+                        <p class="effort-summary">${item.summary || ''}</p>
+                        ${src}
+                    </article>`;
+            }).join('');
+        }
+
+        async function loadData() {
+            try {
+                const res = await fetch('age_verification_data.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                const timeline = data.timeline || [];
+                const efforts = data.legislative_efforts || [];
+                document.getElementById('tickerTimeline').textContent = String(timeline.length);
+                document.getElementById('tickerEfforts').textContent = String(efforts.length);
+                renderTimeline(timeline);
+                renderEfforts(efforts);
+            } catch (err) {
+                document.getElementById('timelineList').innerHTML =
+                    `<li class="error-box">// Failed to load age_verification_data.json — ${err.message}</li>`;
+            }
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
