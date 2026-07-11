@@ -23,6 +23,7 @@
             --on-primary: #ffffff;
             --secondary: #b6152e;       /* censorship red / complete */
             --alert-orange: #fd7e14;    /* partial */
+            --age-purple: #7d3ac1;      /* age verification */
             --tertiary-green: #35b14d;  /* available / resolved */
             --muted-gray: #6c757d;
             --on-surface-variant: #444748;
@@ -179,6 +180,7 @@
         .nav-item[data-filter="all"] .dot { background: currentColor; }
         .nav-item[data-filter="complete"] .dot { background: var(--secondary); }
         .nav-item[data-filter="partial"] .dot { background: var(--alert-orange); }
+        .nav-item[data-filter="age"] .dot { background: var(--age-purple); }
         .nav-count {
             margin-left: auto;
             font-family: 'JetBrains Mono', monospace;
@@ -367,6 +369,7 @@
         .filter-chip.active { background: var(--primary); color: var(--on-primary); }
         .filter-chip[data-filter="complete"].active { background: var(--secondary); border-color: var(--secondary); }
         .filter-chip[data-filter="partial"].active { background: var(--alert-orange); border-color: var(--alert-orange); }
+        .filter-chip[data-filter="age"].active { background: var(--age-purple); border-color: var(--age-purple); }
 
         /* ---------- Platform list ---------- */
         .platform-list {
@@ -439,6 +442,7 @@
         }
         .country-tag.complete { background: var(--secondary); }
         .country-tag.partial { background: var(--alert-orange); }
+        .country-tag.age { background: var(--age-purple); }
         .country-tag:hover { filter: brightness(1.1); }
         .country-tag:active { transform: translateY(1px); }
         .country-tag.open { outline: 2px solid var(--primary); outline-offset: 1px; }
@@ -452,6 +456,7 @@
             background: var(--paper-white);
         }
         .more-info.partial-info { border-left-color: var(--alert-orange); }
+        .more-info.age-info { border-left-color: var(--age-purple); }
         .more-info.expanded { display: block; }
         .more-info-head {
             background: var(--redaction-black);
@@ -469,6 +474,7 @@
         }
         .more-info-head .status-complete { color: #ff9a9a; }
         .more-info-head .status-partial { color: #ffcf9a; }
+        .more-info-head .status-age { color: #d8b4fe; }
         .more-info-body {
             padding: 12px;
             font-size: 15px;
@@ -521,6 +527,7 @@
         }
         .swatch.complete { background: var(--secondary); }
         .swatch.partial { background: var(--alert-orange); }
+        .swatch.age { background: var(--age-purple); }
 
         /* Actions row (mobile export lives here too) */
         .actions { margin-top: 20px; }
@@ -616,6 +623,11 @@
                     <span class="label-caps">Partial Bans</span>
                     <span class="nav-count" id="navCountPartial">0</span>
                 </button>
+                <button class="nav-item" data-filter="age">
+                    <span class="dot"></span>
+                    <span class="label-caps">Age Verification</span>
+                    <span class="nav-count" id="navCountAge">0</span>
+                </button>
             </nav>
         </aside>
 
@@ -652,6 +664,7 @@
                     <button class="filter-chip active" data-filter="all">All</button>
                     <button class="filter-chip" data-filter="complete">Complete</button>
                     <button class="filter-chip" data-filter="partial">Partial</button>
+                    <button class="filter-chip" data-filter="age">Age Verify</button>
                 </div>
             </div>
 
@@ -660,7 +673,8 @@
             <div class="info-note">
                 <b>Tip:</b> Tap any country to reveal the case file.
                 <span class="swatch complete"></span> Complete ban &nbsp;
-                <span class="swatch partial"></span> Partial / intermittent.
+                <span class="swatch partial"></span> Partial / intermittent &nbsp;
+                <span class="swatch age"></span> Age verification.
             </div>
 
             <div class="actions">
@@ -677,6 +691,18 @@
     </footer>
 
     <script>
+        // Cookie-cutter notes for states where the internet is restricted by default.
+        // Applied automatically to every entry for these countries.
+        const HEAVY_CENSORSHIP = {
+            "China": "China's \"Great Firewall\" blocks most major foreign platforms by default. State-monitored domestic alternatives take their place, and unsanctioned VPN use is illegal.",
+            "North Korea": "North Korea has no public internet. Citizens can only reach the state-run Kwangmyong intranet, so every foreign platform is inaccessible by default.",
+            "Turkmenistan": "Turkmenistan's state-monopoly ISP blocks most foreign platforms and roughly 75% of all IP addresses by default, and VPN use is actively suppressed."
+        };
+
+        // Shared notes for age-verification regimes in force
+        const AGE_AU = "Australia's under-16 social media ban took effect on 10 December 2025, requiring covered platforms to prevent under-16s from holding accounts. In June 2026 the government moved to double fines amid evidence children were bypassing the ban.";
+        const AGE_MY = "Malaysia's under-16 social media ban took effect on 1 June 2026. Platforms must verify users' ages and remove under-16 accounts or face fines of up to RM1 million.";
+
         // Censorship data with blocking dates and detailed information
         const censorshipData = [
             {
@@ -687,8 +713,9 @@
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
                     { country: "Myanmar", since: "2021", type: "complete", moreInfo: "Facebook has been banned since the 2021 Military takeover.", source: null },
                     { country: "Russia", since: "2022", type: "complete", moreInfo: "Facebook has been banned since the Russian Invasion of Ukraine. The Russian government has restricted or banned social media platforms since then.", source: null },
-                    { country: "Turkmenistan", since: "2008", type: "complete", moreInfo: "Turkmenistan has a very restricted internet where a number of website are banned by the totalitarian government.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "Turkmenistan", since: "2008", type: "complete", moreInfo: "", source: null },
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
+                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
                 ]
             },
             {
@@ -703,7 +730,9 @@
                     { country: "Turkmenistan", since: "2008", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
                     { country: "Malaysia", since: "January 2026", type: "partial", moreInfo: "Malaysia blocked X's Grok chatbot in January 2026 after it was used to generate non-consensual sexualised deepfake images, including of minors.", source: null },
                     { country: "Indonesia", since: "January 2026", type: "partial", moreInfo: "Indonesia became the first country to block X's Grok chatbot in January 2026 over non-consensual sexualised deepfake images.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
+                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: 'https://www.malaymail.com/news/malaysia/2026/06/01/malaysias-under-16-social-media-rule-starts-today-what-parents-need-to-know/221674' },
+                    { country: "UK", since: "25/07/2025", type: "age", moreInfo: "Under the UK Online Safety Act, X has required age assurance (face scan or ID) for adult content since 25 July 2025; unverified UK users have sensitive media filtered.", source: null }
                 ]
             },
             {
@@ -714,8 +743,9 @@
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
                     { country: "Eritrea", since: "2017", type: "complete", moreInfo: "", source: null },
                     { country: "Turkmenistan", since: "2009", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
-                    { country: "Russia", since: "July 2024", type: "partial", moreInfo: "Russia has throttled YouTube to near-unusable speeds since July 2024, cutting its traffic by over 80% without a formal ban.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "Russia", since: "12/02/2026", type: "complete", moreInfo: "After throttling YouTube to near-unusable speeds since July 2024, Russia fully blocked it on 12 February 2026, removing it from the national DNS alongside WhatsApp as users are pushed to state-approved alternatives.", source: null },
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
+                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
                 ]
             },
             {
@@ -723,7 +753,8 @@
                 bannedIn: [
                     { country: "China", since: "September 2017", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "2016", type: "complete", moreInfo: "", source: null },
-                    { country: "Russia", since: "August 2025", type: "partial", moreInfo: "Russia has blocked WhatsApp voice and video calls since August 2025 and has threatened a full ban; messaging still works.", source: null },
+                    { country: "Russia", since: "11/02/2026", type: "complete", moreInfo: "Russia blocked WhatsApp voice and video calls in August 2025, throttled the app nationwide from November, then fully blocked it on 11 February 2026 — pushing its roughly 100 million Russian users toward the state-run Max messenger.", source: null },
+                    { country: "Iran", since: "June 2025", type: "complete", moreInfo: "Iran briefly lifted its WhatsApp ban in December 2024, then cut access again amid the June 2025 conflict with Israel; as of May 2026 authorities say reinstatement is not under consideration.", source: null },
                     { country: "UAE", since: "Longstanding", type: "partial", moreInfo: "WhatsApp voice and video calls are blocked in the UAE, where unlicensed VoIP services are prohibited; messaging works normally.", source: null },
                     { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
                 ]
@@ -738,7 +769,7 @@
                     { country: "Nepal", since: "18/07/2025", type: "partial", moreInfo: "Nepal banned Telegram in July 2025 over fraud and money-laundering concerns. Most ISPs have quietly restored access, but the regulator says the restriction formally remains while Telegram completes local registration.", source: null },
                     { country: "Pakistan", since: "18/11/2017", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "2024", type: "partial", moreInfo: "Telegram is blocked in the regions of Chechnya and Dagestan, and voice calls have been restricted nationwide since August 2025.", source: null },
+                    { country: "Russia", since: "10/02/2026", type: "complete", moreInfo: "After regional blocks in Chechnya and Dagestan and nationwide call restrictions from August 2025, Roskomnadzor moved to block Telegram outright on 10 February 2026, citing non-compliance with Russian law.", source: null },
                     { country: "Somalia", since: "20/08/2023", type: "complete", moreInfo: "", source: null },
                     { country: "Vietnam", since: "21/05/2025", type: "complete", moreInfo: "Vietnam banned Telegram in 2025 due to failures from Telegram to stop illegal activities.", source: null },
                     { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
@@ -781,11 +812,12 @@
                 name: "Instagram",
                 bannedIn: [
                     { country: "China", since: "September 2014", type: "complete", moreInfo: "", source: null },
-                    { country: "Iran", since: "2018", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
+                    { country: "Iran", since: "2018", type: "complete", moreInfo: "Instagram has been blocked since 2018 apart from a brief easing from December 2024; access was cut again around the June 2025 conflict and, as of May 2026, is not under consideration for reinstatement.", source: null },
+                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "", source: null },
                     { country: "Russia", since: "March 2022", type: "complete", moreInfo: "Since the Russian Invasion of Ukraine, Russia has banned Instagram. ", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
+                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
                 ]
             },
             {
@@ -808,9 +840,10 @@
                     { country: "Uzbekistan", since: "July 2021", type: "complete", moreInfo: "TikTok has been blocked since 2021 under Uzbekistan's personal-data localisation law.", source: null },
                     { country: "Kyrgyzstan", since: "2024", type: "complete", moreInfo: "Kyrgyzstan blocked TikTok over content-moderation concerns; a February 2026 government proposal to lift the ban remains unresolved.", source: null },
                     { country: "Somalia", since: "August 2023", type: "partial", moreInfo: "Somalia ordered TikTok blocked in August 2023 over explicit content and extremism, but enforcement has been inconsistent.", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "", source: null },
+                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
+                    { country: "Malaysia", since: "01/06/2026", type: "age", moreInfo: AGE_MY, source: null }
                 ]
             },
             {
@@ -830,8 +863,9 @@
                     { country: "China", since: "August 2018", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
                     { country: "Indonesia", since: "2014", type: "complete", moreInfo: "Reddit has been blocked in Indonesia since 2014 under anti-pornography rules.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null },
+                    { country: "UK", since: "14/07/2025", type: "age", moreInfo: "Under the UK Online Safety Act, Reddit has required age verification for mature content since 14 July 2025, using selfie or ID checks run by a third-party provider.", source: null }
                 ]
             },
             {
@@ -840,10 +874,11 @@
                     { country: "China", since: "July 2018", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
                     { country: "Russia", since: "October 2024", type: "complete", moreInfo: "Roskomnadzor blocked Discord in October 2024, citing violations of Russian law.", source: null },
-                    { country: "Turkey", since: "October 2024", type: "complete", moreInfo: "An Ankara court blocked Discord in October 2024 over child-safety concerns; talks on restoring access are ongoing.", source: null },
+                    { country: "Turkey", since: "October 2024", type: "complete", moreInfo: "An Ankara court blocked Discord in October 2024 over child-safety concerns. As of June 2026 it remains blocked — ministers say Discord has met compliance criteria, but a fresh court ruling is required to restore access.", source: null },
                     { country: "UAE", since: "2020", type: "complete", moreInfo: "Discord is blocked by major UAE ISPs under rules against unlicensed VoIP services.", source: null },
                     { country: "Egypt", since: "2022", type: "partial", moreInfo: "", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null }
+                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
+                    { country: "UK", since: "25/07/2025", type: "age", moreInfo: "Discord rolled out UK age checks (face scan or ID) for sensitive content under the Online Safety Act in July 2025; a later breach at a third-party verification vendor exposed ID photos of about 70,000 users.", source: null }
                 ]
             },
             {
@@ -853,15 +888,16 @@
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
                     { country: "Russia", since: "2024", type: "partial", moreInfo: "Twitch is not formally blocked, but faces heavy state fines and has itself capped Russian users at 720p and ended monetisation, with reports it may exit the market.", source: null },
                     { country: "South Korea", since: "2024", type: "complete", moreInfo: "Twitch left the South Korean market due to high costs.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null }
                 ]
             },
             {
                 name: "Spotify",
                 bannedIn: [
                     { country: "China", since: "Never launched", type: "complete", moreInfo: "", source: null },
-                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
-                    { country: "Russia", since: "April 2022", type: "complete", moreInfo: "Spotify fully suspended its service in Russia in April 2022 following the invasion of Ukraine.", source: null }
+                    { country: "North Korea", since: "Forever", type: "complete", moreInfo: "", source: null },
+                    { country: "Russia", since: "April 2022", type: "complete", moreInfo: "Spotify fully suspended its service in Russia in April 2022 following the invasion of Ukraine.", source: null },
+                    { country: "UK", since: "August 2025", type: "age", moreInfo: "Spotify introduced facial age checks (via Yoti) for UK users in August 2025 to comply with the Online Safety Act, gating 18+ content such as explicit music videos.", source: null }
                 ]
             },
             {
@@ -870,8 +906,8 @@
                     { country: "China", since: "Never launched", type: "complete", moreInfo: "", source: null },
                     { country: "North Korea", since: "Forever", type: "complete", moreInfo: "North Korea has a walled off intranet.", source: null },
                     { country: "Russia", since: "October 2025", type: "complete", moreInfo: "Roskomnadzor blocked Snapchat in October 2025 (confirmed that December), accusing it of use for terrorist activity and fraud, as part of a wider crackdown on foreign platforms.", source: null },
-                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "Turkmenistan has a very restrictive internet policy, wherein 75% of all IP addresses are blocked.", source: null },
-                    { country: "Australia", since: "10/12/2025", type: "partial", moreInfo: "Australia's under-16 social media ban took effect on 10 December 2025, requiring platforms to prevent under-16s from holding accounts.", source: null }
+                    { country: "Turkmenistan", since: "Forever", type: "complete", moreInfo: "", source: null },
+                    { country: "Australia", since: "10/12/2025", type: "age", moreInfo: AGE_AU, source: null }
                 ]
             }
         ];
@@ -920,6 +956,8 @@
         // Source references: "Platform|Country" -> URL
         const SRC = {
             esafety: 'https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions',
+            myBan: 'https://www.malaymail.com/news/malaysia/2026/06/01/malaysias-under-16-social-media-rule-starts-today-what-parents-need-to-know/221674',
+            ruCrackdown: 'https://en.zona.media/article/2026/04/07/russian_internet_censorship_2026',
             wikiCN: 'https://en.wikipedia.org/wiki/Internet_censorship_in_China',
             wikiIR: 'https://en.wikipedia.org/wiki/Internet_censorship_in_Iran',
             wikiNK: 'https://en.wikipedia.org/wiki/Internet_in_North_Korea',
@@ -934,6 +972,7 @@
             "Facebook|Russia": SRC.wikiRU,
             "Facebook|Turkmenistan": SRC.wikiTM,
             "Facebook|Australia": SRC.esafety,
+            "Facebook|Malaysia": SRC.myBan,
             "X (formerly Twitter)|China": 'https://en.wikipedia.org/wiki/Censorship_of_Twitter',
             "X (formerly Twitter)|Iran": 'https://en.wikipedia.org/wiki/Censorship_of_Twitter',
             "X (formerly Twitter)|North Korea": SRC.wikiNK,
@@ -944,16 +983,19 @@
             "X (formerly Twitter)|Malaysia": 'https://www.cnbc.com/2026/01/12/malaysia-indonesia-block-elon-musks-grok-obscene-non-consensual-content.html',
             "X (formerly Twitter)|Indonesia": 'https://techcrunch.com/2026/01/11/indonesia-blocks-grok-over-non-consensual-sexualized-deepfakes/',
             "X (formerly Twitter)|Australia": SRC.esafety,
+            "X (formerly Twitter)|UK": 'https://www.tomsguide.com/computing/vpns/here-are-6-sites-requiring-age-verification-will-you-be-affected',
             "YouTube|China": 'https://en.wikipedia.org/wiki/Censorship_of_YouTube',
             "YouTube|Iran": 'https://en.wikipedia.org/wiki/Censorship_of_YouTube',
             "YouTube|North Korea": SRC.wikiNK,
             "YouTube|Eritrea": 'https://en.wikipedia.org/wiki/Censorship_of_YouTube',
             "YouTube|Turkmenistan": SRC.wikiTM,
-            "YouTube|Russia": 'https://carnegieendowment.org/russia-eurasia/politika/2025/02/russia-youtube-block-attempt',
+            "YouTube|Russia": 'https://www.techradar.com/vpn/vpn-privacy-security/russia-is-using-dns-and-dpi-to-block-youtube-telegram-and-whatsapp-while-pushing-state-controlled-max-as-alternative',
             "YouTube|Australia": SRC.esafety,
+            "YouTube|Malaysia": SRC.myBan,
             "WhatsApp|China": SRC.wikiCN,
             "WhatsApp|North Korea": SRC.wikiNK,
-            "WhatsApp|Russia": 'https://www.aljazeera.com/news/2025/12/5/russia-continues-tech-crackdown-by-blocking-snapchat-facetime-access',
+            "WhatsApp|Russia": 'https://www.cnn.com/2026/02/12/tech/russia-whatsapp-social-media-clampdown-intl',
+            "WhatsApp|Iran": 'https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most',
             "WhatsApp|UAE": 'https://roamless.com/blog/does-whatsapp-work-in-dubai',
             "WhatsApp|Turkmenistan": SRC.wikiTM,
             "Telegram|China": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
@@ -963,7 +1005,7 @@
             "Telegram|Nepal": 'https://kathmandupost.com/science-technology/2025/08/27/telegram-moves-to-register-in-nepal-after-government-ban',
             "Telegram|Pakistan": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
             "Telegram|North Korea": SRC.wikiNK,
-            "Telegram|Russia": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
+            "Telegram|Russia": SRC.ruCrackdown,
             "Telegram|Somalia": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
             "Telegram|Vietnam": 'https://en.wikipedia.org/wiki/Censorship_of_Telegram',
             "Telegram|Turkmenistan": SRC.wikiTM,
@@ -981,11 +1023,12 @@
             "Netflix|North Korea": SRC.wikiNK,
             "Netflix|Russia": 'https://en.wikipedia.org/wiki/Netflix',
             "Instagram|China": SRC.wikiCN,
-            "Instagram|Iran": SRC.wikiIR,
+            "Instagram|Iran": 'https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most',
             "Instagram|North Korea": SRC.wikiNK,
             "Instagram|Russia": SRC.wikiRU,
             "Instagram|Turkmenistan": SRC.wikiTM,
             "Instagram|Australia": SRC.esafety,
+            "Instagram|Malaysia": SRC.myBan,
             "LinkedIn|China": 'https://en.wikipedia.org/wiki/LinkedIn',
             "LinkedIn|Russia": 'https://en.wikipedia.org/wiki/LinkedIn',
             "LinkedIn|North Korea": SRC.wikiNK,
@@ -1000,6 +1043,7 @@
             "TikTok|North Korea": SRC.wikiNK,
             "TikTok|Turkmenistan": SRC.wikiTM,
             "TikTok|Australia": SRC.esafety,
+            "TikTok|Malaysia": SRC.myBan,
             "Signal|China": SRC.wikiCN,
             "Signal|Iran": SRC.wikiIR,
             "Signal|Egypt": 'https://en.wikipedia.org/wiki/Signal_(software)',
@@ -1011,10 +1055,12 @@
             "Reddit|Indonesia": 'https://en.wikipedia.org/wiki/Reddit',
             "Reddit|Turkmenistan": SRC.wikiTM,
             "Reddit|Australia": SRC.esafety,
+            "Reddit|UK": 'https://www.eff.org/deeplinks/2025/08/americans-be-warned-lessons-reddits-chaotic-uk-age-verification-rollout',
             "Discord|China": SRC.wikiCN,
             "Discord|North Korea": SRC.wikiNK,
             "Discord|Russia": 'https://www.themoscowtimes.com/2024/10/09/russia-bans-messaging-platform-discord-a86618',
-            "Discord|Turkey": 'https://therecord.media/discord-messaging-app-banned-russia-turkey',
+            "Discord|Turkey": 'https://www.turkiyetoday.com/business/turkiye-to-restore-discord-access-soon-minister-says-3221382',
+            "Discord|UK": 'https://www.bleepingcomputer.com/news/security/uk-to-require-id-or-face-scan-before-you-can-make-social-media-accounts/',
             "Discord|UAE": 'https://www.comparitech.com/blog/vpn-privacy/use-discord-uae/',
             "Discord|Egypt": 'https://en.wikipedia.org/wiki/Discord',
             "Discord|Turkmenistan": SRC.wikiTM,
@@ -1026,6 +1072,7 @@
             "Spotify|China": 'https://en.wikipedia.org/wiki/Spotify',
             "Spotify|North Korea": SRC.wikiNK,
             "Spotify|Russia": 'https://en.wikipedia.org/wiki/Spotify',
+            "Spotify|UK": 'https://www.computing.co.uk/news/2025/legislation-regulation/spotify-introduces-facial-age-checks-in-uk',
             "Snapchat|China": 'https://en.wikipedia.org/wiki/Snapchat',
             "Snapchat|North Korea": SRC.wikiNK,
             "Snapchat|Russia": 'https://www.themoscowtimes.com/2025/12/04/roskomnadzor-confirms-its-blocking-snapchat-and-facetime-calls-a91336',
@@ -1038,10 +1085,12 @@
         // Keep platforms in alphabetical order
         censorshipData.sort((a, b) => a.name.localeCompare(b.name));
 
-        // Attach sources to entries and assign stable reference numbers
+        // Apply the heavy-censorship boilerplate, attach sources and assign
+        // stable reference numbers. Inline sources on entries take precedence.
         const sourceIndex = new Map();
         censorshipData.forEach(platform => platform.bannedIn.forEach(ban => {
-            ban.source = SOURCE_URLS[`${platform.name}|${ban.country}`] || null;
+            if (HEAVY_CENSORSHIP[ban.country]) ban.moreInfo = HEAVY_CENSORSHIP[ban.country];
+            ban.source = ban.source || SOURCE_URLS[`${platform.name}|${ban.country}`] || null;
             if (ban.source && !sourceIndex.has(ban.source)) {
                 sourceIndex.set(ban.source, sourceIndex.size + 1);
             }
@@ -1051,13 +1100,16 @@
             let totalBans = 0;
             let completeBans = 0;
             let partialBans = 0;
+            let ageBans = 0;
             const countries = new Set();
 
             censorshipData.forEach(platform => {
                 totalBans += platform.bannedIn.length;
                 platform.bannedIn.forEach(ban => {
                     countries.add(ban.country);
-                    if (ban.type === 'partial') partialBans++; else completeBans++;
+                    if (ban.type === 'partial') partialBans++;
+                    else if (ban.type === 'age') ageBans++;
+                    else completeBans++;
                 });
             });
 
@@ -1071,11 +1123,12 @@
             document.getElementById('navCountAll').textContent = totalBans;
             document.getElementById('navCountComplete').textContent = completeBans;
             document.getElementById('navCountPartial').textContent = partialBans;
+            document.getElementById('navCountAge').textContent = ageBans;
         }
 
-        function toggleMoreInfo(platformName, countryName) {
-            const infoId = `info-${platformName}-${countryName}`.replace(/\s+/g, '-');
-            const tagId = `tag-${platformName}-${countryName}`.replace(/\s+/g, '-');
+        function toggleMoreInfo(platformName, countryName, banType) {
+            const infoId = `info-${platformName}-${countryName}-${banType}`.replace(/\s+/g, '-');
+            const tagId = `tag-${platformName}-${countryName}-${banType}`.replace(/\s+/g, '-');
             const infoElement = document.getElementById(infoId);
             const tagElement = document.getElementById(tagId);
             const wasOpen = infoElement && infoElement.classList.contains('expanded');
@@ -1115,28 +1168,32 @@
                 return;
             }
 
-            grid.innerHTML = filteredData.map(platform => `
+            const TYPE_LABELS = { complete: 'Complete Ban', partial: 'Partial Ban', age: 'Age Verification' };
+            const TYPE_INFO_CLASS = { complete: '', partial: 'partial-info', age: 'age-info' };
+
+            grid.innerHTML = filteredData.map(platform => {
+                const countryCount = new Set(platform.bannedIn.map(ban => ban.country)).size;
+                return `
                 <article class="platform-row">
                     <div class="platform-meta">
                         <div class="platform-name"><span>${platform.name}</span>${PLATFORM_ICONS[platform.name] ? `<span class="platform-logo"${PLATFORM_COLORS[platform.name] ? ` style="color:${PLATFORM_COLORS[platform.name]}"` : ''}>${PLATFORM_ICONS[platform.name]}</span>` : ''}</div>
-                        <div class="platform-count">Banned in ${platform.bannedIn.length} ${platform.bannedIn.length === 1 ? 'country' : 'countries'}</div>
+                        <div class="platform-count">Restricted in ${countryCount} ${countryCount === 1 ? 'country' : 'countries'}</div>
                     </div>
                     <div class="platform-body">
                         <div class="chip-row">
                             ${platform.bannedIn.map(ban => {
-                                const tagId = `tag-${platform.name}-${ban.country}`.replace(/\s+/g, '-');
-                                return `<button id="${tagId}" class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}')">${ban.country}</button>`;
+                                const tagId = `tag-${platform.name}-${ban.country}-${ban.type}`.replace(/\s+/g, '-');
+                                return `<button id="${tagId}" class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}', '${ban.type}')">${ban.country}</button>`;
                             }).join('')}
                         </div>
                         ${platform.bannedIn.map(ban => {
-                            const infoId = `info-${platform.name}-${ban.country}`.replace(/\s+/g, '-');
+                            const infoId = `info-${platform.name}-${ban.country}-${ban.type}`.replace(/\s+/g, '-');
                             const sourceRef = ban.source ? `<a class="source-ref" href="${ban.source}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>` : '';
-                            const isPartial = ban.type === 'partial';
                             return `
-                                <div id="${infoId}" class="more-info ${isPartial ? 'partial-info' : ''}">
+                                <div id="${infoId}" class="more-info ${TYPE_INFO_CLASS[ban.type] || ''}">
                                     <div class="more-info-head">
                                         <span>${ban.country}</span>
-                                        <span class="${isPartial ? 'status-partial' : 'status-complete'}">${isPartial ? 'Partial Ban' : 'Complete Ban'}</span>
+                                        <span class="status-${ban.type}">${TYPE_LABELS[ban.type] || 'Complete Ban'}</span>
                                     </div>
                                     <div class="more-info-body">
                                         <div class="since">Since: ${ban.since}</div>
@@ -1147,7 +1204,7 @@
                         }).join('')}
                     </div>
                 </article>
-            `).join('');
+            `;}).join('');
         }
 
         function exportData() {
