@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN Tracker</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="favicon-32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-white: #ffffff;
+            --background: #f9f9f9;
+            --primary: #1e1e1e;
+            --redaction-black: #000000;
+            --secondary: #b6152e;
+            --alert-orange: #fd7e14;
+            --age-purple: #7d3ac1;
+            --muted-gray: #6c757d;
+            --on-surface-variant: #444748;
+            --outline-variant: #c4c7c7;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+        .topbar {
+            position: sticky; top: 0; z-index: 50; width: 100%;
+            background: var(--paper-white); border-bottom: 2px solid var(--primary);
+        }
+        .topbar-inner {
+            max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
+            justify-content: space-between; padding: 16px; gap: 16px;
+        }
+        .wordmark {
+            font-family: 'Chivo', sans-serif; font-weight: 900; font-size: 22px;
+            letter-spacing: -0.02em; text-transform: uppercase; color: var(--redaction-black);
+            white-space: nowrap;
+        }
+        .topnav {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-gray);
+            flex-wrap: wrap; justify-content: flex-end;
+        }
+        .site-nav-links { display: flex; align-items: center; gap: 6px 12px; flex-wrap: wrap; }
+        .nav-link {
+            color: var(--muted-gray); text-decoration: none;
+            border-bottom: 2px solid transparent; padding-bottom: 2px;
+        }
+        .nav-link:hover { color: var(--primary); }
+        .nav-link.active { color: var(--redaction-black); border-bottom-color: var(--secondary); }
+
+        .ticker { width: 100%; background: var(--redaction-black); color: var(--paper-white); }
+        .ticker-inner {
+            max-width: 1200px; margin: 0 auto; padding: 8px 16px;
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+            letter-spacing: 0.08em; text-transform: uppercase; color: #d0d0d0;
+            display: flex; flex-wrap: wrap; gap: 8px 20px;
+        }
+        .ticker-inner b { color: var(--paper-white); }
+
+        .main-wrap {
+            flex: 1 0 auto; width: 100%; max-width: 1000px; margin: 0 auto;
+            padding: 24px 16px 48px;
+        }
+        .page-head { margin-bottom: 28px; }
+        .page-title {
+            font-family: 'Chivo', sans-serif; font-weight: 900; font-size: 36px;
+            line-height: 1.05; letter-spacing: -0.03em; text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .page-title .accent { color: var(--secondary); }
+        .page-sub {
+            font-size: 16px; line-height: 1.5; color: var(--on-surface-variant); max-width: 42em;
+        }
+        .section { margin-top: 40px; }
+        .section-title {
+            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 22px;
+            text-transform: uppercase; letter-spacing: -0.02em;
+            border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px;
+        }
+        .legend {
+            display: flex; flex-wrap: wrap; gap: 12px 20px; margin-bottom: 16px;
+            font-size: 13px; color: var(--on-surface-variant);
+        }
+        .legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .swatch {
+            width: 12px; height: 12px; display: inline-block; border: 1px solid var(--primary);
+        }
+        .swatch.complete { background: var(--secondary); }
+        .swatch.restricted { background: var(--alert-orange); }
+
+        .table-wrap {
+            overflow-x: auto; border: 2px solid var(--primary); background: var(--paper-white);
+        }
+        table.vpn-table {
+            width: 100%; border-collapse: collapse; font-size: 14px;
+        }
+        .vpn-table th {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase; text-align: left;
+            background: var(--redaction-black); color: var(--paper-white);
+            padding: 12px 14px; border-bottom: 2px solid var(--primary);
+        }
+        .vpn-table td {
+            padding: 12px 14px; border-bottom: 1px solid var(--outline-variant);
+            vertical-align: top; color: var(--on-surface-variant);
+        }
+        .vpn-table tr:last-child td { border-bottom: none; }
+        .vpn-table tr:hover td { background: #f3f3f3; }
+        .vpn-table .country {
+            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 15px;
+            text-transform: uppercase; color: var(--primary); white-space: nowrap;
+        }
+        .badge {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px;
+            display: inline-block; white-space: nowrap;
+        }
+        .badge.complete { background: var(--secondary); color: #fff; }
+        .badge.restricted { background: var(--alert-orange); color: #fff; }
+        .since {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-gray);
+            white-space: nowrap;
+        }
+        .summary { line-height: 1.45; max-width: 36em; }
+        .src a {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+            color: var(--secondary); text-decoration: none;
+        }
+        .src a:hover { text-decoration: underline; }
+
+        .effort-list { display: flex; flex-direction: column; gap: 14px; }
+        .effort-card {
+            background: var(--paper-white); border: 2px solid var(--primary);
+            border-left: 6px solid var(--alert-orange); padding: 14px 16px;
+        }
+        .effort-card.subnational { border-left-color: var(--secondary); }
+        .effort-card.supranational { border-left-color: var(--age-purple); }
+        .effort-head {
+            display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline;
+            justify-content: space-between; margin-bottom: 6px;
+        }
+        .effort-jurisdiction {
+            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase;
+        }
+        .effort-level {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-gray);
+        }
+        .effort-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .effort-status {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+            color: var(--alert-orange); margin-bottom: 8px;
+        }
+        .effort-summary {
+            font-size: 14px; line-height: 1.45; color: var(--on-surface-variant); margin-bottom: 8px;
+        }
+        .effort-source a {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+            color: var(--secondary); text-decoration: none;
+        }
+        .effort-source a:hover { text-decoration: underline; }
+
+        .error-box {
+            border: 2px solid var(--secondary); background: var(--paper-white);
+            padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px;
+        }
+        .footer { border-top: 2px solid var(--primary); background: var(--paper-white); margin-top: auto; }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto; padding: 16px;
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted-gray);
+        }
+        @media (min-width: 768px) {
+            .topbar-inner, .ticker-inner, .footer-inner, .main-wrap { padding-left: 40px; padding-right: 40px; }
+            .main-wrap { padding-top: 40px; }
+            .wordmark { font-size: 26px; }
+            .page-title { font-size: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="wordmark">Global Censorship Tracker</div>
+            <nav class="topnav" aria-label="Site">
+                <div class="site-nav-links">
+                    <a href="index.html" class="nav-link">Global Censorship Tracker</a>
+                    <a href="age-verification.html" class="nav-link">Age Verification Tracker</a>
+                    <a href="vpn-tracker.html" class="nav-link active">VPN Tracker</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span>&#9632;&nbsp; VPN Restriction Index</span>
+            <span>Regimes listed: <b id="tickerRestrictions">--</b></span>
+            <span>Legislative efforts: <b id="tickerEfforts">--</b></span>
+            <span>Data As Of: <b>JUL 2026</b></span>
+        </div>
+    </div>
+
+    <main class="main-wrap">
+        <div class="page-head">
+            <h1 class="page-title"><span class="accent">VPN</span> Tracker</h1>
+            <p class="page-sub">Country-level index of jurisdictions that completely ban virtual private networks or heavily restrict them (licensed-only tunnels, criminalization of unauthorized use, aggressive provider blocking) — plus current legislative efforts to expand VPN bans.</p>
+        </div>
+
+        <section class="section" id="restrictions-section" aria-labelledby="restrictions-heading">
+            <h2 class="section-title" id="restrictions-heading">VPN bans &amp; heavy restrictions</h2>
+            <div class="legend">
+                <span><i class="swatch complete"></i> Complete ban / criminalized possession or use</span>
+                <span><i class="swatch restricted"></i> Heavy restriction (approved-only / aggressive blocking)</span>
+            </div>
+            <div class="table-wrap">
+                <table class="vpn-table" id="vpnTable">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Severity</th>
+                            <th>Since</th>
+                            <th>Status</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vpnTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="legislative-section" aria-labelledby="legislative-heading">
+            <h2 class="section-title" id="legislative-heading">Current Legislative Efforts</h2>
+            <p class="page-sub" style="margin-bottom: 16px;">New or pending national and regional efforts to ban, criminalize, or further restrict VPNs — distinct from long-settled complete bans in the table above where possible.</p>
+            <div class="effort-list" id="effortList"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">&copy; 2026 Censorship_Tracker &mdash; VPN module</div>
+    </footer>
+
+    <script>
+        function severityLabel(s) {
+            return s === 'complete' ? 'Complete ban' : 'Heavy restriction';
+        }
+
+        function renderTable(rows) {
+            const body = document.getElementById('vpnTableBody');
+            const sorted = rows.slice().sort((a, b) => {
+                if (a.severity !== b.severity) return a.severity === 'complete' ? -1 : 1;
+                return a.country.localeCompare(b.country);
+            });
+            body.innerHTML = sorted.map(r => `
+                <tr>
+                    <td class="country">${r.country}</td>
+                    <td><span class="badge ${r.severity}">${severityLabel(r.severity)}</span></td>
+                    <td class="since">${r.since || '—'}</td>
+                    <td class="summary">${r.summary || ''}</td>
+                    <td class="src">${r.source ? `<a href="${r.source}" target="_blank" rel="noopener noreferrer">Source</a>` : '—'}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderEfforts(items) {
+            const list = document.getElementById('effortList');
+            list.innerHTML = items.map(item => {
+                const levelClass = item.level === 'subnational' ? 'subnational'
+                    : item.level === 'supranational' ? 'supranational' : '';
+                const src = item.source
+                    ? `<div class="effort-source"><a href="${item.source}" target="_blank" rel="noopener noreferrer">Source</a></div>`
+                    : '';
+                return `
+                    <article class="effort-card ${levelClass}">
+                        <div class="effort-head">
+                            <h3 class="effort-jurisdiction">${item.jurisdiction}</h3>
+                            <span class="effort-level">${item.level || 'national'}</span>
+                        </div>
+                        <div class="effort-title">${item.title}</div>
+                        <div class="effort-status">${item.status}</div>
+                        <p class="effort-summary">${item.summary || ''}</p>
+                        ${src}
+                    </article>`;
+            }).join('');
+        }
+
+        async function loadData() {
+            try {
+                const res = await fetch('vpn_data.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                const restrictions = data.restrictions || [];
+                const efforts = data.legislative_efforts || [];
+                document.getElementById('tickerRestrictions').textContent = String(restrictions.length);
+                document.getElementById('tickerEfforts').textContent = String(efforts.length);
+                renderTable(restrictions);
+                renderEfforts(efforts);
+            } catch (err) {
+                document.getElementById('vpnTableBody').innerHTML =
+                    `<tr><td colspan="5" class="error-box">// Failed to load vpn_data.json — ${err.message}</td></tr>`;
+            }
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

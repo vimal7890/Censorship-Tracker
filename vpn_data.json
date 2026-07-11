@@ -1,0 +1,124 @@
+{
+  "restrictions": [
+    {
+      "country": "North Korea",
+      "severity": "complete",
+      "since": "Longstanding",
+      "summary": "Ordinary citizens have no open access to the global internet. Unauthorized circumvention tools, including VPNs, are illegal and can carry extreme penalties under the regime's information-control laws.",
+      "source": "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
+    },
+    {
+      "country": "Turkmenistan",
+      "severity": "complete",
+      "since": "2010s–present (intensified 2019+)",
+      "summary": "The state-monopoly ISP blocks the vast majority of foreign services and actively suppresses VPNs and other circumvention tools. Applicants for home internet have been required to pledge not to use bypass tools; unauthorized use can bring multi-year sentences.",
+      "source": "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
+    },
+    {
+      "country": "Belarus",
+      "severity": "complete",
+      "since": "2015+",
+      "summary": "Belarusian law restricts anonymizers and VPN services used to access blocked resources. Authorities have blocked major commercial VPN providers and pursued users and operators of circumvention tools, especially around protests.",
+      "source": "https://freedomhouse.org/country/belarus/freedom-net/2024"
+    },
+    {
+      "country": "Iraq",
+      "severity": "complete",
+      "since": "2014+",
+      "summary": "Iraq imposed a blanket ban on VPN use during the fight against ISIS; the prohibition has largely remained in force with periodic enforcement against providers and users of unauthorized tunnels.",
+      "source": "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
+    },
+    {
+      "country": "China",
+      "severity": "restricted",
+      "since": "2017 MIIT cleanup onwards",
+      "summary": "Unlicensed commercial VPNs for public cross-border access are illegal. Only government-approved / licensed international channels (typically enterprise) are permitted; unauthorized consumer VPNs face blocking, provider crackdowns, and occasional user penalties.",
+      "source": "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/"
+    },
+    {
+      "country": "Russia",
+      "severity": "restricted",
+      "since": "2017 law; sharp escalation 2025–2026",
+      "summary": "VPNs that refuse to cooperate with Roskomnadzor’s blocked-sites registry face nationwide blocking. Authorities have blocked hundreds of VPN services and popular protocols, banned VPN advertising, and expanded fines for accessing 'extremist' content even via VPN.",
+      "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-internet-freedom-protection-day"
+    },
+    {
+      "country": "Iran",
+      "severity": "restricted",
+      "since": "2024 criminalization of unauthorized VPNs",
+      "summary": "Iran criminalized use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
+      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+    },
+    {
+      "country": "Myanmar",
+      "severity": "restricted",
+      "since": "Cybersecurity Law / 1 Jan 2025 provider ban",
+      "summary": "The junta’s cybersecurity framework bans establishing or providing VPN services (effective 1 January 2025). Individuals face fines or jail for distributing VPNs or using them to access restricted content.",
+      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+    },
+    {
+      "country": "United Arab Emirates",
+      "severity": "restricted",
+      "since": "Ongoing (cybercrime decrees)",
+      "summary": "Owning a VPN is not a blanket crime, but using one to access blocked services (e.g. unlicensed VoIP, gambling, other restricted content) is a serious offence under UAE cybercrime rules, with very large fines reported for misuse.",
+      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+    },
+    {
+      "country": "Oman",
+      "severity": "restricted",
+      "since": "Telecom encryption rules",
+      "summary": "Unauthorized use of encryption tools without TRA permission is prohibited. Enforcement focuses on misuse to reach blocked services; TRA has publicly warned against unapproved VPN products.",
+      "source": "https://proprivacy.com/guides/are-vpns-legal"
+    }
+  ],
+  "legislative_efforts": [
+    {
+      "jurisdiction": "Russia",
+      "level": "national",
+      "title": "Roskomnadzor / Digital Ministry VPN crackdown (2025–2026)",
+      "status": "Active escalation — hundreds of VPNs blocked; protocol filters; ad ban; user fines",
+      "summary": "Through 2025–2026 Roskomnadzor reported blocking large numbers of VPN services and popular protocols. Advertising VPNs was banned; users can be fined for searching 'extremist' material even via VPN. Early 2026 reporting described pressure on operators and platforms to further throttle or detect VPN use.",
+      "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-internet-freedom-protection-day"
+    },
+    {
+      "jurisdiction": "United Kingdom",
+      "level": "national",
+      "title": "House of Lords amendment to restrict VPN provision to under-18s",
+      "status": "Lords vote Jan 2026; Commons resistance / government consultation ongoing",
+      "summary": "Peers backed Amendment 92 to the Children’s Wellbeing and Schools Bill to prohibit providing VPN services to UK children within 12 months, aimed at stopping age-gate circumvention under the Online Safety Act. The Commons and government have resisted a blanket approach while running consultations on online safety and VPNs.",
+      "source": "https://www.techradar.com/vpn/vpn-privacy-security/uk-government-targets-vpns-in-new-online-safety-consultation-as-lords-vote-for-ban"
+    },
+    {
+      "jurisdiction": "Russia (State Duma)",
+      "level": "national",
+      "title": "Fines for searching extremist content including via VPN",
+      "status": "Passed July 2025; in force from Sept 2025",
+      "summary": "Parliament approved and Putin signed rules fining intentional online searches for materials labelled extremist, explicitly including access through VPNs—raising liability for ordinary circumvention of blocked sites.",
+      "source": "https://www.reuters.com/world/russia-passes-law-punishing-searches-extremist-content-2025-07-22/"
+    },
+    {
+      "jurisdiction": "European Union (debate)",
+      "level": "supranational",
+      "title": "Age-verification rollout and VPN-circumvention debate",
+      "status": "Policy discussion — no EU-wide VPN ban enacted",
+      "summary": "As member states and the Commission push privacy-preserving age checks for social platforms, some officials have floated measures against tools that bypass age gates (including VPNs). No pan-EU criminal ban is in force; proposals remain contested.",
+      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+    },
+    {
+      "jurisdiction": "United States — Wisconsin",
+      "level": "subnational",
+      "title": "SB 130 and related state efforts targeting VPN use for restricted content",
+      "status": "Advanced in legislature; faced strong civil-liberties backlash",
+      "summary": "Wisconsin saw a high-profile 2025 attempt (SB 130) that would have constrained VPN use in connection with age-restricted material—described as an early serious state-level VPN restriction effort before political pushback.",
+      "source": "https://windscribe.com/blog/are-vpns-legal/"
+    },
+    {
+      "jurisdiction": "Myanmar",
+      "level": "national",
+      "title": "Cybersecurity Law VPN service prohibition",
+      "status": "In force from 1 January 2025 for providers",
+      "summary": "The junta’s cybersecurity legislation prohibits establishing or providing VPN services, with penalties extending to distributors and users accessing restricted content—part of a broader crackdown on circumvention after the coup.",
+      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+    }
+  ]
+}

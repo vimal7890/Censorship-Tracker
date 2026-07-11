@@ -28,12 +28,15 @@ def main() -> int:
     for label, html, path in (
         ("Global Censorship Tracker", index_html, "index.html"),
         ("Age Verification Tracker", index_html, "index.html"),
+        ("VPN Tracker", index_html, "index.html"),
         ("Global Censorship Tracker", age_html, "age-verification.html"),
         ("Age Verification Tracker", age_html, "age-verification.html"),
+        ("VPN Tracker", age_html, "age-verification.html"),
     ):
         assert label in html, f"{path} missing nav label: {label}"
 
     assert 'href="age-verification.html"' in index_html
+    assert 'href="vpn-tracker.html"' in index_html
     assert 'href="index.html"' in age_html
     assert re.search(r"Age\s+Verification\s+Tracker", age_html)
     assert "Current Legislative Efforts" in age_html, "missing exact section title"
