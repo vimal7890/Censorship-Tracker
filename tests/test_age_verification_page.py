@@ -26,9 +26,9 @@ def main() -> int:
 
     # Nav labels on both pages
     for label, html, path in (
-        ("Global Censorship Tracker", index_html, "index.html"),
+        ("Banned Websites Tracker", index_html, "index.html"),
         ("Age Verification Tracker", index_html, "index.html"),
-        ("Global Censorship Tracker", age_html, "age-verification.html"),
+        ("Banned Websites Tracker", age_html, "age-verification.html"),
         ("Age Verification Tracker", age_html, "age-verification.html"),
     ):
         assert label in html, f"{path} missing nav label: {label}"
