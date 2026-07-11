@@ -117,20 +117,6 @@
             color: var(--redaction-black);
             border-bottom-color: var(--age-purple);
         }
-        .nav-sep {
-            width: 1px;
-            height: 14px;
-            background: var(--outline-variant);
-            margin: 0 4px;
-        }
-        .live-dot {
-            width: 8px; height: 8px;
-            background: var(--secondary);
-            display: inline-block;
-            animation: blink 1.6s steps(1) infinite;
-        }
-        @keyframes blink { 50% { opacity: 0.25; } }
-
         /* ---------- Status ticker strip ---------- */
         .ticker {
             width: 100%;
@@ -617,9 +603,6 @@
                     <a href="index.html" class="nav-link active">Global Censorship Tracker</a>
                     <a href="age-verification.html" class="nav-link">Age Verification Tracker</a>
                 </div>
-                <span class="nav-sep" aria-hidden="true"></span>
-                <span class="live-dot"></span>
-                <span>Live&nbsp;Index</span>
             </nav>
         </div>
     </header>
