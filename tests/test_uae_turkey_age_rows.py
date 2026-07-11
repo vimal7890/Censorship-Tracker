@@ -12,13 +12,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "censorship_data.csv"
 
-# Official UAE phase-1 named platforms (Ministry of Family FAQ)
+# Plan criterion 3 minimum social set for UAE (Facebook, Instagram, TikTok, X, YouTube)
+# plus Snapchat from the official phase-1 named list.
 UAE_AGE_PLATFORMS = {
     "Facebook",
     "Instagram",
     "Snapchat",
     "TikTok",
     "X (formerly Twitter)",
+    "YouTube",
 }
 
 # Social set minus Discord (complete ban still in force for Turkey)
