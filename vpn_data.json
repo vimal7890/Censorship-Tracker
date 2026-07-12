@@ -4,35 +4,35 @@
       "country": "North Korea",
       "severity": "complete",
       "since": "Longstanding",
-      "summary": "Ordinary citizens have no open access to the global internet. Unauthorized circumvention tools, including VPNs, are illegal and can carry extreme penalties under the regime's information-control laws.",
+      "summary": "Ordinary citizens have no open access to the global internet. Unauthorised circumvention tools, including VPNs, are illegal and can carry extreme penalties under the regime's information-control laws.",
       "source": "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
     },
     {
       "country": "Turkmenistan",
       "severity": "complete",
       "since": "2010s–present (intensified 2019+)",
-      "summary": "The state-monopoly ISP blocks the vast majority of foreign services and actively suppresses VPNs and other circumvention tools. Applicants for home internet have been required to pledge not to use bypass tools; unauthorized use can bring multi-year sentences.",
+      "summary": "The state-monopoly ISP blocks the vast majority of foreign services and actively suppresses VPNs and other circumvention tools. Applicants for home internet have been required to pledge not to use bypass tools; unauthorised use can bring multi-year sentences.",
       "source": "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
     },
     {
       "country": "Belarus",
       "severity": "complete",
       "since": "2015+",
-      "summary": "Belarusian law restricts anonymizers and VPN services used to access blocked resources. Authorities have blocked major commercial VPN providers and pursued users and operators of circumvention tools, especially around protests.",
+      "summary": "Belarusian law restricts anonymisers and VPN services used to access blocked resources. Authorities have blocked major commercial VPN providers and pursued users and operators of circumvention tools, especially around protests.",
       "source": "https://freedomhouse.org/country/belarus/freedom-net/2024"
     },
     {
       "country": "Iraq",
       "severity": "complete",
       "since": "2014+",
-      "summary": "Iraq imposed a blanket ban on VPN use during the fight against ISIS; the prohibition has largely remained in force with periodic enforcement against providers and users of unauthorized tunnels.",
+      "summary": "Iraq imposed a blanket ban on VPN use during the fight against ISIS; the prohibition has largely remained in force with periodic enforcement against providers and users of unauthorised tunnels.",
       "source": "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
     },
     {
       "country": "China",
       "severity": "restricted",
       "since": "2017 MIIT cleanup onwards",
-      "summary": "Unlicensed commercial VPNs for public cross-border access are illegal. Only government-approved / licensed international channels (typically enterprise) are permitted; unauthorized consumer VPNs face blocking, provider crackdowns, and occasional user penalties.",
+      "summary": "Unlicensed commercial VPNs for public cross-border access are illegal. Only government-approved / licensed international channels (typically enterprise) are permitted; unauthorised consumer VPNs face blocking, provider crackdowns, and occasional user penalties.",
       "source": "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/"
     },
     {
@@ -45,8 +45,8 @@
     {
       "country": "Iran",
       "severity": "restricted",
-      "since": "2024 criminalization of unauthorized VPNs",
-      "summary": "Iran criminalized use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
+      "since": "2024 criminalisation of unauthorised VPNs",
+      "summary": "Iran criminalised use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
       "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
     },
     {
@@ -67,7 +67,7 @@
       "country": "Oman",
       "severity": "restricted",
       "since": "Telecom encryption rules",
-      "summary": "Unauthorized use of encryption tools without TRA permission is prohibited. Enforcement focuses on misuse to reach blocked services; TRA has publicly warned against unapproved VPN products.",
+      "summary": "Unauthorised use of encryption tools without TRA permission is prohibited. Enforcement focuses on misuse to reach blocked services; TRA has publicly warned against unapproved VPN products.",
       "source": "https://proprivacy.com/guides/are-vpns-legal"
     }
   ],
