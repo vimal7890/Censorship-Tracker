@@ -119,20 +119,22 @@
       "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
     },
     {
-      "jurisdiction": "United States — Wisconsin",
-      "level": "subnational",
-      "title": "SB 130 and related state efforts targeting VPN use for restricted content",
-      "status": "Advanced in legislature; faced strong civil-liberties backlash",
-      "summary": "Wisconsin saw a high-profile 2025 attempt (SB 130) that would have constrained VPN use in connection with age-restricted material—described as an early serious state-level VPN restriction effort before political pushback.",
-      "source": "https://windscribe.com/blog/are-vpns-legal/"
-    },
-    {
       "jurisdiction": "Myanmar",
       "level": "national",
       "title": "Cybersecurity Law VPN service prohibition",
       "status": "In force from 1 January 2025 for providers",
       "summary": "The junta’s cybersecurity legislation prohibits establishing or providing VPN services, with penalties extending to distributors and users accessing restricted content—part of a broader crackdown on circumvention after the coup.",
       "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+    }
+  ],
+  "rejected_efforts": [
+    {
+      "jurisdiction": "United States — Wisconsin",
+      "level": "subnational",
+      "title": "SB 130 and related state efforts targeting VPN use for restricted content",
+      "status": "Rejected — advanced in legislature then failed amid civil-liberties backlash",
+      "summary": "Wisconsin saw a high-profile 2025 attempt (SB 130) that would have constrained VPN use in connection with age-restricted material—an early serious state-level VPN restriction effort that did not become law after political pushback.",
+      "source": "https://windscribe.com/blog/are-vpns-legal/"
     }
   ]
 }

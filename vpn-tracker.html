@@ -150,6 +150,8 @@
         }
         .effort-card.subnational { border-left-color: var(--secondary); }
         .effort-card.supranational { border-left-color: var(--age-purple); }
+        .effort-card.rejected { border-left-color: var(--muted-gray); }
+        .effort-card.rejected .effort-status { color: var(--muted-gray); }
         .effort-head {
             display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline;
             justify-content: space-between; margin-bottom: 6px;
@@ -248,6 +250,12 @@
             <p class="page-sub" style="margin-bottom: 16px;">New or pending national and regional efforts to ban, criminalise, or further restrict VPNs — distinct from long-settled complete bans in the table above where possible.</p>
             <div class="effort-list" id="effortList"></div>
         </section>
+
+        <section class="section" id="rejected-section" aria-labelledby="rejected-heading">
+            <h2 class="section-title" id="rejected-heading">Rejected Efforts</h2>
+            <p class="page-sub" style="margin-bottom: 16px;">Proposals to ban or heavily restrict VPNs that advanced in a legislature or public debate but were defeated, withdrawn, or otherwise failed to become law.</p>
+            <div class="effort-list" id="rejectedList"></div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -276,16 +284,21 @@
             `).join('');
         }
 
-        function renderEfforts(items) {
-            const list = document.getElementById('effortList');
+        function renderEfforts(items, listId, extraClass) {
+            const list = document.getElementById(listId);
+            if (!items.length) {
+                list.innerHTML = '<p class="page-sub">No entries yet.</p>';
+                return;
+            }
             list.innerHTML = items.map(item => {
                 const levelClass = item.level === 'subnational' ? 'subnational'
                     : item.level === 'supranational' ? 'supranational' : '';
+                const cardClass = [levelClass, extraClass].filter(Boolean).join(' ');
                 const src = item.source
                     ? `<div class="effort-source"><a href="${item.source}" target="_blank" rel="noopener noreferrer">Source</a></div>`
                     : '';
                 return `
-                    <article class="effort-card ${levelClass}">
+                    <article class="effort-card ${cardClass}">
                         <div class="effort-head">
                             <h3 class="effort-jurisdiction">${item.jurisdiction}</h3>
                             <span class="effort-level">${item.level || 'national'}</span>
@@ -305,10 +318,12 @@
                 const data = await res.json();
                 const restrictions = data.restrictions || [];
                 const efforts = data.legislative_efforts || [];
+                const rejected = data.rejected_efforts || [];
                 document.getElementById('tickerRestrictions').textContent = String(restrictions.length);
                 document.getElementById('tickerEfforts').textContent = String(efforts.length);
                 renderTable(restrictions);
-                renderEfforts(efforts);
+                renderEfforts(efforts, 'effortList');
+                renderEfforts(rejected, 'rejectedList', 'rejected');
             } catch (err) {
                 document.getElementById('vpnTableBody').innerHTML =
                     `<tr><td colspan="5" class="error-box">// Failed to load vpn_data.json — ${err.message}</td></tr>`;
