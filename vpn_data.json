@@ -69,6 +69,20 @@
       "since": "Telecom encryption rules",
       "summary": "Unauthorised use of encryption tools without TRA permission is prohibited. Enforcement focuses on misuse to reach blocked services; TRA has publicly warned against unapproved VPN products.",
       "source": "https://proprivacy.com/guides/are-vpns-legal"
+    },
+    {
+      "country": "India",
+      "severity": "restricted",
+      "since": "CERT-In Direction No. V — in force 28 June 2022",
+      "summary": "VPNs stay legal to use, but a 2022 CERT-In cybersecurity directive orders providers running servers in India to log extensive customer data — validated subscriber names, hire dates, IP addresses allotted and used, emails, physical addresses and contact numbers — and retain it for at least five years, even after an account is closed. Rather than comply with the logging mandate, major providers such as ExpressVPN, NordVPN and Surfshark pulled their physical servers out of the country and now route Indian IPs through virtual servers hosted abroad.",
+      "source": "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data"
+    },
+    {
+      "country": "Pakistan",
+      "severity": "restricted",
+      "since": "PTA registration drive from 2024; CVAS-Data licensing from Nov 2025",
+      "summary": "Pakistan is corralling VPNs into a state licensing regime rather than banning them outright. From late 2024 the PTA pressed users and firms to register VPNs and began blocking 'unregistered' or 'illegal' services — after the Council of Islamic Ideology branded unregulated VPNs un-Islamic — and in November 2025 it started issuing Class VAS (CVAS-Data) licences to approved local providers. Only licensed, PTA-overseen VPNs are sanctioned, while unlicensed apps face intermittent blocking and disruption.",
+      "source": "https://www.techradar.com/vpn/vpn-privacy-security/pakistans-quest-to-regulate-vpn-usage-is-still-up-and-running"
     }
   ],
   "legislative_efforts": [
