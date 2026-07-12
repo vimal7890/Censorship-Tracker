@@ -458,6 +458,7 @@
         .country-tag:hover { filter: brightness(1.1); }
         .country-tag:active { transform: translateY(1px); }
         .country-tag.open { outline: 2px solid var(--primary); outline-offset: 1px; }
+        .country-label { white-space: nowrap; }
 
         /* Expandable info panel */
         .more-info {
@@ -760,6 +761,51 @@
             "X (formerly Twitter)": "#000000"
         };
 
+        const COUNTRY_FLAGS = {
+            "Afghanistan": "🇦🇫",
+            "Australia": "🇦🇺",
+            "Brazil": "🇧🇷",
+            "China": "🇨🇳",
+            "Cuba": "🇨🇺",
+            "Egypt": "🇪🇬",
+            "Eritrea": "🇪🇷",
+            "Gabon": "🇬🇦",
+            "India": "🇮🇳",
+            "Indonesia": "🇮🇩",
+            "Iran": "🇮🇷",
+            "Jordan": "🇯🇴",
+            "Kyrgyzstan": "🇰🇬",
+            "Malaysia": "🇲🇾",
+            "Myanmar": "🇲🇲",
+            "Nepal": "🇳🇵",
+            "North Korea": "🇰🇵",
+            "Pakistan": "🇵🇰",
+            "Qatar": "🇶🇦",
+            "Russia": "🇷🇺",
+            "Somalia": "🇸🇴",
+            "South Korea": "🇰🇷",
+            "Sudan": "🇸🇩",
+            "Syria": "🇸🇾",
+            "Turkey": "🇹🇷",
+            "Turkmenistan": "🇹🇲",
+            "UAE": "🇦🇪",
+            "UK": "🇬🇧",
+            "Uzbekistan": "🇺🇿",
+            "Vietnam": "🇻🇳"
+        };
+        const COUNTRY_NAMES = Object.keys(COUNTRY_FLAGS).sort((a, b) => b.length - a.length);
+        const COUNTRY_MENTION_RE = new RegExp(`\\b(${COUNTRY_NAMES.map(name => name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`, 'g');
+
+        function countryLabel(country) {
+            const flag = COUNTRY_FLAGS[country];
+            return flag ? `<span class="country-label">${flag} ${country}</span>` : `<span class="country-label">${country}</span>`;
+        }
+
+        function decorateCountryMentions(text) {
+            if (!text) return '';
+            return text.replace(COUNTRY_MENTION_RE, match => countryLabel(match));
+        }
+
         let currentFilter = 'all';
 
         const sourceIndex = new Map();
@@ -913,7 +959,7 @@
                         <div class="chip-row">
                             ${platform.bannedIn.map(ban => {
                                 const tagId = `tag-${platform.name}-${ban.country}-${ban.type}`.replace(/\s+/g, '-');
-                                return `<button id="${tagId}" class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}', '${ban.type}')">${ban.country}</button>`;
+                                return `<button id="${tagId}" class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}', '${ban.type}')">${countryLabel(ban.country)}</button>`;
                             }).join('')}
                         </div>
                         ${platform.bannedIn.map(ban => {
@@ -922,12 +968,12 @@
                             return `
                                 <div id="${infoId}" class="more-info ${TYPE_INFO_CLASS[ban.type] || ''}">
                                     <div class="more-info-head">
-                                        <span>${ban.country}</span>
+                                        ${countryLabel(ban.country)}
                                         <span class="status-${ban.type}">${TYPE_LABELS[ban.type] || 'Complete Ban'}</span>
                                     </div>
                                     <div class="more-info-body">
                                         <div class="since">Since: ${ban.since}</div>
-                                        ${ban.moreInfo ? `<p>${ban.moreInfo}${sourceRef}</p>` : `<p><em>No additional information available.</em>${sourceRef}</p>`}
+                                        ${ban.moreInfo ? `<p>${decorateCountryMentions(ban.moreInfo)}${sourceRef}</p>` : `<p><em>No additional information available.</em>${sourceRef}</p>`}
                                     </div>
                                 </div>
                             `;
