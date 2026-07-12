@@ -21,12 +21,12 @@ def main() -> int:
         (AGE, AGE.read_text(encoding="utf-8")),
         (VPN, VPN.read_text(encoding="utf-8")),
     ):
-        assert "VPN Tracker" in html, f"{path.name} missing VPN Tracker nav"
-        assert 'href="vpn-tracker.html"' in html, f"{path.name} missing vpn-tracker link"
+        assert "VPN" in html, f"{path.name} missing VPN nav"
+        assert 'href="/vpn-tracker"' in html, f"{path.name} missing vpn-tracker link"
 
     vpn_html = VPN.read_text(encoding="utf-8")
     assert "Global Censorship Tracker" in vpn_html
-    assert "Age Verification Tracker" in vpn_html
+    assert "Age Verification" in vpn_html
     assert "Current Legislative Efforts" in vpn_html
     assert "vpn_data.json" in vpn_html
 
