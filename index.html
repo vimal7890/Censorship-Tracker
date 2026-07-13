@@ -670,7 +670,7 @@
                     </div>
                     <div class="stat-item">
                         <div class="stat-number" id="totalCountries">0</div>
-                        <div class="stat-label">Countries</div>
+                        <div class="stat-label">Countries and Territories</div>
                     </div>
                 </div>
 
@@ -686,7 +686,7 @@
             <div id="platformGrid" class="platform-list"></div>
 
             <div class="info-note">
-                <b>Tip:</b> Tap any country to reveal the case file.
+                <b>Tip:</b> Tap any country or territory to reveal the case file.
                 <span class="swatch complete"></span> Complete ban &nbsp;
                 <span class="swatch partial"></span> Partial &nbsp;
                 <span class="swatch age"></span> Age verification.
@@ -909,7 +909,7 @@
                 <article class="platform-row">
                     <div class="platform-meta">
                         <div class="platform-name"><span>${platform.name}</span>${PLATFORM_ICONS[platform.name] ? `<span class="platform-logo"${PLATFORM_COLORS[platform.name] ? ` style="color:${PLATFORM_COLORS[platform.name]}"` : ''}>${PLATFORM_ICONS[platform.name]}</span>` : ''}</div>
-                        <div class="platform-count">Restricted in ${countryCount} ${countryCount === 1 ? 'country' : 'countries'}</div>
+                        <div class="platform-count">Restricted in ${countryCount} ${countryCount === 1 ? 'country or territory' : 'countries and territories'}</div>
                     </div>
                     <div class="platform-body">
                         <div class="chip-row">
