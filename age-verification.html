@@ -24,6 +24,7 @@
             --secondary: #b6152e;
             --alert-orange: #fd7e14;
             --age-purple: #7d3ac1;
+            --age-purple-light: #d9c3f2;
             --tertiary-green: #35b14d;
             --muted-gray: #6c757d;
             --on-surface-variant: #444748;
@@ -290,11 +291,11 @@
         .effort-card {
             background: var(--paper-white);
             border: 2px solid var(--primary);
-            border-left: 6px solid var(--alert-orange);
+            border-left: 6px solid var(--age-purple-light);
             padding: 14px 16px;
         }
-        .effort-card.subnational { border-left-color: var(--secondary); }
-        .effort-card.supranational { border-left-color: var(--age-purple); }
+        .effort-card.subnational { border-left-color: var(--age-purple-light); }
+        .effort-card.supranational { border-left-color: var(--age-purple-light); }
         .effort-head {
             display: flex;
             flex-wrap: wrap;
@@ -326,7 +327,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             font-weight: 700;
-            color: var(--alert-orange);
+            color: var(--redaction-black);
             margin-bottom: 8px;
         }
         .effort-summary {
