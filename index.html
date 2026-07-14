@@ -572,6 +572,342 @@
             color: var(--primary);
         }
 
+
+        /* ---------- Added sections: map / stats / recent ---------- */
+        .section-block { margin: 36px 0; }
+        .section-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+        .section-sub {
+            font-size: 14px;
+            color: var(--muted-gray);
+            margin-bottom: 16px;
+            max-width: 620px;
+            line-height: 1.5;
+        }
+
+        /* ---------- Global restriction map ---------- */
+        .map-frame {
+            border: 2px solid var(--primary);
+            background: var(--paper-white);
+        }
+        .map-frame[hidden] { display: none; }
+        #worldMap svg { width: 100%; height: auto; display: block; }
+        #worldMap .land { fill: #e6e6e6; stroke: #ffffff; stroke-width: 0.5; }
+        #worldMap .has-data { cursor: pointer; }
+        #worldMap .has-data.b1 { fill: #c9c9c9; }
+        #worldMap .has-data.b2 { fill: #999999; }
+        #worldMap .has-data.b3 { fill: #595959; }
+        #worldMap .has-data.b4 { fill: #000000; }
+        #worldMap .has-data.subnational { fill: url(#hatchPattern); }
+        #worldMap .has-data:hover,
+        #worldMap .has-data:focus,
+        #worldMap .has-data.selected {
+            stroke: var(--secondary);
+            stroke-width: 1.4;
+            outline: none;
+        }
+        .map-tooltip {
+            position: fixed;
+            z-index: 70;
+            display: none;
+            pointer-events: none;
+            background: var(--paper-white);
+            border: 1px solid var(--primary);
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.18);
+            padding: 8px 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            line-height: 1.7;
+            color: var(--on-surface-variant);
+            max-width: 280px;
+        }
+        .map-tooltip .tt-name {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+        }
+        .map-tooltip .tt-complete { color: var(--secondary); font-weight: 700; }
+        .map-tooltip .tt-partial { color: var(--alert-orange); font-weight: 700; }
+        .map-tooltip .tt-age { color: var(--age-purple); font-weight: 700; }
+        .map-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-top: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+        }
+        .map-legend[hidden] { display: none; }
+        .map-legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .map-legend i {
+            width: 12px; height: 12px;
+            display: inline-block;
+            border: 1px solid var(--outline-variant);
+        }
+        .map-legend i.b0 { background: #e6e6e6; }
+        .map-legend i.b1 { background: #c9c9c9; }
+        .map-legend i.b2 { background: #999999; }
+        .map-legend i.b3 { background: #595959; }
+        .map-legend i.b4 { background: #000000; }
+        .map-legend i.subnat { background: repeating-linear-gradient(45deg, #1e1e1e 0 2px, #f3f3f3 2px 5px); }
+        .map-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-top: 14px;
+        }
+        .map-controls label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+        #countryJump {
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            padding: 10px 12px;
+            border-radius: 0;
+            min-width: 240px;
+            cursor: pointer;
+        }
+
+        /* Country cards (fallback when the map asset cannot load) */
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 8px;
+        }
+        .country-grid[hidden] { display: none; }
+        .country-card {
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-align: left;
+            padding: 10px 12px;
+            cursor: pointer;
+        }
+        .country-card:hover { background: var(--surface-container); }
+        .country-card .cc-name {
+            display: block;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .country-card .cc-counts { color: var(--muted-gray); font-size: 11px; }
+
+        /* Country dossier */
+        #countryDossier {
+            margin-top: 14px;
+            border: 1px solid var(--primary);
+            border-left: 4px solid var(--primary);
+            background: var(--paper-white);
+        }
+        .dossier-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            background: var(--redaction-black);
+            color: var(--paper-white);
+            padding: 8px 12px;
+        }
+        .dossier-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .dossier-close {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            color: var(--paper-white);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .dossier-close:hover { background: var(--paper-white); color: var(--redaction-black); }
+        .dossier-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted-gray);
+            padding: 10px 12px 0;
+        }
+        .dossier-rows { padding: 6px; }
+        .dossier-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 12px;
+            width: 100%;
+            border-bottom: 1px solid var(--surface-container-high);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--on-surface-variant);
+            padding: 8px;
+            cursor: pointer;
+        }
+        .dossier-row:last-child { border-bottom: none; }
+        .dossier-row:hover { background: var(--surface-container-low); }
+        .d-type {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--paper-white);
+            padding: 2px 6px;
+            flex-shrink: 0;
+        }
+        .d-type.complete { background: var(--secondary); }
+        .d-type.partial { background: var(--alert-orange); }
+        .d-type.age { background: var(--age-purple); }
+        .d-platform { font-weight: 700; color: var(--primary); }
+        .d-since { color: var(--muted-gray); font-size: 11px; }
+        .d-state {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid var(--age-purple);
+            color: var(--age-purple);
+            padding: 1px 5px;
+        }
+        .d-src {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 11px;
+            text-decoration: none;
+        }
+        .d-src:hover { text-decoration: underline; }
+
+        /* ---------- By the numbers ---------- */
+        .dash-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .dash-panel {
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            padding: 16px;
+            min-width: 0;
+            margin: 0;
+        }
+        .dash-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .dash-panel svg { width: 100%; height: auto; display: block; }
+        .dash-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--muted-gray);
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        .type-rows { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--on-surface-variant); }
+        .type-rows div { padding: 5px 0; border-bottom: 1px dashed var(--outline-variant); }
+        .type-rows div:last-child { border-bottom: none; }
+        .type-rows b { color: var(--primary); }
+        .rank-list { list-style: none; counter-reset: rank; }
+        .rank-list li {
+            counter-increment: rank;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            padding: 7px 0;
+            border-bottom: 1px dashed var(--outline-variant);
+            color: var(--on-surface-variant);
+        }
+        .rank-list li::before {
+            content: counter(rank, decimal-leading-zero);
+            color: var(--muted-gray);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .rank-list li:last-child { border-bottom: none; }
+        .rank-name { font-weight: 700; text-transform: uppercase; color: var(--primary); }
+        .rank-detail { color: var(--muted-gray); font-size: 11px; }
+        .rank-count { margin-left: auto; font-weight: 700; color: var(--primary); }
+
+        /* ---------- Most recent restrictions ---------- */
+        .recent-list { border: 1px solid var(--primary); background: var(--paper-white); }
+        .recent-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 12px;
+            width: 100%;
+            border-bottom: 1px solid var(--surface-container-high);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--on-surface-variant);
+            padding: 10px 14px;
+            cursor: pointer;
+        }
+        .recent-row:last-child { border-bottom: none; }
+        .recent-row:hover { background: var(--surface-container-low); }
+        .r-date { font-weight: 700; color: var(--primary); flex-shrink: 0; }
+        .r-desc b { color: var(--primary); }
+        .r-sched {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid var(--age-purple);
+            color: var(--age-purple);
+            padding: 1px 5px;
+        }
+
+        .footer-credit { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-gray); }
+        .footer-credit a { color: var(--muted-gray); }
+        .footer-credit a:hover { color: var(--primary); }
+
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (min-width: 700px) {
+            .dash-grid { grid-template-columns: 1fr 1fr; }
+            .dash-panel.wide { grid-column: 1 / -1; }
+        }
+
         /* ---------- Responsive ---------- */
         @media (min-width: 768px) {
             .topbar-inner, .ticker-inner, .footer-inner { padding-left: 40px; padding-right: 40px; }
@@ -687,6 +1023,39 @@
                 </div>
             </div>
 
+            <!-- Global restriction map -->
+            <section class="section-block" id="mapSection" aria-labelledby="map-heading">
+                <h2 class="section-title" id="map-heading">Global Restriction Map</h2>
+                <p class="section-sub">Countries and territories shaded by number of tracked restrictions &mdash; the darker the territory, the more of the index applies to it. Click a territory to open its dossier.</p>
+                <div class="map-frame">
+                    <div id="worldMap"></div>
+                </div>
+                <div id="mapTooltip" class="map-tooltip" aria-hidden="true"></div>
+                <div class="map-legend" id="mapLegend">
+                    <span><i class="b0"></i> None tracked</span>
+                    <span><i class="b1"></i> 1</span>
+                    <span><i class="b2"></i> 2&ndash;4</span>
+                    <span><i class="b3"></i> 5&ndash;9</span>
+                    <span><i class="b4"></i> 10+</span>
+                    <span><i class="subnat"></i> State-level only</span>
+                </div>
+                <div class="map-controls">
+                    <label for="countryJump">Jump to territory:</label>
+                    <select id="countryJump">
+                        <option value="">Select a territory&hellip;</option>
+                    </select>
+                </div>
+                <div id="countryCards" class="country-grid" hidden></div>
+                <section id="countryDossier" aria-live="polite" hidden>
+                    <div class="dossier-head">
+                        <span class="dossier-title" id="dossierTitle"></span>
+                        <button class="dossier-close" id="dossierClose" type="button">Close &#10005;</button>
+                    </div>
+                    <div class="dossier-note" id="dossierNote" hidden></div>
+                    <div class="dossier-rows" id="dossierRows"></div>
+                </section>
+            </section>
+
             <div id="platformGrid" class="platform-list"></div>
 
             <div class="info-note">
@@ -695,6 +1064,24 @@
                 <span class="swatch partial"></span> Partial &nbsp;
                 <span class="swatch age"></span> Age verification.
             </div>
+
+            <!-- By the numbers -->
+            <section class="section-block" id="statsSection" aria-labelledby="stats-heading">
+                <h2 class="section-title" id="stats-heading">By the Numbers</h2>
+                <div class="dash-grid">
+                    <figure class="dash-panel wide" id="chartPlatforms"></figure>
+                    <figure class="dash-panel" id="chartTypes"></figure>
+                    <figure class="dash-panel" id="chartYears"></figure>
+                    <div class="dash-panel" id="topTerritories"></div>
+                </div>
+            </section>
+
+            <!-- Most recent restrictions -->
+            <section class="section-block" id="recentSection" aria-labelledby="recent-heading">
+                <h2 class="section-title" id="recent-heading">Most Recent Restrictions</h2>
+                <p class="section-sub">The latest dated entries in the index. Click a row to open its case file.</p>
+                <div class="recent-list" id="recentList"></div>
+            </section>
 
             <div class="actions">
                 <button class="btn btn-ghost" onclick="exportData()">Export Data &#8595; JSON</button>
@@ -706,9 +1093,11 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand">&copy; 2026 Censorship_Tracker</div>
+            <div class="footer-credit">Map outline: <a href="https://www.amcharts.com/svg-maps/" target="_blank" rel="noopener">amCharts worldLow</a></div>
         </div>
     </footer>
 
+    <script src="assets/countries.js"></script>
     <script>
         // Cookie-cutter notes for states where the internet is restricted by default.
         // Applied automatically to every entry for these countries.
@@ -834,6 +1223,10 @@
                 }));
                 updateStats();
                 renderPlatforms();
+                buildCountryIndex();
+                initWorldMap();
+                renderStats();
+                renderRecent();
             } catch (err) {
                 document.getElementById('platformGrid').innerHTML =
                     '<div class="no-results">// Failed to load censorship_data.csv — ' + err.message + '</div>';
@@ -962,8 +1355,395 @@
             URL.revokeObjectURL(url);
         }
 
+
+        /* ================= Global restriction map ================= */
+
+        const TYPE_ORDER = { complete: 0, partial: 1, age: 2 };
+        const TYPE_LABEL = { complete: 'Complete Ban', partial: 'Partial Ban', age: 'Age Verification' };
+        const TYPE_COLORS = { complete: '#b6152e', partial: '#fd7e14', age: '#7d3ac1' };
+        const ISO_DISPLAY = { US: 'United States' };
+        const countryIndex = new Map(); // ISO code -> aggregated record
+
+        function escapeHTML(value) {
+            return String(value)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        // Group every restriction by ISO country code (name variants and
+        // subnational jurisdictions collapse onto one territory).
+        function buildCountryIndex() {
+            countryIndex.clear();
+            censorshipData.forEach(platform => platform.bannedIn.forEach(ban => {
+                const iso = window.isoOf(ban.country);
+                if (!iso) return;
+                if (!countryIndex.has(iso)) {
+                    countryIndex.set(iso, {
+                        iso, display: null, entries: [],
+                        counts: { complete: 0, partial: 0, age: 0 },
+                        subnationalNames: new Set()
+                    });
+                }
+                const rec = countryIndex.get(iso);
+                const subnational = window.isSubnational(ban.country);
+                if (subnational) rec.subnationalNames.add(ban.country);
+                else if (!rec.display) rec.display = ban.country;
+                rec.entries.push({ platform: platform.name, country: ban.country, since: ban.since, type: ban.type, source: ban.source, subnational });
+                rec.counts[ban.type] = (rec.counts[ban.type] || 0) + 1;
+            }));
+            countryIndex.forEach(rec => {
+                if (!rec.display) rec.display = ISO_DISPLAY[rec.iso] || [...rec.subnationalNames][0];
+                rec.subnationalOnly = rec.entries.every(e => e.subnational);
+                rec.entries.sort((a, b) =>
+                    (TYPE_ORDER[a.type] ?? 9) - (TYPE_ORDER[b.type] ?? 9) ||
+                    a.platform.localeCompare(b.platform));
+            });
+        }
+
+        function bucketClass(total) {
+            if (total >= 10) return 'b4';
+            if (total >= 5) return 'b3';
+            if (total >= 2) return 'b2';
+            return 'b1';
+        }
+
+        async function initWorldMap() {
+            populateJumpList();
+            const mapDiv = document.getElementById('worldMap');
+            try {
+                const res = await fetch('assets/world.svg');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                mapDiv.innerHTML = await res.text();
+            } catch (err) {
+                // List mode: the country-card grid replaces the map entirely.
+                document.querySelector('#mapSection .map-frame').hidden = true;
+                document.getElementById('mapLegend').hidden = true;
+                renderCountryCards();
+                return;
+            }
+            const svgRoot = mapDiv.querySelector('svg');
+            const defs = svgRoot.querySelector('defs');
+            if (defs) defs.insertAdjacentHTML('beforeend',
+                '<pattern id="hatchPattern" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">' +
+                '<rect width="6" height="6" fill="#f3f3f3"></rect>' +
+                '<line x1="1" y1="0" x2="1" y2="6" stroke="#1e1e1e" stroke-width="2"></line></pattern>');
+
+            countryIndex.forEach((rec, iso) => {
+                const el = svgRoot.querySelector('#' + iso);
+                if (!el) return;
+                const total = rec.entries.length;
+                el.classList.add('has-data', bucketClass(total));
+                if (rec.subnationalOnly) el.classList.add('subnational');
+                el.setAttribute('tabindex', '0');
+                el.setAttribute('role', 'button');
+                el.setAttribute('aria-label',
+                    `${rec.display}: ${total} tracked restriction${total === 1 ? '' : 's'} — ` +
+                    `${rec.counts.complete} complete, ${rec.counts.partial} partial, ${rec.counts.age} age verification`);
+                el.dataset.iso = iso;
+            });
+
+            const tooltip = document.getElementById('mapTooltip');
+            const finePointer = window.matchMedia('(pointer: fine)').matches;
+            svgRoot.addEventListener('pointermove', e => {
+                const target = e.target.closest('.has-data');
+                if (!target || !finePointer) { tooltip.style.display = 'none'; return; }
+                const rec = countryIndex.get(target.dataset.iso);
+                if (!rec) return;
+                tooltip.innerHTML = `<div class="tt-name">${escapeHTML(rec.display)}</div>` +
+                    (rec.counts.complete ? `<div><span class="tt-complete">${rec.counts.complete}</span> complete ban${rec.counts.complete === 1 ? '' : 's'}</div>` : '') +
+                    (rec.counts.partial ? `<div><span class="tt-partial">${rec.counts.partial}</span> partial</div>` : '') +
+                    (rec.counts.age ? `<div><span class="tt-age">${rec.counts.age}</span> age verification</div>` : '') +
+                    (rec.subnationalNames.size ? `<div>Incl. state-level: ${escapeHTML([...rec.subnationalNames].join(', '))}</div>` : '');
+                tooltip.style.display = 'block';
+                const pad = 14;
+                let x = e.clientX + pad, y = e.clientY + pad;
+                if (x + tooltip.offsetWidth > window.innerWidth - 8) x = e.clientX - tooltip.offsetWidth - pad;
+                if (y + tooltip.offsetHeight > window.innerHeight - 8) y = e.clientY - tooltip.offsetHeight - pad;
+                tooltip.style.left = x + 'px';
+                tooltip.style.top = y + 'px';
+            });
+            svgRoot.addEventListener('pointerleave', () => { tooltip.style.display = 'none'; });
+            svgRoot.addEventListener('click', e => {
+                const target = e.target.closest('.has-data');
+                if (target) openDossier(target.dataset.iso);
+            });
+            svgRoot.addEventListener('keydown', e => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const target = e.target.closest('.has-data');
+                if (target) { e.preventDefault(); openDossier(target.dataset.iso); }
+            });
+        }
+
+        function populateJumpList() {
+            const select = document.getElementById('countryJump');
+            const recs = [...countryIndex.values()].sort((a, b) => a.display.localeCompare(b.display));
+            select.innerHTML = '<option value="">Select a territory&hellip;</option>' +
+                recs.map(rec => `<option value="${rec.iso}">${escapeHTML(rec.display)} (${rec.entries.length})</option>`).join('');
+        }
+
+        function renderCountryCards() {
+            const grid = document.getElementById('countryCards');
+            grid.hidden = false;
+            const recs = [...countryIndex.values()]
+                .sort((a, b) => b.entries.length - a.entries.length || a.display.localeCompare(b.display));
+            grid.innerHTML = recs.map(rec => `
+                <button class="country-card" data-iso="${rec.iso}">
+                    <span class="cc-name">${escapeHTML(rec.display)}</span>
+                    <span class="cc-counts">${rec.entries.length} restriction${rec.entries.length === 1 ? '' : 's'}</span>
+                </button>`).join('');
+        }
+
+        function openDossier(iso) {
+            const rec = countryIndex.get(iso);
+            if (!rec) return;
+            const svgRoot = document.querySelector('#worldMap svg');
+            if (svgRoot) {
+                svgRoot.querySelectorAll('.has-data.selected').forEach(el => el.classList.remove('selected'));
+                const el = svgRoot.querySelector('#' + iso);
+                if (el) el.classList.add('selected');
+            }
+            const n = rec.entries.length;
+            document.getElementById('dossierTitle').textContent =
+                `Dossier: ${rec.display} [${iso}] — ${n} record${n === 1 ? '' : 's'}`;
+            const note = document.getElementById('dossierNote');
+            if (rec.subnationalNames.size) {
+                note.hidden = false;
+                note.textContent = `Includes state-level jurisdiction${rec.subnationalNames.size === 1 ? '' : 's'}: ${[...rec.subnationalNames].join(', ')}.`;
+            } else {
+                note.hidden = true;
+            }
+            document.getElementById('dossierRows').innerHTML = rec.entries.map(e => `
+                <div class="dossier-row" role="button" tabindex="0" data-platform="${escapeHTML(e.platform)}" data-country="${escapeHTML(e.country)}" data-type="${e.type}">
+                    <span class="d-type ${e.type}">${TYPE_LABEL[e.type] || e.type}</span>
+                    <span class="d-platform">${escapeHTML(e.platform)}</span>
+                    <span class="d-since">Since: ${escapeHTML(e.since)}</span>
+                    ${e.subnational ? `<span class="d-state">${escapeHTML(e.country)} — state law</span>` : ''}
+                    ${e.source ? `<a class="d-src" href="${escapeHTML(e.source)}" target="_blank" rel="noopener">[${sourceIndex.get(e.source)}]</a>` : ''}
+                </div>`).join('');
+            const panel = document.getElementById('countryDossier');
+            panel.hidden = false;
+            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Scroll to a platform's case file in the main list and expand it.
+        function revealCaseFile(platform, country, type) {
+            if (currentFilter !== 'all' && currentFilter !== type) setFilter('all');
+            const searchBox = document.getElementById('searchBox');
+            if (searchBox.value && !platform.toLowerCase().includes(searchBox.value.toLowerCase())) {
+                searchBox.value = '';
+                renderPlatforms();
+            }
+            const suffix = `${platform}-${country}-${type}`.replace(/\s+/g, '-');
+            const info = document.getElementById(`info-${suffix}`);
+            if (info && !info.classList.contains('expanded')) toggleMoreInfo(platform, country, type);
+            const anchor = document.getElementById(`tag-${suffix}`) || info;
+            if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function wireRowJumps(containerId) {
+            const box = document.getElementById(containerId);
+            const activate = target => {
+                const row = target.closest('[data-platform]');
+                if (row) revealCaseFile(row.dataset.platform, row.dataset.country, row.dataset.type);
+            };
+            box.addEventListener('click', e => {
+                if (e.target.closest('a')) return;
+                activate(e.target);
+            });
+            box.addEventListener('keydown', e => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                if (e.target.closest('a')) return;
+                e.preventDefault();
+                activate(e.target);
+            });
+        }
+
+        /* ================= Date parsing helpers ================= */
+
+        const MONTH_INDEX = {
+            january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+            july: 6, august: 7, september: 8, october: 9, november: 10, december: 11
+        };
+
+        // Lenient parse of the free-text `since` field (DD/MM/YYYY, "Month YYYY",
+        // bare year). Returns null for undated values like "Forever".
+        function parseSinceDate(str) {
+            if (!str) return null;
+            let m = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+            if (m) return new Date(Date.UTC(+m[3], +m[2] - 1, +m[1]));
+            m = str.match(/([A-Za-z]+)\s+((?:19|20)\d{2})/);
+            if (m && MONTH_INDEX[m[1].toLowerCase()] !== undefined) {
+                return new Date(Date.UTC(+m[2], MONTH_INDEX[m[1].toLowerCase()], 1));
+            }
+            m = str.match(/(?:19|20)\d{2}/g);
+            if (m) return new Date(Date.UTC(+m[m.length - 1], 0, 1));
+            return null;
+        }
+
+        function parseSinceYear(str) {
+            const m = (str || '').match(/(?:19|20)\d{2}/g);
+            return m ? +m[m.length - 1] : null;
+        }
+
+        /* ================= By the numbers ================= */
+
+        function renderStats() {
+            renderPlatformChart();
+            renderTypeChart();
+            renderYearChart();
+            renderTopTerritories();
+        }
+
+        function renderPlatformChart() {
+            const rows = censorshipData.map(p => {
+                const c = { complete: 0, partial: 0, age: 0 };
+                p.bannedIn.forEach(b => { c[b.type] = (c[b.type] || 0) + 1; });
+                return { name: p.name, ...c, total: p.bannedIn.length };
+            }).sort((a, b) => b.total - a.total || a.name.localeCompare(b.name));
+
+            const rowH = 24, labelW = 175, chartW = 720, barMax = chartW - labelW - 44;
+            const max = rows[0].total;
+            const height = rows.length * rowH + 8;
+            let svg = `<svg viewBox="0 0 ${chartW} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Restrictions per platform, all types stacked">`;
+            rows.forEach((r, i) => {
+                const y = i * rowH + 4;
+                svg += `<text x="${labelW - 10}" y="${y + 12}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#1e1e1e">${escapeHTML(r.name)}</text>`;
+                let x = labelW;
+                ['complete', 'partial', 'age'].forEach(t => {
+                    if (!r[t]) return;
+                    const w = r[t] / max * barMax;
+                    svg += `<rect x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="16" fill="${TYPE_COLORS[t]}"></rect>`;
+                    x += w;
+                });
+                svg += `<text x="${(x + 6).toFixed(1)}" y="${y + 12}" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1e1e1e">${r.total}</text>`;
+            });
+            svg += '</svg>';
+            document.getElementById('chartPlatforms').innerHTML =
+                `<figcaption class="dash-title">Restrictions per platform</figcaption>${svg}` +
+                `<div class="dash-note"><span class="swatch complete"></span> Complete &nbsp;<span class="swatch partial"></span> Partial &nbsp;<span class="swatch age"></span> Age verification</div>`;
+        }
+
+        function renderTypeChart() {
+            const totals = { complete: 0, partial: 0, age: 0 };
+            censorshipData.forEach(p => p.bannedIn.forEach(b => { totals[b.type] = (totals[b.type] || 0) + 1; }));
+            const total = totals.complete + totals.partial + totals.age;
+            const W = 340, H = 34;
+            let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Breakdown by restriction type">`;
+            let x = 0;
+            ['complete', 'partial', 'age'].forEach(t => {
+                const w = totals[t] / total * W;
+                svg += `<rect x="${x.toFixed(1)}" y="0" width="${w.toFixed(1)}" height="${H}" fill="${TYPE_COLORS[t]}"></rect>`;
+                x += w;
+            });
+            svg += '</svg>';
+            const pct = t => Math.round(totals[t] / total * 100);
+            document.getElementById('chartTypes').innerHTML =
+                `<figcaption class="dash-title">Restriction types</figcaption>${svg}
+                <div class="type-rows">
+                    <div><span class="swatch complete"></span> Complete bans <b>${totals.complete}</b> (${pct('complete')}%)</div>
+                    <div><span class="swatch partial"></span> Partial bans <b>${totals.partial}</b> (${pct('partial')}%)</div>
+                    <div><span class="swatch age"></span> Age verification <b>${totals.age}</b> (${pct('age')}%)</div>
+                </div>`;
+        }
+
+        function renderYearChart() {
+            const byYear = new Map();
+            let undated = 0;
+            censorshipData.forEach(p => p.bannedIn.forEach(b => {
+                const y = parseSinceYear(b.since);
+                if (y === null) { undated++; return; }
+                byYear.set(y, (byYear.get(y) || 0) + 1);
+            }));
+            const sortedYears = [...byYear.keys()].sort((a, b) => a - b);
+            const years = [];
+            for (let y = sortedYears[0]; y <= sortedYears[sortedYears.length - 1]; y++) years.push(y);
+            const max = Math.max(...byYear.values());
+            const W = 360, H = 190, bottom = 24, top = 14;
+            const bw = W / years.length;
+            const nowYear = new Date().getUTCFullYear();
+            let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="New restrictions per year">`;
+            let hasScheduled = false;
+            years.forEach((y, i) => {
+                const v = byYear.get(y) || 0;
+                const x = i * bw + 2;
+                if (v) {
+                    const h = v / max * (H - bottom - top);
+                    const yy = H - bottom - h;
+                    if (y > nowYear) {
+                        hasScheduled = true;
+                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="#ffffff" stroke="#1e1e1e" stroke-dasharray="3 2"></rect>`;
+                    } else {
+                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="#1e1e1e"></rect>`;
+                    }
+                    svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${(yy - 3).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#6c757d">${v}</text>`;
+                }
+                if (y % 2 === 0) {
+                    svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${H - 10}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#6c757d">${y}</text>`;
+                }
+            });
+            svg += `<line x1="0" y1="${H - bottom + 4}" x2="${W}" y2="${H - bottom + 4}" stroke="#1e1e1e" stroke-width="1"></line></svg>`;
+            document.getElementById('chartYears').innerHTML =
+                `<figcaption class="dash-title">New restrictions by year</figcaption>${svg}
+                <div class="dash-note">Year each restriction took (or takes) effect.${hasScheduled ? ' Dashed bars are scheduled.' : ''} ${undated} undated entries (e.g. &ldquo;Always blocked&rdquo;) not shown.</div>`;
+        }
+
+        function renderTopTerritories() {
+            const recs = [...countryIndex.values()]
+                .sort((a, b) => b.entries.length - a.entries.length || a.display.localeCompare(b.display))
+                .slice(0, 8);
+            document.getElementById('topTerritories').innerHTML =
+                `<div class="dash-title">Most restricted territories</div>
+                <ol class="rank-list">` +
+                recs.map(rec => `
+                    <li><span class="rank-name">${escapeHTML(rec.display)}</span>
+                        <span class="rank-detail">${rec.counts.complete}C &middot; ${rec.counts.partial}P &middot; ${rec.counts.age}A</span>
+                        <span class="rank-count">${rec.entries.length}</span></li>`).join('') +
+                `</ol>
+                <div class="dash-note">C complete &middot; P partial &middot; A age verification. Click the map above for full dossiers.</div>`;
+        }
+
+        /* ================= Most recent restrictions ================= */
+
+        function renderRecent() {
+            const dated = [];
+            censorshipData.forEach(p => p.bannedIn.forEach(b => {
+                const d = parseSinceDate(b.since);
+                if (d) dated.push({ platform: p.name, country: b.country, since: b.since, type: b.type, source: b.source, date: d });
+            }));
+            dated.sort((a, b) => b.date - a.date);
+            const now = new Date();
+            const fmt = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+            document.getElementById('recentList').innerHTML = dated.slice(0, 8).map(e => `
+                <div class="recent-row" role="button" tabindex="0" data-platform="${escapeHTML(e.platform)}" data-country="${escapeHTML(e.country)}" data-type="${e.type}">
+                    <span class="r-date">${fmt(e.date)}</span>
+                    <span class="d-type ${e.type}">${TYPE_LABEL[e.type] || e.type}</span>
+                    <span class="r-desc"><b>${escapeHTML(e.platform)}</b> &mdash; ${escapeHTML(e.country)}</span>
+                    ${e.date > now ? '<span class="r-sched">Scheduled</span>' : ''}
+                    ${e.source ? `<a class="d-src" href="${escapeHTML(e.source)}" target="_blank" rel="noopener">[${sourceIndex.get(e.source)}]</a>` : ''}
+                </div>`).join('');
+        }
+
         // Event listeners
         document.getElementById('searchBox').addEventListener('input', renderPlatforms);
+        document.getElementById('countryJump').addEventListener('change', e => {
+            if (e.target.value) openDossier(e.target.value);
+        });
+        document.getElementById('countryCards').addEventListener('click', e => {
+            const card = e.target.closest('.country-card');
+            if (card) openDossier(card.dataset.iso);
+        });
+        document.getElementById('dossierClose').addEventListener('click', () => {
+            document.getElementById('countryDossier').hidden = true;
+            const svgRoot = document.querySelector('#worldMap svg');
+            if (svgRoot) svgRoot.querySelectorAll('.has-data.selected').forEach(el => el.classList.remove('selected'));
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && !document.getElementById('countryDossier').hidden) {
+                document.getElementById('dossierClose').click();
+            }
+        });
+        wireRowJumps('dossierRows');
+        wireRowJumps('recentList');
         document.querySelectorAll('[data-filter]').forEach(el => {
             el.addEventListener('click', () => setFilter(el.getAttribute('data-filter')));
         });
