@@ -39,24 +39,25 @@
             background: var(--paper-white); border-bottom: 2px solid var(--primary);
         }
         .topbar-inner {
-            max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
-            justify-content: space-between; padding: 16px; gap: 16px;
+            max-width: 1200px; margin: 0 auto; display: flex;
+            flex-direction: column; align-items: flex-start;
+            justify-content: space-between; padding: 14px 16px; gap: 10px;
         }
         .wordmark {
-            font-family: 'Chivo', sans-serif; font-weight: 900; font-size: 22px;
-            letter-spacing: -0.02em; text-transform: uppercase; color: var(--redaction-black);
-            white-space: nowrap;
+            font-family: 'Chivo', sans-serif; font-weight: 900; font-size: 20px;
+            line-height: 1.1; letter-spacing: -0.02em; text-transform: uppercase;
+            color: var(--redaction-black);
         }
         .topnav {
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; gap: 10px; width: 100%;
             font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
             letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-gray);
-            flex-wrap: wrap; justify-content: flex-end;
+            flex-wrap: wrap; justify-content: flex-start;
         }
         .site-nav-links { display: flex; align-items: center; gap: 6px 12px; flex-wrap: wrap; }
         .nav-link {
             color: var(--muted-gray); text-decoration: none;
-            border-bottom: 2px solid transparent; padding-bottom: 2px;
+            border-bottom: 2px solid transparent; padding: 4px 0 3px;
         }
         .nav-link:hover { color: var(--primary); }
         .nav-link.active { color: var(--redaction-black); border-bottom-color: var(--secondary); }
@@ -102,7 +103,8 @@
         .swatch.restricted { background: var(--alert-orange); }
 
         .table-wrap {
-            overflow-x: auto; border: 2px solid var(--primary); background: var(--paper-white);
+            overflow-x: auto; -webkit-overflow-scrolling: touch;
+            border: 2px solid var(--primary); background: var(--paper-white);
         }
         table.vpn-table {
             width: 100%; border-collapse: collapse; font-size: 14px;
@@ -111,10 +113,10 @@
             font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
             letter-spacing: 0.08em; text-transform: uppercase; text-align: left;
             background: var(--redaction-black); color: var(--paper-white);
-            padding: 13px 20px; border-bottom: 2px solid var(--primary);
+            padding: 12px 14px; border-bottom: 2px solid var(--primary);
         }
         .vpn-table td {
-            padding: 14px 20px; border-bottom: 1px solid var(--outline-variant);
+            padding: 12px 14px; border-bottom: 1px solid var(--outline-variant);
             vertical-align: top; color: var(--on-surface-variant);
         }
         .vpn-table tr:last-child td { border-bottom: none; }
@@ -134,7 +136,7 @@
             font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-gray);
             line-height: 1.4; max-width: 13em;
         }
-        .summary { line-height: 1.55; min-width: 28em; }
+        .summary { line-height: 1.55; min-width: 17em; }
         .src { white-space: nowrap; }
         .src a {
             font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;
@@ -188,9 +190,13 @@
         }
         @media (min-width: 768px) {
             .topbar-inner, .ticker-inner, .footer-inner, .main-wrap { padding-left: 40px; padding-right: 40px; }
+            .topbar-inner { flex-direction: row; align-items: center; padding-top: 16px; padding-bottom: 16px; }
+            .topnav { width: auto; justify-content: flex-end; }
             .main-wrap { padding-top: 40px; }
-            .wordmark { font-size: 26px; }
+            .wordmark { font-size: 26px; white-space: nowrap; }
             .page-title { font-size: 48px; }
+            .vpn-table th, .vpn-table td { padding: 14px 20px; }
+            .summary { min-width: 28em; }
         }
     </style>
 </head>

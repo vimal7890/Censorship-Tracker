@@ -66,24 +66,26 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             justify-content: space-between;
-            padding: 16px;
-            gap: 16px;
+            padding: 14px 16px;
+            gap: 10px;
         }
         .wordmark {
             font-family: 'Chivo', sans-serif;
             font-weight: 900;
-            font-size: 22px;
+            font-size: 20px;
+            line-height: 1.1;
             letter-spacing: -0.02em;
             text-transform: uppercase;
             color: var(--redaction-black);
-            white-space: nowrap;
         }
         .topnav {
             display: flex;
             align-items: center;
             gap: 10px;
+            width: 100%;
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             font-weight: 700;
@@ -91,7 +93,7 @@
             text-transform: uppercase;
             color: var(--muted-gray);
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
         .site-nav-links {
             display: flex;
@@ -103,7 +105,7 @@
             color: var(--muted-gray);
             text-decoration: none;
             border-bottom: 2px solid transparent;
-            padding-bottom: 2px;
+            padding: 4px 0 3px;
             transition: color 0.15s, border-color 0.15s;
         }
         .nav-link:hover { color: var(--primary); }
@@ -390,8 +392,10 @@
                 padding-left: 40px;
                 padding-right: 40px;
             }
+            .topbar-inner { flex-direction: row; align-items: center; padding-top: 16px; padding-bottom: 16px; }
+            .topnav { width: auto; justify-content: flex-end; }
             .main-wrap { padding-top: 40px; }
-            .wordmark { font-size: 26px; }
+            .wordmark { font-size: 26px; white-space: nowrap; }
             .page-title { font-size: 48px; }
         }
     </style>
