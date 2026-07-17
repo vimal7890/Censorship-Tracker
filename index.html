@@ -1750,7 +1750,8 @@
                 ['complete', 'partial', 'age'].forEach(t => {
                     if (!r[t]) return;
                     const w = r[t] / max * barMax;
-                    svg += `<rect x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="16" fill="${TYPE_COLORS[t]}"></rect>`;
+                    const label = t === 'complete' ? (r[t] === 1 ? 'Full ban' : 'Full bans') : t === 'partial' ? (r[t] === 1 ? 'Partial ban' : 'Partial bans') : 'Age verification';
+                    svg += `<rect x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="16" fill="${TYPE_COLORS[t]}"><title>${r[t]} ${label}</title></rect>`;
                     x += w;
                 });
                 svg += `<text x="${(x + 6).toFixed(1)}" y="${y + 12}" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1e1e1e">${r.total}</text>`;
