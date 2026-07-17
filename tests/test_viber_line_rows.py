@@ -14,8 +14,21 @@ INDEX_PATH = ROOT / "index.html"
 
 EXPECTED = {
     "LINE": {"China", "North Korea", "Russia", "Turkmenistan", "UAE"},
-    "Viber": {"China", "Iran", "North Korea", "Russia", "Turkmenistan", "UAE"},
+    "Viber": {
+        "China",
+        "Egypt",
+        "Iran",
+        "North Korea",
+        "Oman",
+        "Qatar",
+        "Russia",
+        "Turkmenistan",
+        "UAE",
+    },
 }
+
+# Feature-level VoIP / calling restrictions (messaging still works)
+VIBER_PARTIAL = {"Egypt", "Oman", "Qatar", "UAE"}
 
 
 def main() -> int:
@@ -35,9 +48,12 @@ def main() -> int:
     line = {row["country"]: row for row in rows if row["platform"] == "LINE"}
     viber = {row["country"]: row for row in rows if row["platform"] == "Viber"}
     assert line["UAE"]["type"] == "partial"
-    assert viber["UAE"]["type"] == "partial"
+    assert {c for c, r in viber.items() if r["type"] == "partial"} == VIBER_PARTIAL
     assert all(line[country]["type"] == "complete" for country in EXPECTED["LINE"] - {"UAE"})
-    assert all(viber[country]["type"] == "complete" for country in EXPECTED["Viber"] - {"UAE"})
+    assert all(
+        viber[country]["type"] == "complete"
+        for country in EXPECTED["Viber"] - VIBER_PARTIAL
+    )
 
     index = INDEX_PATH.read_text(encoding="utf-8")
     for platform, colour in (("LINE", "#00C300"), ("Viber", "#7360F2")):
