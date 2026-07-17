@@ -24,7 +24,10 @@ Notes:
   internet (see `HEAVY_CENSORSHIP` in `index.html`).
 - Wrap fields containing commas or quotes in `"double quotes"` (standard CSV).
 - A country may appear twice for one platform with different `type`s
-  (e.g. X in Malaysia has both a partial Grok block and an age rule).
+  (e.g. X in Turkey has both a partial Grok block and an age rule). On the
+  homepage those rows render as **one country label** with diagonal stripes
+  mixing both type colours (purple age + orange partial), and a combined
+  case file listing each restriction.
 - New platforms need an icon + brand colour added to `PLATFORM_ICONS` /
   `PLATFORM_COLORS` in `index.html`; otherwise the row renders without a logo.
 - **New country names need an ISO mapping** in

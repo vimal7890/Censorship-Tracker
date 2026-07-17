@@ -457,6 +457,15 @@
         .country-tag.complete { background: var(--secondary); }
         .country-tag.partial { background: var(--alert-orange); }
         .country-tag.age { background: var(--age-purple); }
+        /* Multiple restriction types for one country (e.g. Turkey X: partial + age) */
+        .country-tag.multi {
+            background: repeating-linear-gradient(
+                135deg,
+                var(--age-purple) 0 5px,
+                var(--alert-orange) 5px 10px
+            );
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+        }
         .country-tag:hover { filter: brightness(1.1); }
         .country-tag:active { transform: translateY(1px); }
         .country-tag.open { outline: 2px solid var(--primary); outline-offset: 1px; }
@@ -471,7 +480,36 @@
         }
         .more-info.partial-info { border-left-color: var(--alert-orange); }
         .more-info.age-info { border-left-color: var(--age-purple); }
+        .more-info.multi-info {
+            border-left: 4px solid transparent;
+            border-image: repeating-linear-gradient(
+                180deg,
+                var(--age-purple) 0 8px,
+                var(--alert-orange) 8px 16px
+            ) 1;
+            border-top: 1px solid var(--primary);
+            border-right: 1px solid var(--primary);
+            border-bottom: 1px solid var(--primary);
+        }
         .more-info.expanded { display: block; }
+        .more-info-head .status-multi { display: inline-flex; flex-wrap: wrap; gap: 0 4px; align-items: center; }
+        .more-info-head .status-join { color: #9ca3af; }
+        .multi-case + .multi-case {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--outline-variant);
+        }
+        .multi-case .case-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .multi-case .case-type.partial { color: var(--alert-orange); }
+        .multi-case .case-type.age { color: var(--age-purple); }
+        .multi-case .case-type.complete { color: var(--secondary); }
         .more-info-head {
             background: var(--redaction-black);
             color: var(--paper-white);
@@ -542,6 +580,13 @@
         .swatch.complete { background: var(--secondary); }
         .swatch.partial { background: var(--alert-orange); }
         .swatch.age { background: var(--age-purple); }
+        .swatch.multi {
+            background: repeating-linear-gradient(
+                135deg,
+                var(--age-purple) 0 3px,
+                var(--alert-orange) 3px 6px
+            );
+        }
 
         /* Actions row (mobile export lives here too) */
         .actions { margin-top: 20px; }
@@ -1062,7 +1107,8 @@
                 <b>Tip:</b> Tap any country or territory to reveal the case file.
                 <span class="swatch complete"></span> Complete ban &nbsp;
                 <span class="swatch partial"></span> Partial &nbsp;
-                <span class="swatch age"></span> Age verification.
+                <span class="swatch age"></span> Age verification &nbsp;
+                <span class="swatch multi"></span> Multiple types (partial + age on one label).
             </div>
 
             <!-- By the numbers -->
@@ -1263,12 +1309,66 @@
             document.getElementById('navCountAge').textContent = ageBans;
         }
 
+        // Stable id fragment for a platform + country (+ optional type).
+        function banDomId(platformName, countryName, banType) {
+            const base = `${platformName}-${countryName}${banType ? '-' + banType : ''}`;
+            return base.replace(/\s+/g, '-');
+        }
+
+        // Diagonal stripe fill for a multi-type country tag (any type combo).
+        function multiTagBackground(types) {
+            // Prefer age→partial so the chip reads as purple with orange stripes.
+            const stripeOrder = { age: 0, partial: 1, complete: 2 };
+            const ordered = [...types].sort((a, b) => (stripeOrder[a] ?? 9) - (stripeOrder[b] ?? 9));
+            const colors = ordered.map(t => TYPE_COLORS[t] || '#6c757d');
+            const w = 5;
+            const stops = colors.flatMap((c, i) => [`${c} ${i * w}px`, `${c} ${(i + 1) * w}px`]);
+            return `repeating-linear-gradient(135deg, ${stops.join(', ')})`;
+        }
+
+        // Group filtered bans by country so dual restrictions share one chip.
+        function groupBansByCountry(bans) {
+            const order = TYPE_ORDER;
+            const map = new Map();
+            bans.forEach(ban => {
+                if (!map.has(ban.country)) map.set(ban.country, []);
+                map.get(ban.country).push(ban);
+            });
+            return [...map.entries()].map(([country, items]) => {
+                items.sort((a, b) => (order[a.type] ?? 9) - (order[b.type] ?? 9)
+                    || String(a.since).localeCompare(String(b.since)));
+                return { country, bans: items, types: items.map(b => b.type) };
+            });
+        }
+
+        // Resolve the case-file panel for a platform/country/type click.
+        // Multi-type countries share one combined panel; per-type alias nodes
+        // redirect dossier deep-links to that panel.
+        function resolveInfoPanel(platformName, countryName, types) {
+            const joined = types.join('-');
+            const direct = document.getElementById(`info-${banDomId(platformName, countryName, joined)}`);
+            if (direct && direct.classList.contains('more-info')) return direct;
+            for (const t of types) {
+                const node = document.getElementById(`info-${banDomId(platformName, countryName, t)}`);
+                if (!node) continue;
+                if (node.dataset.multiFor) {
+                    const multi = document.getElementById(node.dataset.multiFor);
+                    if (multi) return multi;
+                }
+                if (node.classList.contains('more-info')) return node;
+            }
+            return null;
+        }
+
         function toggleMoreInfo(platformName, countryName, banType) {
-            const infoId = `info-${platformName}-${countryName}-${banType}`.replace(/\s+/g, '-');
-            const tagId = `tag-${platformName}-${countryName}-${banType}`.replace(/\s+/g, '-');
-            const infoElement = document.getElementById(infoId);
-            const tagElement = document.getElementById(tagId);
-            const wasOpen = infoElement && infoElement.classList.contains('expanded');
+            // banType may be a single type or several joined with "|" (multi-type chip).
+            const types = String(banType).split('|').filter(Boolean);
+            const countryPrefix = banDomId(platformName, countryName);
+            const tagElement = document.getElementById(`tag-${banDomId(platformName, countryName, types.join('-'))}`)
+                || document.querySelector(`[id^="tag-${countryPrefix}"]`);
+            const infoElement = resolveInfoPanel(platformName, countryName, types);
+            const wasOpen = (infoElement && infoElement.classList.contains('expanded'))
+                || (tagElement && tagElement.classList.contains('open'));
             document.querySelectorAll('.more-info.expanded').forEach(el => el.classList.remove('expanded'));
             document.querySelectorAll('.country-tag.open').forEach(el => el.classList.remove('open'));
             if (!wasOpen) {
@@ -1309,7 +1409,8 @@
             const TYPE_INFO_CLASS = { complete: '', partial: 'partial-info', age: 'age-info' };
 
             grid.innerHTML = filteredData.map(platform => {
-                const countryCount = new Set(platform.bannedIn.map(ban => ban.country)).size;
+                const groups = groupBansByCountry(platform.bannedIn);
+                const countryCount = groups.length;
                 return `
                 <article class="platform-row">
                     <div class="platform-meta">
@@ -1318,15 +1419,27 @@
                     </div>
                     <div class="platform-body">
                         <div class="chip-row">
-                            ${platform.bannedIn.map(ban => {
-                                const tagId = `tag-${platform.name}-${ban.country}-${ban.type}`.replace(/\s+/g, '-');
-                                return `<button id="${tagId}" class="country-tag ${ban.type}" onclick="toggleMoreInfo('${platform.name}', '${ban.country}', '${ban.type}')">${ban.country}</button>`;
+                            ${groups.map(g => {
+                                const multi = g.types.length > 1;
+                                const typeKey = g.types.join('-');
+                                const typeArg = g.types.join('|');
+                                const tagId = `tag-${banDomId(platform.name, g.country, typeKey)}`;
+                                const cls = multi ? 'multi' : g.types[0];
+                                const style = multi ? ` style="background:${multiTagBackground(g.types)}"` : '';
+                                const title = multi
+                                    ? g.types.map(t => TYPE_LABELS[t] || t).join(' + ')
+                                    : (TYPE_LABELS[g.types[0]] || '');
+                                return `<button id="${tagId}" class="country-tag ${cls}"${style} title="${title}" onclick="toggleMoreInfo('${platform.name}', '${g.country}', '${typeArg}')">${g.country}</button>`;
                             }).join('')}
                         </div>
-                        ${platform.bannedIn.map(ban => {
-                            const infoId = `info-${platform.name}-${ban.country}-${ban.type}`.replace(/\s+/g, '-');
-                            const sourceRef = ban.source ? `<a class="source-ref" href="${ban.source}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>` : '';
-                            return `
+                        ${groups.map(g => {
+                            const multi = g.types.length > 1;
+                            const typeKey = g.types.join('-');
+                            const infoId = `info-${banDomId(platform.name, g.country, typeKey)}`;
+                            if (!multi) {
+                                const ban = g.bans[0];
+                                const sourceRef = ban.source ? `<a class="source-ref" href="${ban.source}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>` : '';
+                                return `
                                 <div id="${infoId}" class="more-info ${TYPE_INFO_CLASS[ban.type] || ''}">
                                     <div class="more-info-head">
                                         <span>${ban.country}</span>
@@ -1336,8 +1449,32 @@
                                         <div class="since">Since: ${ban.since}</div>
                                         ${ban.moreInfo ? `<p>${ban.moreInfo}${sourceRef}</p>` : `<p><em>No additional information available.</em>${sourceRef}</p>`}
                                     </div>
-                                </div>
-                            `;
+                                </div>`;
+                            }
+                            const statusSpans = g.types.map(t =>
+                                `<span class="status-${t}">${TYPE_LABELS[t] || t}</span>`
+                            ).join('<span class="status-join"> + </span>');
+                            const cases = g.bans.map(ban => {
+                                const sourceRef = ban.source ? `<a class="source-ref" href="${ban.source}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>` : '';
+                                return `
+                                    <div class="multi-case">
+                                        <div class="case-type ${ban.type}">${TYPE_LABELS[ban.type] || ban.type}</div>
+                                        <div class="since">Since: ${ban.since}</div>
+                                        ${ban.moreInfo ? `<p>${ban.moreInfo}${sourceRef}</p>` : `<p><em>No additional information available.</em>${sourceRef}</p>`}
+                                    </div>`;
+                            }).join('');
+                            // Per-type alias ids so dossier / recent-row deep-links still resolve.
+                            const aliases = g.types.map(t =>
+                                `<div id="info-${banDomId(platform.name, g.country, t)}" class="more-info-alias" hidden data-multi-for="${infoId}"></div>`
+                            ).join('');
+                            return `
+                                <div id="${infoId}" class="more-info multi-info">
+                                    <div class="more-info-head">
+                                        <span>${g.country}</span>
+                                        <span class="status-multi">${statusSpans}</span>
+                                    </div>
+                                    <div class="more-info-body">${cases}</div>
+                                </div>${aliases}`;
                         }).join('')}
                     </div>
                 </article>
@@ -1533,10 +1670,11 @@
                 searchBox.value = '';
                 renderPlatforms();
             }
-            const suffix = `${platform}-${country}-${type}`.replace(/\s+/g, '-');
-            const info = document.getElementById(`info-${suffix}`);
+            const info = resolveInfoPanel(platform, country, [type]);
+            const countryPrefix = banDomId(platform, country);
+            const tag = document.querySelector(`[id^="tag-${countryPrefix}"]`);
             if (info && !info.classList.contains('expanded')) toggleMoreInfo(platform, country, type);
-            const anchor = document.getElementById(`tag-${suffix}`) || info;
+            const anchor = tag || info;
             if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
