@@ -1526,9 +1526,10 @@
                 }
                 const rec = countryIndex.get(iso);
                 const subnational = window.isSubnational(ban.country);
+                const note = window.subnationalNote ? window.subnationalNote(ban.country) : '';
                 if (subnational) rec.subnationalNames.add(ban.country);
                 else if (!rec.display) rec.display = ban.country;
-                rec.entries.push({ platform: platform.name, country: ban.country, since: ban.since, type: ban.type, source: ban.source, subnational });
+                rec.entries.push({ platform: platform.name, country: ban.country, since: ban.since, type: ban.type, source: ban.source, subnational, note });
                 rec.counts[ban.type] = (rec.counts[ban.type] || 0) + 1;
             }));
             countryIndex.forEach(rec => {
@@ -1657,7 +1658,7 @@
                     <span class="d-type ${e.type}">${TYPE_LABEL[e.type] || e.type}</span>
                     <span class="d-platform">${escapeHTML(e.platform)}</span>
                     <span class="d-since">Since: ${escapeHTML(e.since)}</span>
-                    ${e.subnational ? `<span class="d-state">${escapeHTML(e.country)} — state law</span>` : ''}
+                    ${e.subnational ? `<span class="d-state">${escapeHTML(e.country)}${e.note ? ` — ${escapeHTML(e.note)}` : ' — state law'}</span>` : ''}
                     ${e.source ? `<a class="d-src" href="${escapeHTML(e.source)}" target="_blank" rel="noopener">[${sourceIndex.get(e.source)}]</a>` : ''}
                 </div>`).join('');
             const panel = document.getElementById('countryDossier');

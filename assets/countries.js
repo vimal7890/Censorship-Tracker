@@ -9,6 +9,7 @@
 //    with `subnational: true`; they are aggregated under the parent on the map.
 window.COUNTRY_TO_ISO = {
     "Afghanistan": "AF",
+    "Algeria": "DZ",
     "Australia": "AU",
     "Brazil": "BR",
     "China": "CN",
@@ -19,15 +20,20 @@ window.COUNTRY_TO_ISO = {
     "India": "IN",
     "Indonesia": "ID",
     "Iran": "IR",
+    "Italy": "IT",
     "Jordan": "JO",
     "Kyrgyzstan": "KG",
+    "Lebanon": "LB",
     "Malaysia": "MY",
     "Myanmar": "MM",
     "Nepal": "NP",
+    "Netherlands": "NL",
+    "New Zealand": "NZ",
     "North Korea": "KP",
     "Pakistan": "PK",
     "Qatar": "QA",
     "Russia": "RU",
+    "Saudi Arabia": "SA",
     "Somalia": "SO",
     "South Korea": "KR",
     "Sudan": "SD",
@@ -36,6 +42,8 @@ window.COUNTRY_TO_ISO = {
     "Turkmenistan": "TM",
     "UAE": "AE",
     "UK": "GB",
+    "Ukraine": "UA",
+    "United States": "US",
     "Uzbekistan": "UZ",
     "Vietnam": "VN",
 
@@ -51,8 +59,11 @@ window.COUNTRY_TO_ISO = {
     "Portugal": "PT",
     "Canada": "CA",
 
-    // Subnational jurisdictions (aggregate under parent country on the map)
-    "Mississippi": { iso: "US", subnational: true, note: "U.S. state law" }
+    // Subnational / non-sovereign territories (aggregate under parent on the map).
+    // Crimea has no separate path in world.svg — GitHub trade-control rows are
+    // shown under Ukraine, with the territory name retained in the dossier.
+    "Mississippi": { iso: "US", subnational: true, note: "U.S. state law" },
+    "Crimea": { iso: "UA", subnational: true, note: "Disputed territory / trade controls" }
 };
 
 // Resolve a display name to its ISO code (or undefined).
@@ -65,4 +76,10 @@ window.isoOf = function (name) {
 window.isSubnational = function (name) {
     const v = window.COUNTRY_TO_ISO[name];
     return !!(v && v.subnational);
+};
+
+// Optional note for a subnational / non-sovereign territory entry.
+window.subnationalNote = function (name) {
+    const v = window.COUNTRY_TO_ISO[name];
+    return (v && v.note) || '';
 };
