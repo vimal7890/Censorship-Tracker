@@ -1116,8 +1116,8 @@
                 <h2 class="section-title" id="stats-heading">By the Numbers</h2>
                 <div class="dash-grid">
                     <figure class="dash-panel wide" id="chartPlatforms"></figure>
+                    <figure class="dash-panel wide" id="chartYears"></figure>
                     <figure class="dash-panel" id="chartTypes"></figure>
-                    <figure class="dash-panel" id="chartYears"></figure>
                     <div class="dash-panel" id="topTerritories"></div>
                 </div>
             </section>
@@ -1833,7 +1833,8 @@
             const years = [];
             for (let y = sortedYears[0]; y <= sortedYears[sortedYears.length - 1]; y++) years.push(y);
             const max = Math.max(...byYear.values());
-            const W = 360, H = 190, bottom = 24, top = 14;
+            const minBw = 34;
+            const W = Math.max(720, years.length * minBw), H = 210, bottom = 26, top = 16;
             const bw = W / years.length;
             const nowYear = new Date().getUTCFullYear();
             let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="New restrictions per year">`;
@@ -1850,9 +1851,9 @@
                     } else {
                         svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="#1e1e1e"></rect>`;
                     }
-                    svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${(yy - 3).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#6c757d">${v}</text>`;
+                    svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${(yy - 4).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6c757d">${v}</text>`;
                 }
-                svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${H - 10}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#6c757d">${y}</text>`;
+                svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${H - 9}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#1e1e1e">${y}</text>`;
             });
             svg += `<line x1="0" y1="${H - bottom + 4}" x2="${W}" y2="${H - bottom + 4}" stroke="#1e1e1e" stroke-width="1"></line></svg>`;
             document.getElementById('chartYears').innerHTML =
