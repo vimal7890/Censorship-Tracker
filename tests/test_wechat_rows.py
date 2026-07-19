@@ -17,16 +17,16 @@ def main() -> int:
         rows = [row for row in csv.DictReader(f) if row["platform"] == "WeChat"]
 
     by_country = {row["country"]: row for row in rows}
-    assert set(by_country) == {"Canada", "China", "India", "Taiwan"}, by_country
+    # WeChat is a domestic Chinese platform and fully legal there — no China row.
+    assert "China" not in by_country, "WeChat is legal in China; do not list a China restriction"
+    assert set(by_country) == {"India", "North Korea", "Turkmenistan"}, by_country
     assert by_country["India"]["type"] == "complete"
-    assert all(by_country[country]["type"] == "partial" for country in ("Canada", "China", "Taiwan"))
+    assert by_country["North Korea"]["type"] == "complete"
+    assert by_country["Turkmenistan"]["type"] == "complete"
     assert not any(row["type"] == "age" for row in rows), "real-name checks are not age checks"
+    assert not any(row["type"] == "partial" for row in rows), "no partial WeChat rows expected"
 
     assert "pib.gov.in" in by_country["India"]["source"]
-    assert "canada.ca" in by_country["Canada"]["source"]
-    assert "cac.gov.cn" in by_country["China"]["source"]
-    assert "taipeitimes.com" in by_country["Taiwan"]["source"]
-    assert "not a blanket WeChat-specific ID-based age-verification rule" in by_country["China"]["more_info"]
 
     index = INDEX_PATH.read_text(encoding="utf-8")
     assert '"WeChat":' in index, "WeChat needs a rendered platform icon"
