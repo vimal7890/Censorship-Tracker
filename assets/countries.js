@@ -66,6 +66,7 @@ window.COUNTRY_TO_ISO = {
     // Crimea has no separate path in world.svg — GitHub trade-control rows are
     // shown under Ukraine, with the territory name retained in the dossier.
     "Mississippi": { iso: "US", subnational: true, note: "U.S. state law" },
+    "Texas": { iso: "US", subnational: true, note: "U.S. state law" },
     "Crimea": { iso: "UA", subnational: true, note: "Disputed territory / trade controls" }
 };
 
