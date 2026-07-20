@@ -39,7 +39,7 @@
       "country": "Russia",
       "severity": "restricted",
       "since": "2017 law; sharp escalation 2025–2026",
-      "summary": "VPNs that refuse to cooperate with Roskomnadzor’s blocked-sites registry face nationwide blocking. Authorities have blocked hundreds of VPN services and popular protocols, banned VPN advertising, and expanded fines for accessing 'extremist' content even via VPN.",
+      "summary": "VPNs that refuse to cooperate with Roskomnadzor’s blocked-sites registry face nationwide blocking; the 2025–2026 crackdown has blocked hundreds of VPN services and popular protocols, banned VPN advertising, and pressed operators and platforms to detect and throttle VPN traffic. A law passed in July 2025 (in force that September) also fines intentional searches for 'extremist' material — explicitly including via VPN — raising liability for ordinary circumvention.",
       "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-internet-freedom-protection-day"
     },
     {
@@ -87,22 +87,6 @@
   ],
   "legislative_efforts": [
     {
-      "jurisdiction": "Russia",
-      "level": "national",
-      "title": "Roskomnadzor / Digital Ministry VPN crackdown (2025–2026)",
-      "status": "Active escalation — hundreds of VPNs blocked; protocol filters; ad ban; user fines",
-      "summary": "Through 2025–2026 Roskomnadzor reported blocking large numbers of VPN services and popular protocols. Advertising VPNs was banned; users can be fined for searching 'extremist' material even via VPN. Early 2026 reporting described pressure on operators and platforms to further throttle or detect VPN use.",
-      "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-internet-freedom-protection-day"
-    },
-    {
-      "jurisdiction": "Russia (State Duma)",
-      "level": "national",
-      "title": "Fines for searching extremist content including via VPN",
-      "status": "Passed July 2025; in force from Sept 2025",
-      "summary": "Parliament approved and Putin signed rules fining intentional online searches for materials labelled extremist, explicitly including access through VPNs—raising liability for ordinary circumvention of blocked sites.",
-      "source": "https://www.reuters.com/world/russia-passes-law-punishing-searches-extremist-content-2025-07-22/"
-    },
-    {
       "jurisdiction": "European Union (debate)",
       "level": "supranational",
       "title": "Age-verification rollout and VPN-circumvention debate",
@@ -120,5 +104,153 @@
       "summary": "Wisconsin saw a high-profile 2025 attempt (SB 130) that would have constrained VPN use in connection with age-restricted material—an early serious state-level VPN restriction effort that did not become law after political pushback.",
       "source": "https://windscribe.com/blog/are-vpns-legal/"
     }
-  ]
+  ],
+  "app_matrix": {
+    "as_of": "July 2026",
+    "countries": [
+      {
+        "code": "CN",
+        "name": "China",
+        "abbr": "CHN",
+        "default": { "ios": "x", "play": "n", "web": "x" },
+        "note": "All VPN apps removed from the China App Store since July 2017; Google Play does not operate in mainland China; provider sites blocked by the Great Firewall.",
+        "sources": [
+          "https://techcrunch.com/2017/07/29/apple-removes-vpn-apps-from-the-app-store-in-china/",
+          "https://www.techtransparencyproject.org/articles/apple-censoring-its-app-store-china"
+        ]
+      },
+      {
+        "code": "RU",
+        "name": "Russia",
+        "abbr": "RUS",
+        "default": { "ios": "n", "play": "n", "web": "p" },
+        "note": "Apple has removed 100+ VPN apps from the Russian App Store since July 2024 and Roskomnadzor blocks roughly 200 VPN services; only individually verified cases are marked removed/blocked here, the rest show as no data or partial.",
+        "sources": [
+          "https://techcrunch.com/2024/07/08/apple-removes-vpn-apps-at-request-of-russian-authorities-say-app-makers/",
+          "https://www.theregister.com/2024/09/26/apple_vpn_russia/",
+          "https://www.tomsguide.com/computing/vpns/google-is-resisting-russian-censorship-demands-but-top-vpns-have-been-removed-from-the-play-store",
+          "https://meduza.io/en/news/2021/09/03/roskomnadzor-blocks-six-vpn-services-including-top-rated-providers"
+        ]
+      },
+      {
+        "code": "IR",
+        "name": "Iran",
+        "abbr": "IRN",
+        "default": { "ios": "n", "play": "p", "web": "x" },
+        "note": "Apple operates no Iranian storefront (US sanctions; store access IP-blocked since 2018). Free VPN apps remain on Google Play but deep-packet inspection disrupts use; provider sites are filtered.",
+        "sources": [
+          "https://9to5mac.com/2018/03/15/apple-bans-iran-app-store-access/"
+        ]
+      },
+      {
+        "code": "MM",
+        "name": "Myanmar",
+        "abbr": "MMR",
+        "default": { "ios": "p", "play": "p", "web": "x" },
+        "note": "Apps are not delisted, but VPN downloads and traffic have been blocked at network level since 30 May 2024 and possession risks arrest; provider sites blocked.",
+        "sources": [
+          "https://www.accessnow.org/myanmar-vpn-ban/",
+          "https://github.com/net4people/bbs/issues/369"
+        ]
+      },
+      {
+        "code": "TM",
+        "name": "Turkmenistan",
+        "abbr": "TKM",
+        "default": { "ios": "p", "play": "p", "web": "x" },
+        "note": "The state-monopoly ISP filters circumvention tools and blocks most foreign VPN sites; store access is unreliable and uncertified encryption is banned.",
+        "sources": [
+          "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
+        ]
+      },
+      {
+        "code": "BY",
+        "name": "Belarus",
+        "abbr": "BLR",
+        "default": { "ios": "a", "play": "a", "web": "p" },
+        "note": "No store delistings reported; major VPN providers blocked at network level per May 2024 reports, with no public per-provider list.",
+        "sources": [
+          "https://freedomhouse.org/country/belarus/freedom-net/2024"
+        ]
+      },
+      {
+        "code": "PK",
+        "name": "Pakistan",
+        "abbr": "PAK",
+        "default": { "ios": "a", "play": "a", "web": "p" },
+        "note": "Apps remain in stores; unregistered VPN services have been blocked under CVAS-Data licensing since 22 December 2025 — providers named in reporting are marked blocked.",
+        "sources": [
+          "https://www.techradar.com/vpn/vpn-privacy-security/pakistan-begins-blocking-unregistered-vpn-apps-and-this-popular-service-is-among-the-casualties",
+          "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules"
+        ]
+      },
+      {
+        "code": "AE",
+        "name": "United Arab Emirates",
+        "abbr": "UAE",
+        "default": { "ios": "a", "play": "a", "web": "p" },
+        "note": "Apps remain in stores; some provider sites and protocols are disrupted via DPI and VPN misuse is criminalised.",
+        "sources": [
+          "https://www.comparitech.com/blog/vpn-privacy/vpn-etisalat/"
+        ]
+      },
+      {
+        "code": "OM",
+        "name": "Oman",
+        "abbr": "OMN",
+        "default": { "ios": "a", "play": "a", "web": "p" },
+        "note": "Apps remain in stores; unapproved encryption is restricted and some provider sites are blocked.",
+        "sources": [
+          "https://proprivacy.com/guides/are-vpns-legal"
+        ]
+      },
+      {
+        "code": "IQ",
+        "name": "Iraq",
+        "abbr": "IRQ",
+        "default": { "ios": "a", "play": "a", "web": "n" },
+        "note": "The 2014 blanket ban is largely unenforced today; no current per-provider documentation of store or website blocks.",
+        "sources": [
+          "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
+        ]
+      },
+      {
+        "code": "IN",
+        "name": "India",
+        "abbr": "IND",
+        "default": { "ios": "a", "play": "a", "web": "a" },
+        "note": "No blocks — providers withdrew Indian servers over CERT-In logging rules, but apps and websites remain available.",
+        "sources": [
+          "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data"
+        ]
+      },
+      {
+        "code": "KP",
+        "name": "North Korea",
+        "abbr": "PRK",
+        "default": { "ios": "n", "play": "n", "web": "n" },
+        "note": "No public access to the global internet or foreign app stores.",
+        "sources": [
+          "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
+        ]
+      }
+    ],
+    "apps": [
+      { "name": "NordVPN", "overrides": { "RU": { "ios": "x", "play": "x", "web": "x" }, "PK": { "web": "x" } } },
+      { "name": "ExpressVPN", "overrides": { "RU": { "ios": "x", "play": "x", "web": "x" }, "PK": { "web": "x" } } },
+      { "name": "Surfshark", "overrides": { "PK": { "web": "x" } } },
+      { "name": "Proton VPN", "overrides": { "RU": { "ios": "x", "play": "a", "web": "x" }, "PK": { "web": "x" } } },
+      { "name": "CyberGhost", "overrides": { "RU": { "ios": "x", "play": "x" } } },
+      { "name": "Private Internet Access", "overrides": { "RU": { "ios": "x", "play": "x" } } },
+      { "name": "IPVanish", "overrides": { "RU": { "web": "x" } } },
+      { "name": "Hotspot Shield", "overrides": {} },
+      { "name": "TunnelBear", "overrides": {} },
+      { "name": "Windscribe", "overrides": {} },
+      { "name": "Mullvad", "overrides": { "RU": { "play": "a" }, "PK": { "web": "x" } } },
+      { "name": "hide.me", "overrides": {} },
+      { "name": "VyprVPN", "overrides": { "RU": { "web": "x" } } },
+      { "name": "Turbo VPN", "overrides": {} },
+      { "name": "Psiphon", "overrides": { "PK": { "web": "x" } } }
+    ]
+  }
 }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
     <title>VPN Tracker</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -10,18 +11,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="assets/theme.js"></script>
     <style>
         :root {
+            color-scheme: light;
             --paper-white: #ffffff;
             --background: #f9f9f9;
+            --surface-container-low: #f3f3f3;
             --primary: #1e1e1e;
             --redaction-black: #000000;
             --secondary: #b6152e;
             --alert-orange: #fd7e14;
             --age-purple: #7d3ac1;
+            --tertiary-green: #35b14d;
             --muted-gray: #6c757d;
             --on-surface-variant: #444748;
             --outline-variant: #c4c7c7;
+            --ticker-muted: #d0d0d0;
+        }
+
+        /* ---------- Dark theme ----------
+           Two identical variable blocks: [data-theme="dark"] is the manual
+           toggle, the media query is system auto (no override stored). */
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --paper-white: #161616;
+            --background: #0d0d0d;
+            --surface-container-low: #212121;
+            --primary: #e8e8e8;
+            --redaction-black: #f2f2f2;
+            --secondary: #ef4358;
+            --alert-orange: #fd7e14;
+            --age-purple: #a465e6;
+            --tertiary-green: #3fc75a;
+            --muted-gray: #98a0a7;
+            --on-surface-variant: #c2c5c7;
+            --outline-variant: #3a3d3e;
+            --ticker-muted: #4f4f4f;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                --paper-white: #161616;
+                --background: #0d0d0d;
+                --surface-container-low: #212121;
+                --primary: #e8e8e8;
+                --redaction-black: #f2f2f2;
+                --secondary: #ef4358;
+                --alert-orange: #fd7e14;
+                --age-purple: #a465e6;
+                --tertiary-green: #3fc75a;
+                --muted-gray: #98a0a7;
+                --on-surface-variant: #c2c5c7;
+                --outline-variant: #3a3d3e;
+                --ticker-muted: #4f4f4f;
+            }
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { -webkit-text-size-adjust: 100%; }
@@ -39,6 +83,7 @@
             background: var(--paper-white); border-bottom: 2px solid var(--primary);
         }
         .topbar-inner {
+            position: relative;
             max-width: 1200px; margin: 0 auto; display: flex;
             flex-direction: column; align-items: flex-start;
             justify-content: space-between; padding: 14px 16px; gap: 10px;
@@ -47,6 +92,26 @@
             font-family: 'Chivo', sans-serif; font-weight: 900; font-size: 20px;
             line-height: 1.1; letter-spacing: -0.02em; text-transform: uppercase;
             color: var(--redaction-black);
+            padding-right: 30px; /* clear the floating theme toggle on mobile */
+        }
+        /* ---------- Theme toggle (moon/sun) ---------- */
+        .theme-toggle {
+            position: absolute; /* mobile: floats top-right, out of the flow */
+            top: 10px; right: 12px;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 34px; height: 34px; flex-shrink: 0; padding: 0;
+            border: 1px solid var(--primary);
+            background: var(--paper-white); color: var(--primary);
+            cursor: pointer; transition: background 0.12s, color 0.12s;
+        }
+        .theme-toggle:hover { background: var(--primary); color: var(--paper-white); }
+        .theme-toggle svg { width: 16px; height: 16px; display: block; }
+        .theme-toggle .icon-sun { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+            :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
         }
         .topnav {
             display: flex; align-items: center; gap: 10px; width: 100%;
@@ -66,7 +131,7 @@
         .ticker-inner {
             max-width: 1200px; margin: 0 auto; padding: 8px 16px;
             font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
-            letter-spacing: 0.08em; text-transform: uppercase; color: #d0d0d0;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--ticker-muted);
             display: flex; flex-wrap: wrap; gap: 8px 20px;
         }
         .ticker-inner b { color: var(--paper-white); }
@@ -120,7 +185,7 @@
             vertical-align: top; color: var(--on-surface-variant);
         }
         .vpn-table tr:last-child td { border-bottom: none; }
-        .vpn-table tr:hover td { background: #f3f3f3; }
+        .vpn-table tr:hover td { background: var(--surface-container-low); }
         .vpn-table .country {
             font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 15px;
             text-transform: uppercase; color: var(--primary); white-space: nowrap;
@@ -130,8 +195,8 @@
             letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px;
             display: inline-block; white-space: nowrap;
         }
-        .badge.complete { background: var(--secondary); color: #fff; }
-        .badge.restricted { background: var(--alert-orange); color: #fff; }
+        .badge.complete { background: var(--secondary); color: var(--paper-white); }
+        .badge.restricted { background: var(--alert-orange); color: var(--paper-white); }
         .since {
             font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-gray);
             line-height: 1.4; max-width: 13em;
@@ -144,6 +209,96 @@
             border-bottom: 1px solid transparent; padding-bottom: 1px;
         }
         .src a:hover { border-bottom-color: var(--secondary); }
+
+        /* ---------- App / website availability matrix ----------
+           Rows are VPN providers, columns are restricted countries, and each
+           cell holds three segments read left→right: iOS, Google Play, website.
+           The provider column is sticky so the grid stays legible while the
+           country columns scroll horizontally on narrow screens. */
+        .mx-key {
+            display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;
+            font-size: 13px; color: var(--on-surface-variant);
+        }
+        .mx-key b { color: var(--primary); }
+        .mx-key-demo { display: inline-flex; gap: 2px; margin-right: 8px; vertical-align: middle; }
+        .mx-key-statuses { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+        .mx-key-statuses span { display: inline-flex; align-items: center; gap: 6px; }
+
+        .matrix-wrap {
+            overflow-x: auto; -webkit-overflow-scrolling: touch;
+            border: 2px solid var(--primary); background: var(--paper-white);
+        }
+        table.matrix-table { border-collapse: collapse; width: 100%; }
+        .matrix-table thead th {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase; text-align: center;
+            background: var(--redaction-black); color: var(--paper-white);
+            padding: 10px 8px; white-space: nowrap;
+            border-bottom: 2px solid var(--primary);
+        }
+        .matrix-table thead th abbr {
+            text-decoration: none; border-bottom: 1px dotted currentColor; cursor: help;
+        }
+        .mx-app-head, .mx-app {
+            position: sticky; left: 0; text-align: left;
+            white-space: nowrap; border-right: 2px solid var(--primary);
+        }
+        .mx-app-head { z-index: 3; }
+        .mx-app {
+            z-index: 2;
+            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 14px;
+            text-transform: uppercase; color: var(--primary);
+            background: var(--paper-white); padding: 8px 14px 8px 12px;
+        }
+        .matrix-table tbody tr { border-bottom: 1px solid var(--outline-variant); }
+        .matrix-table tbody tr:last-child { border-bottom: none; }
+        .matrix-table tbody tr:hover td,
+        .matrix-table tbody tr:hover .mx-app { background: var(--surface-container-low); }
+        .mx-cell { padding: 8px 6px; text-align: center; white-space: nowrap; }
+        .mx-seg {
+            display: inline-block; width: 11px; height: 16px; margin: 0 1px;
+            vertical-align: middle; border: 1px solid var(--primary);
+        }
+        .mx-seg.ok { background: var(--tertiary-green); }
+        .mx-seg.blocked { background: var(--secondary); }
+        .mx-seg.partial { background: var(--alert-orange); }
+        .mx-seg.na { background: transparent; border-style: dashed; opacity: 0.55; }
+
+        .mx-details {
+            margin-top: 14px; border: 1px solid var(--outline-variant);
+            background: var(--paper-white);
+        }
+        .mx-details summary {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary);
+            padding: 10px 14px; cursor: pointer;
+        }
+        .mx-details summary:hover { background: var(--surface-container-low); }
+        .mx-notes { padding: 0 14px 12px; }
+        .mx-note {
+            font-size: 13px; line-height: 1.5; color: var(--on-surface-variant);
+            padding: 8px 0; border-top: 1px dashed var(--outline-variant);
+        }
+        .mx-note b {
+            font-family: 'Chivo', sans-serif; font-weight: 800; text-transform: uppercase;
+            color: var(--primary);
+        }
+        .mx-note a {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
+            color: var(--secondary); text-decoration: none; margin-left: 6px;
+        }
+        .mx-note a:hover { text-decoration: underline; }
+
+        /* Narrow screens: cap the sticky provider column so several country
+           columns stay in view instead of one and a half. */
+        @media (max-width: 767px) {
+            .mx-app-head, .mx-app { width: 104px; max-width: 104px; white-space: normal; }
+            .mx-app { font-size: 11px; line-height: 1.25; padding: 8px 8px 8px 10px; }
+            .mx-app-head { font-size: 10px; letter-spacing: 0.04em; }
+            .matrix-table thead th { padding: 9px 5px; font-size: 10px; }
+            .mx-cell { padding: 7px 5px; }
+            .mx-seg { width: 9px; height: 15px; }
+        }
 
         .effort-list { display: flex; flex-direction: column; gap: 14px; }
         .effort-card {
@@ -192,8 +347,9 @@
             .topbar-inner, .ticker-inner, .footer-inner, .main-wrap { padding-left: 40px; padding-right: 40px; }
             .topbar-inner { flex-direction: row; align-items: center; padding-top: 16px; padding-bottom: 16px; }
             .topnav { width: auto; justify-content: flex-end; }
+            .theme-toggle { position: static; margin-left: 4px; }
             .main-wrap { padding-top: 40px; }
-            .wordmark { font-size: 26px; white-space: nowrap; }
+            .wordmark { font-size: 26px; white-space: nowrap; padding-right: 0; }
             .page-title { font-size: 48px; }
             .vpn-table th, .vpn-table td { padding: 14px 20px; }
             .summary { min-width: 28em; }
@@ -210,6 +366,10 @@
                     <a href="/age-verification" class="nav-link">Age Verification</a>
                     <a href="/vpn-tracker" class="nav-link active">VPN</a>
                 </div>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
             </nav>
         </div>
     </header>
@@ -218,6 +378,7 @@
         <div class="ticker-inner">
             <span>&#9632;&nbsp; VPN Restriction Index</span>
             <span>Regimes listed: <b id="tickerRestrictions">--</b></span>
+            <span>Apps tracked: <b id="tickerApps">--</b></span>
             <span>Legislative efforts: <b id="tickerEfforts">--</b></span>
             <span>Data As Of: <b>JUL 2026</b></span>
         </div>
@@ -251,6 +412,33 @@
             </div>
         </section>
 
+        <section class="section" id="matrix-section" aria-labelledby="matrix-heading">
+            <h2 class="section-title" id="matrix-heading">App store &amp; website availability</h2>
+            <p class="page-sub" style="margin-bottom: 16px;">The 15 most widely used consumer VPN providers, checked against every jurisdiction in the table above: whether the app has been pulled from the iOS App Store or Google Play, and whether the provider&rsquo;s own website is reachable. Where a country blocks circumvention tools wholesale rather than by name, the country default applies &mdash; per-provider evidence overrides it.</p>
+            <div class="mx-key">
+                <div>
+                    <span class="mx-key-demo" aria-hidden="true"><i class="mx-seg ok"></i><i class="mx-seg blocked"></i><i class="mx-seg partial"></i></span>
+                    Each cell reads left &rarr; right: <b>iOS App Store</b> &middot; <b>Google Play</b> &middot; <b>Website</b>
+                </div>
+                <div class="mx-key-statuses">
+                    <span><i class="mx-seg ok" aria-hidden="true"></i> Available</span>
+                    <span><i class="mx-seg blocked" aria-hidden="true"></i> Removed / blocked</span>
+                    <span><i class="mx-seg partial" aria-hidden="true"></i> Disrupted / restricted</span>
+                    <span><i class="mx-seg na" aria-hidden="true"></i> No storefront / not applicable</span>
+                </div>
+            </div>
+            <div class="matrix-wrap">
+                <table class="matrix-table" id="appMatrix">
+                    <thead id="appMatrixHead"></thead>
+                    <tbody id="appMatrixBody"></tbody>
+                </table>
+            </div>
+            <details class="mx-details">
+                <summary>Country notes &amp; sources</summary>
+                <div class="mx-notes" id="matrixNotes"></div>
+            </details>
+        </section>
+
         <section class="section" id="legislative-section" aria-labelledby="legislative-heading">
             <h2 class="section-title" id="legislative-heading">Current Legislative Efforts</h2>
             <p class="page-sub" style="margin-bottom: 16px;">New or pending national and regional efforts to ban, criminalise, or further restrict VPNs — distinct from long-settled complete bans in the table above where possible.</p>
@@ -269,6 +457,11 @@
     </footer>
 
     <script>
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>"']/g, c =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
         function severityLabel(s) {
             return s === 'complete' ? 'Complete ban' : 'Heavy restriction';
         }
@@ -317,6 +510,59 @@
             }).join('');
         }
 
+        /* ================= App / website availability matrix ================= */
+
+        const MX_STATUS = {
+            a: { cls: 'ok', label: 'Available' },
+            x: { cls: 'blocked', label: 'Removed / blocked' },
+            p: { cls: 'partial', label: 'Disrupted / restricted' },
+            n: { cls: 'na', label: 'No storefront / not applicable' }
+        };
+        const MX_PLATFORMS = [
+            { key: 'ios', label: 'iOS App Store' },
+            { key: 'play', label: 'Google Play' },
+            { key: 'web', label: 'Website' }
+        ];
+
+        // A provider inherits the country default unless that country has a
+        // per-provider override (i.e. it was named in reporting).
+        function mxStatus(app, country, platform) {
+            const ov = (app.overrides || {})[country.code] || {};
+            return ov[platform] || country.default[platform];
+        }
+
+        function renderAppMatrix(matrix) {
+            if (!matrix || !matrix.countries || !matrix.apps) return;
+            const { countries, apps } = matrix;
+
+            document.getElementById('appMatrixHead').innerHTML =
+                '<tr><th class="mx-app-head" scope="col">VPN app</th>' +
+                countries.map(c =>
+                    `<th scope="col"><abbr title="${escapeHTML(c.name)}">${escapeHTML(c.abbr)}</abbr></th>`
+                ).join('') + '</tr>';
+
+            document.getElementById('appMatrixBody').innerHTML = apps.map(app => {
+                const cells = countries.map(c => {
+                    const segs = MX_PLATFORMS.map(p => {
+                        const meta = MX_STATUS[mxStatus(app, c, p.key)] || MX_STATUS.n;
+                        return `<i class="mx-seg ${meta.cls}" title="${escapeHTML(app.name)} — ${escapeHTML(c.name)} — ${p.label}: ${meta.label}"></i>`;
+                    }).join('');
+                    const summary = MX_PLATFORMS.map(p =>
+                        `${p.label}: ${(MX_STATUS[mxStatus(app, c, p.key)] || MX_STATUS.n).label}`
+                    ).join('; ');
+                    return `<td class="mx-cell" aria-label="${escapeHTML(c.name)} — ${escapeHTML(summary)}">${segs}</td>`;
+                }).join('');
+                return `<tr><th scope="row" class="mx-app">${escapeHTML(app.name)}</th>${cells}</tr>`;
+            }).join('');
+
+            document.getElementById('matrixNotes').innerHTML = countries.map(c => {
+                const srcs = (c.sources || []).map((s, i) =>
+                    `<a href="${escapeHTML(s)}" target="_blank" rel="noopener noreferrer">[${i + 1}]</a>`
+                ).join('');
+                return `<div class="mx-note"><b>${escapeHTML(c.name)}</b> — ${escapeHTML(c.note)}${srcs}</div>`;
+            }).join('');
+        }
+
         async function loadData() {
             try {
                 const res = await fetch('vpn_data.json', { cache: 'no-store' });
@@ -327,7 +573,10 @@
                 const rejected = data.rejected_efforts || [];
                 document.getElementById('tickerRestrictions').textContent = String(restrictions.length);
                 document.getElementById('tickerEfforts').textContent = String(efforts.length);
+                document.getElementById('tickerApps').textContent =
+                    String((data.app_matrix && data.app_matrix.apps || []).length);
                 renderTable(restrictions);
+                renderAppMatrix(data.app_matrix);
                 renderEfforts(efforts, 'effortList');
                 renderEfforts(rejected, 'rejectedList', 'rejected');
             } catch (err) {

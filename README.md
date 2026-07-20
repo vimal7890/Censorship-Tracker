@@ -36,6 +36,43 @@ Notes:
   jurisdictions (e.g. US states) map to their parent country with
   `{ iso: "US", subnational: true }` and are aggregated under it on the map.
 
+## VPN app availability matrix
+
+`app_matrix` in [`vpn_data.json`](vpn_data.json) drives the grid under the VPN
+restrictions table: 15 providers (rows) × the restricted countries (columns),
+each cell showing three segments — iOS App Store, Google Play, website.
+
+Status codes are `a` available, `x` removed/blocked, `p` disrupted/restricted,
+`n` no storefront or not applicable. Each country carries a `default` for all
+three platforms plus a sourced `note`; a provider only needs an entry in
+`overrides` when reporting names it specifically, keyed by the country `code`:
+
+```json
+{ "name": "NordVPN", "overrides": { "RU": { "ios": "x", "play": "x", "web": "x" } } }
+```
+
+Country defaults exist because most regimes block circumvention tools
+wholesale rather than provider-by-provider — the default expresses that
+baseline, and per-provider evidence overrides it. `tests/test_vpn_tracker.py`
+enforces that the matrix covers exactly the countries in `restrictions`, that
+every status code is valid, and that no `overrides` key names an unknown
+country.
+
+## Dark mode
+
+All three pages follow the system light/dark preference automatically and have
+a moon/sun toggle in the top bar ([`assets/theme.js`](assets/theme.js)). A
+manual choice is saved to `localStorage` and shared across pages; picking the
+theme that matches the system again returns to auto-sync. Styling rules:
+
+- Every colour must be a CSS variable — no hardcoded hex in rules or in
+  JS-generated SVG (use `var(--…)` in `fill`/`stroke` attributes).
+- Dark values live in **two identical blocks** per page: `[data-theme="dark"]`
+  (manual toggle) and the `prefers-color-scheme: dark` media query (system
+  auto). Keep them in sync when adding a variable.
+- Near-black brand colours in `PLATFORM_COLORS` are auto-swapped to the
+  foreground colour in dark mode (`isDarkBrand` in `index.html`).
+
 ## World map & derived sections
 
 The homepage renders three derived views of the same CSV (no separate data):
