@@ -117,14 +117,6 @@
       "status": "Policy discussion — no EU-wide VPN ban enacted",
       "summary": "As member states and the Commission push privacy-preserving age checks for social platforms, some officials have floated measures against tools that bypass age gates (including VPNs). No pan-EU criminal ban is in force; proposals remain contested.",
       "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
-    },
-    {
-      "jurisdiction": "Myanmar",
-      "level": "national",
-      "title": "Cybersecurity Law VPN service prohibition",
-      "status": "In force from 1 January 2025 for providers",
-      "summary": "The junta’s cybersecurity legislation prohibits establishing or providing VPN services, with penalties extending to distributors and users accessing restricted content—part of a broader crackdown on circumvention after the coup.",
-      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
     }
   ],
   "rejected_efforts": [
