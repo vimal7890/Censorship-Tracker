@@ -2037,22 +2037,17 @@
             rows.forEach((r, i) => {
                 const y = i * rowH + 4;
                 svg += `<text x="${labelW - 10}" y="${y + 12}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--primary)">${escapeHTML(r.name)}</text>`;
-                // Every segment shows the platform's full breakdown, with the
-                // hovered type marked, rather than just its own count.
                 const platform = censorshipData.find(p => p.name === r.name);
-                const where = platform ? [...new Set(platform.bannedIn.map(b => b.country))] : [];
-                const tipFor = hovered => registerTip(
-                    `<div class="tt-head">${escapeHTML(r.name)}</div>` +
-                    ['complete', 'partial', 'age'].map(t => {
-                        if (!r[t]) return '';
-                        const name = t === 'complete' ? 'Complete bans' : t === 'partial' ? 'Partial bans' : 'Age verification';
-                        const mark = t === hovered ? ' style="color:var(--primary);font-weight:700"' : '';
-                        return `<div class="tt-row"${mark}><span><i class="tt-swatch ${t}"></i>${name}</span><b>${r[t]}</b></div>`;
-                    }).join('') +
-                    `<div class="tt-row tt-total"><span>Total territories</span><span>${r.total}</span></div>` +
-                    `<div class="tt-foot">${escapeHTML(where.slice(0, 6).join(', '))}` +
-                    `${where.length > 6 ? ` +${where.length - 6} more` : ''}</div>`
-                );
+                const tipFor = hovered => {
+                    const name = hovered === 'complete' ? 'Complete bans' : hovered === 'partial' ? 'Partial bans' : 'Age verification';
+                    const where = platform ? [...new Set(platform.bannedIn.filter(b => b.type === hovered).map(b => b.country))] : [];
+                    return registerTip(
+                        `<div class="tt-head">${escapeHTML(r.name)}</div>` +
+                        `<div class="tt-row"><span><i class="tt-swatch ${hovered}"></i>${name}</span><b>${r[hovered]}</b></div>` +
+                        `<div class="tt-foot">${escapeHTML(where.slice(0, 6).join(', '))}` +
+                        `${where.length > 6 ? ` +${where.length - 6} more` : ''}</div>`
+                    );
+                };
                 let x = labelW;
                 ['complete', 'partial', 'age'].forEach(t => {
                     if (!r[t]) return;
