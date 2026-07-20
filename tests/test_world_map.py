@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """World map integrity: every country in the data has an ISO mapping, and
-every mapped ISO code exists as a path id in assets/world.svg."""
+every mapped ISO code is drawable — either as a path id in assets/world.svg or,
+for microstates too small to have an outline, as a MICROSTATE_LATLON marker
+that projects inside the viewBox."""
 import csv
 import json
+import math
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -26,6 +29,32 @@ def parse_country_map(js_text):
     for name, iso in re.findall(r'"([^"]+)":\s*\{\s*iso:\s*"([A-Z]{2})"', js_text):
         mapping[name] = iso
     return mapping
+
+
+def parse_microstates(js_text):
+    """Extract MICROSTATE_LATLON (ISO -> [lon, lat]) from assets/countries.js."""
+    block = re.search(r"MICROSTATE_LATLON\s*=\s*\{(.*?)\}\s*;", js_text, re.S)
+    if not block:
+        return {}
+    return {
+        iso: (float(lon), float(lat))
+        for iso, lon, lat in re.findall(
+            r"([A-Z]{2}):\s*\[\s*(-?[\d.]+)\s*,\s*(-?[\d.]+)\s*\]", block.group(1)
+        )
+    }
+
+
+def project(lon, lat):
+    """Mirror of window.projectLonLat in assets/countries.js."""
+    k, x0, y0 = 160.58734, 475.1309, 463.6362
+    while lon < -169.52:
+        lon += 360
+    while lon > 190.48:
+        lon -= 360
+    return (
+        k * math.radians(lon) + x0,
+        y0 - k * math.log(math.tan(math.pi / 4 + math.radians(lat) / 2)),
+    )
 
 
 def main():
@@ -54,8 +83,28 @@ def main():
     missing = sorted(c for c in vpn_countries if c not in mapping)
     assert not missing, f"vpn_data countries missing from COUNTRY_TO_ISO: {missing}"
 
-    unmapped = sorted(iso for iso in set(mapping.values()) if iso not in id_set)
-    assert not unmapped, f"ISO codes not present in world.svg: {unmapped}"
+    # Microstates have no outline in world.svg and are drawn as markers from
+    # MICROSTATE_LATLON instead, so they satisfy the "is mappable" requirement
+    # without being path ids.
+    micro = parse_microstates(COUNTRIES_JS.read_text(encoding="utf-8"))
+    assert micro, "MICROSTATE_LATLON not found in countries.js"
+
+    clash = sorted(set(micro) & id_set)
+    assert not clash, f"microstates that already have a world.svg path: {clash}"
+
+    for iso, (lon, lat) in sorted(micro.items()):
+        assert -180 <= lon <= 180, f"{iso}: longitude {lon} out of range"
+        assert -85 <= lat <= 85, f"{iso}: latitude {lat} out of range"
+        x, y = project(lon, lat)
+        assert 0 <= x <= 1009, f"{iso}: projected x={x:.1f} outside the viewBox"
+        assert 0 <= y <= 651, f"{iso}: projected y={y:.1f} outside the viewBox"
+
+    mappable = id_set | set(micro)
+    unmapped = sorted(iso for iso in set(mapping.values()) if iso not in mappable)
+    assert not unmapped, (
+        f"ISO codes with neither a world.svg path nor MICROSTATE_LATLON "
+        f"coordinates: {unmapped}"
+    )
 
     index_html = INDEX.read_text(encoding="utf-8")
     for needle in (

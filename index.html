@@ -780,6 +780,18 @@
         #worldMap .has-data.b3 { fill: var(--map-b3); }
         #worldMap .has-data.b4 { fill: var(--map-b4); }
         #worldMap .has-data.subnational { fill: url(#hatchPattern); }
+        /* Microstate markers stand in for territories too small to have an
+           outline. The visible dot is a few pixels across once the map scales
+           down on a phone, so an invisible disc carries the tap target and the
+           ring keeps the dot legible against land and ocean alike. */
+        #worldMap .microstate-hit { fill: transparent; stroke: none; }
+        #worldMap .microstate-face { fill: inherit; stroke: var(--paper-white); stroke-width: 1; }
+        #worldMap .has-data:hover .microstate-face,
+        #worldMap .has-data:focus .microstate-face,
+        #worldMap .has-data.selected .microstate-face {
+            stroke: var(--secondary);
+            stroke-width: 1.4;
+        }
         #worldMap .has-data:hover,
         #worldMap .has-data:focus,
         #worldMap .has-data.selected {
@@ -1858,6 +1870,33 @@
                 '<pattern id="hatchPattern" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">' +
                 '<rect width="6" height="6" fill="var(--surface-container-low)"></rect>' +
                 '<line x1="1" y1="0" x2="1" y2="6" stroke="var(--primary)" stroke-width="2"></line></pattern>');
+
+            // Microstates and small island nations have no path in world.svg,
+            // so draw a marker for any tracked territory that is missing one.
+            // Only territories that carry data get a marker: a full set of
+            // ~30 dots would crowd the Caribbean into an unreadable smear.
+            const SVG_NS = 'http://www.w3.org/2000/svg';
+            const markers = document.createElementNS(SVG_NS, 'g');
+            markers.setAttribute('class', 'microstate-layer');
+            svgRoot.appendChild(markers);
+            countryIndex.forEach((rec, iso) => {
+                if (svgRoot.querySelector('#' + iso)) return;
+                const lonLat = (window.MICROSTATE_LATLON || {})[iso];
+                if (!lonLat) return;
+                const { x, y } = window.projectLonLat(lonLat[0], lonLat[1]);
+                const marker = document.createElementNS(SVG_NS, 'g');
+                marker.setAttribute('id', iso);
+                marker.setAttribute('class', 'land microstate');
+                for (const [r, cls] of [[9, 'microstate-hit'], [3.4, 'microstate-face']]) {
+                    const c = document.createElementNS(SVG_NS, 'circle');
+                    c.setAttribute('cx', x.toFixed(2));
+                    c.setAttribute('cy', y.toFixed(2));
+                    c.setAttribute('r', String(r));
+                    c.setAttribute('class', cls);
+                    marker.appendChild(c);
+                }
+                markers.appendChild(marker);
+            });
 
             countryIndex.forEach((rec, iso) => {
                 const el = svgRoot.querySelector('#' + iso);

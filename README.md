@@ -33,7 +33,10 @@ Notes:
   `PLATFORM_COLORS` in `index.html`; otherwise the row renders without a logo.
 - **New country names need an ISO mapping** in
   [`assets/countries.js`](assets/countries.js) (`COUNTRY_TO_ISO`) so the world
-  map can shade them — `tests/test_world_map.py` enforces this. Subnational
+  map can shade them — `tests/test_world_map.py` enforces this, and also
+  enforces that the ISO code is actually drawable: either a path in
+  `world.svg` or a `MICROSTATE_LATLON` entry that projects inside the viewBox.
+  Subnational
   jurisdictions (e.g. US states) map to their parent country with
   `{ iso: "US", subnational: true }` and are aggregated under it on the map.
 
@@ -106,6 +109,15 @@ The homepage renders three derived views of the same CSV (no separate data):
   fetched and inlined at runtime, then shaded by restriction count. Clicking
   a territory opens its dossier; if the SVG can't load, a country-card list
   renders instead.
+  - The outline drops anything under roughly 1,000 km², so microstates and
+    small island nations (Malta, Singapore, Bahrain, the Caribbean and Pacific
+    states, Hong Kong, Macau) have **no path to shade**. Those are listed in
+    `MICROSTATE_LATLON` in [`assets/countries.js`](assets/countries.js) as
+    `[longitude, latitude]` and drawn at runtime as circular markers, projected
+    with the same Mercator as the SVG (`window.projectLonLat`). A marker is
+    only drawn for a territory that actually has data — rendering all of them
+    would crowd the eastern Caribbean into an unreadable smear. To add one,
+    put its coordinates in that table; no change to `world.svg` is needed.
 - **By the Numbers** — hand-rolled SVG charts (per-platform stacked bars,
   type breakdown, per-year chart, top territories).
 - **Most Recent Restrictions** — latest dated entries, parsed leniently from
