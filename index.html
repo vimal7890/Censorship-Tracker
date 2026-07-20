@@ -530,7 +530,11 @@
         .platform-name {
             display: flex;
             align-items: center;
-            gap: 10px;
+            /* Long names (Odnoklassniki, DuckDuckGo) leave no room for the
+               non-shrinkable logo in the 220px meta column, so let it drop to
+               its own line rather than spill into the country tags. */
+            flex-wrap: wrap;
+            gap: 6px 10px;
             font-family: 'Chivo', sans-serif;
             font-weight: 800;
             font-size: 26px;
