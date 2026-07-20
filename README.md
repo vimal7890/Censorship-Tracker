@@ -20,6 +20,17 @@ update the tracker. One row per platform+country entry:
 Notes:
 
 - **AI Agents (Gemini, Claude, ChatGPT, etc.):** Do not use Wikipedia as a source unless it already exists as a label for blocked sites.
+- **Never invent a source URL, and never auto-replace one.** A batch of rows
+  once cited plausible-looking articles — right domain, right slug style — that
+  had never existed; the Wayback Machine had no snapshot of any of them. A
+  later script "repaired" them with the first search-engine hit for keywords
+  guessed from the URL, which attached real but unrelated pages to the claims.
+  A source must be a page you have actually opened, that actually supports the
+  specific row it sits on. If you cannot find one, leave the row alone and say
+  so — an unsourced claim is recoverable, a confidently wrong citation is not.
+- Run [`verify_links.py`](verify_links.py) after editing sources. It reports
+  dead URLs, Wikipedia citations and leftover search-engine placeholders, with
+  the rows that cite each, and exits non-zero if any are found.
 - **China, North Korea and Turkmenistan** rows can leave `more_info` empty —
   the page substitutes a shared boilerplate about their default-restricted
   internet (see `HEAVY_CENSORSHIP` in `index.html`).
