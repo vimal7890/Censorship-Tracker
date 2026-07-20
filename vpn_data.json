@@ -216,7 +216,7 @@
         "code": "IN",
         "name": "India",
         "default": "available",
-        "note": "VPNs are legal and connections work normally. CERT-In's 2022 directive forced providers to log subscriber data for five years; ExpressVPN, NordVPN, Surfshark, Proton VPN and hide.me responded by pulling their physical Indian servers while still serving Indian users from virtual ones abroad. IPVanish went further and left the market outright — it removed its apps from the Indian app stores and stopped accepting Indian signups.",
+        "note": "VPNs are legal and connections work normally. CERT-In's 2022 directive forced providers to log subscriber data for five years; ExpressVPN, NordVPN, Surfshark, Proton VPN and hide.me responded by pulling their physical Indian servers while still serving Indian users from virtual ones abroad. In early 2025 the Indian Cyber Crime Coordination Centre (I4C) escalated enforcement and ordered Apple and Google to remove non-compliant VPN apps from their Indian storefronts — hide.me was among those pulled from both the App Store and Google Play. IPVanish went further and left the market outright, removing its apps and stopping Indian signups.",
         "sources": [
           "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data",
           "https://www.techradar.com/vpn/vpn-services/vpns-are-disappearing-from-indias-app-stores-and-a-2022-law-may-be-the-culprit"
@@ -284,7 +284,9 @@
       },
       {
         "name": "hide.me",
-        "overrides": {}
+        "overrides": {
+          "IN": "restricted"
+        }
       },
       {
         "name": "VyprVPN",
