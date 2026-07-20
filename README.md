@@ -19,6 +19,7 @@ update the tracker. One row per platform+country entry:
 
 Notes:
 
+- **AI Agents (Gemini, Claude, ChatGPT, etc.):** Do not use Wikipedia as a source unless it already exists as a label for blocked sites.
 - **China, North Korea and Turkmenistan** rows can leave `more_info` empty —
   the page substitutes a shared boilerplate about their default-restricted
   internet (see `HEAVY_CENSORSHIP` in `index.html`).
