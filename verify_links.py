@@ -35,7 +35,11 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 
 # Bot protection, rate limiting and "no HEAD please" all mean the page exists.
-ALIVE = {"200", "301", "302", "303", "307", "308", "401", "403", "429"}
+# 406 is in here because Time and Newsweek answer scripted requests with it:
+# time.com/4642916 returns 406 to curl but has a Wayback snapshot from November
+# 2025, so treating it as dead would resurrect exactly the false positives that
+# caused the bad substitutions in the first place.
+ALIVE = {"200", "301", "302", "303", "307", "308", "401", "403", "406", "429"}
 
 
 def collect() -> dict[str, list[str]]:
