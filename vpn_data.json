@@ -95,14 +95,6 @@
       "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-internet-freedom-protection-day"
     },
     {
-      "jurisdiction": "United Kingdom",
-      "level": "national",
-      "title": "House of Lords amendment to restrict VPN provision to under-18s",
-      "status": "Lords vote Jan 2026; Commons resistance / government consultation ongoing",
-      "summary": "Peers backed Amendment 92 to the Children’s Wellbeing and Schools Bill to prohibit providing VPN services to UK children within 12 months, aimed at stopping age-gate circumvention under the Online Safety Act. The Commons and government have resisted a blanket approach while running consultations on online safety and VPNs.",
-      "source": "https://www.techradar.com/vpn/vpn-privacy-security/uk-government-targets-vpns-in-new-online-safety-consultation-as-lords-vote-for-ban"
-    },
-    {
       "jurisdiction": "Russia (State Duma)",
       "level": "national",
       "title": "Fines for searching extremist content including via VPN",
