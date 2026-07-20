@@ -1,310 +1,310 @@
 {
-  "restrictions": [
-    {
-      "country": "North Korea",
-      "severity": "complete",
-      "since": "Longstanding",
-      "summary": "Ordinary citizens have no open access to the global internet. Unauthorised circumvention tools, including VPNs, are illegal and can carry extreme penalties under the regime's information-control laws.",
-      "source": "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
-    },
-    {
-      "country": "Turkmenistan",
-      "severity": "complete",
-      "since": "2010s–present (intensified 2019+)",
-      "summary": "The state-monopoly ISP blocks the vast majority of foreign services and actively suppresses VPNs and other circumvention tools. Applicants for home internet have been required to pledge not to use bypass tools; unauthorised use can bring multi-year sentences.",
-      "source": "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
-    },
-    {
-      "country": "Belarus",
-      "severity": "complete",
-      "since": "2015+",
-      "summary": "Belarusian law restricts anonymisers and VPN services used to access blocked resources. Authorities have blocked major commercial VPN providers and pursued users and operators of circumvention tools, especially around protests.",
-      "source": "https://freedomhouse.org/country/belarus/freedom-net/2024"
-    },
-    {
-      "country": "Iraq",
-      "severity": "complete",
-      "since": "2014+",
-      "summary": "Iraq imposed a blanket ban on VPN use during the fight against ISIS; the prohibition has largely remained in force with periodic enforcement against providers and users of unauthorised tunnels.",
-      "source": "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
-    },
-    {
-      "country": "China",
-      "severity": "restricted",
-      "since": "2017 MIIT cleanup onwards",
-      "summary": "Unlicensed commercial VPNs for public cross-border access are illegal. Only government-approved / licensed international channels (typically enterprise) are permitted; unauthorised consumer VPNs face blocking, provider crackdowns, and occasional user penalties.",
-      "source": "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/"
-    },
-    {
-      "country": "Russia",
-      "severity": "restricted",
-      "since": "2017 law; sharp escalation 2025–2026",
-      "summary": "VPNs that refuse to cooperate with Roskomnadzor’s blocked-sites registry face nationwide blocking; the 2025–2026 crackdown has blocked hundreds of VPN services and popular protocols, banned VPN advertising, and pressed operators and platforms to detect and throttle VPN traffic. A law passed in July 2025 (in force that September) also fines intentional searches for 'extremist' material — explicitly including via VPN — raising liability for ordinary circumvention.",
-      "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-internet-freedom-protection-day"
-    },
-    {
-      "country": "Iran",
-      "severity": "restricted",
-      "since": "2024 criminalisation of unauthorised VPNs",
-      "summary": "Iran criminalised use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
-      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
-    },
-    {
-      "country": "Myanmar",
-      "severity": "complete",
-      "since": "Functional ban from May 2024; Cybersecurity Law in force 1 Jan 2025",
-      "summary": "What began as a functional VPN blackout in May 2024 was codified into law on 1 January 2025: the junta's Cybersecurity Law makes unauthorised VPN installation or use a criminal offence, punishable by up to six months in prison and fines of roughly $480–4,750, with no lawful route for ordinary citizens to obtain an approved VPN. Soldiers and police conduct random phone searches for VPN apps and make arrests on the spot, and the law's extraterritorial clause even threatens Myanmar nationals living abroad.",
-      "source": "https://www.rfa.org/english/myanmar/2025/01/02/cybersecurity-law-vpn/"
-    },
-    {
-      "country": "United Arab Emirates",
-      "severity": "restricted",
-      "since": "Ongoing (cybercrime decrees)",
-      "summary": "Owning a VPN is not a blanket crime, but using one to access blocked services (e.g. unlicensed VoIP, gambling, other restricted content) is a serious offence under UAE cybercrime rules, with very large fines reported for misuse.",
-      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
-    },
-    {
-      "country": "Oman",
-      "severity": "restricted",
-      "since": "Telecom encryption rules",
-      "summary": "Unauthorised use of encryption tools without TRA permission is prohibited. Enforcement focuses on misuse to reach blocked services; TRA has publicly warned against unapproved VPN products.",
-      "source": "https://proprivacy.com/guides/are-vpns-legal"
-    },
-    {
-      "country": "India",
-      "severity": "restricted",
-      "since": "CERT-In Direction No. V — in force 28 June 2022",
-      "summary": "VPNs stay legal to use, but a 2022 CERT-In cybersecurity directive orders providers running servers in India to log extensive customer data — validated subscriber names, hire dates, IP addresses allotted and used, emails, physical addresses and contact numbers — and retain it for at least five years, even after an account is closed. Rather than comply with the logging mandate, major providers such as ExpressVPN, NordVPN and Surfshark pulled their physical servers out of the country and now route Indian IPs through virtual servers hosted abroad.",
-      "source": "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data"
-    },
-    {
-      "country": "Pakistan",
-      "severity": "restricted",
-      "since": "PTA registration drive from 2024; CVAS-Data licensing from Nov 2025",
-      "summary": "Pakistan is corralling VPNs into a state licensing regime rather than banning them outright. From late 2024 the PTA pressed users and firms to register VPNs and began blocking 'unregistered' or 'illegal' services — after the Council of Islamic Ideology branded unregulated VPNs un-Islamic — and in November 2025 it started issuing Class VAS (CVAS-Data) licences to approved local providers. Only licensed, PTA-overseen VPNs are sanctioned, while unlicensed apps face intermittent blocking and disruption.",
-      "source": "https://www.techradar.com/vpn/vpn-privacy-security/pakistans-quest-to-regulate-vpn-usage-is-still-up-and-running"
-    }
-  ],
-  "legislative_efforts": [
-    {
-      "jurisdiction": "European Union (debate)",
-      "level": "supranational",
-      "title": "Age-verification rollout and VPN-circumvention debate",
-      "status": "Policy discussion — no EU-wide VPN ban enacted",
-      "summary": "As member states and the Commission push privacy-preserving age checks for social platforms, some officials have floated measures against tools that bypass age gates (including VPNs). No pan-EU criminal ban is in force; proposals remain contested.",
-      "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
-    }
-  ],
-  "rejected_efforts": [
-    {
-      "jurisdiction": "United States — Wisconsin",
-      "level": "subnational",
-      "title": "SB 130 and related state efforts targeting VPN use for restricted content",
-      "status": "Rejected — advanced in legislature then failed amid civil-liberties backlash",
-      "summary": "Wisconsin saw a high-profile 2025 attempt (SB 130) that would have constrained VPN use in connection with age-restricted material—an early serious state-level VPN restriction effort that did not become law after political pushback.",
-      "source": "https://windscribe.com/blog/are-vpns-legal/"
-    }
-  ],
-  "app_matrix": {
-    "as_of": "July 2026",
-    "countries": [
-      {
-        "code": "CN",
-        "name": "China",
-        "default": "blocked",
-        "note": "Unlicensed commercial VPNs are illegal and the Great Firewall blocks their traffic outright. Only government-licensed international channels, typically enterprise leased lines, are lawful.",
-        "sources": [
-          "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/",
-          "https://techcrunch.com/2017/07/29/apple-removes-vpn-apps-from-the-app-store-in-china/"
-        ]
-      },
-      {
-        "code": "RU",
-        "name": "Russia",
-        "default": "blocked",
-        "note": "Roskomnadzor has restricted roughly 440 VPN services as of January 2026 and filters the protocols they rely on; providers that refuse to connect to the blocked-sites registry are cut off nationwide and advertising a VPN is banned. Obfuscated and purpose-built circumvention tools still carry millions of Russian users.",
-        "sources": [
-          "https://www.techradar.com/vpn/vpn-services/russias-battle-against-vpns-is-entering-a-new-phase-heres-what-to-expect-in-2026",
-          "https://meduza.io/en/news/2021/09/03/roskomnadzor-blocks-six-vpn-services-including-top-rated-providers"
-        ]
-      },
-      {
-        "code": "IR",
-        "name": "Iran",
-        "default": "blocked",
-        "note": "Using a non-approved VPN was criminalised in 2024 and deep-packet inspection actively disrupts common tunnelling protocols, most aggressively during protests. US sanctions compound this from the other direction: US-based providers are legally barred from selling to Iranians at all. Purpose-built circumvention tools remain the exception that still reaches users here.",
-        "sources": [
-          "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check",
-          "https://www.stimson.org/2024/the-vpn-epidemic-in-iran-a-digital-plague-amid-global-isolation/"
-        ]
-      },
-      {
-        "code": "MM",
-        "name": "Myanmar",
-        "default": "blocked",
-        "note": "VPN traffic has been filtered at network level since 30 May 2024 using Chinese-supplied inspection equipment, and the Cybersecurity Law in force from 1 January 2025 makes unauthorised VPN use a criminal offence. Soldiers search phones for VPN apps and fine or arrest on the spot.",
-        "sources": [
-          "https://www.accessnow.org/myanmar-vpn-ban/",
-          "https://www.rfa.org/english/myanmar/2025/01/02/cybersecurity-law-vpn/"
-        ]
-      },
-      {
-        "code": "TM",
-        "name": "Turkmenistan",
-        "default": "blocked",
-        "note": "The state-monopoly ISP filters circumvention traffic and blocks most foreign VPN infrastructure. Uncertified encryption is banned outright, and home-internet applicants have been required to pledge never to use bypass tools.",
-        "sources": [
-          "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
-        ]
-      },
-      {
-        "code": "KP",
-        "name": "North Korea",
-        "default": "blocked",
-        "note": "There is no public access to the global internet, so no consumer VPN service is reachable in the first place. Ordinary citizens use the closed domestic Kwangmyong network.",
-        "sources": [
-          "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
-        ]
-      },
-      {
-        "code": "PK",
-        "name": "Pakistan",
-        "default": "restricted",
-        "note": "The apps stay in both stores — the blocking happens at connection level. Since 22 December 2025 the PTA has blocked unregistered VPNs under its CVAS-Data licensing regime, so only licensed, interception-capable providers are sanctioned. Services named in reporting are marked blocked; the rest inherit this baseline.",
-        "sources": [
-          "https://www.techradar.com/vpn/vpn-privacy-security/pakistan-begins-blocking-unregistered-vpn-apps-and-this-popular-service-is-among-the-casualties",
-          "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules"
-        ]
-      },
-      {
-        "code": "BY",
-        "name": "Belarus",
-        "default": "restricted",
-        "note": "Law restricts anonymisers and VPNs used to reach blocked resources, and the state telecom blocked major commercial providers at network level in May 2024. No per-provider list is published, so this baseline applies across the board.",
-        "sources": [
-          "https://freedomhouse.org/country/belarus/freedom-net/2024"
-        ]
-      },
-      {
-        "code": "AE",
-        "name": "United Arab Emirates",
-        "default": "restricted",
-        "note": "Holding a VPN is not itself a crime and the apps remain available, but deep-packet inspection degrades tunnels and using one to reach blocked services — unlicensed VoIP, gambling, restricted content — carries very large fines.",
-        "sources": [
-          "https://www.comparitech.com/blog/vpn-privacy/vpn-etisalat/"
-        ]
-      },
-      {
-        "code": "OM",
-        "name": "Oman",
-        "default": "restricted",
-        "note": "Using encryption tools without TRA permission is prohibited and the regulator has warned publicly against unapproved VPN products. Enforcement centres on using them to reach blocked services rather than on possession.",
-        "sources": [
-          "https://proprivacy.com/guides/are-vpns-legal"
-        ]
-      },
-      {
-        "code": "IQ",
-        "name": "Iraq",
-        "default": "available",
-        "note": "The blanket ban imposed in 2014 during the fight against ISIS is largely unenforced today, with no current per-provider blocking documented.",
-        "sources": [
-          "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
-        ]
-      },
-      {
-        "code": "IN",
-        "name": "India",
-        "default": "available",
-        "note": "VPNs are legal and connections work normally. CERT-In's 2022 directive forced providers to log subscriber data for five years; ExpressVPN, NordVPN, Surfshark, Proton VPN and hide.me responded by pulling their physical Indian servers while still serving Indian users from virtual ones abroad. In early 2025 the Indian Cyber Crime Coordination Centre (I4C) escalated enforcement and ordered Apple and Google to remove non-compliant VPN apps from their Indian storefronts — hide.me was among those pulled from both the App Store and Google Play. IPVanish went further and left the market outright, removing its apps and stopping Indian signups.",
-        "sources": [
-          "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data",
-          "https://www.techradar.com/vpn/vpn-services/vpns-are-disappearing-from-indias-app-stores-and-a-2022-law-may-be-the-culprit"
-        ]
-      }
+    "restrictions": [
+        {
+            "country": "North Korea",
+            "severity": "complete",
+            "since": "Longstanding",
+            "summary": "Ordinary citizens have no open access to the global internet. Unauthorised circumvention tools, including VPNs, are illegal and can carry extreme penalties under the regime's information-control laws.",
+            "source": "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
+        },
+        {
+            "country": "Turkmenistan",
+            "severity": "complete",
+            "since": "2010s–present (intensified 2019+)",
+            "summary": "The state-monopoly ISP blocks the vast majority of foreign services and actively suppresses VPNs and other circumvention tools. Applicants for home internet have been required to pledge not to use bypass tools; unauthorised use can bring multi-year sentences.",
+            "source": "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
+        },
+        {
+            "country": "Belarus",
+            "severity": "complete",
+            "since": "2015+",
+            "summary": "Belarusian law restricts anonymisers and VPN services used to access blocked resources. Authorities have blocked major commercial VPN providers and pursued users and operators of circumvention tools, especially around protests.",
+            "source": "https://freedomhouse.org/country/belarus/freedom-net/2024"
+        },
+        {
+            "country": "Iraq",
+            "severity": "complete",
+            "since": "2014+",
+            "summary": "Iraq imposed a blanket ban on VPN use during the fight against ISIS; the prohibition has largely remained in force with periodic enforcement against providers and users of unauthorised tunnels.",
+            "source": "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
+        },
+        {
+            "country": "China",
+            "severity": "restricted",
+            "since": "2017 MIIT cleanup onwards",
+            "summary": "Unlicensed commercial VPNs for public cross-border access are illegal. Only government-approved / licensed international channels (typically enterprise) are permitted; unauthorised consumer VPNs face blocking, provider crackdowns, and occasional user penalties.",
+            "source": "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/"
+        },
+        {
+            "country": "Russia",
+            "severity": "restricted",
+            "since": "2017 law; sharp escalation 2025–2026",
+            "summary": "VPNs that refuse to cooperate with Roskomnadzor’s blocked-sites registry face nationwide blocking; the 2025–2026 crackdown has blocked hundreds of VPN services and popular protocols, banned VPN advertising, and pressed operators and platforms to detect and throttle VPN traffic. A law passed in July 2025 (in force that September) also fines intentional searches for 'extremist' material — explicitly including via VPN — raising liability for ordinary circumvention.",
+            "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-internet-freedom-protection-day"
+        },
+        {
+            "country": "Iran",
+            "severity": "restricted",
+            "since": "2024 criminalisation of unauthorised VPNs",
+            "summary": "Iran criminalised use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
+            "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+        },
+        {
+            "country": "Myanmar",
+            "severity": "complete",
+            "since": "Functional ban from May 2024; Cybersecurity Law in force 1 Jan 2025",
+            "summary": "What began as a functional VPN blackout in May 2024 was codified into law on 1 January 2025: the junta's Cybersecurity Law makes unauthorised VPN installation or use a criminal offence, punishable by up to six months in prison and fines of roughly $480–4,750, with no lawful route for ordinary citizens to obtain an approved VPN. Soldiers and police conduct random phone searches for VPN apps and make arrests on the spot, and the law's extraterritorial clause even threatens Myanmar nationals living abroad.",
+            "source": "https://www.rfa.org/english/myanmar/2025/01/02/cybersecurity-law-vpn/"
+        },
+        {
+            "country": "United Arab Emirates",
+            "severity": "restricted",
+            "since": "Ongoing (cybercrime decrees)",
+            "summary": "Owning a VPN is not a blanket crime, but using one to access blocked services (e.g. unlicensed VoIP, gambling, other restricted content) is a serious offence under UAE cybercrime rules, with very large fines reported for misuse.",
+            "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+        },
+        {
+            "country": "Oman",
+            "severity": "restricted",
+            "since": "Telecom encryption rules",
+            "summary": "Unauthorised use of encryption tools without TRA permission is prohibited. Enforcement focuses on misuse to reach blocked services; TRA has publicly warned against unapproved VPN products.",
+            "source": "https://proprivacy.com/guides/are-vpns-legal"
+        },
+        {
+            "country": "India",
+            "severity": "restricted",
+            "since": "CERT-In Direction No. V — in force 28 June 2022",
+            "summary": "VPNs stay legal to use, but a 2022 CERT-In cybersecurity directive orders providers running servers in India to log extensive customer data — validated subscriber names, hire dates, IP addresses allotted and used, emails, physical addresses and contact numbers — and retain it for at least five years, even after an account is closed. Rather than comply with the logging mandate, major providers such as ExpressVPN, NordVPN and Surfshark pulled their physical servers out of the country and now route Indian IPs through virtual servers hosted abroad.",
+            "source": "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data"
+        },
+        {
+            "country": "Pakistan",
+            "severity": "restricted",
+            "since": "PTA registration drive from 2024; CVAS-Data licensing from Nov 2025",
+            "summary": "Pakistan is corralling VPNs into a state licensing regime rather than banning them outright. From late 2024 the PTA pressed users and firms to register VPNs and began blocking 'unregistered' or 'illegal' services — after the Council of Islamic Ideology branded unregulated VPNs un-Islamic — and in November 2025 it started issuing Class VAS (CVAS-Data) licences to approved local providers. Only licensed, PTA-overseen VPNs are sanctioned, while unlicensed apps face intermittent blocking and disruption.",
+            "source": "https://www.techradar.com/vpn/vpn-privacy-security/pakistans-quest-to-regulate-vpn-usage-is-still-up-and-running"
+        }
     ],
-    "apps": [
-      {
-        "name": "NordVPN",
-        "overrides": {
-          "PK": "blocked"
+    "legislative_efforts": [
+        {
+            "jurisdiction": "European Union (debate)",
+            "level": "supranational",
+            "title": "Age-verification rollout and VPN-circumvention debate",
+            "status": "Policy discussion — no EU-wide VPN ban enacted",
+            "summary": "As member states and the Commission push privacy-preserving age checks for social platforms, some officials have floated measures against tools that bypass age gates (including VPNs). No pan-EU criminal ban is in force; proposals remain contested.",
+            "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
         }
-      },
-      {
-        "name": "ExpressVPN",
-        "overrides": {
-          "PK": "blocked"
+    ],
+    "rejected_efforts": [
+        {
+            "jurisdiction": "United States — Wisconsin",
+            "level": "subnational",
+            "title": "SB 130 and related state efforts targeting VPN use for restricted content",
+            "status": "Rejected — advanced in legislature then failed amid civil-liberties backlash",
+            "summary": "Wisconsin saw a high-profile 2025 attempt (SB 130) that would have constrained VPN use in connection with age-restricted material—an early serious state-level VPN restriction effort that did not become law after political pushback.",
+            "source": "https://windscribe.com/blog/are-vpns-legal/"
         }
-      },
-      {
-        "name": "Surfshark",
-        "overrides": {
-          "PK": "blocked"
-        }
-      },
-      {
-        "name": "Proton VPN",
-        "overrides": {
-          "PK": "blocked",
-          "IR": "restricted"
-        }
-      },
-      {
-        "name": "CyberGhost",
-        "overrides": {}
-      },
-      {
-        "name": "Private Internet Access",
-        "overrides": {}
-      },
-      {
-        "name": "IPVanish",
-        "overrides": {
-          "IN": "unavailable",
-          "IR": "unavailable"
-        }
-      },
-      {
-        "name": "Hotspot Shield",
-        "overrides": {}
-      },
-      {
-        "name": "TunnelBear",
-        "overrides": {}
-      },
-      {
-        "name": "Windscribe",
-        "overrides": {}
-      },
-      {
-        "name": "Mullvad",
-        "overrides": {
-          "PK": "blocked"
-        }
-      },
-      {
-        "name": "hide.me",
-        "overrides": {
-          "IN": "restricted"
-        }
-      },
-      {
-        "name": "VyprVPN",
-        "overrides": {}
-      },
-      {
-        "name": "Turbo VPN",
-        "overrides": {}
-      },
-      {
-        "name": "Psiphon",
-        "overrides": {
-          "PK": "blocked",
-          "CN": "restricted",
-          "IR": "restricted",
-          "RU": "restricted"
-        }
-      }
-    ]
-  }
+    ],
+    "app_matrix": {
+        "as_of": "July 2026",
+        "countries": [
+            {
+                "code": "CN",
+                "name": "China",
+                "default": "blocked",
+                "note": "Unlicensed commercial VPNs are illegal and the Great Firewall blocks their traffic outright. Only government-licensed international channels, typically enterprise leased lines, are lawful.",
+                "sources": [
+                    "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/",
+                    "https://techcrunch.com/2017/07/29/apple-removes-vpn-apps-from-the-app-store-in-china/"
+                ]
+            },
+            {
+                "code": "RU",
+                "name": "Russia",
+                "default": "blocked",
+                "note": "Roskomnadzor has restricted roughly 440 VPN services as of January 2026 and filters the protocols they rely on; providers that refuse to connect to the blocked-sites registry are cut off nationwide and advertising a VPN is banned. Obfuscated and purpose-built circumvention tools still carry millions of Russian users.",
+                "sources": [
+                    "https://www.techradar.com/vpn/vpn-services/russias-battle-against-vpns-is-entering-a-new-phase-heres-what-to-expect-in-2026",
+                    "https://meduza.io/en/news/2021/09/03/roskomnadzor-blocks-six-vpn-services-including-top-rated-providers"
+                ]
+            },
+            {
+                "code": "IR",
+                "name": "Iran",
+                "default": "blocked",
+                "note": "Using a non-approved VPN was criminalised in 2024 and deep-packet inspection actively disrupts common tunnelling protocols, most aggressively during protests. US sanctions compound this from the other direction: US-based providers are legally barred from selling to Iranians at all. Purpose-built circumvention tools remain the exception that still reaches users here.",
+                "sources": [
+                    "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check",
+                    "https://www.stimson.org/2024/the-vpn-epidemic-in-iran-a-digital-plague-amid-global-isolation/"
+                ]
+            },
+            {
+                "code": "MM",
+                "name": "Myanmar",
+                "default": "blocked",
+                "note": "VPN traffic has been filtered at network level since 30 May 2024 using Chinese-supplied inspection equipment, and the Cybersecurity Law in force from 1 January 2025 makes unauthorised VPN use a criminal offence. Soldiers search phones for VPN apps and fine or arrest on the spot.",
+                "sources": [
+                    "https://www.accessnow.org/myanmar-vpn-ban/",
+                    "https://www.rfa.org/english/myanmar/2025/01/02/cybersecurity-law-vpn/"
+                ]
+            },
+            {
+                "code": "TM",
+                "name": "Turkmenistan",
+                "default": "blocked",
+                "note": "The state-monopoly ISP filters circumvention traffic and blocks most foreign VPN infrastructure. Uncertified encryption is banned outright, and home-internet applicants have been required to pledge never to use bypass tools.",
+                "sources": [
+                    "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
+                ]
+            },
+            {
+                "code": "KP",
+                "name": "North Korea",
+                "default": "blocked",
+                "note": "There is no public access to the global internet, so no consumer VPN service is reachable in the first place. Ordinary citizens use the closed domestic Kwangmyong network.",
+                "sources": [
+                    "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
+                ]
+            },
+            {
+                "code": "PK",
+                "name": "Pakistan",
+                "default": "restricted",
+                "note": "The apps stay in both stores — the blocking happens at connection level. Since 22 December 2025 the PTA has blocked unregistered VPNs under its CVAS-Data licensing regime, so only licensed, interception-capable providers are sanctioned. Services named in reporting are marked blocked; the rest inherit this baseline.",
+                "sources": [
+                    "https://www.techradar.com/vpn/vpn-privacy-security/pakistan-begins-blocking-unregistered-vpn-apps-and-this-popular-service-is-among-the-casualties",
+                    "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules"
+                ]
+            },
+            {
+                "code": "BY",
+                "name": "Belarus",
+                "default": "restricted",
+                "note": "Law restricts anonymisers and VPNs used to reach blocked resources, and the state telecom blocked major commercial providers at network level in May 2024. No per-provider list is published, so this baseline applies across the board.",
+                "sources": [
+                    "https://freedomhouse.org/country/belarus/freedom-net/2024"
+                ]
+            },
+            {
+                "code": "AE",
+                "name": "United Arab Emirates",
+                "default": "restricted",
+                "note": "Holding a VPN is not itself a crime and the apps remain available, but deep-packet inspection degrades tunnels and using one to reach blocked services — unlicensed VoIP, gambling, restricted content — carries very large fines.",
+                "sources": [
+                    "https://www.comparitech.com/blog/vpn-privacy/vpn-etisalat/"
+                ]
+            },
+            {
+                "code": "OM",
+                "name": "Oman",
+                "default": "restricted",
+                "note": "Using encryption tools without TRA permission is prohibited and the regulator has warned publicly against unapproved VPN products. Enforcement centres on using them to reach blocked services rather than on possession.",
+                "sources": [
+                    "https://proprivacy.com/guides/are-vpns-legal"
+                ]
+            },
+            {
+                "code": "IQ",
+                "name": "Iraq",
+                "default": "available",
+                "note": "The blanket ban imposed in 2014 during the fight against ISIS is largely unenforced today, with no current per-provider blocking documented.",
+                "sources": [
+                    "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
+                ]
+            },
+            {
+                "code": "IN",
+                "name": "India",
+                "default": "available",
+                "note": "VPNs are legal and connections work normally. CERT-In's 2022 directive forced providers to log subscriber data for five years; ExpressVPN, NordVPN, Surfshark, Proton VPN and hide.me responded by pulling their physical Indian servers while still serving Indian users from virtual ones abroad. In early 2025 the Indian Cyber Crime Coordination Centre (I4C) escalated enforcement and ordered Apple and Google to remove non-compliant VPN apps from their Indian storefronts — hide.me was among those pulled from both the App Store and Google Play. IPVanish went further and left the market outright, removing its apps and stopping Indian signups.",
+                "sources": [
+                    "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data",
+                    "https://www.techradar.com/vpn/vpn-services/vpns-are-disappearing-from-indias-app-stores-and-a-2022-law-may-be-the-culprit"
+                ]
+            }
+        ],
+        "apps": [
+            {
+                "name": "NordVPN",
+                "overrides": {
+                    "PK": "blocked"
+                }
+            },
+            {
+                "name": "ExpressVPN",
+                "overrides": {
+                    "PK": "blocked"
+                }
+            },
+            {
+                "name": "Surfshark",
+                "overrides": {
+                    "PK": "blocked"
+                }
+            },
+            {
+                "name": "Proton VPN",
+                "overrides": {
+                    "PK": "blocked",
+                    "IR": "restricted"
+                }
+            },
+            {
+                "name": "CyberGhost",
+                "overrides": {}
+            },
+            {
+                "name": "Private Internet Access",
+                "overrides": {}
+            },
+            {
+                "name": "IPVanish",
+                "overrides": {
+                    "IN": "unavailable",
+                    "IR": "unavailable"
+                }
+            },
+            {
+                "name": "Hotspot Shield",
+                "overrides": {}
+            },
+            {
+                "name": "TunnelBear",
+                "overrides": {}
+            },
+            {
+                "name": "Windscribe",
+                "overrides": {}
+            },
+            {
+                "name": "Mullvad",
+                "overrides": {
+                    "PK": "blocked"
+                }
+            },
+            {
+                "name": "hide.me",
+                "overrides": {
+                    "IN": "restricted"
+                }
+            },
+            {
+                "name": "VyprVPN",
+                "overrides": {}
+            },
+            {
+                "name": "Turbo VPN",
+                "overrides": {}
+            },
+            {
+                "name": "Psiphon",
+                "overrides": {
+                    "PK": "blocked",
+                    "CN": "restricted",
+                    "IR": "restricted",
+                    "RU": "restricted"
+                }
+            }
+        ]
+    }
 }
