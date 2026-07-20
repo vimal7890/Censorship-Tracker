@@ -40,7 +40,17 @@ Notes:
 
 `app_matrix` in [`vpn_data.json`](vpn_data.json) drives the grid under the VPN
 restrictions table: 15 providers (rows) × the restricted countries (columns),
-each cell carrying one verdict — `available`, `restricted` or `blocked`.
+each cell carrying one verdict — `available`, `restricted`, `blocked` or
+`unavailable`.
+
+`blocked` and `unavailable` are both red because the service is equally
+unusable either way, but they have different causes and different fixes:
+`blocked` is the state filtering the service, `unavailable` is the provider
+withdrawing from the market. IPVanish is the worked example — it pulled its
+apps from the Indian stores and closed Indian signups after CERT-In, and as a
+US company it is barred from selling to Iran by sanctions. Because
+`unavailable` is always provider-side, it may only appear as a per-provider
+override, never as a country baseline; the test enforces that.
 
 The verdict is about **whether the service works**, not whether the app is
 listed in a store. Those are different questions and the store answer is the

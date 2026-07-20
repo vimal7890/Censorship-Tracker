@@ -81,8 +81,9 @@ def main() -> int:
 
     # One service-level verdict per country, not per app store: Pakistan leaves
     # the apps listed and blocks the connection, so store presence would not
-    # answer whether the service actually works.
-    valid = {"available", "restricted", "blocked"}
+    # answer whether the service actually works. "blocked" is the state
+    # blocking it; "unavailable" is the provider withdrawing from the market.
+    valid = {"available", "restricted", "blocked", "unavailable"}
     for c in countries:
         assert c.get("note"), c
         assert c.get("sources"), f"{c['name']} needs at least one source"
@@ -101,6 +102,22 @@ def main() -> int:
     assert pk["default"] == "restricted", pk
     pk_blocked = {a["name"] for a in apps if (a.get("overrides") or {}).get("PK") == "blocked"}
     assert {"NordVPN", "ExpressVPN", "Proton VPN"} <= pk_blocked, sorted(pk_blocked)
+
+    # IPVanish withdrew from India outright (apps pulled from the Indian
+    # stores, signups closed) and is barred from Iran by US sanctions. Both are
+    # provider-side, so they must read unavailable rather than blocked.
+    ipvanish = next(a for a in apps if a["name"] == "IPVanish")
+    for code in ("IN", "IR"):
+        assert ipvanish["overrides"].get(code) == "unavailable", ipvanish
+
+    # India's baseline stays available — the withdrawal is IPVanish's alone,
+    # not something the Indian state did to every provider.
+    assert next(c for c in countries if c["code"] == "IN")["default"] == "available"
+
+    # Every unavailable verdict must be a per-provider override; a country-wide
+    # "unavailable" would be a category error (that would be state blocking).
+    for c in countries:
+        assert c["default"] != "unavailable", f"{c['name']} baseline cannot be unavailable"
 
     # The circumvention caveat must sit between the grid and the country notes.
     # Match the element, not the stylesheet rule of the same name.

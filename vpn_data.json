@@ -122,9 +122,9 @@
         "code": "RU",
         "name": "Russia",
         "default": "blocked",
-        "note": "Roskomnadzor has blocked roughly 200 VPN services and filters the protocols they rely on. Providers that refuse to connect to the blocked-sites registry are cut off nationwide, and advertising a VPN is itself banned.",
+        "note": "Roskomnadzor has restricted roughly 440 VPN services as of January 2026 and filters the protocols they rely on; providers that refuse to connect to the blocked-sites registry are cut off nationwide and advertising a VPN is banned. Obfuscated and purpose-built circumvention tools still carry millions of Russian users.",
         "sources": [
-          "https://www.techradar.com/pro/vpn/russia-blocks-almost-200-vpn-services-but-the-kremlin-still-wants-to-use-them",
+          "https://www.techradar.com/vpn/vpn-services/russias-battle-against-vpns-is-entering-a-new-phase-heres-what-to-expect-in-2026",
           "https://meduza.io/en/news/2021/09/03/roskomnadzor-blocks-six-vpn-services-including-top-rated-providers"
         ]
       },
@@ -132,9 +132,10 @@
         "code": "IR",
         "name": "Iran",
         "default": "blocked",
-        "note": "Using a non-approved VPN was criminalised in 2024, and deep-packet inspection actively disrupts common tunnelling protocols — most aggressively during protests. Only state-sanctioned tunnels are lawful.",
+        "note": "Using a non-approved VPN was criminalised in 2024 and deep-packet inspection actively disrupts common tunnelling protocols, most aggressively during protests. US sanctions compound this from the other direction: US-based providers are legally barred from selling to Iranians at all. Purpose-built circumvention tools remain the exception that still reaches users here.",
         "sources": [
-          "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+          "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check",
+          "https://www.stimson.org/2024/the-vpn-epidemic-in-iran-a-digital-plague-amid-global-isolation/"
         ]
       },
       {
@@ -215,9 +216,10 @@
         "code": "IN",
         "name": "India",
         "default": "available",
-        "note": "VPNs are legal and connections work normally. CERT-In's 2022 directive forced providers to log subscriber data for five years, which pushed ExpressVPN, NordVPN and Surfshark to pull their physical Indian servers in favour of virtual ones hosted abroad — a privacy cost, not an availability one.",
+        "note": "VPNs are legal and connections work normally. CERT-In's 2022 directive forced providers to log subscriber data for five years; ExpressVPN, NordVPN, Surfshark, Proton VPN and hide.me responded by pulling their physical Indian servers while still serving Indian users from virtual ones abroad. IPVanish went further and left the market outright — it removed its apps from the Indian app stores and stopped accepting Indian signups.",
         "sources": [
-          "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data"
+          "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data",
+          "https://www.techradar.com/vpn/vpn-services/vpns-are-disappearing-from-indias-app-stores-and-a-2022-law-may-be-the-culprit"
         ]
       }
     ],
@@ -243,7 +245,8 @@
       {
         "name": "Proton VPN",
         "overrides": {
-          "PK": "blocked"
+          "PK": "blocked",
+          "IR": "restricted"
         }
       },
       {
@@ -256,7 +259,10 @@
       },
       {
         "name": "IPVanish",
-        "overrides": {}
+        "overrides": {
+          "IN": "unavailable",
+          "IR": "unavailable"
+        }
       },
       {
         "name": "Hotspot Shield",
@@ -291,7 +297,10 @@
       {
         "name": "Psiphon",
         "overrides": {
-          "PK": "blocked"
+          "PK": "blocked",
+          "CN": "restricted",
+          "IR": "restricted",
+          "RU": "restricted"
         }
       }
     ]
