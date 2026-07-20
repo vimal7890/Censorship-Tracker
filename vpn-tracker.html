@@ -210,19 +210,26 @@
         }
         .src a:hover { border-bottom-color: var(--secondary); }
 
-        /* ---------- App / website availability matrix ----------
+        /* ---------- Service availability matrix ----------
            Rows are VPN providers, columns are restricted countries, and each
-           cell holds three segments read left→right: iOS, Google Play, website.
-           The provider column is sticky so the grid stays legible while the
-           country columns scroll horizontally on narrow screens. */
+           cell carries a single verdict on whether the service actually works
+           there. App-store presence is deliberately not tracked: Pakistan
+           leaves the apps listed and blocks the connection instead, so store
+           listings say little about whether you can use the service.
+
+           The section breaks out wider than the 1200px page wrapper so full
+           country names fit; the provider column is sticky so the grid stays
+           legible while country columns scroll on narrow screens. */
+        .matrix-breakout {
+            width: min(1440px, calc(100vw - 32px));
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
         .mx-key {
-            display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;
+            display: flex; flex-wrap: wrap; gap: 10px 18px; margin-bottom: 16px;
             font-size: 13px; color: var(--on-surface-variant);
         }
-        .mx-key b { color: var(--primary); }
-        .mx-key-demo { display: inline-flex; gap: 2px; margin-right: 8px; vertical-align: middle; }
-        .mx-key-statuses { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-        .mx-key-statuses span { display: inline-flex; align-items: center; gap: 6px; }
+        .mx-key span { display: inline-flex; align-items: center; gap: 7px; }
 
         .matrix-wrap {
             overflow-x: auto; -webkit-overflow-scrolling: touch;
@@ -230,39 +237,52 @@
         }
         table.matrix-table { border-collapse: collapse; width: 100%; }
         .matrix-table thead th {
-            font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
-            letter-spacing: 0.06em; text-transform: uppercase; text-align: center;
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+            letter-spacing: 0.04em; text-transform: uppercase; text-align: center;
             background: var(--redaction-black); color: var(--paper-white);
-            padding: 10px 8px; white-space: nowrap;
-            border-bottom: 2px solid var(--primary);
-        }
-        .matrix-table thead th abbr {
-            text-decoration: none; border-bottom: 1px dotted currentColor; cursor: help;
+            padding: 10px 5px; vertical-align: bottom; line-height: 1.3;
+            min-width: 88px; border-bottom: 2px solid var(--primary);
         }
         .mx-app-head, .mx-app {
             position: sticky; left: 0; text-align: left;
-            white-space: nowrap; border-right: 2px solid var(--primary);
+            border-right: 2px solid var(--primary);
         }
-        .mx-app-head { z-index: 3; }
+        .mx-app-head { z-index: 3; min-width: 150px; white-space: nowrap; }
         .mx-app {
             z-index: 2;
-            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 14px;
-            text-transform: uppercase; color: var(--primary);
-            background: var(--paper-white); padding: 8px 14px 8px 12px;
+            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 13px;
+            line-height: 1.2; text-transform: uppercase; color: var(--primary);
+            background: var(--paper-white); padding: 6px 12px 6px 12px;
+            width: 150px; /* long names wrap rather than widening the grid */
         }
         .matrix-table tbody tr { border-bottom: 1px solid var(--outline-variant); }
         .matrix-table tbody tr:last-child { border-bottom: none; }
         .matrix-table tbody tr:hover td,
         .matrix-table tbody tr:hover .mx-app { background: var(--surface-container-low); }
-        .mx-cell { padding: 8px 6px; text-align: center; white-space: nowrap; }
-        .mx-seg {
-            display: inline-block; width: 11px; height: 16px; margin: 0 1px;
-            vertical-align: middle; border: 1px solid var(--primary);
+        .mx-cell { padding: 3px; text-align: center; }
+        /* Colour carries the verdict at a glance; the glyph repeats it so the
+           grid stays readable without colour vision or a legend lookup. */
+        .mx-state {
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+            height: 26px; padding: 0 6px;
+            font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            color: var(--paper-white); border: 1px solid var(--primary);
         }
-        .mx-seg.ok { background: var(--tertiary-green); }
-        .mx-seg.blocked { background: var(--secondary); }
-        .mx-seg.partial { background: var(--alert-orange); }
-        .mx-seg.na { background: transparent; border-style: dashed; opacity: 0.55; }
+        .mx-state .mx-glyph { font-size: 11px; line-height: 1; }
+        .mx-state.available { background: var(--tertiary-green); }
+        .mx-state.restricted { background: var(--alert-orange); }
+        .mx-state.blocked { background: var(--secondary); }
+        .mx-key .mx-state { min-width: 104px; }
+
+        /* Circumvention caveat, between the grid and the country notes. */
+        .mx-caveat {
+            margin-top: 14px; padding: 12px 14px;
+            border: 1px solid var(--primary); border-left: 4px solid var(--alert-orange);
+            background: var(--paper-white);
+            font-size: 14px; line-height: 1.55; color: var(--on-surface-variant);
+        }
+        .mx-caveat b { color: var(--primary); }
 
         .mx-details {
             margin-top: 14px; border: 1px solid var(--outline-variant);
@@ -292,12 +312,14 @@
         /* Narrow screens: cap the sticky provider column so several country
            columns stay in view instead of one and a half. */
         @media (max-width: 767px) {
-            .mx-app-head, .mx-app { width: 104px; max-width: 104px; white-space: normal; }
-            .mx-app { font-size: 11px; line-height: 1.25; padding: 8px 8px 8px 10px; }
+            .matrix-breakout { width: 100%; margin-left: 0; transform: none; }
+            .mx-app-head, .mx-app {
+                width: 104px; min-width: 104px; max-width: 104px; white-space: normal;
+            }
+            .mx-app { font-size: 11px; line-height: 1.25; padding: 6px 8px 6px 10px; }
             .mx-app-head { font-size: 10px; letter-spacing: 0.04em; }
-            .matrix-table thead th { padding: 9px 5px; font-size: 10px; }
-            .mx-cell { padding: 7px 5px; }
-            .mx-seg { width: 9px; height: 15px; }
+            .matrix-table thead th { min-width: 84px; padding: 9px 4px; font-size: 9px; }
+            .mx-state { height: 24px; font-size: 8px; gap: 3px; padding: 0 4px; }
         }
 
         .effort-list { display: flex; flex-direction: column; gap: 14px; }
@@ -413,30 +435,28 @@
         </section>
 
         <section class="section" id="matrix-section" aria-labelledby="matrix-heading">
-            <h2 class="section-title" id="matrix-heading">App store &amp; website availability</h2>
-            <p class="page-sub" style="margin-bottom: 16px;">The 15 most widely used consumer VPN providers, checked against every jurisdiction in the table above: whether the app has been pulled from the iOS App Store or Google Play, and whether the provider&rsquo;s own website is reachable. Where a country blocks circumvention tools wholesale rather than by name, the country default applies &mdash; per-provider evidence overrides it.</p>
-            <div class="mx-key">
-                <div>
-                    <span class="mx-key-demo" aria-hidden="true"><i class="mx-seg ok"></i><i class="mx-seg blocked"></i><i class="mx-seg partial"></i></span>
-                    Each cell reads left &rarr; right: <b>iOS App Store</b> &middot; <b>Google Play</b> &middot; <b>Website</b>
+            <h2 class="section-title" id="matrix-heading">Service availability by country</h2>
+            <p class="page-sub" style="margin-bottom: 16px;">The 15 most widely used consumer VPN providers, checked against every jurisdiction in the table above: can you actually use the service there. This tracks the connection rather than the app listing &mdash; Pakistan, for one, leaves the apps in both stores and blocks the tunnels instead. Where a country restricts circumvention tools wholesale rather than by name, the country baseline applies; providers named in reporting override it.</p>
+            <div class="matrix-breakout">
+                <div class="mx-key">
+                    <span><i class="mx-state available" aria-hidden="true"><span class="mx-glyph">&check;</span>Available</i> Works normally</span>
+                    <span><i class="mx-state restricted" aria-hidden="true"><span class="mx-glyph">!</span>Restricted</i> Degraded, licensed-only or legally risky</span>
+                    <span><i class="mx-state blocked" aria-hidden="true"><span class="mx-glyph">&#10005;</span>Blocked</i> Does not work without circumvention</span>
                 </div>
-                <div class="mx-key-statuses">
-                    <span><i class="mx-seg ok" aria-hidden="true"></i> Available</span>
-                    <span><i class="mx-seg blocked" aria-hidden="true"></i> Removed / blocked</span>
-                    <span><i class="mx-seg partial" aria-hidden="true"></i> Disrupted / restricted</span>
-                    <span><i class="mx-seg na" aria-hidden="true"></i> No storefront / not applicable</span>
+                <div class="matrix-wrap">
+                    <table class="matrix-table" id="appMatrix">
+                        <thead id="appMatrixHead"></thead>
+                        <tbody id="appMatrixBody"></tbody>
+                    </table>
                 </div>
+                <p class="mx-caveat">
+                    <b>Blocked does not mean unreachable.</b> These ratings describe a service&rsquo;s official standing and what happens on a default connection &mdash; not the ceiling on what is technically possible. Obfuscation features that disguise VPN traffic as ordinary HTTPS, bridge servers, and self-hosted tunnels still get people online across every jurisdiction listed here, which is precisely why these regimes keep expanding their filtering. The more useful warning is legal rather than technical: in Myanmar, Iran, Turkmenistan and Belarus the act of circumventing the block is itself an offence, and enforcement has extended to on-the-spot phone searches. Where that is the case, the risk of getting around a block is not a failed connection.
+                </p>
+                <details class="mx-details">
+                    <summary>Country notes &amp; sources</summary>
+                    <div class="mx-notes" id="matrixNotes"></div>
+                </details>
             </div>
-            <div class="matrix-wrap">
-                <table class="matrix-table" id="appMatrix">
-                    <thead id="appMatrixHead"></thead>
-                    <tbody id="appMatrixBody"></tbody>
-                </table>
-            </div>
-            <details class="mx-details">
-                <summary>Country notes &amp; sources</summary>
-                <div class="mx-notes" id="matrixNotes"></div>
-            </details>
         </section>
 
         <section class="section" id="legislative-section" aria-labelledby="legislative-heading">
@@ -510,25 +530,18 @@
             }).join('');
         }
 
-        /* ================= App / website availability matrix ================= */
+        /* ================= Service availability matrix ================= */
 
         const MX_STATUS = {
-            a: { cls: 'ok', label: 'Available' },
-            x: { cls: 'blocked', label: 'Removed / blocked' },
-            p: { cls: 'partial', label: 'Disrupted / restricted' },
-            n: { cls: 'na', label: 'No storefront / not applicable' }
+            available: { label: 'Available', glyph: '✓', detail: 'works normally' },
+            restricted: { label: 'Restricted', glyph: '!', detail: 'degraded, licensed-only or legally risky' },
+            blocked: { label: 'Blocked', glyph: '✕', detail: 'does not work without circumvention' }
         };
-        const MX_PLATFORMS = [
-            { key: 'ios', label: 'iOS App Store' },
-            { key: 'play', label: 'Google Play' },
-            { key: 'web', label: 'Website' }
-        ];
 
-        // A provider inherits the country default unless that country has a
+        // A provider inherits the country baseline unless that country has a
         // per-provider override (i.e. it was named in reporting).
-        function mxStatus(app, country, platform) {
-            const ov = (app.overrides || {})[country.code] || {};
-            return ov[platform] || country.default[platform];
+        function mxStatus(app, country) {
+            return (app.overrides || {})[country.code] || country.default;
         }
 
         function renderAppMatrix(matrix) {
@@ -537,20 +550,18 @@
 
             document.getElementById('appMatrixHead').innerHTML =
                 '<tr><th class="mx-app-head" scope="col">VPN app</th>' +
-                countries.map(c =>
-                    `<th scope="col"><abbr title="${escapeHTML(c.name)}">${escapeHTML(c.abbr)}</abbr></th>`
-                ).join('') + '</tr>';
+                countries.map(c => `<th scope="col">${escapeHTML(c.name)}</th>`).join('') +
+                '</tr>';
 
             document.getElementById('appMatrixBody').innerHTML = apps.map(app => {
                 const cells = countries.map(c => {
-                    const segs = MX_PLATFORMS.map(p => {
-                        const meta = MX_STATUS[mxStatus(app, c, p.key)] || MX_STATUS.n;
-                        return `<i class="mx-seg ${meta.cls}" title="${escapeHTML(app.name)} — ${escapeHTML(c.name)} — ${p.label}: ${meta.label}"></i>`;
-                    }).join('');
-                    const summary = MX_PLATFORMS.map(p =>
-                        `${p.label}: ${(MX_STATUS[mxStatus(app, c, p.key)] || MX_STATUS.n).label}`
-                    ).join('; ');
-                    return `<td class="mx-cell" aria-label="${escapeHTML(c.name)} — ${escapeHTML(summary)}">${segs}</td>`;
+                    const key = mxStatus(app, c);
+                    const meta = MX_STATUS[key] || MX_STATUS.restricted;
+                    const title = `${app.name} — ${c.name}: ${meta.label} (${meta.detail})`;
+                    return `<td class="mx-cell" title="${escapeHTML(title)}">` +
+                        `<span class="mx-state ${key}">` +
+                        `<span class="mx-glyph" aria-hidden="true">${meta.glyph}</span>` +
+                        `${meta.label}</span></td>`;
                 }).join('');
                 return `<tr><th scope="row" class="mx-app">${escapeHTML(app.name)}</th>${cells}</tr>`;
             }).join('');

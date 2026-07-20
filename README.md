@@ -36,27 +36,40 @@ Notes:
   jurisdictions (e.g. US states) map to their parent country with
   `{ iso: "US", subnational: true }` and are aggregated under it on the map.
 
-## VPN app availability matrix
+## VPN service availability matrix
 
 `app_matrix` in [`vpn_data.json`](vpn_data.json) drives the grid under the VPN
 restrictions table: 15 providers (rows) × the restricted countries (columns),
-each cell showing three segments — iOS App Store, Google Play, website.
+each cell carrying one verdict — `available`, `restricted` or `blocked`.
 
-Status codes are `a` available, `x` removed/blocked, `p` disrupted/restricted,
-`n` no storefront or not applicable. Each country carries a `default` for all
-three platforms plus a sourced `note`; a provider only needs an entry in
-`overrides` when reporting names it specifically, keyed by the country `code`:
+The verdict is about **whether the service works**, not whether the app is
+listed in a store. Those are different questions and the store answer is the
+less useful one: Pakistan leaves every VPN app in both stores and blocks the
+tunnels at connection level instead.
+
+Each country carries a `default` verdict plus a sourced `note`; a provider only
+needs an `overrides` entry when reporting names it specifically, keyed by
+country `code`:
 
 ```json
-{ "name": "NordVPN", "overrides": { "RU": { "ios": "x", "play": "x", "web": "x" } } }
+{ "name": "NordVPN", "overrides": { "PK": "blocked" } }
 ```
 
-Country defaults exist because most regimes block circumvention tools
+Country defaults exist because most regimes restrict circumvention tools
 wholesale rather than provider-by-provider — the default expresses that
-baseline, and per-provider evidence overrides it. `tests/test_vpn_tracker.py`
-enforces that the matrix covers exactly the countries in `restrictions`, that
-every status code is valid, and that no `overrides` key names an unknown
-country.
+baseline, and per-provider evidence overrides it. Pakistan is the worked
+example: a `restricted` baseline with the six providers named in reporting
+overridden to `blocked`.
+
+A `blocked` rating describes official standing and default-connection
+behaviour, not a claim that access is impossible — the caveat rendered between
+the grid and the country notes says so on the page, and the legal risk of
+circumventing a block often exceeds the technical difficulty.
+
+`tests/test_vpn_tracker.py` enforces that the matrix covers exactly the
+countries in `restrictions`, that every verdict is one of the three valid
+values, that no `overrides` key names an unknown country, and that the caveat
+renders between the grid and the notes.
 
 ## Dark mode
 

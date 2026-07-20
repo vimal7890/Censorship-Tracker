@@ -111,85 +111,84 @@
       {
         "code": "CN",
         "name": "China",
-        "abbr": "CHN",
-        "default": { "ios": "x", "play": "n", "web": "x" },
-        "note": "All VPN apps removed from the China App Store since July 2017; Google Play does not operate in mainland China; provider sites blocked by the Great Firewall.",
+        "default": "blocked",
+        "note": "Unlicensed commercial VPNs are illegal and the Great Firewall blocks their traffic outright. Only government-licensed international channels, typically enterprise leased lines, are lawful.",
         "sources": [
-          "https://techcrunch.com/2017/07/29/apple-removes-vpn-apps-from-the-app-store-in-china/",
-          "https://www.techtransparencyproject.org/articles/apple-censoring-its-app-store-china"
+          "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/",
+          "https://techcrunch.com/2017/07/29/apple-removes-vpn-apps-from-the-app-store-in-china/"
         ]
       },
       {
         "code": "RU",
         "name": "Russia",
-        "abbr": "RUS",
-        "default": { "ios": "n", "play": "n", "web": "p" },
-        "note": "Apple has removed 100+ VPN apps from the Russian App Store since July 2024 and Roskomnadzor blocks roughly 200 VPN services; only individually verified cases are marked removed/blocked here, the rest show as no data or partial.",
+        "default": "blocked",
+        "note": "Roskomnadzor has blocked roughly 200 VPN services and filters the protocols they rely on. Providers that refuse to connect to the blocked-sites registry are cut off nationwide, and advertising a VPN is itself banned.",
         "sources": [
-          "https://techcrunch.com/2024/07/08/apple-removes-vpn-apps-at-request-of-russian-authorities-say-app-makers/",
-          "https://www.theregister.com/2024/09/26/apple_vpn_russia/",
-          "https://www.tomsguide.com/computing/vpns/google-is-resisting-russian-censorship-demands-but-top-vpns-have-been-removed-from-the-play-store",
+          "https://www.techradar.com/pro/vpn/russia-blocks-almost-200-vpn-services-but-the-kremlin-still-wants-to-use-them",
           "https://meduza.io/en/news/2021/09/03/roskomnadzor-blocks-six-vpn-services-including-top-rated-providers"
         ]
       },
       {
         "code": "IR",
         "name": "Iran",
-        "abbr": "IRN",
-        "default": { "ios": "n", "play": "p", "web": "x" },
-        "note": "Apple operates no Iranian storefront (US sanctions; store access IP-blocked since 2018). Free VPN apps remain on Google Play but deep-packet inspection disrupts use; provider sites are filtered.",
+        "default": "blocked",
+        "note": "Using a non-approved VPN was criminalised in 2024, and deep-packet inspection actively disrupts common tunnelling protocols — most aggressively during protests. Only state-sanctioned tunnels are lawful.",
         "sources": [
-          "https://9to5mac.com/2018/03/15/apple-bans-iran-app-store-access/"
+          "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
         ]
       },
       {
         "code": "MM",
         "name": "Myanmar",
-        "abbr": "MMR",
-        "default": { "ios": "p", "play": "p", "web": "x" },
-        "note": "Apps are not delisted, but VPN downloads and traffic have been blocked at network level since 30 May 2024 and possession risks arrest; provider sites blocked.",
+        "default": "blocked",
+        "note": "VPN traffic has been filtered at network level since 30 May 2024 using Chinese-supplied inspection equipment, and the Cybersecurity Law in force from 1 January 2025 makes unauthorised VPN use a criminal offence. Soldiers search phones for VPN apps and fine or arrest on the spot.",
         "sources": [
           "https://www.accessnow.org/myanmar-vpn-ban/",
-          "https://github.com/net4people/bbs/issues/369"
+          "https://www.rfa.org/english/myanmar/2025/01/02/cybersecurity-law-vpn/"
         ]
       },
       {
         "code": "TM",
         "name": "Turkmenistan",
-        "abbr": "TKM",
-        "default": { "ios": "p", "play": "p", "web": "x" },
-        "note": "The state-monopoly ISP filters circumvention tools and blocks most foreign VPN sites; store access is unreliable and uncertified encryption is banned.",
+        "default": "blocked",
+        "note": "The state-monopoly ISP filters circumvention traffic and blocks most foreign VPN infrastructure. Uncertified encryption is banned outright, and home-internet applicants have been required to pledge never to use bypass tools.",
         "sources": [
           "https://www.accessnow.org/turkmenistan-internet-shutdowns/"
         ]
       },
       {
-        "code": "BY",
-        "name": "Belarus",
-        "abbr": "BLR",
-        "default": { "ios": "a", "play": "a", "web": "p" },
-        "note": "No store delistings reported; major VPN providers blocked at network level per May 2024 reports, with no public per-provider list.",
+        "code": "KP",
+        "name": "North Korea",
+        "default": "blocked",
+        "note": "There is no public access to the global internet, so no consumer VPN service is reachable in the first place. Ordinary citizens use the closed domestic Kwangmyong network.",
         "sources": [
-          "https://freedomhouse.org/country/belarus/freedom-net/2024"
+          "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
         ]
       },
       {
         "code": "PK",
         "name": "Pakistan",
-        "abbr": "PAK",
-        "default": { "ios": "a", "play": "a", "web": "p" },
-        "note": "Apps remain in stores; unregistered VPN services have been blocked under CVAS-Data licensing since 22 December 2025 — providers named in reporting are marked blocked.",
+        "default": "restricted",
+        "note": "The apps stay in both stores — the blocking happens at connection level. Since 22 December 2025 the PTA has blocked unregistered VPNs under its CVAS-Data licensing regime, so only licensed, interception-capable providers are sanctioned. Services named in reporting are marked blocked; the rest inherit this baseline.",
         "sources": [
           "https://www.techradar.com/vpn/vpn-privacy-security/pakistan-begins-blocking-unregistered-vpn-apps-and-this-popular-service-is-among-the-casualties",
           "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules"
         ]
       },
       {
+        "code": "BY",
+        "name": "Belarus",
+        "default": "restricted",
+        "note": "Law restricts anonymisers and VPNs used to reach blocked resources, and the state telecom blocked major commercial providers at network level in May 2024. No per-provider list is published, so this baseline applies across the board.",
+        "sources": [
+          "https://freedomhouse.org/country/belarus/freedom-net/2024"
+        ]
+      },
+      {
         "code": "AE",
         "name": "United Arab Emirates",
-        "abbr": "UAE",
-        "default": { "ios": "a", "play": "a", "web": "p" },
-        "note": "Apps remain in stores; some provider sites and protocols are disrupted via DPI and VPN misuse is criminalised.",
+        "default": "restricted",
+        "note": "Holding a VPN is not itself a crime and the apps remain available, but deep-packet inspection degrades tunnels and using one to reach blocked services — unlicensed VoIP, gambling, restricted content — carries very large fines.",
         "sources": [
           "https://www.comparitech.com/blog/vpn-privacy/vpn-etisalat/"
         ]
@@ -197,9 +196,8 @@
       {
         "code": "OM",
         "name": "Oman",
-        "abbr": "OMN",
-        "default": { "ios": "a", "play": "a", "web": "p" },
-        "note": "Apps remain in stores; unapproved encryption is restricted and some provider sites are blocked.",
+        "default": "restricted",
+        "note": "Using encryption tools without TRA permission is prohibited and the regulator has warned publicly against unapproved VPN products. Enforcement centres on using them to reach blocked services rather than on possession.",
         "sources": [
           "https://proprivacy.com/guides/are-vpns-legal"
         ]
@@ -207,9 +205,8 @@
       {
         "code": "IQ",
         "name": "Iraq",
-        "abbr": "IRQ",
-        "default": { "ios": "a", "play": "a", "web": "n" },
-        "note": "The 2014 blanket ban is largely unenforced today; no current per-provider documentation of store or website blocks.",
+        "default": "available",
+        "note": "The blanket ban imposed in 2014 during the fight against ISIS is largely unenforced today, with no current per-provider blocking documented.",
         "sources": [
           "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
         ]
@@ -217,40 +214,86 @@
       {
         "code": "IN",
         "name": "India",
-        "abbr": "IND",
-        "default": { "ios": "a", "play": "a", "web": "a" },
-        "note": "No blocks — providers withdrew Indian servers over CERT-In logging rules, but apps and websites remain available.",
+        "default": "available",
+        "note": "VPNs are legal and connections work normally. CERT-In's 2022 directive forced providers to log subscriber data for five years, which pushed ExpressVPN, NordVPN and Surfshark to pull their physical Indian servers in favour of virtual ones hosted abroad — a privacy cost, not an availability one.",
         "sources": [
           "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data"
-        ]
-      },
-      {
-        "code": "KP",
-        "name": "North Korea",
-        "abbr": "PRK",
-        "default": { "ios": "n", "play": "n", "web": "n" },
-        "note": "No public access to the global internet or foreign app stores.",
-        "sources": [
-          "https://www.hrw.org/world-report/2024/country-chapters/north-korea"
         ]
       }
     ],
     "apps": [
-      { "name": "NordVPN", "overrides": { "RU": { "ios": "x", "play": "x", "web": "x" }, "PK": { "web": "x" } } },
-      { "name": "ExpressVPN", "overrides": { "RU": { "ios": "x", "play": "x", "web": "x" }, "PK": { "web": "x" } } },
-      { "name": "Surfshark", "overrides": { "PK": { "web": "x" } } },
-      { "name": "Proton VPN", "overrides": { "RU": { "ios": "x", "play": "a", "web": "x" }, "PK": { "web": "x" } } },
-      { "name": "CyberGhost", "overrides": { "RU": { "ios": "x", "play": "x" } } },
-      { "name": "Private Internet Access", "overrides": { "RU": { "ios": "x", "play": "x" } } },
-      { "name": "IPVanish", "overrides": { "RU": { "web": "x" } } },
-      { "name": "Hotspot Shield", "overrides": {} },
-      { "name": "TunnelBear", "overrides": {} },
-      { "name": "Windscribe", "overrides": {} },
-      { "name": "Mullvad", "overrides": { "RU": { "play": "a" }, "PK": { "web": "x" } } },
-      { "name": "hide.me", "overrides": {} },
-      { "name": "VyprVPN", "overrides": { "RU": { "web": "x" } } },
-      { "name": "Turbo VPN", "overrides": {} },
-      { "name": "Psiphon", "overrides": { "PK": { "web": "x" } } }
+      {
+        "name": "NordVPN",
+        "overrides": {
+          "PK": "blocked"
+        }
+      },
+      {
+        "name": "ExpressVPN",
+        "overrides": {
+          "PK": "blocked"
+        }
+      },
+      {
+        "name": "Surfshark",
+        "overrides": {
+          "PK": "blocked"
+        }
+      },
+      {
+        "name": "Proton VPN",
+        "overrides": {
+          "PK": "blocked"
+        }
+      },
+      {
+        "name": "CyberGhost",
+        "overrides": {}
+      },
+      {
+        "name": "Private Internet Access",
+        "overrides": {}
+      },
+      {
+        "name": "IPVanish",
+        "overrides": {}
+      },
+      {
+        "name": "Hotspot Shield",
+        "overrides": {}
+      },
+      {
+        "name": "TunnelBear",
+        "overrides": {}
+      },
+      {
+        "name": "Windscribe",
+        "overrides": {}
+      },
+      {
+        "name": "Mullvad",
+        "overrides": {
+          "PK": "blocked"
+        }
+      },
+      {
+        "name": "hide.me",
+        "overrides": {}
+      },
+      {
+        "name": "VyprVPN",
+        "overrides": {}
+      },
+      {
+        "name": "Turbo VPN",
+        "overrides": {}
+      },
+      {
+        "name": "Psiphon",
+        "overrides": {
+          "PK": "blocked"
+        }
+      }
     ]
   }
 }

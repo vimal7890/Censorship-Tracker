@@ -79,20 +79,37 @@ def main() -> int:
         f"missing={row_names - matrix_names} extra={matrix_names - row_names}"
     )
 
-    valid = {"a", "x", "p", "n"}
+    # One service-level verdict per country, not per app store: Pakistan leaves
+    # the apps listed and blocks the connection, so store presence would not
+    # answer whether the service actually works.
+    valid = {"available", "restricted", "blocked"}
     for c in countries:
-        assert c.get("abbr") and c.get("note"), c
-        assert all(str(s).startswith("http") for s in c.get("sources", [])), c
-        for platform in ("ios", "play", "web"):
-            assert c["default"].get(platform) in valid, c
+        assert c.get("note"), c
+        assert c.get("sources"), f"{c['name']} needs at least one source"
+        assert all(str(s).startswith("http") for s in c["sources"]), c
+        assert c.get("default") in valid, c
 
     for app in apps:
         assert app.get("name"), app
-        for code, ov in (app.get("overrides") or {}).items():
+        for code, status in (app.get("overrides") or {}).items():
             assert code in codes, f"{app['name']} overrides unknown country {code}"
-            for platform, status in ov.items():
-                assert platform in ("ios", "play", "web"), (app["name"], platform)
-                assert status in valid, (app["name"], code, status)
+            assert status in valid, (app["name"], code, status)
+
+    # Pakistan is the worked example of connection-level blocking: a restricted
+    # baseline with the providers named in reporting overridden to blocked.
+    pk = next(c for c in countries if c["code"] == "PK")
+    assert pk["default"] == "restricted", pk
+    pk_blocked = {a["name"] for a in apps if (a.get("overrides") or {}).get("PK") == "blocked"}
+    assert {"NordVPN", "ExpressVPN", "Proton VPN"} <= pk_blocked, sorted(pk_blocked)
+
+    # The circumvention caveat must sit between the grid and the country notes.
+    # Match the element, not the stylesheet rule of the same name.
+    assert 'class="mx-caveat"' in vpn_html, "circumvention caveat missing from the page"
+    assert (
+        vpn_html.index('<tbody id="appMatrixBody">')
+        < vpn_html.index('class="mx-caveat"')
+        < vpn_html.index('id="matrixNotes"')
+    ), "caveat must render below the matrix and above the country notes"
 
     print("OK: VPN Tracker nav on all pages")
     print("OK: restrictions:", [(r["country"], r["severity"]) for r in rows])
