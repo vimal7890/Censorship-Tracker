@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
     <title>Age Verification Tracker</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -10,8 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="assets/theme.js"></script>
     <style>
         :root {
+            color-scheme: light;
             --paper-white: #ffffff;
             --background: #f9f9f9;
             --surface-bright: #f9f9f9;
@@ -29,6 +32,55 @@
             --muted-gray: #6c757d;
             --on-surface-variant: #444748;
             --outline-variant: #c4c7c7;
+            --ticker-muted: #d0d0d0;
+        }
+
+        /* ---------- Dark theme ----------
+           Two identical variable blocks: [data-theme="dark"] is the manual
+           toggle, the media query is system auto (no override stored). */
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --paper-white: #161616;
+            --background: #0d0d0d;
+            --surface-bright: #1a1a1a;
+            --surface-container-low: #212121;
+            --surface-container: #282828;
+            --surface-container-high: #303030;
+            --primary: #e8e8e8;
+            --redaction-black: #f2f2f2;
+            --on-primary: #121212;
+            --secondary: #ef4358;
+            --alert-orange: #fd7e14;
+            --age-purple: #a465e6;
+            --age-purple-light: #503a6d;
+            --tertiary-green: #3fc75a;
+            --muted-gray: #98a0a7;
+            --on-surface-variant: #c2c5c7;
+            --outline-variant: #3a3d3e;
+            --ticker-muted: #4f4f4f;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                --paper-white: #161616;
+                --background: #0d0d0d;
+                --surface-bright: #1a1a1a;
+                --surface-container-low: #212121;
+                --surface-container: #282828;
+                --surface-container-high: #303030;
+                --primary: #e8e8e8;
+                --redaction-black: #f2f2f2;
+                --on-primary: #121212;
+                --secondary: #ef4358;
+                --alert-orange: #fd7e14;
+                --age-purple: #a465e6;
+                --age-purple-light: #503a6d;
+                --tertiary-green: #3fc75a;
+                --muted-gray: #98a0a7;
+                --on-surface-variant: #c2c5c7;
+                --outline-variant: #3a3d3e;
+                --ticker-muted: #4f4f4f;
+            }
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -63,6 +115,7 @@
             border-bottom: 2px solid var(--primary);
         }
         .topbar-inner {
+            position: relative;
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -80,6 +133,34 @@
             letter-spacing: -0.02em;
             text-transform: uppercase;
             color: var(--redaction-black);
+            padding-right: 30px; /* clear the floating theme toggle on mobile */
+        }
+        /* ---------- Theme toggle (moon/sun) ---------- */
+        .theme-toggle {
+            position: absolute; /* mobile: floats top-right, out of the flow */
+            top: 10px;
+            right: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            padding: 0;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.12s, color 0.12s;
+        }
+        .theme-toggle:hover { background: var(--primary); color: var(--paper-white); }
+        .theme-toggle svg { width: 16px; height: 16px; display: block; }
+        .theme-toggle .icon-sun { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+            :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
         }
         .topnav {
             display: flex;
@@ -127,7 +208,7 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #d0d0d0;
+            color: var(--ticker-muted);
             display: flex;
             flex-wrap: wrap;
             gap: 8px 20px;
@@ -394,8 +475,9 @@
             }
             .topbar-inner { flex-direction: row; align-items: center; padding-top: 16px; padding-bottom: 16px; }
             .topnav { width: auto; justify-content: flex-end; }
+            .theme-toggle { position: static; margin-left: 4px; }
             .main-wrap { padding-top: 40px; }
-            .wordmark { font-size: 26px; white-space: nowrap; }
+            .wordmark { font-size: 26px; white-space: nowrap; padding-right: 0; }
             .page-title { font-size: 48px; }
         }
     </style>
@@ -410,6 +492,10 @@
                     <a href="/age-verification" class="nav-link active">Age Verification</a>
                     <a href="/vpn-tracker" class="nav-link">VPN</a>
                 </div>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
             </nav>
         </div>
     </header>

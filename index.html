@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
     <title>Global Censorship Tracker</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon.ico" sizes="any">
@@ -10,8 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="assets/theme.js"></script>
     <style>
         :root {
+            color-scheme: light;
             --paper-white: #ffffff;
             --background: #f9f9f9;
             --surface-bright: #f9f9f9;
@@ -28,6 +31,98 @@
             --muted-gray: #6c757d;
             --on-surface-variant: #444748;
             --outline-variant: #c4c7c7;
+            --ticker-muted: #d0d0d0;
+            --head-complete: #ff9a9a;   /* status colors on redaction strips */
+            --head-partial: #ffcf9a;
+            --head-age: #d8b4fe;
+            --head-join: #9ca3af;
+            --map-land: #e6e6e6;
+            --map-stroke: #ffffff;
+            --map-b1: #c9c9c9;
+            --map-b2: #999999;
+            --map-b3: #595959;
+            --map-b4: #000000;
+            --tag-glow: rgba(0, 0, 0, 0.45);
+            --tooltip-shadow: rgba(0, 0, 0, 0.18);
+            --dossier-close-border: rgba(255, 255, 255, 0.45);
+        }
+
+        /* ---------- Dark theme ----------
+           The redaction aesthetic inverts: black strips become light strips,
+           and the map fills toward white for the most-censored bucket.
+           Two identical variable blocks: [data-theme="dark"] is the manual
+           toggle, the media query is system auto (no override stored). */
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --paper-white: #161616;
+            --background: #0d0d0d;
+            --surface-bright: #1a1a1a;
+            --surface-container-low: #212121;
+            --surface-container: #282828;
+            --surface-container-high: #303030;
+            --primary: #e8e8e8;
+            --redaction-black: #f2f2f2;
+            --on-primary: #121212;
+            --secondary: #ef4358;
+            --alert-orange: #fd7e14;
+            --age-purple: #a465e6;
+            --tertiary-green: #3fc75a;
+            --muted-gray: #98a0a7;
+            --on-surface-variant: #c2c5c7;
+            --outline-variant: #3a3d3e;
+            --ticker-muted: #4f4f4f;
+            --head-complete: #b6152e;
+            --head-partial: #b45309;
+            --head-age: #7d3ac1;
+            --head-join: #6c757d;
+            --map-land: #262626;
+            --map-stroke: #0d0d0d;
+            --map-b1: #454545;
+            --map-b2: #6e6e6e;
+            --map-b3: #a8a8a8;
+            --map-b4: #f2f2f2;
+            --tag-glow: rgba(255, 255, 255, 0.4);
+            --tooltip-shadow: rgba(0, 0, 0, 0.55);
+            --dossier-close-border: rgba(0, 0, 0, 0.4);
+        }
+        :root[data-theme="dark"] .platform-logo.brand-dark { color: var(--primary) !important; }
+        :root[data-theme="dark"] .dash-panel svg rect:hover { filter: brightness(0.8); }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                --paper-white: #161616;
+                --background: #0d0d0d;
+                --surface-bright: #1a1a1a;
+                --surface-container-low: #212121;
+                --surface-container: #282828;
+                --surface-container-high: #303030;
+                --primary: #e8e8e8;
+                --redaction-black: #f2f2f2;
+                --on-primary: #121212;
+                --secondary: #ef4358;
+                --alert-orange: #fd7e14;
+                --age-purple: #a465e6;
+                --tertiary-green: #3fc75a;
+                --muted-gray: #98a0a7;
+                --on-surface-variant: #c2c5c7;
+                --outline-variant: #3a3d3e;
+                --ticker-muted: #4f4f4f;
+                --head-complete: #b6152e;
+                --head-partial: #b45309;
+                --head-age: #7d3ac1;
+                --head-join: #6c757d;
+                --map-land: #262626;
+                --map-stroke: #0d0d0d;
+                --map-b1: #454545;
+                --map-b2: #6e6e6e;
+                --map-b3: #a8a8a8;
+                --map-b4: #f2f2f2;
+                --tag-glow: rgba(255, 255, 255, 0.4);
+                --tooltip-shadow: rgba(0, 0, 0, 0.55);
+                --dossier-close-border: rgba(0, 0, 0, 0.4);
+            }
+            :root:not([data-theme="light"]) .platform-logo.brand-dark { color: var(--primary) !important; }
+            :root:not([data-theme="light"]) .dash-panel svg rect:hover { filter: brightness(0.8); }
         }
 
         * {
@@ -69,6 +164,7 @@
             border-bottom: 2px solid var(--primary);
         }
         .topbar-inner {
+            position: relative;
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -86,6 +182,34 @@
             letter-spacing: -0.02em;
             text-transform: uppercase;
             color: var(--redaction-black);
+            padding-right: 30px; /* clear the floating theme toggle on mobile */
+        }
+        /* ---------- Theme toggle (moon/sun) ---------- */
+        .theme-toggle {
+            position: absolute; /* mobile: floats top-right, out of the flow */
+            top: 10px;
+            right: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            padding: 0;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.12s, color 0.12s;
+        }
+        .theme-toggle:hover { background: var(--primary); color: var(--paper-white); }
+        .theme-toggle svg { width: 16px; height: 16px; display: block; }
+        .theme-toggle .icon-sun { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+            :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
         }
         .topnav {
             display: flex;
@@ -134,7 +258,7 @@
             font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #d0d0d0;
+            color: var(--ticker-muted);
             display: flex;
             flex-wrap: wrap;
             gap: 8px 20px;
@@ -464,7 +588,7 @@
                 var(--age-purple) 0 5px,
                 var(--alert-orange) 5px 10px
             );
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+            text-shadow: 0 0 2px var(--tag-glow);
         }
         .country-tag:hover { filter: brightness(1.1); }
         .country-tag:active { transform: translateY(1px); }
@@ -493,7 +617,7 @@
         }
         .more-info.expanded { display: block; }
         .more-info-head .status-multi { display: inline-flex; flex-wrap: wrap; gap: 0 4px; align-items: center; }
-        .more-info-head .status-join { color: #9ca3af; }
+        .more-info-head .status-join { color: var(--head-join); }
         .multi-case + .multi-case {
             margin-top: 14px;
             padding-top: 12px;
@@ -524,9 +648,9 @@
             gap: 12px;
             flex-wrap: wrap;
         }
-        .more-info-head .status-complete { color: #ff9a9a; }
-        .more-info-head .status-partial { color: #ffcf9a; }
-        .more-info-head .status-age { color: #d8b4fe; }
+        .more-info-head .status-complete { color: var(--head-complete); }
+        .more-info-head .status-partial { color: var(--head-partial); }
+        .more-info-head .status-age { color: var(--head-age); }
         .more-info-body {
             padding: 12px;
             font-size: 15px;
@@ -645,12 +769,12 @@
         }
         .map-frame[hidden] { display: none; }
         #worldMap svg { width: 100%; height: auto; display: block; }
-        #worldMap .land { fill: #e6e6e6; stroke: #ffffff; stroke-width: 0.5; }
+        #worldMap .land { fill: var(--map-land); stroke: var(--map-stroke); stroke-width: 0.5; }
         #worldMap .has-data { cursor: pointer; }
-        #worldMap .has-data.b1 { fill: #c9c9c9; }
-        #worldMap .has-data.b2 { fill: #999999; }
-        #worldMap .has-data.b3 { fill: #595959; }
-        #worldMap .has-data.b4 { fill: #000000; }
+        #worldMap .has-data.b1 { fill: var(--map-b1); }
+        #worldMap .has-data.b2 { fill: var(--map-b2); }
+        #worldMap .has-data.b3 { fill: var(--map-b3); }
+        #worldMap .has-data.b4 { fill: var(--map-b4); }
         #worldMap .has-data.subnational { fill: url(#hatchPattern); }
         #worldMap .has-data:hover,
         #worldMap .has-data:focus,
@@ -666,7 +790,7 @@
             pointer-events: none;
             background: var(--paper-white);
             border: 1px solid var(--primary);
-            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.18);
+            box-shadow: 3px 3px 0 var(--tooltip-shadow);
             padding: 8px 10px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
@@ -701,12 +825,12 @@
             display: inline-block;
             border: 1px solid var(--outline-variant);
         }
-        .map-legend i.b0 { background: #e6e6e6; }
-        .map-legend i.b1 { background: #c9c9c9; }
-        .map-legend i.b2 { background: #999999; }
-        .map-legend i.b3 { background: #595959; }
-        .map-legend i.b4 { background: #000000; }
-        .map-legend i.subnat { background: repeating-linear-gradient(45deg, #1e1e1e 0 2px, #f3f3f3 2px 5px); }
+        .map-legend i.b0 { background: var(--map-land); }
+        .map-legend i.b1 { background: var(--map-b1); }
+        .map-legend i.b2 { background: var(--map-b2); }
+        .map-legend i.b3 { background: var(--map-b3); }
+        .map-legend i.b4 { background: var(--map-b4); }
+        .map-legend i.subnat { background: repeating-linear-gradient(45deg, var(--primary) 0 2px, var(--surface-container-low) 2px 5px); }
         .map-controls {
             display: flex;
             flex-wrap: wrap;
@@ -785,7 +909,7 @@
         }
         .dossier-close {
             background: none;
-            border: 1px solid rgba(255, 255, 255, 0.45);
+            border: 1px solid var(--dossier-close-border);
             color: var(--paper-white);
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
@@ -959,8 +1083,9 @@
         @media (min-width: 768px) {
             .topbar-inner, .ticker-inner, .footer-inner { padding-left: 40px; padding-right: 40px; }
             .topbar-inner { flex-direction: row; align-items: center; padding-top: 16px; padding-bottom: 16px; }
-            .wordmark { font-size: 26px; white-space: nowrap; }
+            .wordmark { font-size: 26px; white-space: nowrap; padding-right: 0; }
             .topnav { width: auto; justify-content: flex-end; }
+            .theme-toggle { position: static; margin-left: 4px; }
             .main { padding: 40px; }
             .page-title { font-size: 48px; }
             .platform-row { flex-direction: row; }
@@ -991,6 +1116,10 @@
                     <a href="/age-verification" class="nav-link">Age Verification</a>
                     <a href="/vpn-tracker" class="nav-link">VPN</a>
                 </div>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
             </nav>
         </div>
     </header>
@@ -1246,6 +1375,16 @@
             "Zoom": "#0B5CFF"
         };
 
+        // Brand colors too dark to read on the dark theme get a class that
+        // swaps them to the foreground color (see .platform-logo.brand-dark).
+        function isDarkBrand(hex) {
+            const m = /^#([0-9a-f]{6})$/i.exec(hex || '');
+            if (!m) return false;
+            const n = parseInt(m[1], 16);
+            const lin = c => { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+            return 0.2126 * lin(n >> 16) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255) < 0.08;
+        }
+
         let currentFilter = 'all';
 
         const sourceIndex = new Map();
@@ -1451,7 +1590,7 @@
                 return `
                 <article class="platform-row">
                     <div class="platform-meta">
-                        <div class="platform-name"><span>${platform.name}</span>${PLATFORM_ICONS[platform.name] ? `<span class="platform-logo"${PLATFORM_COLORS[platform.name] ? ` style="color:${PLATFORM_COLORS[platform.name]}"` : ''}>${PLATFORM_ICONS[platform.name]}</span>` : ''}</div>
+                        <div class="platform-name"><span>${platform.name}</span>${PLATFORM_ICONS[platform.name] ? `<span class="platform-logo${isDarkBrand(PLATFORM_COLORS[platform.name]) ? ' brand-dark' : ''}"${PLATFORM_COLORS[platform.name] ? ` style="color:${PLATFORM_COLORS[platform.name]}"` : ''}>${PLATFORM_ICONS[platform.name]}</span>` : ''}</div>
                         <div class="platform-count">Restricted in ${countryCount} ${countryCount === 1 ? 'country or territory' : 'countries and territories'}</div>
                     </div>
                     <div class="platform-body">
@@ -1534,7 +1673,7 @@
 
         const TYPE_ORDER = { complete: 0, partial: 1, age: 2 };
         const TYPE_LABEL = { complete: 'Complete Ban', partial: 'Partial Ban', age: 'Age Verification' };
-        const TYPE_COLORS = { complete: '#b6152e', partial: '#fd7e14', age: '#7d3ac1' };
+        const TYPE_COLORS = { complete: 'var(--secondary)', partial: 'var(--alert-orange)', age: 'var(--age-purple)' };
         const ISO_DISPLAY = { US: 'United States' };
         const countryIndex = new Map(); // ISO code -> aggregated record
 
@@ -1600,8 +1739,8 @@
             const defs = svgRoot.querySelector('defs');
             if (defs) defs.insertAdjacentHTML('beforeend',
                 '<pattern id="hatchPattern" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">' +
-                '<rect width="6" height="6" fill="#f3f3f3"></rect>' +
-                '<line x1="1" y1="0" x2="1" y2="6" stroke="#1e1e1e" stroke-width="2"></line></pattern>');
+                '<rect width="6" height="6" fill="var(--surface-container-low)"></rect>' +
+                '<line x1="1" y1="0" x2="1" y2="6" stroke="var(--primary)" stroke-width="2"></line></pattern>');
 
             countryIndex.forEach((rec, iso) => {
                 const el = svgRoot.querySelector('#' + iso);
@@ -1783,7 +1922,7 @@
             let svg = `<svg viewBox="0 0 ${chartW} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Restrictions per platform, all types stacked">`;
             rows.forEach((r, i) => {
                 const y = i * rowH + 4;
-                svg += `<text x="${labelW - 10}" y="${y + 12}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#1e1e1e">${escapeHTML(r.name)}</text>`;
+                svg += `<text x="${labelW - 10}" y="${y + 12}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--primary)">${escapeHTML(r.name)}</text>`;
                 let x = labelW;
                 ['complete', 'partial', 'age'].forEach(t => {
                     if (!r[t]) return;
@@ -1792,7 +1931,7 @@
                     svg += `<rect x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="16" fill="${TYPE_COLORS[t]}"><title>${r[t]} ${label}</title></rect>`;
                     x += w;
                 });
-                svg += `<text x="${(x + 6).toFixed(1)}" y="${y + 12}" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#1e1e1e">${r.total}</text>`;
+                svg += `<text x="${(x + 6).toFixed(1)}" y="${y + 12}" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="var(--primary)">${r.total}</text>`;
             });
             svg += '</svg>';
             document.getElementById('chartPlatforms').innerHTML =
@@ -1850,15 +1989,15 @@
                     const yy = H - bottom - h;
                     if (y > nowYear) {
                         hasScheduled = true;
-                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="#ffffff" stroke="#1e1e1e" stroke-dasharray="3 2"><title>${y}: ${v} new restriction${v !== 1 ? 's' : ''} (scheduled)</title></rect>`;
+                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--paper-white)" stroke="var(--primary)" stroke-dasharray="3 2"><title>${y}: ${v} new restriction${v !== 1 ? 's' : ''} (scheduled)</title></rect>`;
                     } else {
-                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="#1e1e1e"><title>${y}: ${v} new restriction${v !== 1 ? 's' : ''}</title></rect>`;
+                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--primary)"><title>${y}: ${v} new restriction${v !== 1 ? 's' : ''}</title></rect>`;
                     }
-                    svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${(yy - 4).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6c757d">${v}</text>`;
+                    svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${(yy - 4).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--muted-gray)">${v}</text>`;
                 }
-                svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${H - 9}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#1e1e1e">${y}</text>`;
+                svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${H - 9}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--primary)">${y}</text>`;
             });
-            svg += `<line x1="0" y1="${H - bottom + 4}" x2="${W}" y2="${H - bottom + 4}" stroke="#1e1e1e" stroke-width="1"></line></svg>`;
+            svg += `<line x1="0" y1="${H - bottom + 4}" x2="${W}" y2="${H - bottom + 4}" stroke="var(--primary)" stroke-width="1"></line></svg>`;
             document.getElementById('chartYears').innerHTML =
                 `<figcaption class="dash-title">New restrictions by year</figcaption>${svg}
                 <div class="dash-note">Year each restriction took (or takes) effect.${hasScheduled ? ' Dashed bars are scheduled.' : ''} ${undated} undated entries (e.g. &ldquo;Always blocked&rdquo;) not shown.</div>`;
