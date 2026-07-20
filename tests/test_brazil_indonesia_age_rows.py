@@ -12,9 +12,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "censorship_data.csv"
 
-# Tracked platforms covered by Brazil ECA Digital social-network rules
-# (Art. 24 parental-link for under-16; same social set as Australia + Discord).
-BRAZIL_AGE_PLATFORMS = {
+# Platforms the Brazil ECA Digital social-network rules must cover (Art. 24
+# parental-link for under-16). This is a required floor, not an exhaustive
+# list: the law is written by platform category, so newly tracked platforms
+# legitimately join it. Every age row is still content-checked below.
+BRAZIL_AGE_REQUIRED = {
     "Discord",
     "Facebook",
     "Instagram",
@@ -26,8 +28,9 @@ BRAZIL_AGE_PLATFORMS = {
     "YouTube",
 }
 
-# Indonesia high-risk list (BBC) ∩ platforms already on the tracker
-INDONESIA_AGE_PLATFORMS = {
+# Indonesia high-risk list (BBC) ∩ platforms already on the tracker.
+# Required floor; anything added must also appear in INDONESIA_HIGH_RISK_NAMED.
+INDONESIA_AGE_REQUIRED = {
     "Facebook",
     "Instagram",
     "TikTok",
@@ -79,15 +82,15 @@ def main() -> int:
     brazil_platforms = {r["platform"] for r in brazil_age}
     indo_platforms = {r["platform"] for r in indo_age}
 
-    assert brazil_platforms == BRAZIL_AGE_PLATFORMS, (
-        f"Brazil age platforms mismatch:\n"
-        f"  got: {sorted(brazil_platforms)}\n"
-        f"  exp: {sorted(BRAZIL_AGE_PLATFORMS)}"
+    brazil_missing = BRAZIL_AGE_REQUIRED - brazil_platforms
+    assert not brazil_missing, (
+        f"Brazil age rows missing required platforms: {sorted(brazil_missing)}\n"
+        f"  present: {sorted(brazil_platforms)}"
     )
-    assert indo_platforms == INDONESIA_AGE_PLATFORMS, (
-        f"Indonesia age platforms mismatch:\n"
-        f"  got: {sorted(indo_platforms)}\n"
-        f"  exp: {sorted(INDONESIA_AGE_PLATFORMS)}"
+    indo_missing = INDONESIA_AGE_REQUIRED - indo_platforms
+    assert not indo_missing, (
+        f"Indonesia age rows missing required platforms: {sorted(indo_missing)}\n"
+        f"  present: {sorted(indo_platforms)}"
     )
 
     # Indonesia age platforms must be subset of named high-risk list

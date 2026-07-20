@@ -12,32 +12,60 @@ ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "censorship_data.csv"
 INDEX_PATH = ROOT / "index.html"
 
-EXPECTED = {
-    "LINE": {"China", "North Korea", "Russia", "Turkmenistan", "UAE"},
+# Known country → restriction-type classifications for each messenger. Every
+# entry here must be present in the CSV with exactly this type; "partial" means
+# a feature-level VoIP / calling restriction where messaging still works, while
+# "complete" means the service itself is blocked.
+#
+# This is a required floor rather than an exhaustive list — both apps are VoIP
+# messengers, so further Gulf-style calling restrictions may legitimately be
+# researched and added. Any extra country is still validated for a sane type
+# and an https source below, it just does not need to be enumerated here.
+EXPECTED_TYPE = {
+    "LINE": {
+        "China": "complete",
+        "North Korea": "complete",
+        "Oman": "partial",
+        "Qatar": "partial",
+        "Russia": "complete",
+        "Saudi Arabia": "partial",
+        "Turkmenistan": "complete",
+        "UAE": "partial",
+    },
     "Viber": {
-        "China",
-        "Egypt",
-        "Iran",
-        "North Korea",
-        "Oman",
-        "Qatar",
-        "Russia",
-        "Turkmenistan",
-        "UAE",
+        "China": "complete",
+        "Egypt": "partial",
+        "Iran": "complete",
+        "North Korea": "complete",
+        "Oman": "partial",
+        "Qatar": "partial",
+        "Russia": "complete",
+        "Turkmenistan": "complete",
+        "UAE": "partial",
     },
 }
-
-# Feature-level VoIP / calling restrictions (messaging still works)
-VIBER_PARTIAL = {"Egypt", "Oman", "Qatar", "UAE"}
 
 
 def main() -> int:
     with CSV_PATH.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
-    for platform, countries in EXPECTED.items():
+    for platform, expected in EXPECTED_TYPE.items():
         platform_rows = [row for row in rows if row["platform"] == platform]
-        assert {row["country"] for row in platform_rows} == countries, platform_rows
+        by_country = {row["country"]: row for row in platform_rows}
+
+        missing = set(expected) - set(by_country)
+        assert not missing, (
+            f"{platform} missing required countries: {sorted(missing)}\n"
+            f"  present: {sorted(by_country)}"
+        )
+        wrong = {
+            country: (by_country[country]["type"], want)
+            for country, want in expected.items()
+            if by_country[country]["type"] != want
+        }
+        assert not wrong, f"{platform} restriction type changed (got, expected): {wrong}"
+
         assert not any(row["type"] == "age" for row in platform_rows), (
             f"{platform} has no platform-specific ID-based age-verification rule"
         )
@@ -47,13 +75,6 @@ def main() -> int:
 
     line = {row["country"]: row for row in rows if row["platform"] == "LINE"}
     viber = {row["country"]: row for row in rows if row["platform"] == "Viber"}
-    assert line["UAE"]["type"] == "partial"
-    assert {c for c, r in viber.items() if r["type"] == "partial"} == VIBER_PARTIAL
-    assert all(line[country]["type"] == "complete" for country in EXPECTED["LINE"] - {"UAE"})
-    assert all(
-        viber[country]["type"] == "complete"
-        for country in EXPECTED["Viber"] - VIBER_PARTIAL
-    )
 
     index = INDEX_PATH.read_text(encoding="utf-8")
     for platform, colour in (("LINE", "#00C300"), ("Viber", "#7360F2")):

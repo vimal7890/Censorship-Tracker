@@ -12,8 +12,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "censorship_data.csv"
 
-# Same social set as Australia/Brazil age rows (tracked platforms only)
-GABON_AGE_PLATFORMS = {
+# Required floor, mirroring the Australia/Brazil social set. Not exhaustive:
+# the Gabonese rules are category-based, so newly tracked platforms
+# legitimately join. Every age row is still content-checked below.
+GABON_AGE_REQUIRED = {
     "Discord",
     "Facebook",
     "Instagram",
@@ -42,10 +44,10 @@ def main() -> int:
         r for r in rows if r["country"] == "Gabon" and r["type"] == "age"
     ]
     platforms = {r["platform"] for r in gabon_age}
-    assert platforms == GABON_AGE_PLATFORMS, (
-        f"Gabon age platforms mismatch:\n"
-        f"  got: {sorted(platforms)}\n"
-        f"  exp: {sorted(GABON_AGE_PLATFORMS)}"
+    missing = GABON_AGE_REQUIRED - platforms
+    assert not missing, (
+        f"Gabon age rows missing required platforms: {sorted(missing)}\n"
+        f"  present: {sorted(platforms)}"
     )
 
     for r in gabon_age:

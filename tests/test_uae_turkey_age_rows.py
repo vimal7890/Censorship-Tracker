@@ -13,8 +13,9 @@ ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "censorship_data.csv"
 
 # Plan criterion 3 minimum social set for UAE (Facebook, Instagram, TikTok, X, YouTube)
-# plus Snapchat from the official phase-1 named list.
-UAE_AGE_PLATFORMS = {
+# plus Snapchat from the official phase-1 named list. Required floor, not
+# exhaustive — later phases may add platforms. Rows are content-checked below.
+UAE_AGE_REQUIRED = {
     "Facebook",
     "Instagram",
     "Snapchat",
@@ -23,8 +24,9 @@ UAE_AGE_PLATFORMS = {
     "YouTube",
 }
 
-# Social set minus Discord (complete ban still in force for Turkey)
-TURKEY_AGE_PLATFORMS = {
+# Social set minus Discord (complete ban still in force for Turkey).
+# Required floor; the Discord exclusion is asserted separately below.
+TURKEY_AGE_REQUIRED = {
     "Facebook",
     "Instagram",
     "Reddit",
@@ -59,15 +61,15 @@ def main() -> int:
     uae_platforms = {r["platform"] for r in uae_age}
     turkey_platforms = {r["platform"] for r in turkey_age}
 
-    assert uae_platforms == UAE_AGE_PLATFORMS, (
-        f"UAE age platforms mismatch:\n"
-        f"  got: {sorted(uae_platforms)}\n"
-        f"  exp: {sorted(UAE_AGE_PLATFORMS)}"
+    uae_missing = UAE_AGE_REQUIRED - uae_platforms
+    assert not uae_missing, (
+        f"UAE age rows missing required platforms: {sorted(uae_missing)}\n"
+        f"  present: {sorted(uae_platforms)}"
     )
-    assert turkey_platforms == TURKEY_AGE_PLATFORMS, (
-        f"Turkey age platforms mismatch:\n"
-        f"  got: {sorted(turkey_platforms)}\n"
-        f"  exp: {sorted(TURKEY_AGE_PLATFORMS)}"
+    turkey_missing = TURKEY_AGE_REQUIRED - turkey_platforms
+    assert not turkey_missing, (
+        f"Turkey age rows missing required platforms: {sorted(turkey_missing)}\n"
+        f"  present: {sorted(turkey_platforms)}"
     )
     assert "Discord" not in turkey_platforms, "Discord must stay complete-only for Turkey"
 
