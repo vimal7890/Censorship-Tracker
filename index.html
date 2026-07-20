@@ -1334,10 +1334,13 @@
 
     <script src="assets/countries.js"></script>
     <script>
-        // Cookie-cutter notes for states where the internet is restricted by default.
-        // Applied automatically to every entry for these countries.
+        // Cookie-cutter notes for states where the internet is restricted by
+        // default, so their rows do not each have to restate the same thing.
+        // These are a fallback: a row that has its own more_info keeps it, and
+        // only rows that leave the column empty borrow the text below.
         const HEAVY_CENSORSHIP = {
             "China": "China's \"Great Firewall\" blocks most major foreign platforms by default. State-monitored domestic alternatives take their place, and unsanctioned VPN use is illegal.",
+            "Eritrea": "Eritrea routes the whole country through EriTel, the sole state-owned ISP, and internet penetration sits near 1%. There is no independent domestic media, so foreign platforms are out of reach by default.",
             "North Korea": "North Korea has no public internet. Citizens can only reach the state-run Kwangmyong intranet, so every foreign platform is inaccessible by default.",
             "Turkmenistan": "Turkmenistan's state-monopoly ISP blocks most foreign platforms and roughly 75% of all IP addresses by default, and VPN use is actively suppressed."
         };
@@ -1501,7 +1504,7 @@
                     if (!byPlatform.has(platform)) byPlatform.set(platform, { name: platform, bannedIn: [] });
                     byPlatform.get(platform).bannedIn.push({
                         country, since, type,
-                        moreInfo: HEAVY_CENSORSHIP[country] || moreInfo || '',
+                        moreInfo: moreInfo || HEAVY_CENSORSHIP[country] || '',
                         source: source || null
                     });
                 });

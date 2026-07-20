@@ -31,9 +31,15 @@ Notes:
 - Run [`verify_links.py`](verify_links.py) after editing sources. It reports
   dead URLs, Wikipedia citations and leftover search-engine placeholders, with
   the rows that cite each, and exits non-zero if any are found.
-- **China, North Korea and Turkmenistan** rows can leave `more_info` empty —
-  the page substitutes a shared boilerplate about their default-restricted
-  internet (see `HEAVY_CENSORSHIP` in `index.html`).
+- **China, Eritrea, North Korea and Turkmenistan** rows can leave `more_info`
+  empty — the page substitutes a shared boilerplate about their
+  default-restricted internet (see `HEAVY_CENSORSHIP` in `index.html`). The
+  boilerplate is a **fallback**, not an override: a row that has something
+  specific to say keeps its own text, and only empty rows borrow the shared
+  sentence. So write `more_info` when the platform's situation differs from
+  the country-wide default — that Zoom is throttled in China rather than
+  outright banned, or that Spotify never listed Turkmenistan as a market —
+  and leave it empty when the country default is the whole story.
 - Wrap fields containing commas or quotes in `"double quotes"` (standard CSV).
 - A country may appear twice for one platform with different `type`s
   (e.g. X in Turkey has both a partial Grok block and an age rule). On the
