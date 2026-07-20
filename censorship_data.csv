@@ -91,10 +91,14 @@ Odnoklassniki,Ukraine,2017,complete,Blocked by the Ukrainian government via ISP 
 Odnoklassniki,Latvia,2022,complete,Blocked alongside VKontakte by Latvia's NEPLP in May 2022 due to EU sanctions on their owners (Yury Kovalchuk and Vladimir Kiriyenko).,https://eng.lsm.lv/article/society/society/latvias-neplp-blocks-access-to-russian-social-networks.a457029/
 Odnoklassniki,China,Forever,complete,Blocked by the Great Firewall in mainland China.,https://en.wikipedia.org/wiki/Internet_censorship_in_China
 Odnoklassniki,North Korea,Forever,complete,The internet is de facto banned there for everyone.,https://en.wikipedia.org/wiki/Internet_in_North_Korea
-Patreon,Russia,August 2022,complete,Blocked by Roskomnadzor for hosting anti-war content related to the invasion of Ukraine.,https://techcrunch.com/2022/08/10/russia-blocks-patreon-and-grammarly/
+Patreon,Iran,Forever,complete,"Patreon is inaccessible in Iran due to both US sanctions compliance and Iran's domestic internet censorship. As a US-based company, Patreon blocks access from Iran under OFAC regulations and its payment processors do not support transactions with sanctioned countries.",https://support.patreon.com/hc/en-us/articles/360042077572-Patreon-s-Sanctions-Policy
 Patreon,North Korea,Forever,complete,The internet is de facto banned there for everyone.,https://en.wikipedia.org/wiki/Internet_in_North_Korea
+Patreon,Russia,August 2022,complete,Blocked by Roskomnadzor for hosting anti-war content related to the invasion of Ukraine.,https://techcrunch.com/2022/08/10/russia-blocks-patreon-and-grammarly/
+Patreon,Turkmenistan,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_Turkmenistan
 Pinterest,China,2017,complete,Blocked by the Great Firewall ahead of the annual National People's Congress.,https://techcrunch.com/2017/03/17/pinterest-has-been-blocked-in-china/
+Pinterest,Iran,Forever,complete,Blocked under Iran's broad filtering of foreign social media and networking platforms.,https://en.wikipedia.org/wiki/Internet_censorship_in_Iran
 Pinterest,North Korea,Forever,complete,The internet is de facto banned there for everyone.,https://en.wikipedia.org/wiki/Internet_in_North_Korea
+Pinterest,Turkmenistan,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_Turkmenistan
 Quora,China,2018,complete,Blocked by the Great Firewall.,https://en.wikipedia.org/wiki/Internet_censorship_in_China
 Quora,North Korea,Forever,complete,The internet is de facto banned there for everyone.,https://en.wikipedia.org/wiki/Internet_in_North_Korea
 Quora,Turkmenistan,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_Turkmenistan
