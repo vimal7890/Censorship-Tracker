@@ -783,6 +783,9 @@
             stroke-width: 1.4;
             outline: none;
         }
+        /* Shared hover tooltip for the map and the By the Numbers charts.
+           Custom rather than the native title attribute so it appears with no
+           delay and can carry styled, multi-line detail. */
         .map-tooltip {
             position: fixed;
             z-index: 70;
@@ -796,8 +799,43 @@
             font-size: 11px;
             line-height: 1.7;
             color: var(--on-surface-variant);
-            max-width: 280px;
+            max-width: 300px;
         }
+        .map-tooltip .tt-head {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            border-bottom: 1px solid var(--outline-variant);
+            padding-bottom: 4px;
+            margin-bottom: 5px;
+        }
+        .map-tooltip .tt-row { display: flex; justify-content: space-between; gap: 14px; }
+        .map-tooltip .tt-row b { color: var(--primary); }
+        .map-tooltip .tt-total {
+            border-top: 1px solid var(--outline-variant);
+            margin-top: 5px;
+            padding-top: 4px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .map-tooltip .tt-foot {
+            margin-top: 5px;
+            font-size: 10px;
+            line-height: 1.5;
+            color: var(--muted-gray);
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .map-tooltip .tt-swatch {
+            display: inline-block;
+            width: 8px; height: 8px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .map-tooltip .tt-swatch.complete { background: var(--secondary); }
+        .map-tooltip .tt-swatch.partial { background: var(--alert-orange); }
+        .map-tooltip .tt-swatch.age { background: var(--age-purple); }
         .map-tooltip .tt-name {
             font-weight: 700;
             text-transform: uppercase;
@@ -1206,7 +1244,6 @@
                 <div class="map-frame">
                     <div id="worldMap"></div>
                 </div>
-                <div id="mapTooltip" class="map-tooltip" aria-hidden="true"></div>
                 <div class="map-legend" id="mapLegend">
                     <span><i class="b0"></i> None tracked</span>
                     <span><i class="b1"></i> 1</span>
@@ -1273,6 +1310,11 @@
             <div class="footer-credit">Map outline: <a href="https://www.amcharts.com/svg-maps/" target="_blank" rel="noopener">amCharts worldLow</a></div>
         </div>
     </footer>
+
+    <!-- Shared hover tooltip: the map and every By the Numbers chart draw into
+         this one element, so it is a body-level sibling rather than owned by
+         any single section. -->
+    <div id="hoverTooltip" class="map-tooltip" aria-hidden="true"></div>
 
     <script src="assets/countries.js"></script>
     <script>
@@ -1714,6 +1756,67 @@
             });
         }
 
+        /* ================= Shared hover tooltip =================
+           Native title attributes were used here originally, which meant a
+           ~1s browser delay and OS-styled chrome. This draws instantly and
+           matches the page. Registered HTML is kept in a map so chart rects
+           only need to carry a short id. */
+
+        const hoverTip = document.getElementById('hoverTooltip');
+        const finePointer = window.matchMedia('(pointer: fine)').matches;
+        const tipRegistry = new Map();
+        let tipSeq = 0;
+
+        function registerTip(html) {
+            const id = 't' + (++tipSeq);
+            tipRegistry.set(id, html);
+            return id;
+        }
+
+        function positionTip(e) {
+            const pad = 14;
+            let x = e.clientX + pad;
+            let y = e.clientY + pad;
+            if (x + hoverTip.offsetWidth > window.innerWidth - 8) x = e.clientX - hoverTip.offsetWidth - pad;
+            if (y + hoverTip.offsetHeight > window.innerHeight - 8) y = e.clientY - hoverTip.offsetHeight - pad;
+            hoverTip.style.left = x + 'px';
+            hoverTip.style.top = y + 'px';
+        }
+
+        function showTip(html, e) {
+            if (!finePointer || !html) return;
+            if (hoverTip.dataset.current !== html) {
+                hoverTip.innerHTML = html;
+                hoverTip.dataset.current = html;
+            }
+            hoverTip.style.display = 'block';
+            positionTip(e);
+        }
+
+        function hideTip() {
+            hoverTip.style.display = 'none';
+            hoverTip.dataset.current = '';
+        }
+
+        // Delegated hover for anything carrying a registered tip id. Bound to
+        // both pointermove and mousemove: pointer events cover normal browsing,
+        // mousemove keeps it working where only legacy mouse events are emitted
+        // (some automation and assistive tooling).
+        function bindTipContainer(container) {
+            if (!container) return;
+            const move = e => {
+                const target = e.target.closest('[data-tip]');
+                if (!target) { hideTip(); return; }
+                showTip(tipRegistry.get(target.dataset.tip), e);
+            };
+            container.addEventListener('pointermove', move);
+            container.addEventListener('mousemove', move);
+            container.addEventListener('pointerleave', hideTip);
+            container.addEventListener('mouseleave', hideTip);
+        }
+
+        window.addEventListener('scroll', hideTip, { passive: true });
+
         function bucketClass(total) {
             if (total >= 10) return 'b4';
             if (total >= 5) return 'b3';
@@ -1756,27 +1859,30 @@
                 el.dataset.iso = iso;
             });
 
-            const tooltip = document.getElementById('mapTooltip');
-            const finePointer = window.matchMedia('(pointer: fine)').matches;
-            svgRoot.addEventListener('pointermove', e => {
+            const mapMove = e => {
                 const target = e.target.closest('.has-data');
-                if (!target || !finePointer) { tooltip.style.display = 'none'; return; }
+                if (!target) { hideTip(); return; }
                 const rec = countryIndex.get(target.dataset.iso);
                 if (!rec) return;
-                tooltip.innerHTML = `<div class="tt-name">${escapeHTML(rec.display)}</div>` +
-                    (rec.counts.complete ? `<div><span class="tt-complete">${rec.counts.complete}</span> complete ban${rec.counts.complete === 1 ? '' : 's'}</div>` : '') +
-                    (rec.counts.partial ? `<div><span class="tt-partial">${rec.counts.partial}</span> partial</div>` : '') +
-                    (rec.counts.age ? `<div><span class="tt-age">${rec.counts.age}</span> age verification</div>` : '') +
-                    (rec.subnationalNames.size ? `<div>Incl. state-level: ${escapeHTML([...rec.subnationalNames].join(', '))}</div>` : '');
-                tooltip.style.display = 'block';
-                const pad = 14;
-                let x = e.clientX + pad, y = e.clientY + pad;
-                if (x + tooltip.offsetWidth > window.innerWidth - 8) x = e.clientX - tooltip.offsetWidth - pad;
-                if (y + tooltip.offsetHeight > window.innerHeight - 8) y = e.clientY - tooltip.offsetHeight - pad;
-                tooltip.style.left = x + 'px';
-                tooltip.style.top = y + 'px';
-            });
-            svgRoot.addEventListener('pointerleave', () => { tooltip.style.display = 'none'; });
+                const total = rec.entries.length;
+                const platforms = [...new Set(rec.entries.map(en => en.platform))];
+                const shown = platforms.slice(0, 6).join(', ');
+                showTip(
+                    `<div class="tt-head">${escapeHTML(rec.display)}</div>` +
+                    (rec.counts.complete ? `<div class="tt-row"><span><i class="tt-swatch complete"></i>Complete ban${rec.counts.complete === 1 ? '' : 's'}</span><b>${rec.counts.complete}</b></div>` : '') +
+                    (rec.counts.partial ? `<div class="tt-row"><span><i class="tt-swatch partial"></i>Partial</span><b>${rec.counts.partial}</b></div>` : '') +
+                    (rec.counts.age ? `<div class="tt-row"><span><i class="tt-swatch age"></i>Age verification</span><b>${rec.counts.age}</b></div>` : '') +
+                    `<div class="tt-row tt-total"><span>Total tracked</span><span>${total}</span></div>` +
+                    `<div class="tt-foot">${escapeHTML(shown)}${platforms.length > 6 ? ` +${platforms.length - 6} more` : ''}` +
+                    (rec.subnationalNames.size ? `<br>State-level: ${escapeHTML([...rec.subnationalNames].join(', '))}` : '') +
+                    `<br>Click to open the full dossier.</div>`,
+                    e
+                );
+            };
+            svgRoot.addEventListener('pointermove', mapMove);
+            svgRoot.addEventListener('mousemove', mapMove);
+            svgRoot.addEventListener('pointerleave', hideTip);
+            svgRoot.addEventListener('mouseleave', hideTip);
             svgRoot.addEventListener('click', e => {
                 const target = e.target.closest('.has-data');
                 if (target) openDossier(target.dataset.iso);
@@ -1907,6 +2013,8 @@
             renderTypeChart();
             renderYearChart();
             renderTopTerritories();
+            // Charts are re-rendered wholesale, so bind after the SVG exists.
+            document.querySelectorAll('#statsSection .dash-panel').forEach(bindTipContainer);
         }
 
         function renderPlatformChart() {
@@ -1923,12 +2031,27 @@
             rows.forEach((r, i) => {
                 const y = i * rowH + 4;
                 svg += `<text x="${labelW - 10}" y="${y + 12}" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--primary)">${escapeHTML(r.name)}</text>`;
+                // Every segment shows the platform's full breakdown, with the
+                // hovered type marked, rather than just its own count.
+                const platform = censorshipData.find(p => p.name === r.name);
+                const where = platform ? [...new Set(platform.bannedIn.map(b => b.country))] : [];
+                const tipFor = hovered => registerTip(
+                    `<div class="tt-head">${escapeHTML(r.name)}</div>` +
+                    ['complete', 'partial', 'age'].map(t => {
+                        if (!r[t]) return '';
+                        const name = t === 'complete' ? 'Complete bans' : t === 'partial' ? 'Partial bans' : 'Age verification';
+                        const mark = t === hovered ? ' style="color:var(--primary);font-weight:700"' : '';
+                        return `<div class="tt-row"${mark}><span><i class="tt-swatch ${t}"></i>${name}</span><b>${r[t]}</b></div>`;
+                    }).join('') +
+                    `<div class="tt-row tt-total"><span>Total territories</span><span>${r.total}</span></div>` +
+                    `<div class="tt-foot">${escapeHTML(where.slice(0, 6).join(', '))}` +
+                    `${where.length > 6 ? ` +${where.length - 6} more` : ''}</div>`
+                );
                 let x = labelW;
                 ['complete', 'partial', 'age'].forEach(t => {
                     if (!r[t]) return;
                     const w = r[t] / max * barMax;
-                    const label = t === 'complete' ? (r[t] === 1 ? 'Full ban' : 'Full bans') : t === 'partial' ? (r[t] === 1 ? 'Partial ban' : 'Partial bans') : 'Age verification';
-                    svg += `<rect x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="16" fill="${TYPE_COLORS[t]}"><title>${r[t]} ${label}</title></rect>`;
+                    svg += `<rect x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="16" fill="${TYPE_COLORS[t]}" data-tip="${tipFor(t)}"></rect>`;
                     x += w;
                 });
                 svg += `<text x="${(x + 6).toFixed(1)}" y="${y + 12}" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="var(--primary)">${r.total}</text>`;
@@ -1950,7 +2073,19 @@
             ['complete', 'partial', 'age'].forEach(t => {
                 const w = totals[t] / total * W;
                 const typeLabel = t === 'complete' ? (totals[t] === 1 ? 'Complete ban' : 'Complete bans') : t === 'partial' ? (totals[t] === 1 ? 'Partial ban' : 'Partial bans') : 'Age verification';
-                svg += `<rect x="${x.toFixed(1)}" y="0" width="${w.toFixed(1)}" height="${H}" fill="${TYPE_COLORS[t]}"><title>${totals[t]} ${typeLabel} (${pct(t)}% of total)</title></rect>`;
+                const meaning = t === 'complete'
+                    ? 'Platform fully unavailable in the territory.'
+                    : t === 'partial'
+                        ? 'Specific features or regions blocked, service otherwise reachable.'
+                        : 'Accessible, but ID or age assurance is required to hold an account.';
+                const tip = registerTip(
+                    `<div class="tt-head">${typeLabel}</div>` +
+                    `<div class="tt-row"><span><i class="tt-swatch ${t}"></i>Restrictions</span><b>${totals[t]}</b></div>` +
+                    `<div class="tt-row"><span>Share of index</span><b>${pct(t)}%</b></div>` +
+                    `<div class="tt-row tt-total"><span>All restrictions</span><span>${total}</span></div>` +
+                    `<div class="tt-foot">${meaning}</div>`
+                );
+                svg += `<rect x="${x.toFixed(1)}" y="0" width="${w.toFixed(1)}" height="${H}" fill="${TYPE_COLORS[t]}" data-tip="${tip}"></rect>`;
                 x += w;
             });
             svg += '</svg>';
@@ -1965,11 +2100,18 @@
 
         function renderYearChart() {
             const byYear = new Map();
+            const detailByYear = new Map(); // year -> {complete,partial,age,examples[]}
             let undated = 0;
             censorshipData.forEach(p => p.bannedIn.forEach(b => {
                 const y = parseSinceYear(b.since);
                 if (y === null) { undated++; return; }
                 byYear.set(y, (byYear.get(y) || 0) + 1);
+                if (!detailByYear.has(y)) {
+                    detailByYear.set(y, { complete: 0, partial: 0, age: 0, examples: [] });
+                }
+                const d = detailByYear.get(y);
+                d[b.type] = (d[b.type] || 0) + 1;
+                d.examples.push(`${p.name} in ${b.country}`);
             }));
             const sortedYears = [...byYear.keys()].sort((a, b) => a - b);
             const years = [];
@@ -1987,11 +2129,23 @@
                 if (v) {
                     const h = v / max * (H - bottom - top);
                     const yy = H - bottom - h;
-                    if (y > nowYear) {
+                    const d = detailByYear.get(y) || { complete: 0, partial: 0, age: 0, examples: [] };
+                    const scheduled = y > nowYear;
+                    const tip = registerTip(
+                        `<div class="tt-head">${y}${scheduled ? ' &middot; Scheduled' : ''}</div>` +
+                        (d.complete ? `<div class="tt-row"><span><i class="tt-swatch complete"></i>Complete bans</span><b>${d.complete}</b></div>` : '') +
+                        (d.partial ? `<div class="tt-row"><span><i class="tt-swatch partial"></i>Partial bans</span><b>${d.partial}</b></div>` : '') +
+                        (d.age ? `<div class="tt-row"><span><i class="tt-swatch age"></i>Age verification</span><b>${d.age}</b></div>` : '') +
+                        `<div class="tt-row tt-total"><span>New that year</span><span>${v}</span></div>` +
+                        `<div class="tt-foot">${escapeHTML(d.examples.slice(0, 5).join('; '))}` +
+                        `${d.examples.length > 5 ? `; +${d.examples.length - 5} more` : ''}` +
+                        `${scheduled ? '<br>Takes effect on a future date already set in law.' : ''}</div>`
+                    );
+                    if (scheduled) {
                         hasScheduled = true;
-                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--paper-white)" stroke="var(--primary)" stroke-dasharray="3 2"><title>${y}: ${v} new restriction${v !== 1 ? 's' : ''} (scheduled)</title></rect>`;
+                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--paper-white)" stroke="var(--primary)" stroke-dasharray="3 2" data-tip="${tip}"></rect>`;
                     } else {
-                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--primary)"><title>${y}: ${v} new restriction${v !== 1 ? 's' : ''}</title></rect>`;
+                        svg += `<rect x="${x.toFixed(1)}" y="${yy.toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${h.toFixed(1)}" fill="var(--primary)" data-tip="${tip}"></rect>`;
                     }
                     svg += `<text x="${(x + (bw - 4) / 2).toFixed(1)}" y="${(yy - 4).toFixed(1)}" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--muted-gray)">${v}</text>`;
                 }

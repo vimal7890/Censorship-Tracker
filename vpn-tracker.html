@@ -28,6 +28,7 @@
             --on-surface-variant: #444748;
             --outline-variant: #c4c7c7;
             --ticker-muted: #d0d0d0;
+            --tooltip-shadow: rgba(0, 0, 0, 0.18);
         }
 
         /* ---------- Dark theme ----------
@@ -48,6 +49,7 @@
             --on-surface-variant: #c2c5c7;
             --outline-variant: #3a3d3e;
             --ticker-muted: #4f4f4f;
+            --tooltip-shadow: rgba(0, 0, 0, 0.55);
         }
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
@@ -65,6 +67,7 @@
                 --on-surface-variant: #c2c5c7;
                 --outline-variant: #3a3d3e;
                 --ticker-muted: #4f4f4f;
+                --tooltip-shadow: rgba(0, 0, 0, 0.55);
             }
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -275,6 +278,46 @@
         .mx-state.blocked { background: var(--secondary); }
         .mx-key .mx-state { min-width: 104px; }
 
+        /* Hover tooltip for matrix cells. Custom rather than the native title
+           attribute so it appears with no delay and can carry the reasoning
+           behind the verdict, not just the verdict itself. */
+        .hover-tip {
+            position: fixed; z-index: 70; display: none; pointer-events: none;
+            background: var(--paper-white);
+            border: 1px solid var(--primary);
+            box-shadow: 3px 3px 0 var(--tooltip-shadow);
+            padding: 9px 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; line-height: 1.6;
+            color: var(--on-surface-variant);
+            max-width: 320px;
+        }
+        .hover-tip .tt-head {
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+            color: var(--primary);
+            border-bottom: 1px solid var(--outline-variant);
+            padding-bottom: 4px; margin-bottom: 6px;
+        }
+        .hover-tip .tt-verdict {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 2px 7px; margin-bottom: 6px;
+            font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+            text-transform: uppercase; color: var(--paper-white);
+            border: 1px solid var(--primary);
+        }
+        .hover-tip .tt-verdict.available { background: var(--tertiary-green); }
+        .hover-tip .tt-verdict.restricted { background: var(--alert-orange); }
+        .hover-tip .tt-verdict.blocked { background: var(--secondary); }
+        .hover-tip .tt-basis {
+            font-size: 10px; color: var(--primary); font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 5px;
+        }
+        .hover-tip .tt-why {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 12.5px; line-height: 1.5; color: var(--on-surface-variant);
+            border-top: 1px solid var(--outline-variant); padding-top: 6px;
+        }
+
         /* Circumvention caveat, between the grid and the country notes. */
         .mx-caveat {
             margin-top: 14px; padding: 12px 14px;
@@ -476,6 +519,8 @@
         <div class="footer-inner">&copy; 2026 Censorship_Tracker &mdash; VPN module</div>
     </footer>
 
+    <div id="hoverTooltip" class="hover-tip" aria-hidden="true"></div>
+
     <script>
         function escapeHTML(str) {
             return String(str).replace(/[&<>"']/g, c =>
@@ -530,6 +575,61 @@
             }).join('');
         }
 
+        /* ================= Hover tooltip =================
+           Replaces the native title attribute, which carried a ~1s delay and
+           OS styling. Tip HTML is registered once at render and cells only
+           carry a short id. */
+
+        const hoverTip = document.getElementById('hoverTooltip');
+        const finePointer = window.matchMedia('(pointer: fine)').matches;
+        const tipRegistry = new Map();
+        let tipSeq = 0;
+
+        function registerTip(html) {
+            const id = 't' + (++tipSeq);
+            tipRegistry.set(id, html);
+            return id;
+        }
+
+        function showTip(html, e) {
+            if (!finePointer || !html) return;
+            if (hoverTip.dataset.current !== html) {
+                hoverTip.innerHTML = html;
+                hoverTip.dataset.current = html;
+            }
+            hoverTip.style.display = 'block';
+            const pad = 14;
+            let x = e.clientX + pad;
+            let y = e.clientY + pad;
+            if (x + hoverTip.offsetWidth > window.innerWidth - 8) x = e.clientX - hoverTip.offsetWidth - pad;
+            if (y + hoverTip.offsetHeight > window.innerHeight - 8) y = e.clientY - hoverTip.offsetHeight - pad;
+            hoverTip.style.left = x + 'px';
+            hoverTip.style.top = y + 'px';
+        }
+
+        function hideTip() {
+            hoverTip.style.display = 'none';
+            hoverTip.dataset.current = '';
+        }
+
+        // Bound to both pointermove and mousemove: pointer events cover normal
+        // browsing, mousemove keeps it working where only legacy mouse events
+        // are emitted (some automation and assistive tooling).
+        function bindTipContainer(container) {
+            if (!container) return;
+            const move = e => {
+                const target = e.target.closest('[data-tip]');
+                if (!target) { hideTip(); return; }
+                showTip(tipRegistry.get(target.dataset.tip), e);
+            };
+            container.addEventListener('pointermove', move);
+            container.addEventListener('mousemove', move);
+            container.addEventListener('pointerleave', hideTip);
+            container.addEventListener('mouseleave', hideTip);
+        }
+
+        window.addEventListener('scroll', hideTip, { passive: true });
+
         /* ================= Service availability matrix ================= */
 
         const MX_STATUS = {
@@ -557,14 +657,24 @@
                 const cells = countries.map(c => {
                     const key = mxStatus(app, c);
                     const meta = MX_STATUS[key] || MX_STATUS.restricted;
-                    const title = `${app.name} — ${c.name}: ${meta.label} (${meta.detail})`;
-                    return `<td class="mx-cell" title="${escapeHTML(title)}">` +
+                    const named = ((app.overrides || {})[c.code] !== undefined);
+                    const tip = registerTip(
+                        `<div class="tt-head">${escapeHTML(app.name)} &mdash; ${escapeHTML(c.name)}</div>` +
+                        `<div class="tt-verdict ${key}">${meta.glyph} ${meta.label}</div>` +
+                        `<div>${escapeHTML(meta.detail.charAt(0).toUpperCase() + meta.detail.slice(1))}.</div>` +
+                        `<div class="tt-basis">${named
+                            ? 'Named in reporting for this country'
+                            : `Country baseline &mdash; applies to all ${escapeHTML(c.name)} providers`}</div>` +
+                        `<div class="tt-why">${escapeHTML(c.note)}</div>`
+                    );
+                    return `<td class="mx-cell" data-tip="${tip}">` +
                         `<span class="mx-state ${key}">` +
                         `<span class="mx-glyph" aria-hidden="true">${meta.glyph}</span>` +
                         `${meta.label}</span></td>`;
                 }).join('');
                 return `<tr><th scope="row" class="mx-app">${escapeHTML(app.name)}</th>${cells}</tr>`;
             }).join('');
+            bindTipContainer(document.getElementById('appMatrix'));
 
             document.getElementById('matrixNotes').innerHTML = countries.map(c => {
                 const srcs = (c.sources || []).map((s, i) =>
