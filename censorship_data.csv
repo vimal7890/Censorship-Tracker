@@ -163,7 +163,7 @@ Odnoklassniki,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-
 Odnoklassniki,Iran,Unknown,complete,Subject to the same systemic blocking and filtering infrastructure that restricts access to most international social networking sites.,https://ooni.org/
 Odnoklassniki,Latvia,2022,complete,Blocked alongside VKontakte by Latvia's NEPLP in May 2022 due to EU sanctions on their owners (Yury Kovalchuk and Vladimir Kiriyenko).,https://eng.lsm.lv/article/society/society/latvias-neplp-blocks-access-to-russian-social-networks.a457029/
 Odnoklassniki,North Korea,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_North_Korea
-Odnoklassniki,Ukraine,2017,complete,Blocked by the Ukrainian government via ISP bans as part of sanctions against Russian tech companies alongside VKontakte and other Russian services.,https://en.wikipedia.org/wiki/Internet_censorship_in_Ukraine
+Odnoklassniki,Ukraine,2017,complete,Blocked by the Ukrainian government via ISP bans under Presidential Decree No. 133/2017 targeting Russian tech companies alongside VKontakte and other Russian services.,https://www.hrw.org/news/2017/05/16/ukraine-revoke-ban-dozens-russian-web-companies
 Patreon,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
 Patreon,Iran,Forever,complete,"Patreon is inaccessible in Iran due to both US sanctions compliance and Iran's domestic internet censorship. As a US-based company, Patreon blocks access from Iran under OFAC regulations and its payment processors do not support transactions with sanctioned countries.",https://support.patreon.com/hc/en-us/articles/360042077572-Patreon-s-Sanctions-Policy
 Patreon,North Korea,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_North_Korea
@@ -371,7 +371,7 @@ VKontakte,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-cens
 VKontakte,Iran,Unknown,complete,"Blocked by broad, systematic blocking of major foreign social media platforms.",https://ooni.org/
 VKontakte,Latvia,2022,complete,"Latvia's National Electronic Mass Media Council (NEPLP) ordered ISPs to block VKontakte, Odnoklassniki and other Russian social networks in May 2022 due to EU sanctions on their owners (Yury Kovalchuk and Vladimir Kiriyenko).",https://eng.lsm.lv/article/society/society/latvias-neplp-blocks-access-to-russian-social-networks.a457029/
 VKontakte,North Korea,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_North_Korea
-VKontakte,Ukraine,2017,complete,Blocked by the Ukrainian government via ISP bans as part of sanctions against Russian tech companies.,https://en.wikipedia.org/wiki/Internet_censorship_in_Ukraine
+VKontakte,Ukraine,2017,complete,Blocked by the Ukrainian government via ISP bans under Presidential Decree No. 133/2017 targeting Russian tech companies.,https://www.hrw.org/news/2017/05/16/ukraine-revoke-ban-dozens-russian-web-companies
 WeChat,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
 WeChat,India,29/06/2020,complete,"India used Section 69A of the Information Technology Act to block WeChat among 59 Chinese apps, citing threats to sovereignty, security and public order. The nationwide app-blocking order remains the controlling restriction in the tracker.",https://www.pib.gov.in/PressReleasePage.aspx?PRID=1635206&lang=2&reg=48
 WeChat,North Korea,Forever,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
