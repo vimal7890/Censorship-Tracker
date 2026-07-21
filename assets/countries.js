@@ -20,6 +20,7 @@ window.COUNTRY_TO_ISO = {
     "India": "IN",
     "Indonesia": "ID",
     "Iran": "IR",
+    "Israel": "IL",
     "Italy": "IT",
     "Jordan": "JO",
     "Kazakhstan": "KZ",

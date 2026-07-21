@@ -1,4 +1,13 @@
 platform,country,since,type,more_info,source
+Al Jazeera,Bahrain,May 2017,complete,Blocked during the 2017 Gulf diplomatic crisis alongside broadcast restrictions.,https://rsf.org/en/country/bahrain
+Al Jazeera,China,Longstanding,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Al Jazeera,Egypt,May 2017,complete,"Blocked in May 2017 alongside dozens of news outlets, following earlier broadcast bans.",https://rsf.org/en/country/egypt
+Al Jazeera,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Al Jazeera,Israel,May 2024,complete,"In May 2024, Israel passed emergency legislation permitting the government to shut down Al Jazeera's local offices, confiscate equipment, and block access to its broadcasts and websites.",https://rsf.org/en/country/israel
+Al Jazeera,North Korea,Forever,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Al Jazeera,Saudi Arabia,May 2017,complete,Access to Al Jazeera's websites was blocked and its operating licence revoked in May 2017 during the Gulf diplomatic dispute.,https://rsf.org/en/country/saudi-arabia
+Al Jazeera,Turkmenistan,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Al Jazeera,UAE,May 2017,complete,Al Jazeera's digital platforms and transmission were blocked in May 2017 amid regional diplomatic sanctions.,https://rsf.org/en/country/united-arab-emirates
 Associated Press,Eritrea,Ongoing,complete,The government blocks almost all independent and foreign news sites in one of the worlds most censored media environments.,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
 Associated Press,Iran,Ongoing,complete,"Iran maintains a highly restrictive internet censorship regime, frequently blocking access to foreign news outlets.",https://en.wikipedia.org/wiki/Internet_censorship_in_Iran
 Associated Press,North Korea,Forever,complete,"The global internet, including all foreign news sites, is completely inaccessible to the general public.",https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
@@ -17,6 +26,12 @@ Bluesky,Iran,Never allowed to operate,complete,,https://en.wikipedia.org/wiki/In
 Bluesky,Mississippi,22/08/2025,age,"Mississippi's HB 1126 requires social platforms to age-verify every user and obtain parental consent for minors. Bluesky pulled out of Mississippi entirely on 22 August 2025 rather than comply, then returned on 8 December 2025 as an 18+-only service in the state — adults must pass an age check and under-18s remain barred. Larger platforms had not implemented the checks while a Fifth Circuit appeal (NetChoice v. Fitch) remains pending.",https://www.mississippifreepress.org/bluesky-is-back-for-mississippi-adults-but-larger-social-giants-still-havent-implemented-required-age-checks/
 Bluesky,North Korea,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_North_Korea
 Bluesky,Turkmenistan,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_Turkmenistan
+CGTN,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+CGTN,Germany,February 2021,partial,"Following the UK Ofcom licence revocation, German media authorities confirmed CGTN could no longer be distributed on German cable networks under European broadcasting agreements tied to the British licence.",https://rsf.org/en/country/germany
+CGTN,North Korea,Forever,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+CGTN,Turkmenistan,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+CGTN,UK,February 2021,partial,"In February 2021, UK regulator Ofcom revoked CGTN's broadcast licence after determining that the channel was controlled by the Chinese Communist Party, which violates UK broadcasting law prohibiting political bodies from holding licences.",https://rsf.org/en/country/united-kingdom
+CGTN,United States,2018,partial,"The US Department of Justice required CGTN to register as a foreign agent under FARA in 2018, and the State Department designated it as a foreign diplomatic mission in 2020, imposing staffing caps and reporting requirements.",https://rsf.org/en/country/united-states
 ChatGPT,China,2023,complete,Blocked by the Great Firewall. Domestic AI alternatives are heavily promoted and regulated.,https://help.openai.com/en/articles/9131992-chatgpt-and-api-services-in-unsupported-countries-and-territories
 ChatGPT,Cuba,2023,complete,OpenAI blocks access to users in Cuba to comply with US sanctions.,https://help.openai.com/en/articles/5363742-supported-countries-and-territories
 ChatGPT,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
