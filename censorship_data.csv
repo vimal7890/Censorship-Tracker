@@ -1,13 +1,13 @@
 platform,country,since,type,more_info,source
-Al Jazeera,Bahrain,May 2017,complete,Blocked during the 2017 Gulf diplomatic crisis alongside broadcast restrictions.,https://rsf.org/en/country/bahrain
+Al Jazeera,Bahrain,May 2017,complete,"Blocked in May 2017 during the Gulf diplomatic rift. Despite the 2021 Al-Ula Declaration restoring regional diplomatic ties, digital access to Al Jazeera remains restricted.",https://rsf.org/en/country/bahrain
 Al Jazeera,China,Longstanding,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
 Al Jazeera,Egypt,May 2017,complete,"Blocked in May 2017 alongside dozens of news outlets, following earlier broadcast bans.",https://rsf.org/en/country/egypt
 Al Jazeera,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
 Al Jazeera,Israel,May 2024,complete,"In May 2024, Israel passed emergency legislation permitting the government to shut down Al Jazeera's local offices, confiscate equipment, and block access to its broadcasts and websites.",https://rsf.org/en/country/israel
 Al Jazeera,North Korea,Forever,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
-Al Jazeera,Saudi Arabia,May 2017,complete,Access to Al Jazeera's websites was blocked and its operating licence revoked in May 2017 during the Gulf diplomatic dispute.,https://rsf.org/en/country/saudi-arabia
+Al Jazeera,Saudi Arabia,May 2017,complete,"Access to Al Jazeera's websites was blocked and its operating licence revoked in May 2017. Despite the 2021 Al-Ula agreement restoring diplomatic relations, digital and broadcast restrictions in the Kingdom remain largely in place.",https://rsf.org/en/country/saudi-arabia
 Al Jazeera,Turkmenistan,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
-Al Jazeera,UAE,May 2017,complete,Al Jazeera's digital platforms and transmission were blocked in May 2017 amid regional diplomatic sanctions.,https://rsf.org/en/country/united-arab-emirates
+Al Jazeera,UAE,May 2017,partial,"Blocked in May 2017 during the Gulf diplomatic dispute. Following the 2021 Al-Ula Declaration and normalizing relations, the UAE unblocked Al Jazeera's websites in March 2023, though broadcast distribution remains regulated.",https://rsf.org/en/country/united-arab-emirates
 Associated Press,Eritrea,Ongoing,complete,The government blocks almost all independent and foreign news sites in one of the worlds most censored media environments.,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
 Associated Press,Iran,Ongoing,complete,"Iran maintains a highly restrictive internet censorship regime, frequently blocking access to foreign news outlets.",https://en.wikipedia.org/wiki/Internet_censorship_in_Iran
 Associated Press,North Korea,Forever,complete,"The global internet, including all foreign news sites, is completely inaccessible to the general public.",https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
