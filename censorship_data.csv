@@ -40,6 +40,15 @@ ChatGPT,Italy,March 2023,partial,"Briefly blocked by the Italian data protection
 ChatGPT,North Korea,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_North_Korea
 ChatGPT,Russia,2023,complete,Blocked by the government.,https://help.openai.com/en/articles/9131992-chatgpt-and-api-services-in-unsupported-countries-and-territories
 ChatGPT,Syria,2023,complete,OpenAI blocks access to users in Syria to comply with US sanctions.,https://help.openai.com/en/articles/5363742-supported-countries-and-territories
+Deutsche Welle,Afghanistan,March 2022,partial,The Taliban blocked Deutsche Welle broadcasts in Pashto and Dari in March 2022 alongside other foreign broadcasters.,https://rsf.org/en/country/afghanistan
+Deutsche Welle,Belarus,October 2021,complete,Access to the Deutsche Welle website was blocked by Belarusian authorities in October 2021 as part of a crackdown on independent online news outlets.,https://rsf.org/en/country/belarus
+Deutsche Welle,China,Longstanding,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Deutsche Welle,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Deutsche Welle,North Korea,Forever,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Deutsche Welle,Russia,February 2022,complete,"In February 2022, Russia banned Deutsche Welle broadcasts and closed its Moscow bureau, and subsequently blocked the dw.com website.",https://rsf.org/en/country/russia
+Deutsche Welle,Turkey,June 2022,complete,Turkey's media regulator RTÜK blocked access to dw.com in June 2022 after Deutsche Welle declined to apply for a domestic online broadcast licence.,https://rsf.org/en/country/turkey
+Deutsche Welle,Turkmenistan,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
+Deutsche Welle,Venezuela,March 2024,partial,The Venezuelan government ordered DW Spanish removed from cable distribution in March 2024 and restricted website access following a report on state corruption.,https://rsf.org/en/country/venezuela
 Discord,Brazil,17/03/2026,age,"Brazil's Digital Statute of Children and Adolescents (ECA Digital, Law 15,211/2025) took effect on 17 March 2026. Social media accounts for users under 16 must be linked to a legal guardian, and platforms must use reliable age verification — self-declaration alone is not allowed.",https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15211.htm
 Discord,China,July 2018,complete,,https://en.wikipedia.org/wiki/Internet_censorship_in_China
 Discord,Egypt,2022,partial,"Discord access in Egypt appears intermittent: users and network measurements recorded a nationwide disruption on 11-12 January 2026 across major ISPs (including WE and Vodafone), where both discord.com and gateway.discord.gg stalled during TLS setup — indicating targeted filtering; service later resumed.",https://manassa.news/en/stories/29786

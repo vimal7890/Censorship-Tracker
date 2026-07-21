@@ -49,6 +49,7 @@ window.COUNTRY_TO_ISO = {
     "Ukraine": "UA",
     "United States": "US",
     "Uzbekistan": "UZ",
+    "Venezuela": "VE",
     "Vietnam": "VN",
     "Austria": "AT",
     "Belgium": "BE",
