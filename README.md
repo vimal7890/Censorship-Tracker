@@ -19,15 +19,18 @@ update the tracker. One row per platform+country entry:
 
 Notes:
 
-- **AI Agents (Gemini, Claude, ChatGPT, etc.):** Do not use Wikipedia as a source unless it already exists as a label for blocked sites.
+- **High quality source requirement:** Every source URL must be a high-quality, primary or reputable secondary reference (e.g., official government decrees, OONI network measurements, Citizen Lab reports, Freedom House / Freedom on the Net research, established news outlets like BBC, Reuters, AP, TechCrunch, or official platform support/transparency pages).
+- **No Wikipedia, search-engine placeholders, or catch-all report spam:**
+  - Do not use Wikipedia as a source unless Wikipedia itself is the platform being blocked.
+  - Do not copy-paste generic overview reports (e.g., CPJ's "10 Most Censored Countries" list) across dozens of unrelated platform rows. Each source MUST specifically document or verify the restriction for that specific platform and country.
+  - If a platform in a default-restricted nation (e.g., North Korea, Turkmenistan, Eritrea, China) lacks a specific, dedicated high-quality source, leave `source` empty and let the country fallback system handle it — never attach generic drivel or catch-all URLs to pad rows.
 - **Never invent a source URL, and never auto-replace one.** A batch of rows
   once cited plausible-looking articles — right domain, right slug style — that
   had never existed; the Wayback Machine had no snapshot of any of them. A
   later script "repaired" them with the first search-engine hit for keywords
   guessed from the URL, which attached real but unrelated pages to the claims.
   A source must be a page you have actually opened, that actually supports the
-  specific row it sits on. If you cannot find one, leave the row alone and say
-  so — an unsourced claim is recoverable, a confidently wrong citation is not.
+  specific row it sits on. If you cannot find one, leave the `source` field blank — an unsourced claim is recoverable, a confidently wrong citation is not.
 - Run [`verify_links.py`](verify_links.py) after editing sources. It reports
   dead URLs, Wikipedia citations and leftover search-engine placeholders, with
   the rows that cite each, and exits non-zero if any are found.
