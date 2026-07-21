@@ -55,7 +55,7 @@ def main() -> int:
     rows = load_rows()
     assert rows, "CSV parsed zero data rows"
 
-    uae_age = [r for r in rows if r["country"] == "UAE" and r["type"] == "age"]
+    uae_age = [r for r in rows if r["country"] == "United Arab Emirates" and r["type"] == "age"]
     turkey_age = [r for r in rows if r["country"] == "Turkey" and r["type"] == "age"]
 
     uae_platforms = {r["platform"] for r in uae_age}
@@ -76,7 +76,7 @@ def main() -> int:
     for r in uae_age:
         info = r["more_info"].strip()
         src = r["source"].strip()
-        assert info, f"empty more_info: UAE/{r['platform']}"
+        assert info, f"empty more_info: United Arab Emirates/{r['platform']}"
         assert src.startswith("https://"), src
         assert "wikipedia" not in src.lower()
         low = info.lower()
@@ -101,8 +101,8 @@ def main() -> int:
             assert "draft" in low
 
     # Prior non-age rows preserved
-    assert has(rows, "Discord", "UAE", "partial"), "UAE Discord VoIP partial missing"
-    assert has(rows, "WhatsApp", "UAE", "partial"), "UAE WhatsApp VoIP partial missing"
+    assert has(rows, "Discord", "United Arab Emirates", "partial"), "UAE Discord VoIP partial missing"
+    assert has(rows, "WhatsApp", "United Arab Emirates", "partial"), "UAE WhatsApp VoIP partial missing"
     assert has(rows, "Discord", "Turkey", "complete"), "Turkey Discord complete missing"
     assert has(rows, "X (formerly Twitter)", "Turkey", "partial"), "Turkey X Grok partial missing"
     assert has(rows, "X (formerly Twitter)", "Turkey", "age"), "Turkey X age missing"

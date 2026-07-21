@@ -30,7 +30,7 @@ EXPECTED_TYPE = {
         "Russia": "complete",
         "Saudi Arabia": "partial",
         "Turkmenistan": "complete",
-        "UAE": "partial",
+        "United Arab Emirates": "partial",
     },
     "Viber": {
         "China": "complete",
@@ -41,7 +41,7 @@ EXPECTED_TYPE = {
         "Qatar": "partial",
         "Russia": "complete",
         "Turkmenistan": "complete",
-        "UAE": "partial",
+        "United Arab Emirates": "partial",
     },
 }
 
