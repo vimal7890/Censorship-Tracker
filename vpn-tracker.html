@@ -830,9 +830,39 @@
 
         async function loadData() {
             try {
-                const res = await fetch('vpn_data.json', { cache: 'no-store' });
+                const cached = sessionStorage.getItem('vpn_data_cache');
+                if (cached) {
+                    const data = JSON.parse(cached);
+                    const restrictions = data.restrictions || [];
+                    const efforts = data.legislative_efforts || [];
+                    const rejected = data.rejected_efforts || [];
+                    document.getElementById('tickerRestrictions').textContent = String(restrictions.length);
+                    document.getElementById('tickerEfforts').textContent = String(efforts.length);
+                    document.getElementById('tickerApps').textContent =
+                        String((data.app_matrix && data.app_matrix.apps || []).length);
+                    renderTable(restrictions);
+                    renderAppMatrix(data.app_matrix);
+                    renderEfforts(efforts, 'effortList');
+                    renderEfforts(rejected, 'rejectedList', 'rejected');
+                    renderICloudPrivateRelay(data.icloud_private_relay);
+                }
+            } catch (e) {}
+
+            try {
+                let res;
+                try {
+                    res = await fetch('vpn_data.json');
+                } catch (e) {
+                    res = await fetch('/vpn_data.json');
+                }
+                if (!res.ok) {
+                    res = await fetch('/vpn_data.json');
+                }
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 const data = await res.json();
+                try {
+                    sessionStorage.setItem('vpn_data_cache', JSON.stringify(data));
+                } catch (e) {}
                 const restrictions = data.restrictions || [];
                 const efforts = data.legislative_efforts || [];
                 const rejected = data.rejected_efforts || [];
@@ -846,8 +876,10 @@
                 renderEfforts(rejected, 'rejectedList', 'rejected');
                 renderICloudPrivateRelay(data.icloud_private_relay);
             } catch (err) {
-                document.getElementById('vpnTableBody').innerHTML =
-                    `<tr><td colspan="5" class="error-box">// Failed to load vpn_data.json — ${err.message}</td></tr>`;
+                if (!sessionStorage.getItem('vpn_data_cache')) {
+                    document.getElementById('vpnTableBody').innerHTML =
+                        `<tr><td colspan="5" class="error-box">// Failed to load vpn_data.json — ${err.message}</td></tr>`;
+                }
             }
         }
 

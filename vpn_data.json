@@ -47,7 +47,7 @@
             "severity": "restricted",
             "since": "2024 criminalisation of unauthorised VPNs",
             "summary": "Iran criminalised use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
-            "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+            "source": "https://freedomhouse.org/country/iran/freedom-net/2024"
         },
         {
             "country": "Myanmar",
@@ -61,7 +61,7 @@
             "severity": "restricted",
             "since": "Ongoing (cybercrime decrees)",
             "summary": "Owning a VPN is not a blanket crime, but using one to access blocked services (e.g. unlicensed VoIP, gambling, other restricted content) is a serious offence under United Arab Emirates cybercrime rules, with very large fines reported for misuse.",
-            "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+            "source": "https://freedomhouse.org/country/united-arab-emirates/freedom-net/2024"
         },
         {
             "country": "Oman",
@@ -92,7 +92,7 @@
             "title": "Age-verification rollout and VPN-circumvention debate",
             "status": "Policy discussion — no EU-wide VPN ban enacted",
             "summary": "As member states and the Commission push privacy-preserving age checks for social platforms, some officials have floated measures against tools that bypass age gates (including VPNs). No pan-EU criminal ban is in force; proposals remain contested.",
-            "source": "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check"
+            "source": "https://freedomhouse.org/report/freedom-net"
         }
     ],
     "rejected_efforts": [
@@ -134,8 +134,8 @@
                 "default": "blocked",
                 "note": "Using a non-approved VPN was criminalised in 2024 and deep-packet inspection actively disrupts common tunnelling protocols, most aggressively during protests. US sanctions compound this from the other direction: US-based providers are legally barred from selling to Iranians at all. Purpose-built circumvention tools remain the exception that still reaches users here.",
                 "sources": [
-                    "https://www.pcmag.com/explainers/is-using-a-vpn-always-legal-a-country-by-country-reality-check",
-                    "https://www.stimson.org/2024/the-vpn-epidemic-in-iran-a-digital-plague-amid-global-isolation/"
+                    "https://freedomhouse.org/country/iran/freedom-net/2024",
+                    "https://www.accessnow.org/iran-internet-shutdowns/"
                 ]
             },
             {
