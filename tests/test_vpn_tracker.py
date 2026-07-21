@@ -128,12 +128,27 @@ def main() -> int:
         < vpn_html.index('id="matrixNotes"')
     ), "caveat must render below the matrix and above the country notes"
 
+    # iCloud Private Relay box section
+    assert 'id="icloud-relay-section"' in vpn_html, "iCloud Private Relay section missing"
+    relay = data.get("icloud_private_relay") or {}
+    assert relay.get("regions"), "iCloud Private Relay regions missing from vpn_data.json"
+    relay_countries = [c for r in relay["regions"] for c in r.get("countries", [])]
+    assert len(relay_countries) >= 30, f"expected ≥30 Private Relay countries, got {len(relay_countries)}"
+
+    # Infobox check for countries where iCloud+ is not available
+    no_icloud_countries = {c["name"] for c in relay_countries if c.get("icloud_plus_available") is False}
+    assert {"Cuba", "North Korea", "Iran", "Syria", "Eritrea"} <= no_icloud_countries, no_icloud_countries
+    for c in relay_countries:
+        if c.get("icloud_plus_available") is False:
+            assert c.get("note"), f"Missing infobox note for {c['name']}"
+
     print("OK: VPN Tracker nav on all pages")
     print("OK: restrictions:", [(r["country"], r["severity"]) for r in rows])
     print("OK: legislative:", [e["jurisdiction"] for e in efforts])
     print("OK: Russia crackdown consolidated into its restrictions row")
     print(f"OK: matrix {len(apps)} apps × {len(countries)} countries")
     print(f"OK: {len(rows)} table rows + {len(efforts)} efforts")
+    print(f"OK: iCloud Private Relay {len(relay_countries)} countries across {len(relay['regions'])} regions")
     return 0
 
 

@@ -306,5 +306,206 @@
                 }
             }
         ]
+    },
+    "icloud_private_relay": {
+        "title": "iCloud Private Relay Availability",
+        "summary": "Apple's dual-hop privacy feature (iCloud Private Relay) is disabled or unavailable across several jurisdictions due to local regulatory restrictions, internet monitoring laws, or non-availability of iCloud+ services.",
+        "sources": [
+            {
+                "title": "Business & Human Rights Resource Centre (Reuters)",
+                "url": "https://www.business-humanrights.org/en/latest-news/apples-new-private-relay-feature-wont-be-available-in-china-egypt-and-other-countries/"
+            },
+            {
+                "title": "Apple Support — iCloud Private Relay overview",
+                "url": "https://support.apple.com/HT212614"
+            }
+        ],
+        "regions": [
+            {
+                "region": "Europe & Central Asia",
+                "countries": [
+                    {
+                        "name": "Belarus",
+                        "reason": "Disabled by Apple due to local regulatory restrictions on encryption and bypass tools.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Kazakhstan",
+                        "reason": "Disabled by Apple due to local internet regulatory requirements.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Monaco",
+                        "reason": "Unavailable due to regional infrastructure and non-supported area status.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "San Marino",
+                        "reason": "Unavailable due to regional carrier and network routing constraints.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Turkmenistan",
+                        "reason": "Disabled by Apple due to strict state bans on circumvention tools and regulatory rules.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Vatican City",
+                        "reason": "Unavailable due to regional carrier and network routing limitations.",
+                        "icloud_plus_available": true
+                    }
+                ]
+            },
+            {
+                "region": "Middle East & North Africa",
+                "countries": [
+                    {
+                        "name": "Egypt",
+                        "reason": "Disabled by Apple at launch due to regulatory compliance demands.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Iran",
+                        "reason": "Unavailable due to strict state censorship laws and US sanctions.",
+                        "icloud_plus_available": false,
+                        "note": "iCloud+ (paid subscription) is not available in Iran."
+                    },
+                    {
+                        "name": "Palestine",
+                        "reason": "Unavailable due to regional telecommunications and infrastructure constraints.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Saudi Arabia",
+                        "reason": "Disabled by Apple to comply with national internet regulatory requirements.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Syria",
+                        "reason": "Unavailable due to state telecommunications laws and US sanctions.",
+                        "icloud_plus_available": false,
+                        "note": "iCloud+ (paid subscription) is not available in Syria."
+                    }
+                ]
+            },
+            {
+                "region": "Sub-Saharan Africa",
+                "countries": [
+                    {
+                        "name": "Comoros",
+                        "reason": "Unavailable due to regional service coverage limits.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Djibouti",
+                        "reason": "Unavailable due to network and regulatory constraints.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Equatorial Guinea",
+                        "reason": "Unavailable due to telecommunications restrictions.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Eritrea",
+                        "reason": "Unavailable under state-monopolised communications system and sanctions.",
+                        "icloud_plus_available": false,
+                        "note": "iCloud+ (paid subscription) is not available in Eritrea."
+                    },
+                    {
+                        "name": "São Tomé and Príncipe",
+                        "reason": "Unavailable due to service coverage limitations.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Somalia",
+                        "reason": "Unavailable due to network infrastructure limitations.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "South Africa",
+                        "reason": "Disabled by Apple at launch due to regulatory constraints.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "South Sudan",
+                        "reason": "Unavailable due to regional telecom limitations.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Sudan",
+                        "reason": "Unavailable due to infrastructure and sanctions/regulatory constraints.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Uganda",
+                        "reason": "Disabled by Apple due to local internet regulation laws.",
+                        "icloud_plus_available": true
+                    }
+                ]
+            },
+            {
+                "region": "Asia-Pacific",
+                "countries": [
+                    {
+                        "name": "China",
+                        "reason": "Disabled by Apple due to Great Firewall regulations and strict state surveillance laws.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "East Timor (Timor-Leste)",
+                        "reason": "Unavailable due to regional service coverage limits.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Kiribati",
+                        "reason": "Unavailable due to Pacific island service coverage limits.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Niue",
+                        "reason": "Unavailable due to regional service coverage constraints.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "North Korea",
+                        "reason": "Unavailable due to total regime internet blackout and sanctions.",
+                        "icloud_plus_available": false,
+                        "note": "iCloud+ (paid subscription) is not available in North Korea."
+                    },
+                    {
+                        "name": "Philippines",
+                        "reason": "Disabled by Apple due to local regulatory requirements.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Tokelau",
+                        "reason": "Unavailable due to regional service limitations.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Tuvalu",
+                        "reason": "Unavailable due to Pacific island service coverage limits.",
+                        "icloud_plus_available": true
+                    }
+                ]
+            },
+            {
+                "region": "Americas & Caribbean",
+                "countries": [
+                    {
+                        "name": "Colombia",
+                        "reason": "Disabled by Apple due to local regulatory constraints.",
+                        "icloud_plus_available": true
+                    },
+                    {
+                        "name": "Cuba",
+                        "reason": "Unavailable due to US sanctions and regional restrictions.",
+                        "icloud_plus_available": false,
+                        "note": "iCloud+ (paid subscription) is not available in Cuba."
+                    }
+                ]
+            }
+        ]
     }
 }

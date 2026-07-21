@@ -407,7 +407,74 @@
             font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600;
             color: var(--secondary); text-decoration: none;
         }
-        .effort-source a:hover { text-decoration: underline; }
+        :root {
+            --apple-blue: #0071e3;
+        }
+        :root[data-theme="dark"] {
+            --apple-blue: #409cff;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --apple-blue: #409cff;
+            }
+        }
+        .icloud-box {
+            background: var(--paper-white);
+            border: 2px solid var(--primary);
+            border-left: 6px solid var(--apple-blue);
+            padding: 20px 24px; margin-top: 16px;
+        }
+        .icloud-head { margin-bottom: 16px; }
+        .icloud-title-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+        .icloud-badge {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase; background: var(--apple-blue);
+            color: #ffffff; padding: 3px 8px;
+        }
+        .icloud-box-title {
+            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 18px;
+            text-transform: uppercase; letter-spacing: -0.01em; color: var(--primary);
+        }
+        .icloud-desc { font-size: 14px; line-height: 1.55; color: var(--on-surface-variant); max-width: 54em; }
+
+        .icloud-sources {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;
+            padding: 10px 14px; background: var(--surface-container-low);
+            border: 1px solid var(--outline-variant); margin-bottom: 20px;
+            font-family: 'JetBrains Mono', monospace; font-size: 11px;
+        }
+        .icloud-sources .src-label { font-weight: 700; color: var(--primary); text-transform: uppercase; }
+        .icloud-sources a { color: var(--secondary); text-decoration: none; font-weight: 600; }
+        .icloud-sources a:hover { text-decoration: underline; }
+        .icloud-sources .sep { color: var(--muted-gray); }
+
+        .icloud-regions-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;
+        }
+        .icloud-region-card {
+            border: 1px solid var(--outline-variant); background: var(--paper-white); padding: 14px 16px;
+        }
+        .icloud-region-name {
+            font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 0.02em; color: var(--primary);
+            border-bottom: 1px solid var(--outline-variant); padding-bottom: 6px; margin-bottom: 10px;
+        }
+        .icloud-country-list { display: flex; flex-direction: column; gap: 8px; }
+        .icloud-country-item {
+            font-size: 13px; line-height: 1.45; color: var(--on-surface-variant);
+            padding-bottom: 8px; border-bottom: 1px dashed var(--outline-variant);
+        }
+        .icloud-country-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .icloud-c-name {
+            font-family: 'Chivo', sans-serif; font-weight: 800; text-transform: uppercase;
+            color: var(--primary); display: inline-block; margin-right: 6px;
+        }
+        .icloud-c-reason { font-size: 12.5px; }
+        .icloud-infobox-no-icloud {
+            margin-top: 5px; padding: 5px 8px; background: rgba(239, 67, 88, 0.08);
+            border: 1px solid var(--secondary); font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px; color: var(--secondary); font-weight: 600;
+        }
 
         .error-box {
             border: 2px solid var(--secondary); background: var(--paper-white);
@@ -455,6 +522,7 @@
             <span>Regimes listed: <b id="tickerRestrictions">--</b></span>
             <span>Apps tracked: <b id="tickerApps">--</b></span>
             <span>Legislative efforts: <b id="tickerEfforts">--</b></span>
+            <span>Private Relay restricted: <b id="tickerRelay">--</b></span>
             <span>Data As Of: <b>JUL 2026</b></span>
         </div>
     </div>
@@ -510,6 +578,25 @@
                     <summary>Country notes &amp; sources</summary>
                     <div class="mx-notes" id="matrixNotes"></div>
                 </details>
+            </div>
+        </section>
+
+        <section class="section" id="icloud-relay-section" aria-labelledby="icloud-relay-heading">
+            <h2 class="section-title" id="icloud-relay-heading">Apple iCloud Private Relay Restrictions</h2>
+            <div class="icloud-box">
+                <div class="icloud-head">
+                    <div class="icloud-title-wrap">
+                        <span class="icloud-badge">Apple Feature Index</span>
+                        <h3 class="icloud-box-title">iCloud Private Relay Regional Availability</h3>
+                    </div>
+                    <p class="icloud-desc">
+                        iCloud Private Relay is Apple&rsquo;s dual-hop privacy feature designed to encrypt Safari browsing traffic and obscure user IP addresses. Apple disables or omits Private Relay in jurisdictions with strict internet surveillance laws or regulatory requirements, as well as regions where paid iCloud+ services are not supported.
+                    </p>
+                </div>
+                
+                <div class="icloud-sources" id="icloudSources"></div>
+
+                <div class="icloud-regions-grid" id="icloudRegionsGrid"></div>
             </div>
         </section>
 
@@ -696,6 +783,51 @@
             }).join('');
         }
 
+        function renderICloudPrivateRelay(relay) {
+            if (!relay) return;
+            const sourcesContainer = document.getElementById('icloudSources');
+            if (sourcesContainer && relay.sources) {
+                sourcesContainer.innerHTML =
+                    '<span class="src-label">Sources &amp; Reporting:</span> ' +
+                    relay.sources.map(s => `<a href="${escapeHTML(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(s.title)}</a>`).join('<span class="sep"> &bull; </span>');
+            }
+
+            const grid = document.getElementById('icloudRegionsGrid');
+            if (!grid || !relay.regions) return;
+
+            let totalCount = 0;
+
+            grid.innerHTML = relay.regions.map(reg => {
+                const countries = reg.countries || [];
+                totalCount += countries.length;
+
+                const countryItems = countries.map(c => {
+                    const noICloudNote = (c.icloud_plus_available === false || c.note)
+                        ? `<div class="icloud-infobox-no-icloud">&#9888;&#65039; Infobox: ${escapeHTML(c.note || 'iCloud+ paid subscription is not available in this jurisdiction.')}</div>`
+                        : '';
+                    return `
+                        <div class="icloud-country-item">
+                            <span class="icloud-c-name">${escapeHTML(c.name)}</span>
+                            <span class="icloud-c-reason">&mdash; ${escapeHTML(c.reason)}</span>
+                            ${noICloudNote}
+                        </div>`;
+                }).join('');
+
+                return `
+                    <div class="icloud-region-card">
+                        <h4 class="icloud-region-name">${escapeHTML(reg.region)} (${countries.length})</h4>
+                        <div class="icloud-country-list">
+                            ${countryItems}
+                        </div>
+                    </div>`;
+            }).join('');
+
+            const tickerEl = document.getElementById('tickerRelay');
+            if (tickerEl) {
+                tickerEl.textContent = String(totalCount);
+            }
+        }
+
         async function loadData() {
             try {
                 const res = await fetch('vpn_data.json', { cache: 'no-store' });
@@ -712,6 +844,7 @@
                 renderAppMatrix(data.app_matrix);
                 renderEfforts(efforts, 'effortList');
                 renderEfforts(rejected, 'rejectedList', 'rejected');
+                renderICloudPrivateRelay(data.icloud_private_relay);
             } catch (err) {
                 document.getElementById('vpnTableBody').innerHTML =
                     `<tr><td colspan="5" class="error-box">// Failed to load vpn_data.json — ${err.message}</td></tr>`;
