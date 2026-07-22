@@ -22,6 +22,16 @@ Notes:
 - **High quality source requirement:** Every source URL must be a high-quality, primary or reputable secondary reference (e.g., official government decrees, OONI network measurements, Citizen Lab reports, Freedom House / Freedom on the Net research, established news outlets like BBC, Reuters, AP, TechCrunch, or official platform support/transparency pages).
 - **No Wikipedia, search-engine placeholders, or catch-all report spam:**
   - Do not use Wikipedia as a source unless Wikipedia itself is the platform being blocked.
+  - **One narrow exception:** rows in the default-restricted countries — China,
+    Eritrea, Iran, North Korea and Turkmenistan — may fall back to that
+    country's own Wikipedia article (`Internet censorship in China`,
+    `Internet in Turkmenistan`, …) when no platform-specific reporting exists.
+    Nobody publishes "Tumblr is blocked in Turkmenistan"; they publish that
+    almost everything is. Reach for it only after looking: Freedom House's
+    *Freedom on the Net* country reports name platforms individually and are
+    the better citation wherever they do. `verify_links.py` enforces exactly
+    this — a Wikipedia URL cited by any row outside those five countries is
+    still reported as a defect.
   - Do not copy-paste generic overview reports (e.g., CPJ's "10 Most Censored Countries" list) across dozens of unrelated platform rows. Each source MUST specifically document or verify the restriction for that specific platform and country.
   - If a platform in a default-restricted nation (e.g., North Korea, Turkmenistan, Eritrea, China) lacks a specific, dedicated high-quality source, leave `source` empty and let the country fallback system handle it — never attach generic drivel or catch-all URLs to pad rows.
 - **Never invent a source URL, and never auto-replace one.** A batch of rows
@@ -34,6 +44,13 @@ Notes:
 - Run [`verify_links.py`](verify_links.py) after editing sources. It reports
   dead URLs, Wikipedia citations and leftover search-engine placeholders, with
   the rows that cite each, and exits non-zero if any are found.
+- **A 200 is not a verification.** The checker answers "does this URL resolve?"
+  and nothing more, and a surprising number of sites answer a missing page with
+  a 200: Intercom, Quartz, Reuters, Newsweek and Zoom's knowledge base all
+  serve "page not found" bodies with a success status, and Moscow Times,
+  Egypt Today and LSM article IDs get reassigned so the old link quietly lands
+  on an unrelated story. Before trusting a source, open it and confirm it names
+  this platform and this country.
 - **China, Eritrea, North Korea and Turkmenistan** rows can leave `more_info`
   empty — the page substitutes a shared boilerplate about their
   default-restricted internet (see `HEAVY_CENSORSHIP` in `index.html`). The

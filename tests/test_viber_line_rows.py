@@ -71,7 +71,14 @@ def main() -> int:
         )
         for row in platform_rows:
             assert row["type"] in {"complete", "partial"}, row
-            assert row["source"].startswith("https://"), row
+            # A blank source is allowed, per README.md: when no page can be
+            # found that actually documents the claim, leaving the field empty
+            # beats attaching one that does not. LINE/Saudi Arabia is the live
+            # example — the only reporting found says the calling block was
+            # lifted on 20 September 2017, so it cannot cite that as evidence
+            # of a current restriction. What is not allowed is a non-URL.
+            src = row["source"].strip()
+            assert not src or src.startswith("https://"), row
 
     line = {row["country"]: row for row in rows if row["platform"] == "LINE"}
     viber = {row["country"]: row for row in rows if row["platform"] == "Viber"}

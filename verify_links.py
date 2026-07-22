@@ -41,6 +41,16 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
 # caused the bad substitutions in the first place.
 ALIVE = {"200", "301", "302", "303", "307", "308", "401", "403", "406", "429"}
 
+# Wikipedia stays banned as a source, with one carve-out. In the countries
+# whose internet is restricted by default there is often no platform-specific
+# reporting to cite at all: nobody writes "Tumblr is blocked in Turkmenistan",
+# they write that almost everything is. For those rows the country-level
+# Wikipedia article is the agreed last resort, better than the homepage links
+# and catch-all reports it replaced. Everywhere else a Wikipedia citation is
+# still a defect, and a row whose platform *is* Wikipedia may cite it freely
+# (see README.md).
+WIKI_EXEMPT_COUNTRIES = {"China", "Eritrea", "Iran", "North Korea", "Turkmenistan"}
+
 
 def collect() -> dict[str, list[str]]:
     """Map each source URL to the rows that cite it."""
@@ -56,6 +66,25 @@ def collect() -> dict[str, list[str]]:
         for url in re.findall(r'"(https?://[^"]+)"', path.read_text(encoding="utf-8")):
             where.setdefault(url, []).append(path.name)
     return where
+
+
+def wiki_allowed(url: str, rows: list[str]) -> bool:
+    """True when every row citing this Wikipedia URL is entitled to one.
+
+    `rows` holds "Platform/Country" for CSV citations, so the country is
+    recoverable. Entries from the JSON files are bare filenames with no
+    country in them; those are never exempt, which is why the split below
+    has to actually find a slash.
+    """
+    for row in rows:
+        platform, _, country = row.partition("/")
+        if not country:
+            return False
+        if platform == "Wikipedia":
+            continue
+        if country not in WIKI_EXEMPT_COUNTRIES:
+            return False
+    return True
 
 
 def status(url: str) -> str:
@@ -78,7 +107,7 @@ def main() -> int:
         codes = dict(zip(urls, pool.map(status, urls)))
 
     dead = {u: c for u, c in codes.items() if c not in ALIVE}
-    wiki = [u for u in urls if "wikipedia.org" in u]
+    wiki = [u for u in urls if "wikipedia.org" in u and not wiki_allowed(u, where[u])]
     placeholder = [u for u in urls if "duckduckgo.com" in u or "google.com/search" in u]
 
     for label, items in (("dead", dead), ("wikipedia", wiki), ("placeholder", placeholder)):

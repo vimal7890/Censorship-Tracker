@@ -12,16 +12,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "censorship_data.csv"
 
-# Plan criterion 3 minimum social set for UAE (Facebook, Instagram, TikTok, X, YouTube)
-# plus Snapchat from the official phase-1 named list. Required floor, not
-# exhaustive — later phases may add platforms. Rows are content-checked below.
+# Exactly the platforms the UAE cabinet resolution names in phase one. YouTube
+# used to be listed here too, carried over from a generic "major social set"
+# rather than from the resolution — a source audit found the official page
+# names only these five, so the YouTube row was dropped. Required floor, not
+# exhaustive: add a platform here when a later phase actually names it.
 UAE_AGE_REQUIRED = {
     "Facebook",
     "Instagram",
     "Snapchat",
     "TikTok",
     "X (formerly Twitter)",
-    "YouTube",
 }
 
 # Social set minus Discord (complete ban still in force for Turkey).
