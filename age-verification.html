@@ -540,13 +540,37 @@
             return status === 'implemented' ? 'Implemented' : 'Scheduled';
         }
 
+        // Today in the viewer's own timezone as YYYY-MM-DD. Deliberately not
+        // toISOString(), which converts to UTC first and so flips a day early
+        // for anyone west of Greenwich.
+        function todayISO() {
+            const d = new Date();
+            const pad = n => String(n).padStart(2, '0');
+            return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+        }
+
+        // A law with a date in the past is in force, whether or not anyone has
+        // got round to editing the JSON. The data file records what was
+        // legislated; the page works out whether that date has arrived, so a
+        // scheduled entry promotes itself on the morning it takes effect.
+        //
+        // Set "auto_advance": false on an entry whose date is not safe to
+        // trust yet — one still facing a court challenge, say — and it stays
+        // Scheduled until a human says otherwise.
+        function effectiveStatus(item) {
+            if (item.status === 'implemented') return 'implemented';
+            if (item.auto_advance === false) return 'scheduled';
+            const date = item.implementation_date;
+            return date && date <= todayISO() ? 'implemented' : 'scheduled';
+        }
+
         function renderTimeline(items) {
             const list = document.getElementById('timelineList');
             const sorted = items.slice().sort((a, b) =>
                 (a.implementation_date || '').localeCompare(b.implementation_date || '')
             );
             list.innerHTML = sorted.map(item => {
-                const st = item.status === 'implemented' ? 'implemented' : 'scheduled';
+                const st = effectiveStatus(item);
                 const src = item.source
                     ? `<div class="timeline-source"><a href="${item.source}" target="_blank" rel="noopener noreferrer">Source</a></div>`
                     : '';

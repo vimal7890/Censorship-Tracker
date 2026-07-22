@@ -77,6 +77,26 @@ Notes:
   jurisdictions (e.g. US states) map to their parent country with
   `{ iso: "US", subnational: true }` and are aggregated under it on the map.
 
+## Age verification timeline
+
+The timeline on [`age-verification.html`](age-verification.html) is driven by
+`timeline` in [`age_verification_data.json`](age_verification_data.json). Each
+entry carries a `status` of `implemented` or `scheduled` — but **the badge on
+the page is not read straight from that field**. The page compares
+`implementation_date` (ISO `YYYY-MM-DD`) against today in the viewer's own
+timezone, so a scheduled law promotes itself to *Implemented* on the morning it
+takes effect, with no edit and no redeploy. France's under-15 ban flips on
+2026-09-01, Turkey's on 2026-10-01, Gabon's in February 2027.
+
+So `status` records what was legislated and the page works out whether that
+date has arrived. Keep writing `scheduled` for a future law; there is no need
+to go back and change it later.
+
+One escape hatch: set `"auto_advance": false` on an entry whose date should not
+be trusted to arrive on time — one still facing a court challenge, or where
+implementation has visibly slipped — and it stays *Scheduled* until a human
+says otherwise. Leave it off in the normal case.
+
 ## VPN service availability matrix
 
 `app_matrix` in [`vpn_data.json`](vpn_data.json) drives the grid under the VPN
