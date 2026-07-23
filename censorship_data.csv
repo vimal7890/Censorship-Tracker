@@ -228,7 +228,7 @@ Rumble,China,Never allowed to operate,complete,,https://en.wikipedia.org/wiki/In
 Rumble,Eritrea,Ongoing,complete,,https://cpj.org/reports/2019/09/10-most-censored-eritrea-north-korea-turkmenistan-journalist/
 Rumble,Iran,Unknown,complete,Blocked as part of the Iranian government's broad internet filtering system.,https://en.wikipedia.org/wiki/Internet_censorship_in_Iran
 Rumble,North Korea,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_North_Korea
-Rumble,Russia,March 2024,complete,"Rumble was banned by the Russian government in March 2024 after refusing to comply with requests to censor certain content, specifically the ALLATRA TV channel.",https://leave-russia.org/rumble
+Rumble,Russia,April 2024,complete,"Blocked in April 2024 after Rumble refused Russian government demands to remove content, specifically the ALLATRA TV channel. OONI network measurements record rumble.com as confirmed-blocked in Russia from early April 2024.",https://explorer.ooni.org/m/20240406122250.018354_RU_webconnectivity_171d76e7f399ff4f
 Rumble,Turkmenistan,Forever,complete,,https://en.wikipedia.org/wiki/Internet_in_Turkmenistan
 Russia Today,Albania,2022,complete,"As countries closely aligning their foreign policy with the European Union, they have implemented restrictions matching the EU's comprehensive ban on RT broadcasting and distribution.",
 Russia Today,Australia,February 2022,partial,"RT was never banned by law in Australia. SBS suspended its RT bulletins and Foxtel dropped the channel in February 2022, both carriage decisions by the broadcasters themselves. The website remains reachable.",https://deadline.com/2022/02/foxtel-australia-suspend-russian-channel-rt-ukraine-invasion-1234960915/
