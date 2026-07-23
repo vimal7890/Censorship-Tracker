@@ -24,9 +24,11 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="favicon-32.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Self-hosted fonts (no third-party request — matters for visitors on
+         monitored networks). Preload the two faces used above the fold. -->
+    <link rel="preload" href="assets/fonts/Chivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/SourceSans3-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
     <script src="assets/theme.js"></script>
     <style>
         :root {
@@ -341,6 +343,70 @@
             font-size: 12px;
             font-weight: 500;
         }
+        /* Section jump links — sit under the filter nav in the sticky sidebar
+           so the long index is navigable without scrolling back to the top. */
+        .sidebar-jump {
+            display: flex;
+            flex-direction: column;
+            border-top: 2px solid var(--primary);
+            padding: 12px 0;
+        }
+        .jump-label {
+            padding: 4px 20px 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+        }
+        .sidebar-jump a {
+            padding: 8px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--on-surface-variant);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: background 0.12s, color 0.12s, border-color 0.12s;
+        }
+        .sidebar-jump a:hover,
+        .sidebar-jump a:focus-visible {
+            color: var(--primary);
+            background: var(--surface-container-high);
+            border-left-color: var(--primary);
+        }
+        /* Anchor targets clear the sticky top bar when jumped to. */
+        #mapSection, #platformGrid, #statsSection, #recentSection, #methodSection {
+            scroll-margin-top: calc(var(--topbar-h, 64px) + 12px);
+        }
+        /* ---------- Back to top ---------- */
+        .to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 60;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary);
+            background: var(--primary);
+            color: var(--on-primary);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: opacity 0.18s, transform 0.18s, visibility 0.18s, background 0.15s, color 0.15s;
+            box-shadow: 3px 3px 0 var(--tooltip-shadow);
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .to-top:hover { background: var(--paper-white); color: var(--primary); }
+        .to-top svg { width: 20px; height: 20px; }
+        @media (prefers-reduced-motion: reduce) {
+            .to-top { transition: opacity 0.18s, visibility 0.18s; transform: none; }
+            .to-top.show { transform: none; }
+        }
         /* ---------- Buttons ---------- */
         .btn {
             display: inline-block;
@@ -524,6 +590,29 @@
         .filter-chip[data-filter="complete"].active { background: var(--secondary); border-color: var(--secondary); }
         .filter-chip[data-filter="partial"].active { background: var(--alert-orange); border-color: var(--alert-orange); }
         .filter-chip[data-filter="age"].active { background: var(--age-purple); border-color: var(--age-purple); }
+        .filters-divider {
+            width: 1px;
+            height: 22px;
+            background: var(--outline-variant);
+            margin: 0 4px;
+        }
+        /* Country lens — pivot the whole index to one territory, the question
+           visitors ask most ("what's blocked where I am?"). Composes with the
+           type filter and search. */
+        .country-filter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            padding: 9px 12px;
+            max-width: 100%;
+            cursor: pointer;
+        }
+        .country-filter:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+        .country-filter.active { background: var(--primary); color: var(--on-primary); }
 
         /* ---------- Platform list ---------- */
         .platform-list {
@@ -719,6 +808,27 @@
         @media (prefers-reduced-motion: reduce) {
             .grid-loading { animation: none; }
         }
+        /* Prerendered static index (crawlers / no-JS / pre-hydration paint).
+           Baked by prerender.py; the app replaces it on load. */
+        .prerender-index { display: flex; flex-direction: column; }
+        .pr-row {
+            border-bottom: 1px solid var(--outline-variant);
+            padding: 16px 4px;
+        }
+        .pr-row:last-child { border-bottom: none; }
+        .pr-name {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .pr-countries {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--on-surface-variant);
+        }
+        .pr-countries b { color: var(--primary); }
 
         /* Message for visitors with JavaScript disabled (the whole index is
            fetched and rendered client-side, so nothing else would appear). */
@@ -758,6 +868,60 @@
                 var(--age-purple) 0 3px,
                 var(--alert-orange) 3px 6px
             );
+        }
+
+        /* ---------- Methodology & sources ---------- */
+        #verifiedNote {
+            display: inline-block;
+            border: 1px solid var(--tertiary-green);
+            color: var(--tertiary-green);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 10px;
+            margin-bottom: 4px;
+        }
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .method-card {
+            border: 1px solid var(--outline-variant);
+            background: var(--surface-bright);
+            padding: 18px 20px;
+        }
+        .method-card h3 {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .method-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--on-surface-variant);
+            margin-bottom: 10px;
+        }
+        .method-card p:last-child { margin-bottom: 0; }
+        .method-card code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            background: var(--surface-container);
+            padding: 1px 5px;
+        }
+        .method-card a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
+        .method-card a:hover { color: var(--secondary); }
+        .method-key, .method-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .method-key li { font-size: 14px; line-height: 1.5; color: var(--on-surface-variant); }
+        .method-key .swatch { margin-right: 8px; vertical-align: middle; }
+        .method-key b, .method-links b { color: var(--primary); }
+        .method-links li { font-size: 14px; color: var(--on-surface-variant); }
+        @media (min-width: 720px) {
+            .method-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         /* Actions row (mobile export lives here too) */
@@ -1198,7 +1362,14 @@
             .footer-inner { flex-direction: row; align-items: center; }
         }
         @media (min-width: 1024px) {
-            .sidebar { display: flex; }
+            .sidebar {
+                display: flex;
+                position: sticky;
+                top: var(--topbar-h, 64px);
+                align-self: flex-start;
+                max-height: calc(100vh - var(--topbar-h, 64px));
+                overflow-y: auto;
+            }
             .main { border-right: 2px solid var(--primary); }
         }
     </style>
@@ -1229,6 +1400,7 @@
             <span>Platforms Monitored: <b id="tickerPlatforms">--</b></span>
             <span>Total Restrictions: <b id="tickerBans">--</b></span>
             <span>Data As Of: <b>JUL 2026</b></span>
+            <span id="tickerVerified" hidden>Sources Verified: <b id="tickerVerifiedDate"></b></span>
         </div>
     </div>
 
@@ -1257,6 +1429,14 @@
                     <span class="label-caps">Age Verification</span>
                     <span class="nav-count" id="navCountAge">0</span>
                 </button>
+            </nav>
+            <nav class="sidebar-jump" aria-label="Jump to section">
+                <span class="jump-label">Sections</span>
+                <a href="#mapSection">Global Map</a>
+                <a href="#platformGrid">Full Index</a>
+                <a href="#statsSection">By the Numbers</a>
+                <a href="#recentSection">Most Recent</a>
+                <a href="#methodSection">Methodology</a>
             </nav>
         </aside>
 
@@ -1304,6 +1484,11 @@
                     <button class="filter-chip" data-filter="complete">Complete</button>
                     <button class="filter-chip" data-filter="partial">Partial</button>
                     <button class="filter-chip" data-filter="age">Age Verification</button>
+                    <span class="filters-divider" aria-hidden="true"></span>
+                    <label class="filters-label" for="countryFilter">In:</label>
+                    <select id="countryFilter" class="country-filter" aria-label="Filter the index by country or territory">
+                        <option value="">All countries &amp; territories</option>
+                    </select>
                 </div>
             </div>
 
@@ -1340,7 +1525,206 @@
             </section>
 
             <div id="platformGrid" class="platform-list">
-                <div class="grid-loading" role="status">// Loading censorship index&hellip;</div>
+                <!-- PRERENDER:START — static index baked from censorship_data.csv by prerender.py, so crawlers and no-JS visitors get the whole list (and it doubles as the pre-hydration paint). The app replaces this on load. Regenerate: python3 prerender.py -->
+                <div class="prerender-index">
+                    <article class="pr-row">
+                        <h3 class="pr-name">Al Jazeera</h3>
+                        <p class="pr-countries"><b>Al Jazeera</b> is restricted in 9 countries and territories: Bahrain (complete ban), China (complete ban), Egypt (complete ban), Eritrea (complete ban), Israel (complete ban), North Korea (complete ban), Saudi Arabia (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Associated Press</h3>
+                        <p class="pr-countries"><b>Associated Press</b> is restricted in 5 countries and territories: Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">BBC News</h3>
+                        <p class="pr-countries"><b>BBC News</b> is restricted in 7 countries and territories: Afghanistan (partial restriction), China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Vietnam (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Bluesky</h3>
+                        <p class="pr-countries"><b>Bluesky</b> is restricted in 6 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), Mississippi (age verification), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">CGTN</h3>
+                        <p class="pr-countries"><b>CGTN</b> is restricted in 6 countries and territories: Eritrea (complete ban), Germany (partial restriction), North Korea (complete ban), Turkmenistan (complete ban), United Kingdom (partial restriction), United States (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">ChatGPT</h3>
+                        <p class="pr-countries"><b>ChatGPT</b> is restricted in 8 countries and territories: China (complete ban), Cuba (complete ban), Eritrea (complete ban), Iran (complete ban), Italy (partial restriction), North Korea (complete ban), Russia (complete ban), Syria (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Discord</h3>
+                        <p class="pr-countries"><b>Discord</b> is restricted in 12 countries and territories: Brazil (age verification), China (complete ban), Egypt (partial restriction), Eritrea (complete ban), Gabon (age verification), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkey (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction), United Kingdom (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">DuckDuckGo</h3>
+                        <p class="pr-countries"><b>DuckDuckGo</b> is restricted in 6 countries and territories: China (complete ban), Eritrea (complete ban), Indonesia (complete ban), Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">DW (Deutsche Welle)</h3>
+                        <p class="pr-countries"><b>DW (Deutsche Welle)</b> is restricted in 9 countries and territories: Afghanistan (partial restriction), Belarus (complete ban), China (complete ban), Eritrea (complete ban), North Korea (complete ban), Russia (complete ban), Turkey (complete ban), Turkmenistan (complete ban), Venezuela (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Facebook</h3>
+                        <p class="pr-countries"><b>Facebook</b> is restricted in 16 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Iran (complete ban), Malaysia (age verification), Myanmar (complete ban), North Korea (complete ban), Russia (complete ban), Turkey (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">GitHub</h3>
+                        <p class="pr-countries"><b>GitHub</b> is restricted in 9 countries and territories: China (partial restriction), Crimea (partial restriction), Cuba (partial restriction), Eritrea (complete ban), Iran (partial restriction), North Korea (complete ban), Russia (partial restriction), Syria (partial restriction), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Google</h3>
+                        <p class="pr-countries"><b>Google</b> is restricted in 5 countries and territories: China (complete ban), Eritrea (complete ban), Iran (partial restriction), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Grindr</h3>
+                        <p class="pr-countries"><b>Grindr</b> is restricted in 19 countries and territories: Afghanistan (complete ban), China (complete ban), Cuba (complete ban), Eritrea (complete ban), Indonesia (complete ban), Iran (complete ban), Iraq (complete ban), Jordan (complete ban), Lebanon (complete ban), Malaysia (complete ban), Maldives (complete ban), North Korea (complete ban), Pakistan (complete ban), Qatar (complete ban), Saudi Arabia (complete ban), Sudan (complete ban), Syria (complete ban), Turkey (complete ban), United Arab Emirates (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Instagram</h3>
+                        <p class="pr-countries"><b>Instagram</b> is restricted in 15 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Iran (complete ban), Malaysia (age verification), North Korea (complete ban), Russia (complete ban), Turkey (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">KakaoTalk</h3>
+                        <p class="pr-countries"><b>KakaoTalk</b> is restricted in 6 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">LINE</h3>
+                        <p class="pr-countries"><b>LINE</b> is restricted in 10 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Oman (partial restriction), Qatar (partial restriction), Russia (complete ban), Saudi Arabia (partial restriction), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">LinkedIn</h3>
+                        <p class="pr-countries"><b>LinkedIn</b> is restricted in 6 countries and territories: China (complete ban), Eritrea (complete ban), Iran (partial restriction), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Medium</h3>
+                        <p class="pr-countries"><b>Medium</b> is restricted in 6 countries and territories: China (complete ban), Egypt (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Vietnam (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Netflix</h3>
+                        <p class="pr-countries"><b>Netflix</b> is restricted in 6 countries and territories: Crimea (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Syria (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">New York Times</h3>
+                        <p class="pr-countries"><b>New York Times</b> is restricted in 7 countries and territories: China (complete ban), Eritrea (complete ban), North Korea (complete ban), Saudi Arabia (partial restriction), Texas (age verification), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Odnoklassniki</h3>
+                        <p class="pr-countries"><b>Odnoklassniki</b> is restricted in 6 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), Latvia (complete ban), North Korea (complete ban), Ukraine (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Patreon</h3>
+                        <p class="pr-countries"><b>Patreon</b> is restricted in 5 countries and territories: Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Pinterest</h3>
+                        <p class="pr-countries"><b>Pinterest</b> is restricted in 5 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Quora</h3>
+                        <p class="pr-countries"><b>Quora</b> is restricted in 5 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Reddit</h3>
+                        <p class="pr-countries"><b>Reddit</b> is restricted in 12 countries and territories: Australia (age verification), Brazil (age verification), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (complete ban), Iran (complete ban), North Korea (complete ban), Turkey (age verification), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Reuters</h3>
+                        <p class="pr-countries"><b>Reuters</b> is restricted in 7 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), Myanmar (complete ban), North Korea (complete ban), Turkmenistan (complete ban), Vietnam (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Roblox</h3>
+                        <p class="pr-countries"><b>Roblox</b> is restricted in 11 countries and territories: Algeria (complete ban), Egypt (complete ban), Eritrea (complete ban), Indonesia (age verification), Iran (complete ban), Iraq (complete ban), North Korea (complete ban), Oman (complete ban), Qatar (complete ban), Turkey (complete ban), United Arab Emirates (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Rumble</h3>
+                        <p class="pr-countries"><b>Rumble</b> is restricted in 7 countries and territories: Brazil (complete ban), China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Russia Today</h3>
+                        <p class="pr-countries"><b>Russia Today</b> is restricted in 37 countries and territories: Albania (complete ban), Australia (partial restriction), Austria (complete ban), Belgium (complete ban), Bulgaria (complete ban), Canada (partial restriction), Croatia (complete ban), Cyprus (complete ban), Czech Republic (complete ban), Denmark (complete ban), Eritrea (complete ban), Estonia (complete ban), Finland (complete ban), France (complete ban), Germany (complete ban), Greece (complete ban), Hungary (complete ban), Ireland (complete ban), Italy (complete ban), Latvia (complete ban), Lithuania (complete ban), Luxembourg (complete ban), Malta (complete ban), Montenegro (complete ban), Netherlands (complete ban), North Korea (complete ban), North Macedonia (complete ban), Poland (complete ban), Portugal (complete ban), Romania (complete ban), Slovakia (complete ban), Slovenia (complete ban), Spain (complete ban), Sweden (complete ban), Ukraine (complete ban), United Kingdom (complete ban), United States (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Signal</h3>
+                        <p class="pr-countries"><b>Signal</b> is restricted in 7 countries and territories: China (complete ban), Egypt (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Snapchat</h3>
+                        <p class="pr-countries"><b>Snapchat</b> is restricted in 12 countries and territories: Australia (age verification), Brazil (age verification), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkey (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Spotify</h3>
+                        <p class="pr-countries"><b>Spotify</b> is restricted in 7 countries and territories: China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Substack</h3>
+                        <p class="pr-countries"><b>Substack</b> is restricted in 7 countries and territories: Australia (age verification), China (complete ban), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Telegram</h3>
+                        <p class="pr-countries"><b>Telegram</b> is restricted in 11 countries and territories: China (complete ban), Cuba (complete ban), Eritrea (complete ban), Iran (complete ban), Nepal (partial restriction), North Korea (complete ban), Pakistan (complete ban), Russia (complete ban), Somalia (complete ban), Turkmenistan (complete ban), Vietnam (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Threads</h3>
+                        <p class="pr-countries"><b>Threads</b> is restricted in 14 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Iran (complete ban), Malaysia (age verification), North Korea (complete ban), Russia (complete ban), Turkey (age verification), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">TikTok</h3>
+                        <p class="pr-countries"><b>TikTok</b> is restricted in 19 countries and territories: Afghanistan (complete ban), Australia (age verification), Brazil (age verification), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), India (complete ban), Indonesia (age verification), Iran (complete ban), Jordan (complete ban), Kyrgyzstan (complete ban), Malaysia (age verification), North Korea (complete ban), Somalia (partial restriction), Turkey (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification), Uzbekistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Tinder</h3>
+                        <p class="pr-countries"><b>Tinder</b> is restricted in 5 countries and territories: Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Pakistan (complete ban), United Arab Emirates (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Tumblr</h3>
+                        <p class="pr-countries"><b>Tumblr</b> is restricted in 10 countries and territories: Australia (age verification), Brazil (age verification), China (complete ban), Eritrea (complete ban), Iran (complete ban), Kazakhstan (complete ban), North Korea (complete ban), Philippines (partial restriction), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Twitch</h3>
+                        <p class="pr-countries"><b>Twitch</b> is restricted in 11 countries and territories: Australia (age verification), Brazil (age verification), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Iran (complete ban), North Korea (complete ban), Russia (partial restriction), South Korea (complete ban), Turkey (age verification).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Viber</h3>
+                        <p class="pr-countries"><b>Viber</b> is restricted in 10 countries and territories: China (complete ban), Egypt (partial restriction), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Oman (partial restriction), Qatar (partial restriction), Russia (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Vimeo</h3>
+                        <p class="pr-countries"><b>Vimeo</b> is restricted in 6 countries and territories: China (complete ban), Eritrea (complete ban), Indonesia (complete ban), Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">VKontakte</h3>
+                        <p class="pr-countries"><b>VKontakte</b> is restricted in 5 countries and territories: Eritrea (complete ban), Iran (complete ban), Latvia (complete ban), North Korea (complete ban), Ukraine (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">WeChat</h3>
+                        <p class="pr-countries"><b>WeChat</b> is restricted in 4 countries and territories: Eritrea (complete ban), India (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">WhatsApp</h3>
+                        <p class="pr-countries"><b>WhatsApp</b> is restricted in 11 countries and territories: China (complete ban), Egypt (partial restriction), Eritrea (complete ban), Iran (complete ban), Jordan (partial restriction), North Korea (complete ban), Qatar (partial restriction), Russia (complete ban), Sudan (partial restriction), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Wikipedia</h3>
+                        <p class="pr-countries"><b>Wikipedia</b> is restricted in 6 countries and territories: China (complete ban), Eritrea (complete ban), Iran (partial restriction), Myanmar (complete ban), North Korea (complete ban), Russia (partial restriction).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">X (formerly Twitter)</h3>
+                        <p class="pr-countries"><b>X (formerly Twitter)</b> is restricted in 17 countries and territories: Australia (age verification), Brazil (age verification), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Iran (complete ban), Malaysia (age verification), Myanmar (complete ban), North Korea (complete ban), Russia (complete ban), Turkey (age verification), Turkey (partial restriction), Turkmenistan (complete ban), United Arab Emirates (age verification), United Kingdom (age verification), Venezuela (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Yandex</h3>
+                        <p class="pr-countries"><b>Yandex</b> is restricted in 5 countries and territories: Eritrea (complete ban), Iran (partial restriction), Latvia (complete ban), North Korea (complete ban), Ukraine (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">YouTube</h3>
+                        <p class="pr-countries"><b>YouTube</b> is restricted in 13 countries and territories: Australia (age verification), Brazil (age verification), China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Iran (complete ban), Malaysia (age verification), North Korea (complete ban), Russia (complete ban), Turkey (age verification), Turkmenistan (complete ban).</p>
+                    </article>
+                    <article class="pr-row">
+                        <h3 class="pr-name">Zoom</h3>
+                        <p class="pr-countries"><b>Zoom</b> is restricted in 5 countries and territories: China (partial restriction), Eritrea (complete ban), Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                    </article>
+                </div>
+                <!-- PRERENDER:END -->
             </div>
 
             <div class="info-note">
@@ -1369,6 +1753,45 @@
                 <div class="recent-list" id="recentList"></div>
             </section>
 
+            <section class="section-block" id="methodSection" aria-labelledby="method-heading">
+                <h2 class="section-title" id="method-heading">Methodology &amp; Sources</h2>
+                <p class="section-sub" id="verifiedNote" hidden></p>
+                <div class="method-grid">
+                    <div class="method-card">
+                        <h3>What this tracks</h3>
+                        <p>Apps and websites that a government or the platform itself has made
+                        unavailable or conditional in a given territory. Every entry is one of
+                        three kinds:</p>
+                        <ul class="method-key">
+                            <li><span class="swatch complete"></span><b>Complete</b> — the platform is fully blocked.</li>
+                            <li><span class="swatch partial"></span><b>Partial</b> — throttled, feature-limited or intermittently blocked.</li>
+                            <li><span class="swatch age"></span><b>Age verification</b> — legal age-gating required to access it.</li>
+                        </ul>
+                    </div>
+                    <div class="method-card">
+                        <h3>How sources are held</h3>
+                        <p>Every claim cites a high-quality primary or reputable secondary
+                        source — government decrees, OONI and Citizen Lab measurements, Freedom
+                        House research, established newsrooms, or a platform's own transparency
+                        pages. Wikipedia is not used except for the handful of countries whose
+                        internet is restricted by default.</p>
+                        <p>Each link is opened and confirmed to support its specific row — a
+                        <code>200</code> is never treated as proof on its own — and sources are
+                        never invented or auto-substituted. <a href="https://github.com/vimal7890/Censorship-Tracker/blob/main/verify_links.py" target="_blank" rel="noopener">verify_links.py</a>
+                        re-checks every URL for rot.</p>
+                    </div>
+                    <div class="method-card">
+                        <h3>Data &amp; changes</h3>
+                        <p>The whole index is a single open file you can read, cite or reuse.</p>
+                        <ul class="method-links">
+                            <li><a href="censorship_data.csv" target="_blank" rel="noopener">censorship_data.csv &#8595;</a> — the raw dataset</li>
+                            <li><a href="https://github.com/vimal7890/Censorship-Tracker" target="_blank" rel="noopener">Source &amp; issues on GitHub &#8599;</a></li>
+                            <li><a href="https://github.com/vimal7890/Censorship-Tracker/commits/main" target="_blank" rel="noopener">Recent changes &#8599;</a> — full edit history</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <div class="actions">
                 <button class="btn btn-ghost" onclick="exportData()">Export Data &#8595; JSON</button>
             </div>
@@ -1387,6 +1810,10 @@
          this one element, so it is a body-level sibling rather than owned by
          any single section. -->
     <div id="hoverTooltip" class="map-tooltip" aria-hidden="true"></div>
+
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </button>
 
     <script src="assets/countries.js"></script>
     <script>
@@ -1538,10 +1965,19 @@
             if (currentFilter && currentFilter !== 'all') params.set('filter', currentFilter);
             const q = document.getElementById('searchBox').value.trim();
             if (q) params.set('q', q);
+            const cf = document.getElementById('countryFilter').value;
+            if (cf) params.set('in', cf);
             if (openDossierIso) params.set('country', openDossierIso);
             const str = params.toString();
             history.replaceState(null, '',
                 str ? '#' + str : location.pathname + location.search);
+        }
+
+        // Reflect the country lens' selected/empty state in its styling and keep
+        // the option list in sync when set programmatically (hash or map click).
+        function applyCountryFilterState() {
+            const sel = document.getElementById('countryFilter');
+            sel.classList.toggle('active', !!sel.value);
         }
 
         // Restore the search box and active filter from the hash, then paint the
@@ -1557,6 +1993,10 @@
                 document.querySelectorAll('[data-filter]').forEach(el =>
                     el.classList.toggle('active', el.getAttribute('data-filter') === filter));
             }
+            const cf = params.get('in');
+            const sel = document.getElementById('countryFilter');
+            if (cf && [...sel.options].some(o => o.value === cf)) sel.value = cf;
+            applyCountryFilterState();
             renderPlatforms();
         }
 
@@ -1622,6 +2062,7 @@
                     }
                 }));
                 updateStats();
+                populateCountryFilter();
                 // Restore filter + search from the URL hash and paint the list
                 // right away, before the (larger) map SVG has to load.
                 applyControlsFromHash();
@@ -1636,6 +2077,28 @@
                 document.getElementById('platformGrid').innerHTML =
                     '<div class="no-results">// Failed to load censorship_data.csv — ' + err.message + '</div>';
             }
+        }
+
+        // Freshness signal: verified.json exists only after verify_links.py has
+        // confirmed every source URL resolves clean (see the script). Show the
+        // date when it does; stay silent when it doesn't, so the badge can never
+        // overstate how recently the citations were actually checked.
+        async function loadVerified() {
+            try {
+                const res = await fetch('verified.json', { cache: 'no-cache' });
+                if (!res.ok) return;
+                const info = await res.json();
+                const d = new Date(info.date + 'T00:00:00');
+                if (isNaN(d)) return;
+                const label = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+                document.getElementById('tickerVerifiedDate').textContent = label;
+                document.getElementById('tickerVerified').hidden = false;
+                const foot = document.getElementById('verifiedNote');
+                if (foot) {
+                    foot.textContent = `All ${info.sources} source links checked live on ${label}.`;
+                    foot.hidden = false;
+                }
+            } catch (_) { /* absent or malformed — show nothing */ }
         }
 
         function updateStats() {
@@ -1666,6 +2129,23 @@
             document.getElementById('navCountComplete').textContent = completeBans;
             document.getElementById('navCountPartial').textContent = partialBans;
             document.getElementById('navCountAge').textContent = ageBans;
+        }
+
+        // Fill the country lens with every tracked territory, alphabetical, each
+        // annotated with its restriction count so the busiest territories are
+        // legible at a glance. Uses textContent (not innerHTML) so names are
+        // never interpreted as markup.
+        function populateCountryFilter() {
+            const counts = new Map();
+            censorshipData.forEach(p => p.bannedIn.forEach(b =>
+                counts.set(b.country, (counts.get(b.country) || 0) + 1)));
+            const sel = document.getElementById('countryFilter');
+            [...counts.keys()].sort((a, b) => a.localeCompare(b)).forEach(country => {
+                const opt = document.createElement('option');
+                opt.value = country;
+                opt.textContent = `${country} (${counts.get(country)})`;
+                sel.appendChild(opt);
+            });
         }
 
         // Stable id fragment for a platform + country (+ optional type).
@@ -1731,7 +2211,7 @@
             document.querySelectorAll('.more-info.expanded').forEach(el => el.classList.remove('expanded'));
             document.querySelectorAll('.country-tag.open').forEach(el => el.classList.remove('open'));
             if (!wasOpen) {
-                if (infoElement) infoElement.classList.add('expanded');
+                if (infoElement) { fillPanel(infoElement); infoElement.classList.add('expanded'); }
                 if (tagElement) tagElement.classList.add('open');
             }
         }
@@ -1748,14 +2228,18 @@
         function renderPlatforms() {
             const grid = document.getElementById('platformGrid');
             const searchTerm = document.getElementById('searchBox').value.trim().toLowerCase();
+            const countrySel = document.getElementById('countryFilter').value;
 
-            // Search matches platform names AND country names. A name match keeps
-            // the whole platform; a country-only match narrows the row to just
-            // the countries that matched, so the visitor sees why it appeared.
+            // Three composable narrowings: type filter (currentFilter), the
+            // country lens (countrySel, exact territory) and free-text search.
+            // Search matches platform names AND country names — a name match
+            // keeps the whole platform; a country-only match narrows the row to
+            // just the countries that matched, so the visitor sees why it appeared.
             const filteredData = censorshipData
                 .map(platform => {
                     const typeBans = platform.bannedIn.filter(ban =>
-                        currentFilter === 'all' || ban.type === currentFilter);
+                        (currentFilter === 'all' || ban.type === currentFilter) &&
+                        (!countrySel || ban.country === countrySel));
                     if (!searchTerm || platform.name.toLowerCase().includes(searchTerm)) {
                         return { name: platform.name, bannedIn: typeBans };
                     }
@@ -1770,16 +2254,28 @@
                 return;
             }
 
-            const TYPE_LABELS = { complete: 'Complete Ban', partial: 'Partial Ban', age: 'Age Verification' };
             const TYPE_INFO_CLASS = { complete: '', partial: 'partial-info', age: 'age-info' };
 
+            // Case-file panels are rendered as empty shells and filled the first
+            // time they open (fillPanel). Building all 450+ up front is ~4,000
+            // hidden DOM nodes that every search keystroke would also rebuild;
+            // deferring keeps the grid light and re-renders cheap. Shells keep
+            // their ids (+ per-type aliases) so map/recent deep-links resolve,
+            // and carry the platform/country/types needed to fill on demand.
+            // Values are escaped and clicks handled by delegation (see grid
+            // listener) — no user/data string is ever interpolated into markup
+            // or an inline handler unescaped.
             grid.innerHTML = filteredData.map(platform => {
                 const groups = groupBansByCountry(platform.bannedIn);
                 const countryCount = groups.length;
+                const pName = escapeHTML(platform.name);
+                const icon = PLATFORM_ICONS[platform.name]
+                    ? `<span class="platform-logo${isDarkBrand(PLATFORM_COLORS[platform.name]) ? ' brand-dark' : ''}"${PLATFORM_COLORS[platform.name] ? ` style="color:${PLATFORM_COLORS[platform.name]}"` : ''}>${PLATFORM_ICONS[platform.name]}</span>`
+                    : '';
                 return `
                 <article class="platform-row">
                     <div class="platform-meta">
-                        <div class="platform-name"><span>${platform.name}</span>${PLATFORM_ICONS[platform.name] ? `<span class="platform-logo${isDarkBrand(PLATFORM_COLORS[platform.name]) ? ' brand-dark' : ''}"${PLATFORM_COLORS[platform.name] ? ` style="color:${PLATFORM_COLORS[platform.name]}"` : ''}>${PLATFORM_ICONS[platform.name]}</span>` : ''}</div>
+                        <div class="platform-name"><span>${pName}</span>${icon}</div>
                         <div class="platform-count">Restricted in ${countryCount} ${countryCount === 1 ? 'country or territory' : 'countries and territories'}</div>
                     </div>
                     <div class="platform-body">
@@ -1787,63 +2283,78 @@
                             ${groups.map(g => {
                                 const multi = g.types.length > 1;
                                 const typeKey = g.types.join('-');
-                                const typeArg = g.types.join('|');
                                 const tagId = `tag-${banDomId(platform.name, g.country, typeKey)}`;
                                 const cls = multi ? 'multi' : g.types[0];
                                 const style = multi ? ` style="background:${multiTagBackground(g.types)}"` : '';
                                 const title = multi
-                                    ? g.types.map(t => TYPE_LABELS[t] || t).join(' + ')
-                                    : (TYPE_LABELS[g.types[0]] || '');
-                                return `<button id="${tagId}" class="country-tag ${cls}"${style} title="${title}" onclick="toggleMoreInfo('${platform.name}', '${g.country}', '${typeArg}')">${g.country}</button>`;
+                                    ? g.types.map(t => TYPE_LABEL[t] || t).join(' + ')
+                                    : (TYPE_LABEL[g.types[0]] || '');
+                                return `<button id="${tagId}" class="country-tag ${cls}"${style} title="${escapeHTML(title)}" data-platform="${escapeHTML(platform.name)}" data-country="${escapeHTML(g.country)}" data-types="${g.types.join('|')}">${escapeHTML(g.country)}</button>`;
                             }).join('')}
                         </div>
                         ${groups.map(g => {
                             const multi = g.types.length > 1;
-                            const typeKey = g.types.join('-');
-                            const infoId = `info-${banDomId(platform.name, g.country, typeKey)}`;
-                            if (!multi) {
-                                const ban = g.bans[0];
-                                const sourceRef = ban.source ? `<a class="source-ref" href="${ban.source}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>` : '';
-                                return `
-                                <div id="${infoId}" class="more-info ${TYPE_INFO_CLASS[ban.type] || ''}">
-                                    <div class="more-info-head">
-                                        <span>${ban.country}</span>
-                                        <span class="status-${ban.type}">${TYPE_LABELS[ban.type] || 'Complete Ban'}</span>
-                                    </div>
-                                    <div class="more-info-body">
-                                        <div class="since">Since: ${ban.since}</div>
-                                        ${ban.moreInfo ? `<p>${ban.moreInfo}${sourceRef}</p>` : `<p><em>No additional information available.</em>${sourceRef}</p>`}
-                                    </div>
-                                </div>`;
-                            }
-                            const statusSpans = g.types.map(t =>
-                                `<span class="status-${t}">${TYPE_LABELS[t] || t}</span>`
-                            ).join('<span class="status-join"> + </span>');
-                            const cases = g.bans.map(ban => {
-                                const sourceRef = ban.source ? `<a class="source-ref" href="${ban.source}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>` : '';
-                                return `
-                                    <div class="multi-case">
-                                        <div class="case-type ${ban.type}">${TYPE_LABELS[ban.type] || ban.type}</div>
-                                        <div class="since">Since: ${ban.since}</div>
-                                        ${ban.moreInfo ? `<p>${ban.moreInfo}${sourceRef}</p>` : `<p><em>No additional information available.</em>${sourceRef}</p>`}
-                                    </div>`;
-                            }).join('');
+                            const infoId = `info-${banDomId(platform.name, g.country, g.types.join('-'))}`;
+                            const cls = multi ? 'more-info multi-info' : `more-info ${TYPE_INFO_CLASS[g.types[0]] || ''}`;
                             // Per-type alias ids so dossier / recent-row deep-links still resolve.
-                            const aliases = g.types.map(t =>
+                            const aliases = multi ? g.types.map(t =>
                                 `<div id="info-${banDomId(platform.name, g.country, t)}" class="more-info-alias" hidden data-multi-for="${infoId}"></div>`
-                            ).join('');
-                            return `
-                                <div id="${infoId}" class="more-info multi-info">
-                                    <div class="more-info-head">
-                                        <span>${g.country}</span>
-                                        <span class="status-multi">${statusSpans}</span>
-                                    </div>
-                                    <div class="more-info-body">${cases}</div>
-                                </div>${aliases}`;
+                            ).join('') : '';
+                            return `<div id="${infoId}" class="${cls}" data-lazy="1" data-platform="${escapeHTML(platform.name)}" data-country="${escapeHTML(g.country)}" data-types="${g.types.join('|')}"></div>${aliases}`;
                         }).join('')}
                     </div>
                 </article>
             `;}).join('');
+        }
+
+        // Build a case-file panel's markup the first time it is opened. Reads the
+        // platform/country/types stashed on the shell and re-derives the matching
+        // bans from the dataset, so the rendered grid stays a set of light shells.
+        function fillPanel(panel) {
+            if (!panel || !panel.dataset.lazy) return;
+            const platform = censorshipData.find(p => p.name === panel.dataset.platform);
+            if (!platform) return;
+            const country = panel.dataset.country;
+            const types = panel.dataset.types.split('|').filter(Boolean);
+            const bans = platform.bannedIn
+                .filter(b => b.country === country && types.includes(b.type))
+                .sort((a, b) => (TYPE_ORDER[a.type] ?? 9) - (TYPE_ORDER[b.type] ?? 9)
+                    || String(a.since).localeCompare(String(b.since)));
+            const srcRef = ban => ban.source
+                ? `<a class="source-ref" href="${escapeHTML(ban.source)}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>`
+                : '';
+            const bodyP = ban => ban.moreInfo
+                ? `<p>${escapeHTML(ban.moreInfo)}${srcRef(ban)}</p>`
+                : `<p><em>No additional information available.</em>${srcRef(ban)}</p>`;
+            if (types.length > 1) {
+                const statusSpans = types.map(t =>
+                    `<span class="status-${t}">${TYPE_LABEL[t] || t}</span>`
+                ).join('<span class="status-join"> + </span>');
+                const cases = bans.map(ban => `
+                    <div class="multi-case">
+                        <div class="case-type ${ban.type}">${TYPE_LABEL[ban.type] || ban.type}</div>
+                        <div class="since">Since: ${escapeHTML(ban.since)}</div>
+                        ${bodyP(ban)}
+                    </div>`).join('');
+                panel.innerHTML = `
+                    <div class="more-info-head">
+                        <span>${escapeHTML(country)}</span>
+                        <span class="status-multi">${statusSpans}</span>
+                    </div>
+                    <div class="more-info-body">${cases}</div>`;
+            } else {
+                const ban = bans[0];
+                panel.innerHTML = `
+                    <div class="more-info-head">
+                        <span>${escapeHTML(country)}</span>
+                        <span class="status-${ban.type}">${TYPE_LABEL[ban.type] || 'Complete Ban'}</span>
+                    </div>
+                    <div class="more-info-body">
+                        <div class="since">Since: ${escapeHTML(ban.since)}</div>
+                        ${bodyP(ban)}
+                    </div>`;
+            }
+            delete panel.dataset.lazy;
         }
 
         function exportData() {
@@ -2124,6 +2635,15 @@
         // Scroll to a platform's case file in the main list and expand it.
         function revealCaseFile(platform, country, type) {
             if (currentFilter !== 'all' && currentFilter !== type) setFilter('all');
+            // Clear the country lens if it points elsewhere, or the target row
+            // won't be in the list to scroll to.
+            const countrySel = document.getElementById('countryFilter');
+            if (countrySel.value && countrySel.value !== country) {
+                countrySel.value = '';
+                applyCountryFilterState();
+                renderPlatforms();
+                syncHash();
+            }
             const searchBox = document.getElementById('searchBox');
             if (searchBox.value && !platform.toLowerCase().includes(searchBox.value.toLowerCase())) {
                 searchBox.value = '';
@@ -2366,7 +2886,17 @@
         }
 
         // Event listeners
-        document.getElementById('searchBox').addEventListener('input', () => {
+        // Debounce the search so a full list re-render + history write doesn't
+        // fire on every keystroke — renderPlatforms rebuilds the whole grid, so
+        // on slower devices per-character re-rendering is visibly janky.
+        function debounce(fn, wait) {
+            let t;
+            return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+        }
+        document.getElementById('searchBox').addEventListener('input',
+            debounce(() => { renderPlatforms(); syncHash(); }, 150));
+        document.getElementById('countryFilter').addEventListener('change', () => {
+            applyCountryFilterState();
             renderPlatforms();
             syncHash();
         });
@@ -2389,14 +2919,46 @@
                 document.getElementById('dossierClose').click();
             }
         });
+        // Case-file toggles are delegated from the grid rather than inline
+        // onclick handlers, so no platform/country name is ever interpolated
+        // into an executable attribute (a name with a quote would break it).
+        document.getElementById('platformGrid').addEventListener('click', e => {
+            const tag = e.target.closest('.country-tag');
+            if (!tag || !tag.dataset.platform) return;
+            toggleMoreInfo(tag.dataset.platform, tag.dataset.country, tag.dataset.types);
+        });
+
         wireRowJumps('dossierRows');
         wireRowJumps('recentList');
         document.querySelectorAll('[data-filter]').forEach(el => {
             el.addEventListener('click', () => setFilter(el.getAttribute('data-filter')));
         });
 
+        // Measure the sticky top bar so the sidebar can sit flush beneath it and
+        // section jump-links land in view rather than under it. Recomputed on
+        // resize because the bar wraps to two rows on narrow screens.
+        function syncTopbarHeight() {
+            const bar = document.querySelector('.topbar');
+            if (bar) document.documentElement.style.setProperty('--topbar-h', bar.offsetHeight + 'px');
+        }
+        syncTopbarHeight();
+        window.addEventListener('resize', syncTopbarHeight, { passive: true });
+
+        // Back-to-top: the index is long, so surface a return control once the
+        // visitor has scrolled past the first viewport.
+        const toTop = document.getElementById('toTop');
+        toTop.hidden = false;
+        const onScrollTopBtn = () => toTop.classList.toggle('show', window.scrollY > 600);
+        window.addEventListener('scroll', onScrollTopBtn, { passive: true });
+        onScrollTopBtn();
+        toTop.addEventListener('click', () => {
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        });
+
         // Initialize: fetch the dataset, then render
         loadData();
+        loadVerified();
 
         // Title redaction: a censor's marker sweeps across a word, holds, then
         // sweeps off — with a brief RGB glitch as it strikes. Occasionally all

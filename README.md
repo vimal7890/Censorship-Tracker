@@ -41,9 +41,21 @@ Notes:
   guessed from the URL, which attached real but unrelated pages to the claims.
   A source must be a page you have actually opened, that actually supports the
   specific row it sits on. If you cannot find one, leave the `source` field blank — an unsourced claim is recoverable, a confidently wrong citation is not.
+- **Re-run [`prerender.py`](prerender.py) after editing the CSV.** The homepage
+  renders its list from the CSV at runtime, but it also carries a *baked* copy
+  of that list (between the `PRERENDER` markers in `index.html`) so crawlers and
+  no-JS visitors get the full platform→countries index — the app overwrites it
+  on load, and it doubles as the pre-hydration paint. `prerender.py` regenerates
+  that block; `tests/test_prerender.py` fails if the CSV and the baked block
+  drift, so a forgotten run is caught.
 - Run [`verify_links.py`](verify_links.py) after editing sources. It reports
   dead URLs, Wikipedia citations and leftover search-engine placeholders, with
-  the rows that cite each, and exits non-zero if any are found.
+  the rows that cite each, and exits non-zero if any are found. On a **fully
+  clean pass** it writes [`verified.json`](verified.json) (date + source count);
+  the homepage reads that file and shows a "Sources Verified: &lt;date&gt;"
+  badge in the ticker. The badge only appears after a clean run, so it can never
+  claim the citations were checked more recently than they actually were — if a
+  single source is dead, no file is written and no badge shows.
 - **A 200 is not a verification.** The checker answers "does this URL resolve?"
   and nothing more, and a surprising number of sites answer a missing page with
   a 200: Intercom, Quartz, Reuters, Newsweek and Zoom's knowledge base all
@@ -156,6 +168,29 @@ theme that matches the system again returns to auto-sync. Styling rules:
   auto). Keep them in sync when adding a variable.
 - Near-black brand colours in `PLATFORM_COLORS` are auto-swapped to the
   foreground colour in dark mode (`isDarkBrand` in `index.html`).
+
+## Fonts
+
+The three families (Chivo, Source Sans 3, JetBrains Mono) are **self-hosted**
+from [`assets/fonts/`](assets/fonts/) rather than fetched from Google Fonts.
+That removes a third-party request on every page load — which matters for a
+censorship tracker whose visitors may be on monitored networks — and the
+render-blocking round-trip that came with it. Only the `latin` and `latin-ext`
+subsets are vendored (the data is Latin script); the `@font-face` rules keep
+their `unicode-range`s, so a face is only downloaded when a matching glyph is
+actually used. To change weights or families, regenerate `fonts.css` and the
+`.woff2` files together and keep every rule pointing at a file that exists.
+
+## Homepage controls
+
+The index can be narrowed three ways, and they compose: the **type filter**
+(All / Complete / Partial / Age), a **country lens** (the `In:` dropdown, one
+territory at a time) and free-text **search** (matches platform *and* country
+names). All three, plus any open map dossier, are mirrored into the URL hash
+(`#filter=age&in=France&q=…&country=FR`) so any view can be bookmarked and
+shared. Case-file panels are rendered lazily — the grid ships as light shells
+and a panel's markup is built the first time it is opened — so editing search
+does not rebuild 450+ hidden panels on every keystroke.
 
 ## World map & derived sections
 

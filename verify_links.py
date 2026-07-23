@@ -21,15 +21,21 @@ needs a human to look at it — never auto-replace one.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
+from datetime import date, timezone, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 CSV_PATH = ROOT / "censorship_data.csv"
 JSON_PATHS = [ROOT / "vpn_data.json", ROOT / "age_verification_data.json"]
+# Written only on a fully clean pass, so its mere presence means "every source
+# resolved and none tripped the Wikipedia/placeholder rules on this date". The
+# homepage reads it to show visitors when the citations were last checked live.
+VERIFIED_PATH = ROOT / "verified.json"
 
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
@@ -128,7 +134,13 @@ def main() -> int:
     if wiki:
         print("Wikipedia sources present; README.md disallows them.")
         return 1
-    print("ALL URLs OK")
+    # Clean pass: stamp verified.json so the homepage can show the check date.
+    VERIFIED_PATH.write_text(json.dumps({
+        "date": date.today().isoformat(),
+        "checked_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "sources": len(urls),
+    }, indent=2) + "\n", encoding="utf-8")
+    print(f"ALL URLs OK — wrote {VERIFIED_PATH.name}")
     return 0
 
 
