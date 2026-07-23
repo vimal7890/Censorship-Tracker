@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;800;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1e1e1e;
+    --paper: #ffffff;
+    --red: #b6152e;
+    --orange: #fd7e14;
+    --purple: #7d3ac1;
+    --muted: #6c757d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body { background: var(--paper); }
+  .card {
+    position: relative;
+    width: 1200px; height: 630px;
+    overflow: hidden;
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--ink);
+  }
+
+  /* Faint world map bleeding off the right edge */
+  .map {
+    position: absolute;
+    top: 50%; right: -140px;
+    transform: translateY(-50%);
+    width: 900px;
+    opacity: 0.5;
+    z-index: 0;
+  }
+  /* White gradient keeps the left-hand text crisp over the map */
+  .veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg,
+      var(--paper) 0%, var(--paper) 34%,
+      rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.55) 72%, rgba(255,255,255,0.2) 100%);
+    z-index: 1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 62px 64px 0 64px;
+  }
+
+  .kicker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .kicker .mark { color: var(--ink); display: flex; align-items: center; gap: 14px; }
+  .kicker .mark .sq { width: 16px; height: 16px; background: var(--red); display: inline-block; }
+  .kicker .dom { color: var(--muted); letter-spacing: 0.12em; }
+
+  .headline {
+    margin-top: 34px;
+    font-family: 'Chivo', sans-serif;
+    font-weight: 900;
+    font-size: 98px;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .headline .l1 { color: var(--red); }
+  .headline .l2 { color: var(--orange); }
+  .headline .l3 { color: var(--purple); }
+
+  .sub {
+    margin-top: 30px;
+    font-size: 27px;
+    line-height: 1.35;
+    font-weight: 600;
+    max-width: 700px;
+    color: var(--ink);
+  }
+  .sub .dim { color: var(--muted); font-weight: 400; }
+
+  /* Bottom ticker strip, echoing the site's status bar */
+  .ticker {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 3;
+    background: #000;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 19px 56px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    white-space: nowrap;
+  }
+  .ticker .sq { width: 12px; height: 12px; background: var(--red); display: inline-block; }
+  .ticker b { color: #ffffff; font-weight: 700; }
+  .ticker .sep { color: #666; }
+  .ticker .num { color: #ffffff; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="map" src="assets/world.svg" alt="">
+    <div class="veil"></div>
+
+    <div class="content">
+      <div class="kicker">
+        <span class="mark"><span class="sq"></span> Global Censorship Tracker</span>
+        <span class="dom">censorship.my</span>
+      </div>
+
+      <div class="headline">
+        <div class="l1">Banned.</div>
+        <div class="l2">Restricted.</div>
+        <div class="l3">Age-gated.</div>
+      </div>
+
+      <div class="sub">
+        Every ban, throttle and age-verification law worldwide
+        <span class="dim">&mdash; mapped, dated and sourced.</span>
+      </div>
+    </div>
+
+    <div class="ticker">
+      <span class="sq"></span>
+      <span>Global Digital Ban Index</span>
+      <span class="sep">/</span>
+      <span class="num">49 Platforms</span>
+      <span class="sep">&middot;</span>
+      <span class="num">454 Restrictions</span>
+      <span class="sep">&middot;</span>
+      <span class="num">78 Countries</span>
+    </div>
+  </div>
+</body>
+</html>

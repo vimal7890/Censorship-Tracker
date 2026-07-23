@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
     <title>Global Censorship Tracker</title>
+    <meta name="description" content="Live index of banned, restricted and age-gated apps and websites worldwide — government blocks, throttling and age-verification laws, mapped and sourced.">
+    <link rel="canonical" href="https://censorship.my/">
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Global Censorship Tracker">
+    <meta property="og:title" content="Global Censorship Tracker">
+    <meta property="og:description" content="Live index of banned, restricted and age-gated apps and websites worldwide — government blocks, throttling and age-verification laws, mapped and sourced.">
+    <meta property="og:url" content="https://censorship.my/">
+    <meta property="og:image" content="https://censorship.my/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Global Censorship Tracker — banned, restricted and age-gated platforms worldwide.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Global Censorship Tracker">
+    <meta name="twitter:description" content="Live index of banned, restricted and age-gated apps and websites worldwide — government blocks, throttling and age-verification laws, mapped and sourced.">
+    <meta name="twitter:image" content="https://censorship.my/og-image.png">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="favicon-32.png">
@@ -689,6 +705,34 @@
             color: var(--muted-gray);
         }
 
+        /* Loading placeholder shown until the CSV is fetched and rendered. */
+        .grid-loading {
+            padding: 48px 20px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+            animation: gridLoadingPulse 1.1s ease-in-out infinite;
+        }
+        @keyframes gridLoadingPulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) {
+            .grid-loading { animation: none; }
+        }
+
+        /* Message for visitors with JavaScript disabled (the whole index is
+           fetched and rendered client-side, so nothing else would appear). */
+        .noscript-note {
+            border: 1px solid var(--secondary);
+            border-left: 4px solid var(--secondary);
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--on-surface-variant);
+        }
+
         /* ---------- Info note / tip ---------- */
         .info-note {
             border: 1px solid var(--primary);
@@ -1223,10 +1267,20 @@
                 <p class="page-sub">Real-time reference index of banned apps and websites worldwide &mdash; tracking government blocks, throttling, and platform restrictions across nations.</p>
             </div>
 
+            <noscript>
+                <div class="noscript-note">
+                    This tracker loads its data with JavaScript, which is currently
+                    disabled. Enable JavaScript to see the world map, charts and the
+                    full index of restricted platforms. The raw data is also
+                    available in
+                    <a href="censorship_data.csv">censorship_data.csv</a>.
+                </div>
+            </noscript>
+
             <div class="controls">
                 <div class="search-wrap">
                     <span class="search-label">SEARCH_</span>
-                    <input type="text" id="searchBox" placeholder="Query platform... e.g. Telegram" autocomplete="off">
+                    <input type="text" id="searchBox" placeholder="Query platform or country... e.g. Telegram, France" autocomplete="off">
                 </div>
 
                 <div class="stats">
@@ -1285,7 +1339,9 @@
                 </section>
             </section>
 
-            <div id="platformGrid" class="platform-list"></div>
+            <div id="platformGrid" class="platform-list">
+                <div class="grid-loading" role="status">// Loading censorship index&hellip;</div>
+            </div>
 
             <div class="info-note">
                 <b>Tip:</b> Tap any country or territory to reveal the case file.
@@ -1466,8 +1522,50 @@
         }
 
         let currentFilter = 'all';
+        let openDossierIso = null;   // ISO of the dossier currently shown, or null
 
         const sourceIndex = new Map();
+
+        // ---- Shareable state in the URL hash ----
+        // Active filter, search query and open dossier are mirrored into the
+        // location hash (e.g. #filter=age&q=france&country=FR) with replaceState,
+        // so any view can be bookmarked, shared and survives a refresh without
+        // polluting browser history.
+        const VALID_FILTERS = ['complete', 'partial', 'age'];
+
+        function syncHash() {
+            const params = new URLSearchParams();
+            if (currentFilter && currentFilter !== 'all') params.set('filter', currentFilter);
+            const q = document.getElementById('searchBox').value.trim();
+            if (q) params.set('q', q);
+            if (openDossierIso) params.set('country', openDossierIso);
+            const str = params.toString();
+            history.replaceState(null, '',
+                str ? '#' + str : location.pathname + location.search);
+        }
+
+        // Restore the search box and active filter from the hash, then paint the
+        // list. Touches only the platform list, so it is safe to call for a fast
+        // first paint before the map SVG or country index have loaded.
+        function applyControlsFromHash() {
+            const params = new URLSearchParams(location.hash.slice(1));
+            const q = params.get('q');
+            if (q) document.getElementById('searchBox').value = q;
+            const filter = params.get('filter');
+            if (filter && VALID_FILTERS.includes(filter)) {
+                currentFilter = filter;
+                document.querySelectorAll('[data-filter]').forEach(el =>
+                    el.classList.toggle('active', el.getAttribute('data-filter') === filter));
+            }
+            renderPlatforms();
+        }
+
+        // Open the dossier named in the hash. Deferred until the country index
+        // and map are ready so the highlight and record list resolve.
+        function openDossierFromHash() {
+            const country = new URLSearchParams(location.hash.slice(1)).get('country');
+            if (country && countryIndex.has(country)) openDossier(country);
+        }
 
         // Minimal RFC 4180 CSV parser (handles quoted fields containing
         // commas, quotes and newlines)
@@ -1524,11 +1622,16 @@
                     }
                 }));
                 updateStats();
-                renderPlatforms();
+                // Restore filter + search from the URL hash and paint the list
+                // right away, before the (larger) map SVG has to load.
+                applyControlsFromHash();
                 buildCountryIndex();
-                initWorldMap();
+                await initWorldMap();
                 renderStats();
                 renderRecent();
+                // Now that the map and country index exist, open any dossier
+                // named in the hash.
+                openDossierFromHash();
             } catch (err) {
                 document.getElementById('platformGrid').innerHTML =
                     '<div class="no-results">// Failed to load censorship_data.csv — ' + err.message + '</div>';
@@ -1639,22 +1742,28 @@
                 el.classList.toggle('active', el.getAttribute('data-filter') === type);
             });
             renderPlatforms();
+            syncHash();
         }
 
         function renderPlatforms() {
             const grid = document.getElementById('platformGrid');
-            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const searchTerm = document.getElementById('searchBox').value.trim().toLowerCase();
 
+            // Search matches platform names AND country names. A name match keeps
+            // the whole platform; a country-only match narrows the row to just
+            // the countries that matched, so the visitor sees why it appeared.
             const filteredData = censorshipData
                 .map(platform => {
-                    const bans = platform.bannedIn.filter(ban =>
+                    const typeBans = platform.bannedIn.filter(ban =>
                         currentFilter === 'all' || ban.type === currentFilter);
-                    return { name: platform.name, bannedIn: bans };
+                    if (!searchTerm || platform.name.toLowerCase().includes(searchTerm)) {
+                        return { name: platform.name, bannedIn: typeBans };
+                    }
+                    const countryBans = typeBans.filter(ban =>
+                        ban.country.toLowerCase().includes(searchTerm));
+                    return { name: platform.name, bannedIn: countryBans };
                 })
-                .filter(platform => {
-                    const matchesSearch = !searchTerm || platform.name.toLowerCase().includes(searchTerm);
-                    return matchesSearch && platform.bannedIn.length > 0;
-                });
+                .filter(platform => platform.bannedIn.length > 0);
 
             if (filteredData.length === 0) {
                 grid.innerHTML = '<div class="no-results">// No platforms match your query.</div>';
@@ -1981,6 +2090,7 @@
         function openDossier(iso) {
             const rec = countryIndex.get(iso);
             if (!rec) return;
+            openDossierIso = iso;
             const svgRoot = document.querySelector('#worldMap svg');
             if (svgRoot) {
                 svgRoot.querySelectorAll('.has-data.selected').forEach(el => el.classList.remove('selected'));
@@ -2008,6 +2118,7 @@
             const panel = document.getElementById('countryDossier');
             panel.hidden = false;
             panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            syncHash();
         }
 
         // Scroll to a platform's case file in the main list and expand it.
@@ -2017,6 +2128,7 @@
             if (searchBox.value && !platform.toLowerCase().includes(searchBox.value.toLowerCase())) {
                 searchBox.value = '';
                 renderPlatforms();
+                syncHash();
             }
             const info = resolveInfoPanel(platform, country, [type]);
             const countryPrefix = banDomId(platform, country);
@@ -2254,7 +2366,10 @@
         }
 
         // Event listeners
-        document.getElementById('searchBox').addEventListener('input', renderPlatforms);
+        document.getElementById('searchBox').addEventListener('input', () => {
+            renderPlatforms();
+            syncHash();
+        });
         document.getElementById('countryJump').addEventListener('change', e => {
             if (e.target.value) openDossier(e.target.value);
         });
@@ -2266,6 +2381,8 @@
             document.getElementById('countryDossier').hidden = true;
             const svgRoot = document.querySelector('#worldMap svg');
             if (svgRoot) svgRoot.querySelectorAll('.has-data.selected').forEach(el => el.classList.remove('selected'));
+            openDossierIso = null;
+            syncHash();
         });
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape' && !document.getElementById('countryDossier').hidden) {
