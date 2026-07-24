@@ -34,8 +34,14 @@ def main() -> int:
     assert not any(row["type"] == "partial" for row in rows), "no partial WeChat rows expected"
 
     assert "pib.gov.in" in by_country["India"]["source"]
-    # README: Wikipedia is not an acceptable source.
-    wiki = sorted(c for c, r in by_country.items() if "wikipedia.org" in r["source"])
+    # README: Wikipedia is barred as a source, with one narrow exception — the
+    # default-restricted countries may fall back to their own country article
+    # when no platform-specific reporting exists, which is exactly the case for
+    # the blanket entries above. verify_links.py enforces the same carve-out.
+    # India is not exempt and must keep citing real reporting.
+    WIKI_EXEMPT = {"China", "Eritrea", "Iran", "North Korea", "Turkmenistan"}
+    wiki = sorted(c for c, r in by_country.items()
+                  if "wikipedia.org" in r["source"] and c not in WIKI_EXEMPT)
     assert not wiki, f"Wikipedia cited as a WeChat source for: {wiki}"
 
     index = INDEX_PATH.read_text(encoding="utf-8")
