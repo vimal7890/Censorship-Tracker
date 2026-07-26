@@ -460,6 +460,15 @@
             "status": "Parliamentary process (not fully in force)",
             "summary": "Assembly approved a framework banning under-13 accounts and requiring verified parental consent for 13–15s via Digital Mobile Key, with large fines for non-compliance; final steps still tracked as pending full implementation.",
             "source": "https://www.reuters.com/world/europe/portugal-approves-restrictions-social-media-access-children-2026-02-12/"
+        },
+        {
+            "jurisdiction": "Vietnam",
+            "level": "national",
+            "country": "Vietnam",
+            "title": "Draft decree on under-16 social media and online gaming accounts",
+            "status": "Draft — in consultation, not yet adopted",
+            "summary": "Draft amendments to Vietnam's internet governance rules would verify every social media and gaming account against a legally authenticated phone number or personal identification number, and require under-16 accounts to be registered and supervised by a parent or guardian. Platforms would have to identify child users by technical means and serve age-appropriate content; under-16s would be barred from posting, commenting or reacting, and game operators would cap them at 60 minutes a day per publisher. Discussed at a Ministry of Culture, Sports and Tourism consultation workshop on 24 July 2026; not finalised and open to revision before adoption.",
+            "source": "https://www.aa.com.tr/en/asia-pacific/vietnam-weighs-tighter-social-media-rules-for-children-under-16/4008112"
         }
     ]
 }
