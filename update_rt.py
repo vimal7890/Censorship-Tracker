@@ -1,7 +1,7 @@
 import json
 import re
 
-csv_entries = """Russia Today,Commonwealth of Australia,March 2022,complete,"Banned and broadcasts suspended following the invasion of Ukraine.",https://www.theguardian.com/media/2022/mar/01/foxtel-and-sbs-suspend-russia-today-broadcasts-in-australia
+csv_entries = """Russia Today,Australia,March 2022,complete,"Banned and broadcasts suspended following the invasion of Ukraine.",https://www.theguardian.com/media/2022/mar/01/foxtel-and-sbs-suspend-russia-today-broadcasts-in-australia
 Russia Today,Austria,March 2022,complete,"Banned by EU Regulation 2022/350 following the invasion of Ukraine.",https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rt-russia-today-and-sputnik-s-broadcasting-in-the-eu/
 Russia Today,Belgium,March 2022,complete,"Banned by EU Regulation 2022/350 following the invasion of Ukraine.",https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rt-russia-today-and-sputnik-s-broadcasting-in-the-eu/
 Russia Today,Bulgaria,March 2022,complete,"Banned by EU Regulation 2022/350 following the invasion of Ukraine.",https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rt-russia-today-and-sputnik-s-broadcasting-in-the-eu/

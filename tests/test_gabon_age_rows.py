@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CSV_PATH = ROOT / "censorship_data.csv"
 
-# Required floor, mirroring the Commonwealth of Australia/Brazil social set. Not exhaustive:
+# Required floor, mirroring the Australia/Brazil social set. Not exhaustive:
 # the Gabonese rules are category-based, so newly tracked platforms
 # legitimately join. Every age row is still content-checked below.
 GABON_AGE_REQUIRED = {
