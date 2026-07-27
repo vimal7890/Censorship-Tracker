@@ -22,9 +22,9 @@ Notes:
 - **High quality source requirement:** Every source URL must be a high-quality, primary or reputable secondary reference (e.g., official government decrees, OONI network measurements, Citizen Lab reports, Freedom House / Freedom on the Net research, established news outlets like BBC, Reuters, AP, TechCrunch, or official platform support/transparency pages).
 - **No Wikipedia, search-engine placeholders, or catch-all report spam:**
   - Do not use Wikipedia as a source unless Wikipedia itself is the platform being blocked.
-  - **One narrow exception:** rows in the default-restricted countries — China,
+  - **One narrow exception:** rows in the default-restricted countries — People's Republic of China,
     Eritrea, Islamic Republic of Iran, North Korea and Turkmenistan — may fall back to that
-    country's own Wikipedia article (`Internet censorship in China`,
+    country's own Wikipedia article (`Internet censorship in People's Republic of China`,
     `Internet in Turkmenistan`, …) when no platform-specific reporting exists.
     Nobody publishes "Tumblr is blocked in Turkmenistan"; they publish that
     almost everything is. Reach for it only after looking: Freedom House's
@@ -33,7 +33,7 @@ Notes:
     this — a Wikipedia URL cited by any row outside those five countries is
     still reported as a defect.
   - Do not copy-paste generic overview reports (e.g., CPJ's "10 Most Censored Countries" list) across dozens of unrelated platform rows. Each source MUST specifically document or verify the restriction for that specific platform and country.
-  - If a platform in a default-restricted nation (e.g., North Korea, Turkmenistan, Eritrea, China) lacks a specific, dedicated high-quality source, leave `source` empty and let the country fallback system handle it — never attach generic drivel or catch-all URLs to pad rows.
+  - If a platform in a default-restricted nation (e.g., North Korea, Turkmenistan, Eritrea, People's Republic of China) lacks a specific, dedicated high-quality source, leave `source` empty and let the country fallback system handle it — never attach generic drivel or catch-all URLs to pad rows.
 - **Never invent a source URL, and never auto-replace one.** A batch of rows
   once cited plausible-looking articles — right domain, right slug style — that
   had never existed; the Wayback Machine had no snapshot of any of them. A
@@ -63,13 +63,13 @@ Notes:
   Egypt Today and LSM article IDs get reassigned so the old link quietly lands
   on an unrelated story. Before trusting a source, open it and confirm it names
   this platform and this country.
-- **China, Eritrea, North Korea and Turkmenistan** rows can leave `more_info`
+- **People's Republic of China, Eritrea, North Korea and Turkmenistan** rows can leave `more_info`
   empty — the page substitutes a shared boilerplate about their
   default-restricted internet (see `HEAVY_CENSORSHIP` in `index.html`). The
   boilerplate is a **fallback**, not an override: a row that has something
   specific to say keeps its own text, and only empty rows borrow the shared
   sentence. So write `more_info` when the platform's situation differs from
-  the country-wide default — that Zoom is throttled in China rather than
+  the country-wide default — that Zoom is throttled in People's Republic of China rather than
   outright banned, or that Spotify never listed Turkmenistan as a market —
   and leave it empty when the country default is the whole story.
 - Wrap fields containing commas or quotes in `"double quotes"` (standard CSV).

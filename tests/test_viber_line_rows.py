@@ -23,7 +23,7 @@ INDEX_PATH = ROOT / "index.html"
 # and an https source below, it just does not need to be enumerated here.
 EXPECTED_TYPE = {
     "LINE": {
-        "China": "complete",
+        "People's Republic of China": "complete",
         "North Korea": "complete",
         "Oman": "partial",
         "Qatar": "partial",
@@ -33,7 +33,7 @@ EXPECTED_TYPE = {
         "United Arab Emirates": "partial",
     },
     "Viber": {
-        "China": "complete",
+        "People's Republic of China": "complete",
         "Egypt": "partial",
         "Islamic Republic of Iran": "complete",
         "North Korea": "complete",

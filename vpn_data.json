@@ -29,7 +29,7 @@
             "source": "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/"
         },
         {
-            "country": "China",
+            "country": "People's Republic of China",
             "severity": "restricted",
             "since": "2017 MIIT cleanup onwards",
             "summary": "Unlicensed commercial VPNs for public cross-border access are illegal. Only government-approved / licensed international channels (typically enterprise) are permitted; unauthorised consumer VPNs face blocking, provider crackdowns, and occasional user penalties.",
@@ -110,7 +110,7 @@
         "countries": [
             {
                 "code": "CN",
-                "name": "China",
+                "name": "People's Republic of China",
                 "default": "blocked",
                 "note": "Unlicensed commercial VPNs are illegal and the Great Firewall blocks their traffic outright. Only government-licensed international channels, typically enterprise leased lines, are lawful.",
                 "sources": [
@@ -448,7 +448,7 @@
                 "region": "Asia-Pacific",
                 "countries": [
                     {
-                        "name": "China",
+                        "name": "People's Republic of China",
                         "reason": "Disabled by Apple due to Great Firewall regulations and strict state surveillance laws.",
                         "icloud_plus_available": true
                     },

@@ -12,7 +12,7 @@ window.COUNTRY_TO_ISO = {
     "Algeria": "DZ",
     "Australia": "AU",
     "Brazil": "BR",
-    "China": "CN",
+    "People's Republic of China": "CN",
     "Cuba": "CU",
     "Egypt": "EG",
     "Eritrea": "ER",

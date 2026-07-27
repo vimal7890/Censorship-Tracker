@@ -55,7 +55,7 @@ ALIVE = {"200", "301", "302", "303", "307", "308", "401", "403", "406", "429"}
 # and catch-all reports it replaced. Everywhere else a Wikipedia citation is
 # still a defect, and a row whose platform *is* Wikipedia may cite it freely
 # (see README.md).
-WIKI_EXEMPT_COUNTRIES = {"China", "Eritrea", "Islamic Republic of Iran", "North Korea", "Turkmenistan"}
+WIKI_EXEMPT_COUNTRIES = {"People's Republic of China", "Eritrea", "Islamic Republic of Iran", "North Korea", "Turkmenistan"}
 
 
 def collect() -> dict[str, list[str]]:
