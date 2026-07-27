@@ -1,14 +1,14 @@
 {
     "timeline": [
         {
-            "country": "United Kingdom",
+            "country": "United Kingdom of Great Britain and Northern Ireland",
             "law": "Online Safety Act age assurance",
             "passed_label": "2023 (duties phased in)",
             "status": "implemented",
             "implementation_date": "2025-07-25",
             "implementation_label": "25 July 2025",
             "threshold": "Age checks for adult / sensitive content",
-            "summary": "Platforms rolled out face-scan or ID age checks for mature content under the Online Safety Act (e.g. Reddit from 14 July 2025; X and Discord from 25 July 2025; Spotify facial checks August 2025). Aylo shut off Pornhub for new United Kingdom users on 2 February 2026 rather than keep operating under the regime.",
+            "summary": "Platforms rolled out face-scan or ID age checks for mature content under the Online Safety Act (e.g. Reddit from 14 July 2025; X and Discord from 25 July 2025; Spotify facial checks August 2025). Aylo shut off Pornhub for new United Kingdom of Great Britain and Northern Ireland users on 2 February 2026 rather than keep operating under the regime.",
             "source": "https://www.eff.org/deeplinks/2025/08/americans-be-warned-lessons-reddits-chaotic-uk-age-verification-rollout"
         },
         {

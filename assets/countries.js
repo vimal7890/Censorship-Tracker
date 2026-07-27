@@ -45,7 +45,7 @@ window.COUNTRY_TO_ISO = {
     "Türkiye": "TR",
     "Turkmenistan": "TM",
     "United Arab Emirates": "AE",
-    "United Kingdom": "GB",
+    "United Kingdom of Great Britain and Northern Ireland": "GB",
     "Ukraine": "UA",
     "United States": "US",
     "Uzbekistan": "UZ",
@@ -76,7 +76,7 @@ window.COUNTRY_TO_ISO = {
 
     // Name variants used by vpn_data.json / age_verification_data.json
     "United Arab Emirates": "AE",
-    "United Kingdom": "GB",
+    "United Kingdom of Great Britain and Northern Ireland": "GB",
     "Belarus": "BY",
     "Iraq": "IQ",
     "Oman": "OM",
