@@ -41,7 +41,7 @@ window.COUNTRY_TO_ISO = {
     "Somalia": "SO",
     "South Korea": "KR",
     "Sudan": "SD",
-    "Syria": "SY",
+    "Syrian Arab Republic": "SY",
     "Türkiye": "TR",
     "Turkmenistan": "TM",
     "United Arab Emirates": "AE",

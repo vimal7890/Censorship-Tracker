@@ -381,10 +381,10 @@
                         "icloud_plus_available": true
                     },
                     {
-                        "name": "Syria",
+                        "name": "Syrian Arab Republic",
                         "reason": "Unavailable due to state telecommunications laws and US sanctions.",
                         "icloud_plus_available": false,
-                        "note": "iCloud+ (paid subscription) is not available in Syria."
+                        "note": "iCloud+ (paid subscription) is not available in Syrian Arab Republic."
                     }
                 ]
             },

@@ -137,7 +137,7 @@ def main() -> int:
 
     # Infobox check for countries where iCloud+ is not available
     no_icloud_countries = {c["name"] for c in relay_countries if c.get("icloud_plus_available") is False}
-    assert {"Cuba", "North Korea", "Islamic Republic of Iran", "Syria", "Eritrea"} <= no_icloud_countries, no_icloud_countries
+    assert {"Cuba", "North Korea", "Islamic Republic of Iran", "Syrian Arab Republic", "Eritrea"} <= no_icloud_countries, no_icloud_countries
     for c in relay_countries:
         if c.get("icloud_plus_available") is False:
             assert c.get("note"), f"Missing infobox note for {c['name']}"
