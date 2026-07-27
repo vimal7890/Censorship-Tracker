@@ -21,10 +21,10 @@ def main() -> int:
     by_country = {row["country"]: row for row in rows}
     # WeChat is a domestic Chinese platform and fully legal there — no China row.
     assert "China" not in by_country, "WeChat is legal in China; do not list a China restriction"
-    # Iran blocked WeChat in September 2013 and unblocked it on 4 January 2018.
+    # Islamic Republic of Iran blocked WeChat in September 2013 and unblocked it on 4 January 2018.
     # No reporting or OONI measurement shows a current restriction, so a stale
     # row was removed rather than reclassified.
-    assert "Iran" not in by_country, "WeChat was unblocked in Iran in 2018; do not re-add"
+    assert "Islamic Republic of Iran" not in by_country, "WeChat was unblocked in Islamic Republic of Iran in 2018; do not re-add"
     assert set(by_country) == EXPECTED, by_country
     # North Korea, Turkmenistan and Eritrea are blanket entries: each blocks
     # effectively the whole foreign internet rather than WeChat specifically.
@@ -39,7 +39,7 @@ def main() -> int:
     # when no platform-specific reporting exists, which is exactly the case for
     # the blanket entries above. verify_links.py enforces the same carve-out.
     # India is not exempt and must keep citing real reporting.
-    WIKI_EXEMPT = {"China", "Eritrea", "Iran", "North Korea", "Turkmenistan"}
+    WIKI_EXEMPT = {"China", "Eritrea", "Islamic Republic of Iran", "North Korea", "Turkmenistan"}
     wiki = sorted(c for c, r in by_country.items()
                   if "wikipedia.org" in r["source"] and c not in WIKI_EXEMPT)
     assert not wiki, f"Wikipedia cited as a WeChat source for: {wiki}"

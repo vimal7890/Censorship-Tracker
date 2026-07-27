@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate UAE and Turkey pending age/ID rows in the shipped CSV.
+"""Validate UAE and Türkiye pending age/ID rows in the shipped CSV.
 
 Drives the real censorship_data.csv used by index.html (no mocks).
 """
@@ -25,7 +25,7 @@ UAE_AGE_REQUIRED = {
     "X (formerly Twitter)",
 }
 
-# Social set minus Discord (complete ban still in force for Turkey).
+# Social set minus Discord (complete ban still in force for Türkiye).
 # Required floor; the Discord exclusion is asserted separately below.
 TURKEY_AGE_REQUIRED = {
     "Facebook",
@@ -57,7 +57,7 @@ def main() -> int:
     assert rows, "CSV parsed zero data rows"
 
     uae_age = [r for r in rows if r["country"] == "United Arab Emirates" and r["type"] == "age"]
-    turkey_age = [r for r in rows if r["country"] == "Turkey" and r["type"] == "age"]
+    turkey_age = [r for r in rows if r["country"] == "Türkiye" and r["type"] == "age"]
 
     uae_platforms = {r["platform"] for r in uae_age}
     turkey_platforms = {r["platform"] for r in turkey_age}
@@ -69,10 +69,10 @@ def main() -> int:
     )
     turkey_missing = TURKEY_AGE_REQUIRED - turkey_platforms
     assert not turkey_missing, (
-        f"Turkey age rows missing required platforms: {sorted(turkey_missing)}\n"
+        f"Türkiye age rows missing required platforms: {sorted(turkey_missing)}\n"
         f"  present: {sorted(turkey_platforms)}"
     )
-    assert "Discord" not in turkey_platforms, "Discord must stay complete-only for Turkey"
+    assert "Discord" not in turkey_platforms, "Discord must stay complete-only for Türkiye"
 
     for r in uae_age:
         info = r["more_info"].strip()
@@ -90,7 +90,7 @@ def main() -> int:
     for r in turkey_age:
         info = r["more_info"].strip()
         src = r["source"].strip()
-        assert info, f"empty more_info: Turkey/{r['platform']}"
+        assert info, f"empty more_info: Türkiye/{r['platform']}"
         assert src.startswith("https://"), src
         assert "wikipedia" not in src.lower()
         low = info.lower()
@@ -104,12 +104,12 @@ def main() -> int:
     # Prior non-age rows preserved
     assert has(rows, "Discord", "United Arab Emirates", "partial"), "UAE Discord VoIP partial missing"
     assert has(rows, "WhatsApp", "United Arab Emirates", "partial"), "UAE WhatsApp VoIP partial missing"
-    assert has(rows, "Discord", "Turkey", "complete"), "Turkey Discord complete missing"
-    assert has(rows, "X (formerly Twitter)", "Turkey", "partial"), "Turkey X Grok partial missing"
-    assert has(rows, "X (formerly Twitter)", "Turkey", "age"), "Turkey X age missing"
+    assert has(rows, "Discord", "Türkiye", "complete"), "Türkiye Discord complete missing"
+    assert has(rows, "X (formerly Twitter)", "Türkiye", "partial"), "Türkiye X Grok partial missing"
+    assert has(rows, "X (formerly Twitter)", "Türkiye", "age"), "Türkiye X age missing"
 
     print("OK: UAE age platforms:", sorted(uae_platforms))
-    print("OK: Turkey age platforms:", sorted(turkey_platforms))
+    print("OK: Türkiye age platforms:", sorted(turkey_platforms))
     print(f"OK: parsed {len(rows)} rows from {CSV_PATH.name}")
     return 0
 

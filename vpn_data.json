@@ -43,10 +43,10 @@
             "source": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-on-internet-freedom-protection-day"
         },
         {
-            "country": "Iran",
+            "country": "Islamic Republic of Iran",
             "severity": "restricted",
             "since": "2024 criminalisation of unauthorised VPNs",
-            "summary": "Iran criminalised use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
+            "summary": "Islamic Republic of Iran criminalised use of non-approved VPNs (2024), pairing the ban with deep-packet inspection that disrupts common protocols—especially during protests. Only government-sanctioned tunnels are considered lawful.",
             "source": "https://freedomhouse.org/country/iran/freedom-net/2024"
         },
         {
@@ -130,7 +130,7 @@
             },
             {
                 "code": "IR",
-                "name": "Iran",
+                "name": "Islamic Republic of Iran",
                 "default": "blocked",
                 "note": "Using a non-approved VPN was criminalised in 2024 and deep-packet inspection actively disrupts common tunnelling protocols, most aggressively during protests. US sanctions compound this from the other direction: US-based providers are legally barred from selling to Iranians at all. Purpose-built circumvention tools remain the exception that still reaches users here.",
                 "sources": [
@@ -365,10 +365,10 @@
                         "icloud_plus_available": true
                     },
                     {
-                        "name": "Iran",
+                        "name": "Islamic Republic of Iran",
                         "reason": "Unavailable due to strict state censorship laws and US sanctions.",
                         "icloud_plus_available": false,
-                        "note": "iCloud+ (paid subscription) is not available in Iran."
+                        "note": "iCloud+ (paid subscription) is not available in Islamic Republic of Iran."
                     },
                     {
                         "name": "Palestine",

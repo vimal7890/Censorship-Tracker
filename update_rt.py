@@ -68,8 +68,8 @@ countries_to_add = {
 with open("assets/countries.js", "r") as f:
     countries_js = f.read()
 
-# find "Vietnam": "VN",
-pattern = r'("Vietnam": "VN",)'
+# find "Viet Nam": "VN",
+pattern = r'("Viet Nam": "VN",)'
 insertion = ""
 for country, code in countries_to_add.items():
     if f'"{country}":' not in countries_js:

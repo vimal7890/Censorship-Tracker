@@ -35,7 +35,7 @@ EXPECTED_TYPE = {
     "Viber": {
         "China": "complete",
         "Egypt": "partial",
-        "Iran": "complete",
+        "Islamic Republic of Iran": "complete",
         "North Korea": "complete",
         "Oman": "partial",
         "Qatar": "partial",

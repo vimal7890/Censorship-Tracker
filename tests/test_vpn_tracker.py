@@ -104,7 +104,7 @@ def main() -> int:
     assert {"NordVPN", "ExpressVPN", "Proton VPN"} <= pk_blocked, sorted(pk_blocked)
 
     # IPVanish withdrew from India outright (apps pulled from the Indian
-    # stores, signups closed) and is barred from Iran by US sanctions. Both are
+    # stores, signups closed) and is barred from Islamic Republic of Iran by US sanctions. Both are
     # provider-side, so they must read unavailable rather than blocked.
     ipvanish = next(a for a in apps if a["name"] == "IPVanish")
     for code in ("IN", "IR"):
@@ -137,7 +137,7 @@ def main() -> int:
 
     # Infobox check for countries where iCloud+ is not available
     no_icloud_countries = {c["name"] for c in relay_countries if c.get("icloud_plus_available") is False}
-    assert {"Cuba", "North Korea", "Iran", "Syria", "Eritrea"} <= no_icloud_countries, no_icloud_countries
+    assert {"Cuba", "North Korea", "Islamic Republic of Iran", "Syria", "Eritrea"} <= no_icloud_countries, no_icloud_countries
     for c in relay_countries:
         if c.get("icloud_plus_available") is False:
             assert c.get("note"), f"Missing infobox note for {c['name']}"

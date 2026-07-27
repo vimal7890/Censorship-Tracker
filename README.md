@@ -23,7 +23,7 @@ Notes:
 - **No Wikipedia, search-engine placeholders, or catch-all report spam:**
   - Do not use Wikipedia as a source unless Wikipedia itself is the platform being blocked.
   - **One narrow exception:** rows in the default-restricted countries — China,
-    Eritrea, Iran, North Korea and Turkmenistan — may fall back to that
+    Eritrea, Islamic Republic of Iran, North Korea and Turkmenistan — may fall back to that
     country's own Wikipedia article (`Internet censorship in China`,
     `Internet in Turkmenistan`, …) when no platform-specific reporting exists.
     Nobody publishes "Tumblr is blocked in Turkmenistan"; they publish that
@@ -74,7 +74,7 @@ Notes:
   and leave it empty when the country default is the whole story.
 - Wrap fields containing commas or quotes in `"double quotes"` (standard CSV).
 - A country may appear twice for one platform with different `type`s
-  (e.g. X in Turkey has both a partial Grok block and an age rule). On the
+  (e.g. X in Türkiye has both a partial Grok block and an age rule). On the
   homepage those rows render as **one country label** with diagonal stripes
   mixing both type colours (purple age + orange partial), and a combined
   case file listing each restriction.
@@ -98,7 +98,7 @@ the page is not read straight from that field**. The page compares
 `implementation_date` (ISO `YYYY-MM-DD`) against today in the viewer's own
 timezone, so a scheduled law promotes itself to *Implemented* on the morning it
 takes effect, with no edit and no redeploy. France's under-15 ban flips on
-2026-09-01, Turkey's on 2026-10-01, Gabon's in February 2027.
+2026-09-01, Türkiye's on 2026-10-01, Gabon's in February 2027.
 
 So `status` records what was legislated and the page works out whether that
 date has arrived. Keep writing `scheduled` for a future law; there is no need
@@ -121,7 +121,7 @@ unusable either way, but they have different causes and different fixes:
 `blocked` is the state filtering the service, `unavailable` is the provider
 withdrawing from the market. IPVanish is the worked example — it pulled its
 apps from the Indian stores and closed Indian signups after CERT-In, and as a
-US company it is barred from selling to Iran by sanctions. Because
+US company it is barred from selling to Islamic Republic of Iran by sanctions. Because
 `unavailable` is always provider-side, it may only appear as a per-provider
 override, never as a country baseline; the test enforces that.
 
