@@ -56,13 +56,13 @@ def main() -> int:
     us_sub = [
         e for e in efforts
         if e.get("level") == "subnational"
-        and ("United States" in e.get("country", "") or "United States" in e.get("jurisdiction", ""))
+        and ("United States of America" in e.get("country", "") or "United States of America" in e.get("jurisdiction", ""))
     ]
     assert us_sub, "need at least one US subnational legislative effort"
     non_us = [
         e for e in efforts
-        if "United States" not in e.get("country", "")
-        and "United States" not in e.get("jurisdiction", "")
+        if "United States of America" not in e.get("country", "")
+        and "United States of America" not in e.get("jurisdiction", "")
     ]
     assert non_us, "need at least one non-US legislative effort"
 

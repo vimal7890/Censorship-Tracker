@@ -47,7 +47,7 @@ window.COUNTRY_TO_ISO = {
     "United Arab Emirates": "AE",
     "United Kingdom of Great Britain and Northern Ireland": "GB",
     "Ukraine": "UA",
-    "United States": "US",
+    "United States of America": "US",
     "Uzbekistan": "UZ",
     "Venezuela": "VE",
     "Vietnam": "VN",
