@@ -37,7 +37,7 @@ window.COUNTRY_TO_ISO = {
     "Philippines": "PH",
     "Qatar": "QA",
     "Russia": "RU",
-    "Saudi Arabia": "SA",
+    "Kingdom of Saudi Arabia": "SA",
     "Somalia": "SO",
     "South Korea": "KR",
     "Sudan": "SD",
