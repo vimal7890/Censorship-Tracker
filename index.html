@@ -29,6 +29,9 @@
     <link rel="preload" href="assets/fonts/Chivo-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/SourceSans3-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/site.css">
+    <!-- Follow the dataset without an account or an email address. -->
+    <link rel="alternate" type="application/rss+xml" title="Global Censorship Tracker — what changed" href="feed.xml">
     <script src="assets/theme.js"></script>
     <style>
         :root {
@@ -614,6 +617,118 @@
         .country-filter:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
         .country-filter.active { background: var(--primary); color: var(--on-primary); }
 
+        /* ---------- Country-first lookup ----------
+           Sits above the search box because "what applies where I live?" is the
+           question most visitors arrive with, and it used to need a scroll to
+           the map or a hunt through the filter row to answer. */
+        .lookup {
+            border: 2px solid var(--primary);
+            background: var(--surface-container-low);
+            padding: 18px 20px;
+            margin-bottom: 24px;
+        }
+        .lookup-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 17px;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .lookup-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .lookup-select {
+            flex: 1 1 260px;
+            min-width: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            padding: 11px 12px;
+            cursor: pointer;
+        }
+        .lookup-select:focus-visible,
+        .lookup-go:focus-visible,
+        .lookup-here:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+        .lookup-go, .lookup-here {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            padding: 11px 16px;
+            cursor: pointer;
+        }
+        .lookup-go { background: var(--primary); color: var(--on-primary); }
+        .lookup-here { background: var(--paper-white); color: var(--primary); }
+        .lookup-here:hover { background: var(--surface-container); }
+        .lookup-here[disabled] { opacity: 0.55; cursor: default; }
+        .lookup-note {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--muted-gray);
+            margin-top: 10px;
+        }
+        .lookup-note b { color: var(--on-surface-variant); }
+        .lookup-note.resolved { color: var(--on-surface-variant); }
+
+        /* Scheduled vs in effect, directly under the headline totals. */
+        .stage-legend {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 18px;
+            font-size: 12px;
+            color: var(--muted-gray);
+            margin: -8px 0 20px;
+            padding: 10px 12px;
+            border: 1px solid var(--outline-variant);
+            border-top: none;
+        }
+        .stage-item { display: inline-flex; align-items: center; gap: 7px; }
+        .stage-item b { color: var(--primary); font-family: 'Chivo', sans-serif; font-size: 15px; }
+        .stage-legend .tag-status { padding: 2px 4px; }
+        .stage-link {
+            margin-left: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--outline-variant);
+            color: var(--on-surface-variant);
+            cursor: pointer;
+            padding: 2px 0;
+        }
+        .stage-link:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+        /* Saved views */
+        .views-row { margin-top: 10px; }
+        .view-chip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px dashed var(--outline-variant);
+            background: var(--paper-white);
+            color: var(--on-surface-variant);
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .view-chip:hover { border-color: var(--primary); color: var(--primary); }
+        .view-chip:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+        .view-chip.active {
+            border-style: solid;
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--on-primary);
+        }
+        .view-chip.reset { border-color: var(--secondary); color: var(--secondary); }
+
         /* ---------- Platform list ---------- */
         .platform-list {
             border-top: 2px solid var(--primary);
@@ -785,6 +900,49 @@
         }
         a.source-ref:hover { text-decoration: underline; }
 
+        /* Stage and coverage badges inside a case file, on their own line above
+           the prose so they read as metadata about the claim rather than as
+           part of it. */
+        .case-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        /* Chip overflow. Russia Today alone carries 37 territories, which pushes
+           everything below it off the screen; the rest stay one click away. */
+        .country-tag.overflow[hidden] { display: none; }
+        .chip-more {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px dashed var(--muted-gray);
+            background: transparent;
+            color: var(--on-surface-variant);
+            padding: 9px 13px;
+            cursor: pointer;
+        }
+        .chip-more:hover { border-color: var(--primary); color: var(--primary); }
+        .chip-more:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+        /* Compact list: collapse every row to its heading so 49 platform names
+           fit on one or two screens, and expand one at a time. */
+        .platform-list.compact .platform-body { display: none; }
+        .platform-list.compact .platform-row.open .platform-body { display: block; }
+        .platform-list.compact .platform-meta { cursor: pointer; }
+        .platform-list.compact .platform-meta:hover { background: var(--surface-container); }
+        .platform-list.compact .platform-name::after {
+            content: "+";
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            color: var(--muted-gray);
+            margin-left: auto;
+        }
+        .platform-list.compact .platform-row.open .platform-name::after { content: "\2212"; }
+
         .no-results {
             padding: 40px 20px;
             text-align: center;
@@ -793,6 +951,28 @@
             text-transform: uppercase;
             color: var(--muted-gray);
         }
+        /* An empty result is a dead end unless it says how to get out of it, so
+           it offers to undo whichever narrowing actually caused it. */
+        .no-results-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .no-results-actions button {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            padding: 9px 13px;
+            cursor: pointer;
+        }
+        .no-results-actions button:hover { background: var(--primary); color: var(--on-primary); }
 
         /* Loading placeholder shown until the CSV is fetched and rendered. */
         .grid-loading {
@@ -871,16 +1051,14 @@
         }
 
         /* ---------- Methodology & sources ---------- */
-        #verifiedNote {
-            display: inline-block;
+        .section-sub.freshness {
+            display: flex;
             border: 1px solid var(--tertiary-green);
             color: var(--tertiary-green);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 10px;
-            margin-bottom: 4px;
+            padding: 8px 12px;
+            margin-bottom: 14px;
         }
+        .section-sub.freshness b { color: var(--tertiary-green); }
         .method-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -1227,13 +1405,6 @@
             color: var(--age-purple);
             padding: 1px 5px;
         }
-        .d-src {
-            color: var(--secondary);
-            font-weight: 700;
-            font-size: 11px;
-            text-decoration: none;
-        }
-        .d-src:hover { text-decoration: underline; }
 
         /* ---------- By the numbers ---------- */
         .dash-grid {
@@ -1313,14 +1484,73 @@
         .recent-row:hover { background: var(--surface-container-low); }
         .r-date { font-weight: 700; color: var(--primary); flex-shrink: 0; }
         .r-desc b { color: var(--primary); }
-        .r-sched {
+
+        /* ---------- What changed ----------
+           A compact read of changelog.json; the full history lives on /changes. */
+        .change-list { border: 1px solid var(--primary); background: var(--paper-white); }
+        .change-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 12px;
+            border-bottom: 1px solid var(--surface-container-high);
+            padding: 11px 14px;
+            font-size: 14px;
+            color: var(--on-surface-variant);
+        }
+        .change-row:last-child { border-bottom: none; }
+        .change-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        .change-subject { flex: 1 1 220px; color: var(--primary); }
+        .change-counts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
             font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            border: 1px solid var(--age-purple);
-            color: var(--age-purple);
-            padding: 1px 5px;
         }
+        .change-counts span { border: 1px solid var(--outline-variant); padding: 2px 6px; }
+        .change-counts .added { border-color: var(--tertiary-green); color: var(--tertiary-green); }
+        .change-counts .removed { border-color: var(--secondary); color: var(--secondary); }
+        .change-counts .changed { border-color: var(--alert-orange); color: var(--alert-orange); }
+        .change-counts .renamed { color: var(--muted-gray); }
+
+        /* ---------- Coverage ---------- */
+        .coverage { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+        .coverage-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2px 10px;
+            align-items: baseline;
+        }
+        .coverage-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+        .coverage-count { font-family: 'Chivo', sans-serif; font-weight: 800; color: var(--primary); }
+        .coverage-bar {
+            grid-column: 1 / -1;
+            height: 6px;
+            background: var(--surface-container-high);
+        }
+        .coverage-bar i { display: block; height: 100%; background: var(--primary); }
+        .coverage-row.uncorroborated .coverage-bar i { background: var(--secondary); }
+        .coverage-row.country-default .coverage-bar i { background: var(--alert-orange); }
+        .coverage-row.dedicated .coverage-bar i { background: var(--tertiary-green); }
+        .coverage-blurb { grid-column: 1 / -1; font-size: 12px; line-height: 1.45; color: var(--muted-gray); }
+        .coverage-cta { font-size: 13px; margin-top: 12px; }
 
         .footer-credit { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted-gray); }
         .footer-credit a { color: var(--muted-gray); }
@@ -1384,6 +1614,7 @@
                     <a href="/" class="nav-link active">Blocked Websites</a>
                     <a href="/age-verification" class="nav-link">Age Verification</a>
                     <a href="/vpn-tracker" class="nav-link">VPN</a>
+                    <a href="/changes" class="nav-link">What Changed</a>
                 </div>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -1393,14 +1624,16 @@
         </div>
     </header>
 
-    <!-- Status ticker -->
+    <!-- Status ticker. The two freshness readouts are filled from meta.json,
+         which is derived from the data's own git history (build_meta.py) — no
+         page states a date of its own any more. -->
     <div class="ticker">
         <div class="ticker-inner">
             <span>&#9632;&nbsp; Global Digital Ban Index</span>
             <span>Platforms Monitored: <b id="tickerPlatforms">--</b></span>
             <span>Total Restrictions: <b id="tickerBans">--</b></span>
-            <span>Data As Of: <b>JUL 2026</b></span>
-            <span id="tickerVerified" hidden>Sources Verified: <b id="tickerVerifiedDate"></b></span>
+            <span data-meta-row hidden>Data updated: <b data-meta="data-updated"></b></span>
+            <span data-meta-row hidden>Sources checked: <b data-meta="sources-checked"></b></span>
         </div>
     </div>
 
@@ -1457,9 +1690,31 @@
                 </div>
             </noscript>
 
+            <!-- Country-first lookup. The map is the better browse surface, but
+                 the question almost everyone arrives with is "what applies where
+                 I am?", and that deserves to be answerable before scrolling. -->
+            <section class="lookup" aria-labelledby="lookupHeading">
+                <h2 class="lookup-title" id="lookupHeading">What applies where you are?</h2>
+                <div class="lookup-row">
+                    <label class="visually-hidden" for="heroCountry">Country or territory</label>
+                    <select id="heroCountry" class="lookup-select">
+                        <option value="">Choose a country or territory&hellip;</option>
+                    </select>
+                    <button type="button" class="lookup-go" id="heroGo">Open dossier</button>
+                    <button type="button" class="lookup-here" id="heroHere">Use my region</button>
+                </div>
+                <p class="lookup-note" id="heroNote">
+                    Opens every restriction tracked for that territory. <b>Use my region</b>
+                    guesses from your device&rsquo;s clock &mdash; no location prompt, no
+                    lookup service, nothing leaves your browser.
+                </p>
+            </section>
+
             <div class="controls">
                 <div class="search-wrap">
-                    <span class="search-label">SEARCH_</span>
+                    <!-- A real <label>, not a decorative span: "SEARCH_" was only
+                         ever visual, so the field had no accessible name at all. -->
+                    <label class="search-label" for="searchBox">SEARCH_<span class="visually-hidden"> platform or country</span></label>
                     <input type="text" id="searchBox" placeholder="Query platform or country... e.g. Telegram, France" autocomplete="off">
                 </div>
 
@@ -1478,6 +1733,18 @@
                     </div>
                 </div>
 
+                <!-- Scheduled vs currently active, next to the headline numbers.
+                     Those totals count restrictions that have not started yet,
+                     and saying so here stops the top of the page overstating what
+                     is in effect today. -->
+                <div class="stage-legend" id="stageLegend" hidden>
+                    <span class="stage-item"><span class="tag-status in_force"></span>
+                        <b id="stageActive">0</b> in effect now</span>
+                    <span class="stage-item"><span class="tag-status scheduled"></span>
+                        <b id="stageScheduled">0</b> scheduled &mdash; adopted, not yet biting</span>
+                    <button type="button" class="stage-link" id="stageShowScheduled">Show the scheduled ones</button>
+                </div>
+
                 <div class="filters">
                     <span class="filters-label">Filter:</span>
                     <button class="filter-chip active" data-filter="all">All</button>
@@ -1489,6 +1756,26 @@
                     <select id="countryFilter" class="country-filter" aria-label="Filter the index by country or territory">
                         <option value="">All countries &amp; territories</option>
                     </select>
+                    <span class="filters-divider" aria-hidden="true"></span>
+                    <label class="filters-label" for="sortBy">Sort:</label>
+                    <select id="sortBy" class="country-filter">
+                        <option value="name">Alphabetical</option>
+                        <option value="countries">Most territories</option>
+                        <option value="recent">Most recent</option>
+                    </select>
+                </div>
+
+                <!-- Saved views: the questions worth a single click, each one a
+                     shareable URL like #view=new90. -->
+                <div class="filters views-row" role="group" aria-labelledby="viewsLabel">
+                    <span class="filters-label" id="viewsLabel">Views:</span>
+                    <button class="view-chip" data-view="new90" type="button">New in last 90 days</button>
+                    <button class="view-chip" data-view="scheduled" type="button">Scheduled</button>
+                    <button class="view-chip" data-view="enforced" type="button">Measured as blocking</button>
+                    <button class="view-chip" data-view="uncorroborated" type="button">Needs corroboration</button>
+                    <span class="filters-divider" aria-hidden="true"></span>
+                    <button class="view-chip" id="compactToggle" type="button" aria-pressed="false">Compact list</button>
+                    <button class="view-chip reset" id="resetViews" type="button" hidden>Clear all filters &#10005;</button>
                 </div>
             </div>
 
@@ -1514,9 +1801,14 @@
                     </select>
                 </div>
                 <div id="countryCards" class="country-grid" hidden></div>
+                <!-- The dossier heading takes tabindex="-1" so opening a
+                     territory can move focus into the panel. Without it a
+                     keyboard visitor clicking a country stays parked on the map
+                     while the content they asked for appears somewhere below
+                     them, unannounced. -->
                 <section id="countryDossier" aria-live="polite" hidden>
                     <div class="dossier-head">
-                        <span class="dossier-title" id="dossierTitle"></span>
+                        <h3 class="dossier-title" id="dossierTitle" tabindex="-1"></h3>
                         <button class="dossier-close" id="dossierClose" type="button">Close &#10005;</button>
                     </div>
                     <div class="dossier-note" id="dossierNote" hidden></div>
@@ -1529,7 +1821,7 @@
                 <div class="prerender-index">
                     <article class="pr-row">
                         <h3 class="pr-name">Al Jazeera</h3>
-                        <p class="pr-countries"><b>Al Jazeera</b> is restricted in 9 countries and territories: Bahrain (complete ban), People's Republic of China (complete ban), Egypt (complete ban), Eritrea (complete ban), Israel (complete ban), North Korea (complete ban), Kingdom of Saudi Arabia (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                        <p class="pr-countries"><b>Al Jazeera</b> is restricted in 9 countries and territories: Bahrain (complete ban), Egypt (complete ban), Eritrea (complete ban), Israel (complete ban), Kingdom of Saudi Arabia (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Associated Press</h3>
@@ -1537,11 +1829,11 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">BBC News</h3>
-                        <p class="pr-countries"><b>BBC News</b> is restricted in 7 countries and territories: Afghanistan (partial restriction), People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Russia (complete ban), Vietnam (partial restriction).</p>
+                        <p class="pr-countries"><b>BBC News</b> is restricted in 7 countries and territories: Afghanistan (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Vietnam (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Bluesky</h3>
-                        <p class="pr-countries"><b>Bluesky</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Mississippi (age verification), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Bluesky</b> is restricted in 6 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), Mississippi (age verification), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">CGTN</h3>
@@ -1549,55 +1841,55 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">ChatGPT</h3>
-                        <p class="pr-countries"><b>ChatGPT</b> is restricted in 8 countries and territories: People's Republic of China (complete ban), Cuba (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Italy (partial restriction), North Korea (complete ban), Russia (complete ban), Syrian Arab Republic (complete ban).</p>
+                        <p class="pr-countries"><b>ChatGPT</b> is restricted in 8 countries and territories: Cuba (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Italy (partial restriction), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Syrian Arab Republic (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Discord</h3>
-                        <p class="pr-countries"><b>Discord</b> is restricted in 12 countries and territories: Brazil (age verification), People's Republic of China (complete ban), Egypt (partial restriction), Eritrea (complete ban), Gabon (age verification), Islamic Republic of Iran (complete ban), North Korea (complete ban), Russia (complete ban), Türkiye (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction), United Kingdom (age verification).</p>
+                        <p class="pr-countries"><b>Discord</b> is restricted in 12 countries and territories: Brazil (age verification), Egypt (partial restriction), Eritrea (complete ban), Gabon (age verification), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (complete ban), United Arab Emirates (partial restriction), United Kingdom (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">DuckDuckGo</h3>
-                        <p class="pr-countries"><b>DuckDuckGo</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Indonesia (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>DuckDuckGo</b> is restricted in 6 countries and territories: Eritrea (complete ban), Indonesia (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">DW (Deutsche Welle)</h3>
-                        <p class="pr-countries"><b>DW (Deutsche Welle)</b> is restricted in 9 countries and territories: Afghanistan (partial restriction), Belarus (complete ban), People's Republic of China (complete ban), Eritrea (complete ban), North Korea (complete ban), Russia (complete ban), Türkiye (complete ban), Turkmenistan (complete ban), Venezuela (partial restriction).</p>
+                        <p class="pr-countries"><b>DW (Deutsche Welle)</b> is restricted in 9 countries and territories: Afghanistan (partial restriction), Belarus (complete ban), Eritrea (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (complete ban), Venezuela (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Facebook</h3>
-                        <p class="pr-countries"><b>Facebook</b> is restricted in 16 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), Myanmar (complete ban), North Korea (complete ban), Russia (complete ban), Türkiye (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification).</p>
+                        <p class="pr-countries"><b>Facebook</b> is restricted in 16 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), Myanmar (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (age verification), United Arab Emirates (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">GitHub</h3>
-                        <p class="pr-countries"><b>GitHub</b> is restricted in 9 countries and territories: People's Republic of China (partial restriction), Crimea (partial restriction), Cuba (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (partial restriction), North Korea (complete ban), Russia (partial restriction), Syrian Arab Republic (partial restriction), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>GitHub</b> is restricted in 9 countries and territories: Crimea (partial restriction), Cuba (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (partial restriction), North Korea (complete ban), People&#x27;s Republic of China (partial restriction), Russia (partial restriction), Syrian Arab Republic (partial restriction), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Google</h3>
-                        <p class="pr-countries"><b>Google</b> is restricted in 5 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (partial restriction), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Google</b> is restricted in 5 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (partial restriction), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Grindr</h3>
-                        <p class="pr-countries"><b>Grindr</b> is restricted in 19 countries and territories: Afghanistan (complete ban), People's Republic of China (complete ban), Cuba (complete ban), Eritrea (complete ban), Indonesia (complete ban), Islamic Republic of Iran (complete ban), Iraq (complete ban), Jordan (complete ban), Lebanon (complete ban), Malaysia (complete ban), Maldives (complete ban), North Korea (complete ban), Pakistan (complete ban), Qatar (complete ban), Kingdom of Saudi Arabia (complete ban), Sudan (complete ban), Syrian Arab Republic (complete ban), Türkiye (complete ban), United Arab Emirates (complete ban).</p>
+                        <p class="pr-countries"><b>Grindr</b> is restricted in 19 countries and territories: Afghanistan (complete ban), Cuba (complete ban), Eritrea (complete ban), Indonesia (complete ban), Iraq (complete ban), Islamic Republic of Iran (complete ban), Jordan (complete ban), Kingdom of Saudi Arabia (complete ban), Lebanon (complete ban), Malaysia (complete ban), Maldives (complete ban), North Korea (complete ban), Pakistan (complete ban), People&#x27;s Republic of China (complete ban), Qatar (complete ban), Sudan (complete ban), Syrian Arab Republic (complete ban), Türkiye (complete ban), United Arab Emirates (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Instagram</h3>
-                        <p class="pr-countries"><b>Instagram</b> is restricted in 15 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), North Korea (complete ban), Russia (complete ban), Türkiye (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification).</p>
+                        <p class="pr-countries"><b>Instagram</b> is restricted in 15 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (age verification), United Arab Emirates (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">KakaoTalk</h3>
-                        <p class="pr-countries"><b>KakaoTalk</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                        <p class="pr-countries"><b>KakaoTalk</b> is restricted in 6 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">LINE</h3>
-                        <p class="pr-countries"><b>LINE</b> is restricted in 10 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Oman (partial restriction), Qatar (partial restriction), Russia (complete ban), Kingdom of Saudi Arabia (partial restriction), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                        <p class="pr-countries"><b>LINE</b> is restricted in 10 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), Kingdom of Saudi Arabia (partial restriction), North Korea (complete ban), Oman (partial restriction), People&#x27;s Republic of China (complete ban), Qatar (partial restriction), Russia (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">LinkedIn</h3>
-                        <p class="pr-countries"><b>LinkedIn</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (partial restriction), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>LinkedIn</b> is restricted in 6 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (partial restriction), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Medium</h3>
-                        <p class="pr-countries"><b>Medium</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Egypt (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Vietnam (complete ban).</p>
+                        <p class="pr-countries"><b>Medium</b> is restricted in 6 countries and territories: Egypt (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Vietnam (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Netflix</h3>
@@ -1605,11 +1897,11 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">New York Times</h3>
-                        <p class="pr-countries"><b>New York Times</b> is restricted in 7 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), North Korea (complete ban), Kingdom of Saudi Arabia (partial restriction), Texas (age verification), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                        <p class="pr-countries"><b>New York Times</b> is restricted in 7 countries and territories: Eritrea (complete ban), Kingdom of Saudi Arabia (partial restriction), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Texas (age verification), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Odnoklassniki</h3>
-                        <p class="pr-countries"><b>Odnoklassniki</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Latvia (complete ban), North Korea (complete ban), Ukraine (complete ban).</p>
+                        <p class="pr-countries"><b>Odnoklassniki</b> is restricted in 6 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), Latvia (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Ukraine (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Patreon</h3>
@@ -1617,27 +1909,27 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Pinterest</h3>
-                        <p class="pr-countries"><b>Pinterest</b> is restricted in 5 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Pinterest</b> is restricted in 5 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Quora</h3>
-                        <p class="pr-countries"><b>Quora</b> is restricted in 5 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Quora</b> is restricted in 5 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Reddit</h3>
-                        <p class="pr-countries"><b>Reddit</b> is restricted in 12 countries and territories: Australia (age verification), Brazil (age verification), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Türkiye (age verification), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                        <p class="pr-countries"><b>Reddit</b> is restricted in 12 countries and territories: Australia (age verification), Brazil (age verification), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban), Türkiye (age verification), United Kingdom (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Reuters</h3>
-                        <p class="pr-countries"><b>Reuters</b> is restricted in 7 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Myanmar (complete ban), North Korea (complete ban), Turkmenistan (complete ban), Vietnam (partial restriction).</p>
+                        <p class="pr-countries"><b>Reuters</b> is restricted in 7 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), Myanmar (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban), Vietnam (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Roblox</h3>
-                        <p class="pr-countries"><b>Roblox</b> is restricted in 11 countries and territories: Algeria (complete ban), Egypt (complete ban), Eritrea (complete ban), Indonesia (age verification), Islamic Republic of Iran (complete ban), Iraq (complete ban), North Korea (complete ban), Oman (complete ban), Qatar (complete ban), Türkiye (complete ban), United Arab Emirates (partial restriction).</p>
+                        <p class="pr-countries"><b>Roblox</b> is restricted in 11 countries and territories: Algeria (complete ban), Egypt (complete ban), Eritrea (complete ban), Indonesia (age verification), Iraq (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Oman (complete ban), Qatar (complete ban), Türkiye (complete ban), United Arab Emirates (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Rumble</h3>
-                        <p class="pr-countries"><b>Rumble</b> is restricted in 7 countries and territories: Brazil (complete ban), People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Rumble</b> is restricted in 7 countries and territories: Brazil (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Russia Today</h3>
@@ -1645,31 +1937,31 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Signal</h3>
-                        <p class="pr-countries"><b>Signal</b> is restricted in 7 countries and territories: People's Republic of China (complete ban), Egypt (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Signal</b> is restricted in 7 countries and territories: Egypt (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Snapchat</h3>
-                        <p class="pr-countries"><b>Snapchat</b> is restricted in 12 countries and territories: Australia (age verification), Brazil (age verification), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Islamic Republic of Iran (complete ban), North Korea (complete ban), Russia (complete ban), Türkiye (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification).</p>
+                        <p class="pr-countries"><b>Snapchat</b> is restricted in 12 countries and territories: Australia (age verification), Brazil (age verification), Eritrea (complete ban), France (age verification), Gabon (age verification), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (age verification), United Arab Emirates (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Spotify</h3>
-                        <p class="pr-countries"><b>Spotify</b> is restricted in 7 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Russia (complete ban), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                        <p class="pr-countries"><b>Spotify</b> is restricted in 7 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), United Kingdom (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Substack</h3>
-                        <p class="pr-countries"><b>Substack</b> is restricted in 7 countries and territories: Australia (age verification), People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                        <p class="pr-countries"><b>Substack</b> is restricted in 7 countries and territories: Australia (age verification), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban), United Kingdom (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Telegram</h3>
-                        <p class="pr-countries"><b>Telegram</b> is restricted in 11 countries and territories: People's Republic of China (complete ban), Cuba (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Nepal (partial restriction), North Korea (complete ban), Pakistan (complete ban), Russia (complete ban), Somalia (complete ban), Turkmenistan (complete ban), Vietnam (complete ban).</p>
+                        <p class="pr-countries"><b>Telegram</b> is restricted in 11 countries and territories: Cuba (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Nepal (partial restriction), North Korea (complete ban), Pakistan (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Somalia (complete ban), Turkmenistan (complete ban), Vietnam (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Threads</h3>
-                        <p class="pr-countries"><b>Threads</b> is restricted in 14 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), North Korea (complete ban), Russia (complete ban), Türkiye (age verification), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Threads</b> is restricted in 14 countries and territories: Australia (age verification), Brazil (age verification), Canada (partial restriction), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">TikTok</h3>
-                        <p class="pr-countries"><b>TikTok</b> is restricted in 19 countries and territories: Afghanistan (complete ban), Australia (age verification), Brazil (age verification), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), India (complete ban), Indonesia (age verification), Islamic Republic of Iran (complete ban), Jordan (complete ban), Kyrgyzstan (complete ban), Malaysia (age verification), North Korea (complete ban), Somalia (partial restriction), Türkiye (age verification), Turkmenistan (complete ban), United Arab Emirates (age verification), Uzbekistan (complete ban).</p>
+                        <p class="pr-countries"><b>TikTok</b> is restricted in 19 countries and territories: Afghanistan (complete ban), Australia (age verification), Brazil (age verification), Eritrea (complete ban), France (age verification), Gabon (age verification), India (complete ban), Indonesia (age verification), Islamic Republic of Iran (complete ban), Jordan (complete ban), Kyrgyzstan (complete ban), Malaysia (age verification), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Somalia (partial restriction), Turkmenistan (complete ban), Türkiye (age verification), United Arab Emirates (age verification), Uzbekistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Tinder</h3>
@@ -1677,19 +1969,19 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Tumblr</h3>
-                        <p class="pr-countries"><b>Tumblr</b> is restricted in 10 countries and territories: Australia (age verification), Brazil (age verification), People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Kazakhstan (complete ban), North Korea (complete ban), Philippines (partial restriction), Turkmenistan (complete ban), United Kingdom (age verification).</p>
+                        <p class="pr-countries"><b>Tumblr</b> is restricted in 10 countries and territories: Australia (age verification), Brazil (age verification), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Kazakhstan (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Philippines (partial restriction), Turkmenistan (complete ban), United Kingdom (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Twitch</h3>
-                        <p class="pr-countries"><b>Twitch</b> is restricted in 11 countries and territories: Australia (age verification), Brazil (age verification), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Islamic Republic of Iran (complete ban), North Korea (complete ban), Russia (partial restriction), South Korea (complete ban), Türkiye (age verification).</p>
+                        <p class="pr-countries"><b>Twitch</b> is restricted in 11 countries and territories: Australia (age verification), Brazil (age verification), Eritrea (complete ban), France (age verification), Gabon (age verification), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (partial restriction), South Korea (complete ban), Türkiye (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Viber</h3>
-                        <p class="pr-countries"><b>Viber</b> is restricted in 10 countries and territories: People's Republic of China (complete ban), Egypt (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Oman (partial restriction), Qatar (partial restriction), Russia (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                        <p class="pr-countries"><b>Viber</b> is restricted in 10 countries and territories: Egypt (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Oman (partial restriction), People&#x27;s Republic of China (complete ban), Qatar (partial restriction), Russia (complete ban), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Vimeo</h3>
-                        <p class="pr-countries"><b>Vimeo</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Indonesia (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Vimeo</b> is restricted in 6 countries and territories: Eritrea (complete ban), Indonesia (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Turkmenistan (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">VKontakte</h3>
@@ -1701,15 +1993,15 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">WhatsApp</h3>
-                        <p class="pr-countries"><b>WhatsApp</b> is restricted in 11 countries and territories: People's Republic of China (complete ban), Egypt (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Jordan (partial restriction), North Korea (complete ban), Qatar (partial restriction), Russia (complete ban), Sudan (partial restriction), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
+                        <p class="pr-countries"><b>WhatsApp</b> is restricted in 11 countries and territories: Egypt (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (complete ban), Jordan (partial restriction), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Qatar (partial restriction), Russia (complete ban), Sudan (partial restriction), Turkmenistan (complete ban), United Arab Emirates (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Wikipedia</h3>
-                        <p class="pr-countries"><b>Wikipedia</b> is restricted in 6 countries and territories: People's Republic of China (complete ban), Eritrea (complete ban), Islamic Republic of Iran (partial restriction), Myanmar (complete ban), North Korea (complete ban), Russia (partial restriction).</p>
+                        <p class="pr-countries"><b>Wikipedia</b> is restricted in 6 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (partial restriction), Myanmar (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">X (formerly Twitter)</h3>
-                        <p class="pr-countries"><b>X (formerly Twitter)</b> is restricted in 17 countries and territories: Australia (age verification), Brazil (age verification), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), Myanmar (complete ban), North Korea (complete ban), Russia (complete ban), Türkiye (age verification), Türkiye (partial restriction), Turkmenistan (complete ban), United Arab Emirates (age verification), United Kingdom (age verification), Venezuela (complete ban).</p>
+                        <p class="pr-countries"><b>X (formerly Twitter)</b> is restricted in 17 countries and territories: Australia (age verification), Brazil (age verification), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), Myanmar (complete ban), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (age verification), Türkiye (partial restriction), United Arab Emirates (age verification), United Kingdom (age verification), Venezuela (complete ban).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Yandex</h3>
@@ -1717,11 +2009,11 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">YouTube</h3>
-                        <p class="pr-countries"><b>YouTube</b> is restricted in 13 countries and territories: Australia (age verification), Brazil (age verification), People's Republic of China (complete ban), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), North Korea (complete ban), Russia (complete ban), Türkiye (age verification), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>YouTube</b> is restricted in 13 countries and territories: Australia (age verification), Brazil (age verification), Eritrea (complete ban), France (age verification), Gabon (age verification), Indonesia (age verification), Islamic Republic of Iran (complete ban), Malaysia (age verification), North Korea (complete ban), People&#x27;s Republic of China (complete ban), Russia (complete ban), Turkmenistan (complete ban), Türkiye (age verification).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Zoom</h3>
-                        <p class="pr-countries"><b>Zoom</b> is restricted in 5 countries and territories: People's Republic of China (partial restriction), Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), Turkmenistan (complete ban).</p>
+                        <p class="pr-countries"><b>Zoom</b> is restricted in 5 countries and territories: Eritrea (complete ban), Islamic Republic of Iran (complete ban), North Korea (complete ban), People&#x27;s Republic of China (partial restriction), Turkmenistan (complete ban).</p>
                     </article>
                 </div>
                 <!-- PRERENDER:END -->
@@ -1753,9 +2045,26 @@
                 <div class="recent-list" id="recentList"></div>
             </section>
 
+            <!-- What changed. The dataset's own git history, rendered — a
+                 tracker that only shows the present answers "what is blocked?"
+                 but never "what moved this week?". -->
+            <section class="section-block" id="changesSection" aria-labelledby="changes-heading">
+                <h2 class="section-title" id="changes-heading">What Changed</h2>
+                <p class="section-sub">The most recent edits to the index, straight from the dataset's history.
+                    <a href="/changes">Full changelog &#8594;</a> &middot;
+                    <a href="feed.xml">RSS &#8599;</a></p>
+                <div class="change-list" id="changeFeed"></div>
+            </section>
+
             <section class="section-block" id="methodSection" aria-labelledby="method-heading">
                 <h2 class="section-title" id="method-heading">Methodology &amp; Sources</h2>
-                <p class="section-sub" id="verifiedNote" hidden></p>
+                <p class="section-sub freshness" data-meta-scope>
+                    <span data-meta-row hidden>Data updated <b data-meta="data-updated"></b>
+                        <span class="rel" data-meta="data-updated-rel"></span></span>
+                    <span data-meta-row hidden><b data-meta="sources-count"></b> source links last
+                        re-opened <b data-meta="sources-checked"></b>
+                        <span class="rel" data-meta="sources-checked-rel"></span></span>
+                </p>
                 <div class="method-grid">
                     <div class="method-card">
                         <h3>What this tracks</h3>
@@ -1767,6 +2076,9 @@
                             <li><span class="swatch partial"></span><b>Partial</b> — throttled, feature-limited or intermittently blocked.</li>
                             <li><span class="swatch age"></span><b>Age verification</b> — legal age-gating required to access it.</li>
                         </ul>
+                        <p>Those three say what a restriction <i>is</i>. They do not say what stage
+                        it has reached, so every entry also carries one of:</p>
+                        <ul class="method-key" id="statusKey"></ul>
                     </div>
                     <div class="method-card">
                         <h3>How sources are held</h3>
@@ -1779,14 +2091,31 @@
                         <code>200</code> is never treated as proof on its own — and sources are
                         never invented or auto-substituted. <a href="https://github.com/vimal7890/Censorship-Tracker/blob/main/verify_links.py" target="_blank" rel="noopener">verify_links.py</a>
                         re-checks every URL for rot.</p>
+                        <p>Citations show who published them and what kind of evidence they are:</p>
+                        <div class="src-legend" id="sourceLegend"></div>
+                    </div>
+
+                    <!-- Coverage. Not every row is evidenced equally, and a
+                         tracker that hides its weak rows is asking to be trusted
+                         on faith. These counts are derived, not asserted: see
+                         build_status.py. -->
+                    <div class="method-card">
+                        <h3>How well each row is covered</h3>
+                        <p>Some entries deliberately rest on a country-wide fact rather than a
+                        platform-specific citation — in states that block nearly everything,
+                        nobody publishes "Tumblr is blocked in Turkmenistan". Showing which is
+                        which is more useful than pretending they are the same.</p>
+                        <div class="coverage" id="coveragePanel"></div>
+                        <p class="coverage-cta" id="coverageCta" hidden></p>
                     </div>
                     <div class="method-card">
                         <h3>Data &amp; changes</h3>
                         <p>The whole index is a single open file you can read, cite or reuse.</p>
                         <ul class="method-links">
                             <li><a href="censorship_data.csv" target="_blank" rel="noopener">censorship_data.csv &#8595;</a> — the raw dataset</li>
+                            <li><a href="/changes">What changed &#8594;</a> — dated changelog of every edit</li>
+                            <li><a href="feed.xml">RSS feed &#8599;</a> — follow it without an account</li>
                             <li><a href="https://github.com/vimal7890/Censorship-Tracker" target="_blank" rel="noopener">Source &amp; issues on GitHub &#8599;</a></li>
-                            <li><a href="https://github.com/vimal7890/Censorship-Tracker/commits/main" target="_blank" rel="noopener">Recent changes &#8599;</a> — full edit history</li>
                         </ul>
                     </div>
                 </div>
@@ -1816,6 +2145,7 @@
     </button>
 
     <script src="assets/countries.js"></script>
+    <script src="assets/site.js"></script>
     <script>
         // Cookie-cutter notes for states where the internet is restricted by
         // default, so their rows do not each have to restate the same thing.
@@ -1949,20 +2279,24 @@
         }
 
         let currentFilter = 'all';
+        let currentView = '';        // saved view ('new90', 'scheduled', …) or ''
+        let currentSort = 'name';
         let openDossierIso = null;   // ISO of the dossier currently shown, or null
 
-        const sourceIndex = new Map();
-
         // ---- Shareable state in the URL hash ----
-        // Active filter, search query and open dossier are mirrored into the
-        // location hash (e.g. #filter=age&q=france&country=FR) with replaceState,
-        // so any view can be bookmarked, shared and survives a refresh without
-        // polluting browser history.
+        // Active filter, saved view, sort, search query and open dossier are
+        // mirrored into the location hash (e.g. #filter=age&q=france&country=FR)
+        // with replaceState, so any view can be bookmarked, shared and survives a
+        // refresh without polluting browser history.
         const VALID_FILTERS = ['complete', 'partial', 'age'];
+        const VALID_VIEWS = ['new90', 'scheduled', 'enforced', 'uncorroborated'];
+        const VALID_SORTS = ['name', 'countries', 'recent'];
 
         function syncHash() {
             const params = new URLSearchParams();
             if (currentFilter && currentFilter !== 'all') params.set('filter', currentFilter);
+            if (currentView) params.set('view', currentView);
+            if (currentSort && currentSort !== 'name') params.set('sort', currentSort);
             const q = document.getElementById('searchBox').value.trim();
             if (q) params.set('q', q);
             const cf = document.getElementById('countryFilter').value;
@@ -1993,11 +2327,48 @@
                 document.querySelectorAll('[data-filter]').forEach(el =>
                     el.classList.toggle('active', el.getAttribute('data-filter') === filter));
             }
+            const view = params.get('view');
+            if (view && VALID_VIEWS.includes(view)) currentView = view;
+            const sort = params.get('sort');
+            if (sort && VALID_SORTS.includes(sort)) currentSort = sort;
+            document.getElementById('sortBy').value = currentSort;
+            syncViewChips();
             const cf = params.get('in');
             const sel = document.getElementById('countryFilter');
             if (cf && [...sel.options].some(o => o.value === cf)) sel.value = cf;
             applyCountryFilterState();
             renderPlatforms();
+        }
+
+        // Keep the saved-view chips and the "clear all" escape hatch in step with
+        // whatever is actually narrowing the list.
+        function syncViewChips() {
+            document.querySelectorAll('.view-chip[data-view]').forEach(chip =>
+                chip.classList.toggle('active', chip.dataset.view === currentView));
+            const narrowed = currentView || currentFilter !== 'all'
+                || document.getElementById('searchBox').value.trim()
+                || document.getElementById('countryFilter').value;
+            document.getElementById('resetViews').hidden = !narrowed;
+        }
+
+        function setView(view) {
+            currentView = (currentView === view) ? '' : view;
+            syncViewChips();
+            renderPlatforms();
+            syncHash();
+        }
+
+        function clearAllFilters() {
+            currentView = '';
+            currentFilter = 'all';
+            document.querySelectorAll('[data-filter]').forEach(el =>
+                el.classList.toggle('active', el.getAttribute('data-filter') === 'all'));
+            document.getElementById('searchBox').value = '';
+            document.getElementById('countryFilter').value = '';
+            applyCountryFilterState();
+            syncViewChips();
+            renderPlatforms();
+            syncHash();
         }
 
         // Open the dossier named in the hash. Deferred until the country index
@@ -2037,32 +2408,41 @@
             return rows;
         }
 
-        // Fetch the dataset from censorship_data.csv, apply the
-        // heavy-censorship boilerplate and assign source reference numbers.
+        // Fetch the dataset from censorship_data.csv and apply the
+        // heavy-censorship boilerplate. The citation registry (sources.json) is
+        // fetched alongside it so the first case file a visitor opens already
+        // knows who published its source.
         async function loadData() {
             try {
-                const res = await fetch('censorship_data.csv');
+                const [res] = await Promise.all([
+                    fetch('censorship_data.csv'),
+                    Site.loadSources(),
+                ]);
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const rows = parseCSV(await res.text());
-                rows.shift(); // header: platform,country,since,type,more_info,source
+                // header: platform,country,since,type,more_info,source,status,evidence
+                rows.shift();
                 const byPlatform = new Map();
-                rows.forEach(([platform, country, since, type, moreInfo, source]) => {
+                rows.forEach(([platform, country, since, type, moreInfo, source, status, evidence]) => {
                     if (!platform || !country) return;
                     if (!byPlatform.has(platform)) byPlatform.set(platform, { name: platform, bannedIn: [] });
+                    const date = parseSinceDate(since);
                     byPlatform.get(platform).bannedIn.push({
-                        country, since, type,
+                        country, since, type, date,
                         moreInfo: moreInfo || HEAVY_CENSORSHIP[country] || '',
-                        source: source || null
+                        source: source || null,
+                        // Whether something is still scheduled is decided from the
+                        // date every time the page renders, not trusted from the
+                        // file — a baked "scheduled" goes stale the day it starts.
+                        status: Site.effectiveStatus({ status }, date),
+                        evidence: evidence || (source ? 'dedicated'
+                            : (HEAVY_CENSORSHIP[country] ? 'country-default' : 'uncorroborated'))
                     });
                 });
                 censorshipData = [...byPlatform.values()].sort((a, b) => a.name.localeCompare(b.name));
-                censorshipData.forEach(platform => platform.bannedIn.forEach(ban => {
-                    if (ban.source && !sourceIndex.has(ban.source)) {
-                        sourceIndex.set(ban.source, sourceIndex.size + 1);
-                    }
-                }));
                 updateStats();
                 populateCountryFilter();
+                populateHeroLookup();
                 // Restore filter + search from the URL hash and paint the list
                 // right away, before the (larger) map SVG has to load.
                 applyControlsFromHash();
@@ -2070,6 +2450,7 @@
                 await initWorldMap();
                 renderStats();
                 renderRecent();
+                renderCoverage();
                 // Now that the map and country index exist, open any dossier
                 // named in the hash.
                 openDossierFromHash();
@@ -2079,26 +2460,29 @@
             }
         }
 
-        // Freshness signal: verified.json exists only after verify_links.py has
-        // confirmed every source URL resolves clean (see the script). Show the
-        // date when it does; stay silent when it doesn't, so the badge can never
-        // overstate how recently the citations were actually checked.
-        async function loadVerified() {
-            try {
-                const res = await fetch('verified.json', { cache: 'no-cache' });
-                if (!res.ok) return;
-                const info = await res.json();
-                const d = new Date(info.date + 'T00:00:00');
-                if (isNaN(d)) return;
-                const label = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-                document.getElementById('tickerVerifiedDate').textContent = label;
-                document.getElementById('tickerVerified').hidden = false;
-                const foot = document.getElementById('verifiedNote');
-                if (foot) {
-                    foot.textContent = `All ${info.sources} source links checked live on ${label}.`;
-                    foot.hidden = false;
-                }
-            } catch (_) { /* absent or malformed — show nothing */ }
+        // The evidence-kind legend under "How sources are held", built from the
+        // registry itself so it can never describe a kind the data no longer
+        // uses, or omit one it has started using.
+        async function renderSourceLegend() {
+            const box = document.getElementById('sourceLegend');
+            const res = await fetch('sources.json', { cache: 'no-cache' }).catch(() => null);
+            if (!res || !res.ok) { box.hidden = true; return; }
+            const data = await res.json();
+            box.innerHTML = Object.entries(data.by_kind || {}).map(([kind, count]) => `
+                <div class="src-legend-item kind-${escapeHTML(kind)}">
+                    <div class="sl-name">${escapeHTML(data.kind_labels[kind] || kind)}
+                        <span class="sl-count">&middot; ${count}</span></div>
+                    <div class="sl-blurb">${escapeHTML(data.kind_blurbs[kind] || '')}</div>
+                </div>`).join('');
+        }
+
+        // The four stages an entry can be at, described where the three
+        // restriction types are described — they are read together.
+        function renderStatusKey() {
+            document.getElementById('statusKey').innerHTML =
+                ['scheduled', 'enforced', 'in_force', 'reported'].map(key => `
+                    <li><span class="tag-status ${key}"></span>
+                        <b>${Site.STATUS[key].label}</b> &mdash; ${Site.STATUS[key].blurb}</li>`).join('');
         }
 
         function updateStats() {
@@ -2106,6 +2490,7 @@
             let completeBans = 0;
             let partialBans = 0;
             let ageBans = 0;
+            let scheduled = 0;
             const countries = new Set();
 
             censorshipData.forEach(platform => {
@@ -2115,8 +2500,17 @@
                     if (ban.type === 'partial') partialBans++;
                     else if (ban.type === 'age') ageBans++;
                     else completeBans++;
+                    if (ban.status === 'scheduled') scheduled++;
                 });
             });
+
+            // The headline totals count restrictions that have not started yet,
+            // so the split is stated right underneath them rather than left to
+            // be discovered one case file at a time.
+            document.getElementById('stageActive').textContent = totalBans - scheduled;
+            document.getElementById('stageScheduled').textContent = scheduled;
+            document.getElementById('stageLegend').hidden = false;
+            document.getElementById('stageShowScheduled').hidden = scheduled === 0;
 
             document.getElementById('totalPlatforms').textContent = censorshipData.length;
             document.getElementById('totalBans').textContent = totalBans;
@@ -2225,20 +2619,77 @@
             syncHash();
         }
 
+        // Saved views are just predicates over a single row. Keeping them here
+        // rather than as extra filter state means a view composes with the type
+        // filter, the country lens and the search box instead of fighting them.
+        const VIEW_TESTS = {
+            new90: ban => ban.date && ban.date <= new Date()
+                && (Date.now() - ban.date.getTime()) <= 90 * 86400000,
+            scheduled: ban => ban.status === 'scheduled',
+            enforced: ban => ban.status === 'enforced',
+            uncorroborated: ban => ban.evidence === 'uncorroborated',
+        };
+
+        // Newest restriction in a row, for the "most recent" sort. Undated rows
+        // ("Forever", "Longstanding") sort last rather than sorting as 1970.
+        function newestDate(bans) {
+            let newest = null;
+            bans.forEach(b => { if (b.date && (!newest || b.date > newest)) newest = b.date; });
+            return newest;
+        }
+
+        function sortPlatforms(list) {
+            if (currentSort === 'countries') {
+                return list.sort((a, b) =>
+                    new Set(b.bannedIn.map(x => x.country)).size - new Set(a.bannedIn.map(x => x.country)).size
+                    || a.name.localeCompare(b.name));
+            }
+            if (currentSort === 'recent') {
+                return list.sort((a, b) => {
+                    const da = newestDate(a.bannedIn), db = newestDate(b.bannedIn);
+                    if (da && db) return db - da || a.name.localeCompare(b.name);
+                    if (da) return -1;
+                    if (db) return 1;
+                    return a.name.localeCompare(b.name);
+                });
+            }
+            return list.sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        // A dead end that only says "no results" makes the visitor guess which
+        // of four narrowings to undo. Offer to undo the ones actually applied.
+        function emptyStateHTML() {
+            const search = document.getElementById('searchBox').value.trim();
+            const countrySel = document.getElementById('countryFilter').value;
+            const actions = [];
+            if (countrySel) actions.push(`<button data-clear="country">Clear country: ${escapeHTML(countrySel)}</button>`);
+            if (search) actions.push(`<button data-clear="search">Clear search: &ldquo;${escapeHTML(search)}&rdquo;</button>`);
+            if (currentFilter !== 'all') actions.push(`<button data-clear="filter">Show all restriction types</button>`);
+            if (currentView) actions.push(`<button data-clear="view">Leave the &ldquo;${escapeHTML(
+                document.querySelector(`.view-chip[data-view="${currentView}"]`).textContent)}&rdquo; view</button>`);
+            if (actions.length > 1) actions.push('<button data-clear="all">Clear everything</button>');
+            return '<div class="no-results">// No platforms match your query.'
+                + (actions.length ? `<div class="no-results-actions">${actions.join('')}</div>` : '')
+                + '</div>';
+        }
+
         function renderPlatforms() {
             const grid = document.getElementById('platformGrid');
             const searchTerm = document.getElementById('searchBox').value.trim().toLowerCase();
             const countrySel = document.getElementById('countryFilter').value;
+            const viewTest = VIEW_TESTS[currentView];
 
-            // Three composable narrowings: type filter (currentFilter), the
-            // country lens (countrySel, exact territory) and free-text search.
-            // Search matches platform names AND country names — a name match
-            // keeps the whole platform; a country-only match narrows the row to
-            // just the countries that matched, so the visitor sees why it appeared.
-            const filteredData = censorshipData
+            // Four composable narrowings: type filter (currentFilter), the saved
+            // view (viewTest), the country lens (countrySel, exact territory) and
+            // free-text search. Search matches platform names AND country names —
+            // a name match keeps the whole platform; a country-only match narrows
+            // the row to just the countries that matched, so the visitor sees why
+            // it appeared.
+            const filteredData = sortPlatforms(censorshipData
                 .map(platform => {
                     const typeBans = platform.bannedIn.filter(ban =>
                         (currentFilter === 'all' || ban.type === currentFilter) &&
+                        (!viewTest || viewTest(ban)) &&
                         (!countrySel || ban.country === countrySel));
                     if (!searchTerm || platform.name.toLowerCase().includes(searchTerm)) {
                         return { name: platform.name, bannedIn: typeBans };
@@ -2247,14 +2698,17 @@
                         ban.country.toLowerCase().includes(searchTerm));
                     return { name: platform.name, bannedIn: countryBans };
                 })
-                .filter(platform => platform.bannedIn.length > 0);
+                .filter(platform => platform.bannedIn.length > 0));
+
+            syncViewChips();
 
             if (filteredData.length === 0) {
-                grid.innerHTML = '<div class="no-results">// No platforms match your query.</div>';
+                grid.innerHTML = emptyStateHTML();
                 return;
             }
 
             const TYPE_INFO_CLASS = { complete: '', partial: 'partial-info', age: 'age-info' };
+            const CHIP_LIMIT = 14;
 
             // Case-file panels are rendered as empty shells and filled the first
             // time they open (fillPanel). Building all 450+ up front is ~4,000
@@ -2280,7 +2734,7 @@
                     </div>
                     <div class="platform-body">
                         <div class="chip-row">
-                            ${groups.map(g => {
+                            ${groups.map((g, i) => {
                                 const multi = g.types.length > 1;
                                 const typeKey = g.types.join('-');
                                 const tagId = `tag-${banDomId(platform.name, g.country, typeKey)}`;
@@ -2289,8 +2743,16 @@
                                 const title = multi
                                     ? g.types.map(t => TYPE_LABEL[t] || t).join(' + ')
                                     : (TYPE_LABEL[g.types[0]] || '');
-                                return `<button id="${tagId}" class="country-tag ${cls}"${style} title="${escapeHTML(title)}" data-platform="${escapeHTML(platform.name)}" data-country="${escapeHTML(g.country)}" data-types="${g.types.join('|')}">${escapeHTML(g.country)}</button>`;
+                                // Russia Today alone spans 37 territories, which
+                                // buries every row under it. Past the cutoff the
+                                // chips are rendered but hidden, so the "+N more"
+                                // toggle is instant and deep links still resolve.
+                                const over = i >= CHIP_LIMIT ? ' overflow' : '';
+                                return `<button id="${tagId}" class="country-tag ${cls}${over}"${style}${over ? ' hidden' : ''} title="${escapeHTML(title)}" data-platform="${escapeHTML(platform.name)}" data-country="${escapeHTML(g.country)}" data-types="${g.types.join('|')}">${escapeHTML(g.country)}</button>`;
                             }).join('')}
+                            ${countryCount > CHIP_LIMIT
+                                ? `<button class="chip-more" type="button" data-more="1" aria-expanded="false">+${countryCount - CHIP_LIMIT} more</button>`
+                                : ''}
                         </div>
                         ${groups.map(g => {
                             const multi = g.types.length > 1;
@@ -2320,12 +2782,21 @@
                 .filter(b => b.country === country && types.includes(b.type))
                 .sort((a, b) => (TYPE_ORDER[a.type] ?? 9) - (TYPE_ORDER[b.type] ?? 9)
                     || String(a.since).localeCompare(String(b.since)));
-            const srcRef = ban => ban.source
-                ? `<a class="source-ref" href="${escapeHTML(ban.source)}" target="_blank" rel="noopener">[${sourceIndex.get(ban.source)}]</a>`
-                : '';
-            const bodyP = ban => ban.moreInfo
-                ? `<p>${escapeHTML(ban.moreInfo)}${srcRef(ban)}</p>`
-                : `<p><em>No additional information available.</em>${srcRef(ban)}</p>`;
+            // Stage and coverage, stated before the prose. "[47]" is replaced by
+            // a card naming the publisher, the kind of evidence and the date —
+            // a reader should know what they are about to open.
+            const tags = ban => {
+                const status = Site.STATUS[ban.status];
+                const cover = Site.EVIDENCE[ban.evidence];
+                return `<div class="case-tags">
+                    ${status ? `<span class="tag-status ${ban.status}" title="${escapeHTML(status.blurb.replace(/&rsquo;/g, "'"))}">${status.label}</span>` : ''}
+                    ${cover ? `<span class="tag-evidence ${ban.evidence}" title="${escapeHTML(cover.blurb)}">${cover.label}</span>` : ''}
+                </div>`;
+            };
+            const bodyP = ban => (ban.moreInfo
+                ? `<p>${escapeHTML(ban.moreInfo)}</p>`
+                : '<p><em>No additional information available.</em></p>')
+                + (ban.source ? Site.sourceCard(ban.source) : '');
             if (types.length > 1) {
                 const statusSpans = types.map(t =>
                     `<span class="status-${t}">${TYPE_LABEL[t] || t}</span>`
@@ -2333,7 +2804,8 @@
                 const cases = bans.map(ban => `
                     <div class="multi-case">
                         <div class="case-type ${ban.type}">${TYPE_LABEL[ban.type] || ban.type}</div>
-                        <div class="since">Since: ${escapeHTML(ban.since)}</div>
+                        <div class="since">${ban.status === 'scheduled' ? 'From' : 'Since'}: ${escapeHTML(ban.since)}</div>
+                        ${tags(ban)}
                         ${bodyP(ban)}
                     </div>`).join('');
                 panel.innerHTML = `
@@ -2350,7 +2822,8 @@
                         <span class="status-${ban.type}">${TYPE_LABEL[ban.type] || 'Complete Ban'}</span>
                     </div>
                     <div class="more-info-body">
-                        <div class="since">Since: ${escapeHTML(ban.since)}</div>
+                        <div class="since">${ban.status === 'scheduled' ? 'From' : 'Since'}: ${escapeHTML(ban.since)}</div>
+                        ${tags(ban)}
                         ${bodyP(ban)}
                     </div>`;
             }
@@ -2402,7 +2875,9 @@
                 const note = window.subnationalNote ? window.subnationalNote(ban.country) : '';
                 if (subnational) rec.subnationalNames.add(ban.country);
                 else if (!rec.display) rec.display = ban.country;
-                rec.entries.push({ platform: platform.name, country: ban.country, since: ban.since, type: ban.type, source: ban.source, subnational, note });
+                rec.entries.push({ platform: platform.name, country: ban.country, since: ban.since,
+                    type: ban.type, status: ban.status, evidence: ban.evidence,
+                    source: ban.source, subnational, note });
                 rec.counts[ban.type] = (rec.counts[ban.type] || 0) + 1;
             }));
             countryIndex.forEach(rec => {
@@ -2622,13 +3097,18 @@
                 <div class="dossier-row" role="button" tabindex="0" data-platform="${escapeHTML(e.platform)}" data-country="${escapeHTML(e.country)}" data-type="${e.type}">
                     <span class="d-type ${e.type}">${TYPE_LABEL[e.type] || e.type}</span>
                     <span class="d-platform">${escapeHTML(e.platform)}</span>
-                    <span class="d-since">Since: ${escapeHTML(e.since)}</span>
+                    <span class="d-since">${e.status === 'scheduled' ? 'From' : 'Since'}: ${escapeHTML(e.since)}</span>
+                    ${Site.STATUS[e.status] ? `<span class="tag-status ${e.status}">${Site.STATUS[e.status].label}</span>` : ''}
                     ${e.subnational ? `<span class="d-state">${escapeHTML(e.country)}${e.note ? ` — ${escapeHTML(e.note)}` : ' — state law'}</span>` : ''}
-                    ${e.source ? `<a class="d-src" href="${escapeHTML(e.source)}" target="_blank" rel="noopener">[${sourceIndex.get(e.source)}]</a>` : ''}
+                    ${e.source ? Site.sourceChip(e.source) : ''}
                 </div>`).join('');
             const panel = document.getElementById('countryDossier');
             panel.hidden = false;
             panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // Send focus into the panel that just appeared. Clicking a country on
+            // the map used to leave a keyboard visitor parked on the map while
+            // their answer rendered somewhere below, with nothing to tab to.
+            document.getElementById('dossierTitle').focus({ preventScroll: true });
             syncHash();
         }
 
@@ -2653,9 +3133,40 @@
             const info = resolveInfoPanel(platform, country, [type]);
             const countryPrefix = banDomId(platform, country);
             const tag = document.querySelector(`[id^="tag-${countryPrefix}"]`);
+            // The target chip may be past the "+N more" cutoff, or its whole row
+            // collapsed in compact mode; open whatever is hiding it first, or the
+            // jump lands on nothing.
+            if (tag) {
+                revealChip(tag);
+                const row = tag.closest('.platform-row');
+                if (row) row.classList.add('open');
+            }
             if (info && !info.classList.contains('expanded')) toggleMoreInfo(platform, country, type);
             const anchor = tag || info;
-            if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (anchor) {
+                anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Land the keyboard on the case file that was just opened, so
+                // "read this record" does not mean "now find it yourself".
+                if (tag) tag.focus({ preventScroll: true });
+            }
+        }
+
+        // Expand a row's hidden chip overflow so a deep link can reach a chip
+        // that is currently behind the "+N more" toggle.
+        function revealChip(tag) {
+            if (!tag.classList.contains('overflow')) return;
+            const row = tag.closest('.chip-row');
+            const more = row && row.querySelector('.chip-more');
+            if (more && more.getAttribute('aria-expanded') !== 'true') toggleChipOverflow(more);
+        }
+
+        function toggleChipOverflow(button) {
+            const row = button.closest('.chip-row');
+            const open = button.getAttribute('aria-expanded') === 'true';
+            const hidden = row.querySelectorAll('.country-tag.overflow');
+            hidden.forEach(el => { el.hidden = open; });
+            button.setAttribute('aria-expanded', String(!open));
+            button.textContent = open ? `+${hidden.length} more` : 'Show fewer';
         }
 
         function wireRowJumps(containerId) {
@@ -2869,19 +3380,164 @@
         function renderRecent() {
             const dated = [];
             censorshipData.forEach(p => p.bannedIn.forEach(b => {
-                const d = parseSinceDate(b.since);
-                if (d) dated.push({ platform: p.name, country: b.country, since: b.since, type: b.type, source: b.source, date: d });
+                if (b.date) dated.push({ platform: p.name, country: b.country, since: b.since,
+                    type: b.type, status: b.status, source: b.source, date: b.date });
             }));
             dated.sort((a, b) => b.date - a.date);
-            const now = new Date();
             const fmt = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
             document.getElementById('recentList').innerHTML = dated.slice(0, 8).map(e => `
                 <div class="recent-row" role="button" tabindex="0" data-platform="${escapeHTML(e.platform)}" data-country="${escapeHTML(e.country)}" data-type="${e.type}">
                     <span class="r-date">${fmt(e.date)}</span>
                     <span class="d-type ${e.type}">${TYPE_LABEL[e.type] || e.type}</span>
                     <span class="r-desc"><b>${escapeHTML(e.platform)}</b> &mdash; ${escapeHTML(e.country)}</span>
-                    ${e.date > now ? '<span class="r-sched">Scheduled</span>' : ''}
-                    ${e.source ? `<a class="d-src" href="${escapeHTML(e.source)}" target="_blank" rel="noopener">[${sourceIndex.get(e.source)}]</a>` : ''}
+                    ${Site.STATUS[e.status] ? `<span class="tag-status ${e.status}">${Site.STATUS[e.status].label}</span>` : ''}
+                    ${e.source ? Site.sourceChip(e.source) : ''}
+                </div>`).join('');
+        }
+
+        /* ================= Country-first lookup ================= */
+
+        function populateHeroLookup() {
+            const counts = new Map();
+            censorshipData.forEach(p => p.bannedIn.forEach(b =>
+                counts.set(b.country, (counts.get(b.country) || 0) + 1)));
+            const sel = document.getElementById('heroCountry');
+            [...counts.keys()].sort((a, b) => a.localeCompare(b)).forEach(country => {
+                const opt = document.createElement('option');
+                opt.value = country;
+                opt.textContent = `${country} — ${counts.get(country)} restriction${counts.get(country) === 1 ? '' : 's'}`;
+                sel.appendChild(opt);
+            });
+        }
+
+        // Open the dossier for a display name, falling back to the country lens
+        // when the territory has no ISO code the map can highlight.
+        function openLookup(name) {
+            if (!name) return;
+            const iso = window.isoOf(name);
+            if (iso && countryIndex.has(iso)) { openDossier(iso); return; }
+            const sel = document.getElementById('countryFilter');
+            if ([...sel.options].some(o => o.value === name)) {
+                sel.value = name;
+                applyCountryFilterState();
+                renderPlatforms();
+                syncHash();
+                document.getElementById('platformGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Region detection, entirely inside the browser. See build_timezones.py
+        // for why this reads the clock rather than asking for a location or
+        // calling a lookup service — both would leak that somebody is reading a
+        // censorship tracker. The result is a guess, so it is offered as a
+        // pre-filled selection the visitor can see and correct, never a redirect.
+        let tzLoading = null;
+        function loadTimezoneMap() {
+            if (window.TZ_TO_ISO) return Promise.resolve(window.TZ_TO_ISO);
+            if (tzLoading) return tzLoading;
+            tzLoading = new Promise((resolve, reject) => {
+                const s = document.createElement('script');
+                s.src = 'assets/timezones.js';
+                s.onload = () => resolve(window.TZ_TO_ISO);
+                s.onerror = () => reject(new Error('timezone table unavailable'));
+                document.head.appendChild(s);
+            });
+            return tzLoading;
+        }
+
+        async function detectRegion() {
+            const button = document.getElementById('heroHere');
+            const note = document.getElementById('heroNote');
+            button.disabled = true;
+            button.textContent = 'Checking…';
+            const finish = (html, resolved) => {
+                note.innerHTML = html;
+                note.classList.toggle('resolved', !!resolved);
+                button.disabled = false;
+                button.textContent = 'Use my region';
+            };
+            let zone = '';
+            try {
+                zone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+                const table = await loadTimezoneMap();
+                const iso = table[zone];
+                if (!iso) throw new Error('unmapped');
+                const rec = countryIndex.get(iso);
+                const sel = document.getElementById('heroCountry');
+                const name = (rec && rec.display) || null;
+                if (!name) {
+                    finish(`Your device's clock says <b>${escapeHTML(zone)}</b>, and this tracker
+                        has no restrictions recorded there. Pick a territory above to look
+                        somewhere else.`, true);
+                    return;
+                }
+                const match = [...sel.options].find(o => window.isoOf(o.value) === iso);
+                if (match) sel.value = match.value;
+                finish(`Guessed <b>${escapeHTML(name)}</b> from your device's clock
+                    (<b>${escapeHTML(zone)}</b>). Nothing left your browser &mdash; correct it above
+                    if that is wrong.`, true);
+                openLookup(match ? match.value : name);
+            } catch (err) {
+                finish(`Could not work out your region${zone ? ` from <b>${escapeHTML(zone)}</b>` : ''}.
+                    Pick a country or territory above instead.`, true);
+            }
+        }
+
+        /* ================= Coverage ================= */
+
+        // How the index is actually evidenced, counted rather than claimed. A
+        // tracker that hides its thin rows is asking to be trusted on faith.
+        function renderCoverage() {
+            const counts = { dedicated: 0, 'country-default': 0, uncorroborated: 0 };
+            let total = 0;
+            censorshipData.forEach(p => p.bannedIn.forEach(b => {
+                if (counts[b.evidence] === undefined) counts[b.evidence] = 0;
+                counts[b.evidence]++;
+                total++;
+            }));
+            document.getElementById('coveragePanel').innerHTML =
+                ['dedicated', 'country-default', 'uncorroborated'].map(key => {
+                    const n = counts[key] || 0;
+                    const pct = total ? Math.round((n / total) * 100) : 0;
+                    return `<div class="coverage-row ${key}">
+                        <span class="coverage-name">${Site.EVIDENCE[key].label}</span>
+                        <span class="coverage-count">${n} <span class="coverage-name">(${pct}%)</span></span>
+                        <span class="coverage-bar"><i style="width:${pct}%"></i></span>
+                        <span class="coverage-blurb">${Site.EVIDENCE[key].blurb}</span>
+                    </div>`;
+                }).join('');
+            const thin = counts.uncorroborated || 0;
+            const cta = document.getElementById('coverageCta');
+            if (thin) {
+                cta.innerHTML = `<button class="view-chip" data-view="uncorroborated" type="button">Show the ${thin} rows needing a source</button>`;
+                cta.hidden = false;
+            }
+        }
+
+        /* ================= What changed ================= */
+
+        // A compact read of changelog.json, which build_changelog.py derives from
+        // the dataset's own git history. Silent when the file is absent, so a
+        // deploy that has not run the build never shows an empty box.
+        async function renderChangeFeed() {
+            const section = document.getElementById('changesSection');
+            const res = await fetch('changelog.json', { cache: 'no-cache' }).catch(() => null);
+            if (!res || !res.ok) { section.hidden = true; return; }
+            const data = await res.json().catch(() => null);
+            if (!data || !data.events || !data.events.length) { section.hidden = true; return; }
+            const count = (event, kind, label) => event[kind].length
+                ? `<span class="${kind}">${label} ${event[kind].length}</span>` : '';
+            document.getElementById('changeFeed').innerHTML = data.events.slice(0, 6).map(event => `
+                <div class="change-row">
+                    <span class="change-date">${escapeHTML(Site.fmtDate(event.date))}</span>
+                    <span class="change-subject">
+                        <a href="/changes#${escapeHTML(event.id)}">${escapeHTML(event.subject)}</a></span>
+                    <span class="change-counts">
+                        ${count(event, 'added', '+')}
+                        ${count(event, 'removed', '&minus;')}
+                        ${count(event, 'changed', 'revised')}
+                        ${count(event, 'renamed', 'renamed')}
+                    </span>
                 </div>`).join('');
         }
 
@@ -2900,6 +3556,43 @@
             renderPlatforms();
             syncHash();
         });
+        document.getElementById('sortBy').addEventListener('change', e => {
+            currentSort = VALID_SORTS.includes(e.target.value) ? e.target.value : 'name';
+            renderPlatforms();
+            syncHash();
+        });
+        document.querySelectorAll('.view-chip[data-view]').forEach(chip => {
+            chip.addEventListener('click', () => setView(chip.dataset.view));
+        });
+        document.getElementById('resetViews').addEventListener('click', clearAllFilters);
+        document.getElementById('coverageCta').addEventListener('click', e => {
+            if (!e.target.closest('[data-view]')) return;
+            currentView = '';                       // always switch to it, never off it
+            setView('uncorroborated');
+            document.getElementById('platformGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        document.getElementById('stageShowScheduled').addEventListener('click', () => {
+            currentView = '';
+            setView('scheduled');
+            document.getElementById('platformGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Compact list: collapse every row to its heading so the 49 platform
+        // names fit on a screen or two, then expand them one at a time.
+        const compactToggle = document.getElementById('compactToggle');
+        compactToggle.addEventListener('click', () => {
+            const list = document.getElementById('platformGrid');
+            const on = list.classList.toggle('compact');
+            compactToggle.classList.toggle('active', on);
+            compactToggle.setAttribute('aria-pressed', String(on));
+            if (!on) list.querySelectorAll('.platform-row.open').forEach(r => r.classList.remove('open'));
+        });
+
+        // Hero lookup
+        document.getElementById('heroGo').addEventListener('click', () =>
+            openLookup(document.getElementById('heroCountry').value));
+        document.getElementById('heroCountry').addEventListener('change', e => openLookup(e.target.value));
+        document.getElementById('heroHere').addEventListener('click', detectRegion);
         document.getElementById('countryJump').addEventListener('change', e => {
             if (e.target.value) openDossier(e.target.value);
         });
@@ -2923,10 +3616,34 @@
         // onclick handlers, so no platform/country name is ever interpolated
         // into an executable attribute (a name with a quote would break it).
         document.getElementById('platformGrid').addEventListener('click', e => {
+            const more = e.target.closest('.chip-more');
+            if (more) { toggleChipOverflow(more); return; }
+            // In compact mode the row heading is the expander.
+            const meta = e.target.closest('.platform-meta');
+            if (meta && document.getElementById('platformGrid').classList.contains('compact')) {
+                meta.closest('.platform-row').classList.toggle('open');
+                return;
+            }
+            const clear = e.target.closest('.no-results-actions [data-clear]');
+            if (clear) { applyEmptyStateAction(clear.dataset.clear); return; }
             const tag = e.target.closest('.country-tag');
             if (!tag || !tag.dataset.platform) return;
             toggleMoreInfo(tag.dataset.platform, tag.dataset.country, tag.dataset.types);
         });
+
+        function applyEmptyStateAction(what) {
+            if (what === 'all') { clearAllFilters(); return; }
+            if (what === 'country') {
+                document.getElementById('countryFilter').value = '';
+                applyCountryFilterState();
+            }
+            if (what === 'search') document.getElementById('searchBox').value = '';
+            if (what === 'filter') setFilter('all');
+            if (what === 'view') currentView = '';
+            syncViewChips();
+            renderPlatforms();
+            syncHash();
+        }
 
         wireRowJumps('dossierRows');
         wireRowJumps('recentList');
@@ -2956,9 +3673,14 @@
             window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
         });
 
-        // Initialize: fetch the dataset, then render
+        // Initialize: fetch the dataset, then render. The freshness readouts,
+        // source legend and change feed are independent of the CSV, so they are
+        // kicked off alongside it rather than queued behind it.
         loadData();
-        loadVerified();
+        Site.loadMeta();
+        renderStatusKey();
+        renderSourceLegend();
+        renderChangeFeed();
 
         // Title redaction: a censor's marker sweeps across a word, holds, then
         // sweeps off — with a brief RGB glitch as it strikes. Occasionally all

@@ -1,0 +1,41 @@
+{
+  "generated_utc": "2026-08-01T11:37:55+00:00",
+  "data_updated": "2026-08-01",
+  "dataset_updated": {
+    "censorship_data.csv": "2026-08-01",
+    "vpn_data.json": "2026-07-27",
+    "age_verification_data.json": "2026-07-27"
+  },
+  "sources_checked": "2026-07-26",
+  "sources_count": 168,
+  "censorship": {
+    "entries": 454,
+    "platforms": 49,
+    "territories": 78,
+    "by_type": {
+      "complete": 326,
+      "partial": 52,
+      "age": 76
+    },
+    "by_status": {
+      "reported": 327,
+      "enforced": 6,
+      "in_force": 97,
+      "scheduled": 24
+    },
+    "by_evidence": {
+      "uncorroborated": 22,
+      "country-default": 173,
+      "dedicated": 259
+    }
+  },
+  "vpn": {
+    "restrictions": 12,
+    "legislative_efforts": 1,
+    "rejected_efforts": 1
+  },
+  "age_verification": {
+    "timeline": 9,
+    "legislative_efforts": 41
+  }
+}

@@ -2,6 +2,33 @@
 
 A live index of banned, restricted and age-gated platforms worldwide.
 
+## Building
+
+Nothing about the site's own freshness, citation labels or change history is
+written by hand — all of it is derived from the data and its git history. After
+any data change, run:
+
+```
+python3 build.py
+```
+
+That regenerates everything in dependency order and then runs the tests.
+`python3 build.py --check` verifies the generated files are current without
+changing them, which is the right thing for CI. Individually:
+
+| Script                | Generates                        | Why it exists                                                      |
+|-----------------------|----------------------------------|--------------------------------------------------------------------|
+| `build_sources.py`    | `sources.json`                   | Publisher, evidence kind and date for every cited URL              |
+| `build_status.py`     | CSV `status` / `evidence` cols   | Grades each row's stage and how well it is sourced                 |
+| `build_timezones.py`  | `assets/timezones.js`            | Time zone → country, for the client-side "use my region" guess     |
+| `prerender.py`        | baked index in `index.html`      | Crawlers and no-JS visitors get the real list                      |
+| `build_changelog.py`  | `changelog.json`, `feed.xml`     | Dated changelog and RSS, from the dataset's commits                |
+| `build_meta.py`       | `meta.json`                      | The site's two freshness dates and its coverage counts             |
+
+`verify_links.py` is deliberately *not* part of `build.py`: it fetches ~170
+external URLs and belongs in a scheduled job, not in the loop between editing a
+row and looking at it.
+
 ## Editing the data
 
 All ban/restriction data lives in [`censorship_data.csv`](censorship_data.csv) —
@@ -15,7 +42,11 @@ update the tracker. One row per platform+country entry:
 | `since`     | Free-text date the restriction started                                   |
 | `type`      | `complete` (red), `partial` (orange) or `age` (purple, age verification) |
 | `more_info` | Case-file text shown when the tag is clicked                             |
-| `source`    | URL cited as the numbered reference                                      |
+| `source`    | URL cited as the reference                                               |
+| `status`    | **Derived** — `scheduled`, `enforced`, `in_force` or `reported`          |
+| `evidence`  | **Derived** — `dedicated`, `country-default` or `uncorroborated`         |
+
+Leave the last two blank when adding a row; `build_status.py` fills them in.
 
 Notes:
 
@@ -51,11 +82,17 @@ Notes:
 - Run [`verify_links.py`](verify_links.py) after editing sources. It reports
   dead URLs, Wikipedia citations and leftover search-engine placeholders, with
   the rows that cite each, and exits non-zero if any are found. On a **fully
-  clean pass** it writes [`verified.json`](verified.json) (date + source count);
-  the homepage reads that file and shows a "Sources Verified: &lt;date&gt;"
-  badge in the ticker. The badge only appears after a clean run, so it can never
-  claim the citations were checked more recently than they actually were — if a
-  single source is dead, no file is written and no badge shows.
+  clean pass** it writes [`verified.json`](verified.json) (date + source count),
+  which `build_meta.py` turns into the "Sources checked" date every page shows.
+  The date only moves after a clean run, so it can never claim the citations
+  were checked more recently than they actually were — if a single source is
+  dead, no file is written and the old date stands.
+- Since it already downloads every page, `verify_links.py` also records each
+  one's `<title>` into `sources.json`, which is the **only** way a citation
+  gains a headline. Titles are never derived from a URL slug: a slug is not a
+  headline, and dressing one up as if it were would be inventing a citation in
+  the least detectable way possible. A page that will not serve us keeps an
+  empty title and its card falls back to publisher, kind and date.
 - **A 200 is not a verification.** The checker answers "does this URL resolve?"
   and nothing more, and a surprising number of sites answer a missing page with
   a 200: Intercom, Quartz, Reuters, Newsweek and Zoom's knowledge base all
@@ -88,6 +125,98 @@ Notes:
   Subnational
   jurisdictions (e.g. US states) map to their parent country with
   `{ iso: "US", subnational: true }` and are aggregated under it on the map.
+
+## Citations
+
+Every source URL is classified by [`sources.py`](sources.py) into a publisher
+and an evidence kind, written to `sources.json` by `build_sources.py`, and
+rendered by `Site.sourceCard` / `Site.sourceChip`
+([`assets/site.js`](assets/site.js)) as a card naming who published it rather
+than a footnote number. `[47]` told a reader nothing about what they were about
+to open, and hid the most useful distinction in the dataset: whether a row rests
+on the law itself, on a network measurement, or on somebody reporting a block.
+
+| Kind          | What it means                                                                   |
+|---------------|---------------------------------------------------------------------------------|
+| `primary`     | The instrument itself — decree, act, regulator decision, or the platform's notice |
+| `measurement` | Somebody probed the network and recorded what happened (OONI, Citizen Lab)        |
+| `research`    | Sustained monitoring or legal analysis (Freedom House, HRW, CPJ, EFF, law firms)  |
+| `reporting`   | Journalism                                                                       |
+| `reference`   | Encyclopedic — Wikipedia, only for the default-restricted countries              |
+
+**Adding a citation from a new outlet means adding its domain to
+`sources.REGISTRY`.** `tests/test_sources.py` fails otherwise: an unregistered
+domain still renders, degraded to a bare hostname, which is exactly the kind of
+quiet shabbiness that survives forever unless something fails.
+
+Two things are derived and never guessed. **Dates** come out of the URL path
+(`/2024/06/12/`) and are simply absent when the path has none. **Wayback links**
+are unwrapped, so an archived Reuters story reads as Reuters with the snapshot
+date, not as `web.archive.org`.
+
+## Status and coverage
+
+Three restriction types were doing too much work. A French law adopted in July
+2026 that bites in September 2026, a Chinese block OONI has measured weekly for
+a decade, and one news story saying a country started throttling something all
+rendered identically. `build_status.py` splits that across two derived columns:
+
+- **`status`** — what stage the restriction is at. `scheduled` (dated in the
+  future), `enforced` (a measurement source), `in_force` (a primary source),
+  `reported` (everything else).
+- **`evidence`** — how well the row is covered. `dedicated` (a
+  platform-specific source), `country-default` (rests on a country-wide fact:
+  either the `HEAVY_CENSORSHIP` boilerplate or a country article cited in place
+  of a real source), `uncorroborated` (no source at all).
+
+Both are written into the CSV rather than computed in the browser, so they are
+diffable, auditable and correctable — overwrite a cell by hand and the script
+leaves it alone (`--force` re-derives everything). The one exception is
+`scheduled`: the pages recompute it from the date at render time, because "is
+this date in the future?" goes stale on its own.
+
+`evidence` is what the coverage panel in Methodology counts. Showing that 38% of
+the index rests on a country-wide fallback is more useful than implying all of
+it is equally sourced, and the 22 rows marked `uncorroborated` are one click
+away on the homepage — a tracker that hides its thin rows is asking to be
+trusted on faith.
+
+## What changed
+
+[`changes.html`](changes.html) renders `changelog.json`, which
+`build_changelog.py` derives by replaying the CSV commit by commit. Each change
+has a stable anchor (`/changes#<short sha>`) so a single edit can be cited, and
+`feed.xml` is an RSS feed of the same thing — followable without an account or
+an email address.
+
+Rows are keyed on (platform, country, type), so a partial block hardening into a
+complete one shows as a removal plus an addition: that is a different
+restriction, not an edited one. **Renames are pulled back out of that churn**,
+because this repo's history is full of them ("Turkey" → "Türkiye", "China" →
+"People's Republic of China") and left alone they read as 39 restrictions
+appearing and 39 vanishing on the same day — alarming, and false. A removal and
+an addition pair into a rename only when they differ in exactly one of platform
+or country, agree on everything else, and the match is unambiguous. Anything
+short of that stays reported as a removal and an addition: a wrong pairing would
+misreport a real change as cosmetic.
+
+## Freshness
+
+Nothing states a date. All three pages once carried the string
+`Data As Of: JUL 2026`, typed by hand into three files, and it had already
+drifted a week from `verified.json`. `build_meta.py` writes `meta.json` with two
+separate dates, and `Site.loadMeta` fills them into any element carrying
+`data-meta`:
+
+- **Data updated** — the newest commit touching any dataset file, or today when
+  a dataset has uncommitted edits.
+- **Sources checked** — when `verify_links.py` last confirmed every URL
+  resolves.
+
+They answer different questions ("we edited the data" and "we re-opened every
+citation" are different promises) so they are shown as two lines.
+`tests/test_freshness.py` fails if a hand-typed currency date reappears on any
+page.
 
 ## Age verification timeline
 
@@ -156,7 +285,7 @@ renders between the grid and the notes.
 
 ## Dark mode
 
-All three pages follow the system light/dark preference automatically and have
+All four pages follow the system light/dark preference automatically and have
 a moon/sun toggle in the top bar ([`assets/theme.js`](assets/theme.js)). A
 manual choice is saved to `localStorage` and shared across pages; picking the
 theme that matches the system again returns to auto-sync. Styling rules:
@@ -168,6 +297,15 @@ theme that matches the system again returns to auto-sync. Styling rules:
   auto). Keep them in sync when adding a variable.
 - Near-black brand colours in `PLATFORM_COLORS` are auto-swapped to the
   foreground colour in dark mode (`isDarkBrand` in `index.html`).
+
+## Shared components
+
+Citation cards, status and coverage badges, and the freshness
+readout live in [`assets/site.css`](assets/site.css) and
+[`assets/site.js`](assets/site.js) rather than being pasted into each page,
+because they must say exactly the same thing everywhere. `site.css` may only use
+CSS variables the pages already define, so it never needs a dark-mode copy of
+its own.
 
 ## Fonts
 
@@ -183,14 +321,64 @@ actually used. To change weights or families, regenerate `fonts.css` and the
 
 ## Homepage controls
 
-The index can be narrowed three ways, and they compose: the **type filter**
-(All / Complete / Partial / Age), a **country lens** (the `In:` dropdown, one
-territory at a time) and free-text **search** (matches platform *and* country
-names). All three, plus any open map dossier, are mirrored into the URL hash
-(`#filter=age&in=France&q=…&country=FR`) so any view can be bookmarked and
-shared. Case-file panels are rendered lazily — the grid ships as light shells
-and a panel's markup is built the first time it is opened — so editing search
-does not rebuild 450+ hidden panels on every keystroke.
+The index can be narrowed four ways, and they compose: the **type filter**
+(All / Complete / Partial / Age), a **saved view** (New in last 90 days,
+Scheduled, Measured as blocking, Needs corroboration), a **country lens** (the
+`In:` dropdown, one territory at a time) and free-text **search** (matches
+platform *and* country names). It can also be **sorted** alphabetically, by most
+territories, or by most recent. All of that, plus any open map dossier, is
+mirrored into the URL hash (`#filter=age&view=new90&sort=recent&in=France&q=…`)
+so any view can be bookmarked and shared.
+
+Case-file panels are rendered lazily — the grid ships as light shells and a
+panel's markup is built the first time it is opened — so editing search does not
+rebuild 450+ hidden panels on every keystroke. Long rows collapse past 14
+country chips (Russia Today alone spans 37, which buried everything under it),
+and **Compact list** collapses every row to its heading so 49 platform names fit
+on a screen or two. Deep links open whatever is hiding their target first.
+
+An empty result offers to undo whichever narrowing actually caused it, rather
+than leaving the visitor to guess which of four to clear.
+
+### Country-first lookup
+
+The question most visitors arrive with is "what applies where I am?", which used
+to need a scroll to the map or a hunt through the filter row. The lookup block
+sits above the search box and opens a territory's full dossier.
+
+**Use my region** guesses from `Intl.DateTimeFormat().resolvedOptions().timeZone`
+and a generated lookup table (`build_timezones.py`). Every other way of doing
+this is wrong for this audience: the Geolocation API throws a permission prompt
+and returns coordinates that then need a reverse-geocoding request, and IP
+lookup services are a third-party request that tells someone else you were
+reading a censorship tracker. Both leak. Reading the clock runs entirely inside
+the page, with no prompt and no request. It is a guess — a VPN or a manually set
+clock will fool it — so it fills the selector in rather than navigating, and
+says what it guessed and from what.
+
+## Accessibility
+
+Things that were broken, are fixed, and are pinned by
+`tests/test_accessibility.py` because they are easy to undo while tidying:
+
+- The search field's visible `SEARCH_` is a real `<label for="searchBox">`, not
+  a decorative `<span>` — the input previously had no accessible name at all.
+- Citations carry a full description ("Source: Reuters, reporting, 12 June 2026,
+  opens in a new tab") instead of the number `[47]`.
+- Opening a country dossier moves focus to its heading, which takes
+  `tabindex="-1"`. Clicking a country on the map used to leave a keyboard
+  visitor parked on the map while the answer rendered somewhere below them.
+- Revealing a case file from a dossier or the recent list focuses the chip it
+  opened, expanding any collapsed row or chip overflow hiding it.
+- Every form control on every page resolves to a name.
+
+## VPN matrix on a small screen
+
+15 providers against a dozen jurisdictions is a wide table anywhere and an
+unusable one on a phone. Two ways out, neither of which hides data: narrow to a
+single jurisdiction, or **Flip axes** so the long list runs down the page rather
+than across it. Narrowing the table never narrows the country notes below it —
+that is a way to read the data, not a claim the rest stopped applying.
 
 ## World map & derived sections
 

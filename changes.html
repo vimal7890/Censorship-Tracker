@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>What Changed &mdash; Global Censorship Tracker</title>
+    <meta name="description" content="Dated changelog of every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms worldwide — with an RSS feed and a shareable link for each change.">
+    <link rel="canonical" href="https://censorship.my/changes">
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Global Censorship Tracker">
+    <meta property="og:title" content="What Changed &mdash; Global Censorship Tracker">
+    <meta property="og:description" content="Dated changelog of every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms worldwide.">
+    <meta property="og:url" content="https://censorship.my/changes">
+    <meta property="og:image" content="https://censorship.my/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Global Censorship Tracker — banned, restricted and age-gated platforms worldwide.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What Changed &mdash; Global Censorship Tracker">
+    <meta name="twitter:description" content="Dated changelog of every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms worldwide.">
+    <meta name="twitter:image" content="https://censorship.my/og-image.png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="favicon-32.png">
+    <link rel="preload" href="assets/fonts/Chivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/SourceSans3-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/site.css">
+    <link rel="alternate" type="application/rss+xml" title="Global Censorship Tracker — what changed" href="feed.xml">
+    <script src="assets/theme.js"></script>
+    <style>
+        :root {
+            color-scheme: light;
+            --paper-white: #ffffff;
+            --background: #f9f9f9;
+            --surface-bright: #f9f9f9;
+            --surface-container-low: #f3f3f3;
+            --surface-container: #eeeeee;
+            --surface-container-high: #e8e8e8;
+            --primary: #1e1e1e;
+            --redaction-black: #000000;
+            --on-primary: #ffffff;
+            --secondary: #b6152e;
+            --alert-orange: #fd7e14;
+            --age-purple: #7d3ac1;
+            --age-purple-light: #d9c3f2;
+            --tertiary-green: #35b14d;
+            --muted-gray: #6c757d;
+            --on-surface-variant: #444748;
+            --outline-variant: #c4c7c7;
+            --ticker-muted: #d0d0d0;
+        }
+
+        /* ---------- Dark theme ----------
+           Two identical variable blocks: [data-theme="dark"] is the manual
+           toggle, the media query is system auto (no override stored). */
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --paper-white: #161616;
+            --background: #0d0d0d;
+            --surface-bright: #1a1a1a;
+            --surface-container-low: #212121;
+            --surface-container: #282828;
+            --surface-container-high: #303030;
+            --primary: #e8e8e8;
+            --redaction-black: #f2f2f2;
+            --on-primary: #121212;
+            --secondary: #ef4358;
+            --alert-orange: #fd7e14;
+            --age-purple: #a465e6;
+            --age-purple-light: #503a6d;
+            --tertiary-green: #3fc75a;
+            --muted-gray: #98a0a7;
+            --on-surface-variant: #c2c5c7;
+            --outline-variant: #3a3d3e;
+            --ticker-muted: #4f4f4f;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                --paper-white: #161616;
+                --background: #0d0d0d;
+                --surface-bright: #1a1a1a;
+                --surface-container-low: #212121;
+                --surface-container: #282828;
+                --surface-container-high: #303030;
+                --primary: #e8e8e8;
+                --redaction-black: #f2f2f2;
+                --on-primary: #121212;
+                --secondary: #ef4358;
+                --alert-orange: #fd7e14;
+                --age-purple: #a465e6;
+                --age-purple-light: #503a6d;
+                --tertiary-green: #3fc75a;
+                --muted-gray: #98a0a7;
+                --on-surface-variant: #c2c5c7;
+                --outline-variant: #3a3d3e;
+                --ticker-muted: #4f4f4f;
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .label-caps {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            background: var(--paper-white);
+            border-bottom: 2px solid var(--primary);
+        }
+        .topbar-inner {
+            position: relative;
+            max-width: 1472px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 14px 16px;
+            gap: 10px;
+        }
+        .wordmark {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: var(--redaction-black);
+            padding-right: 30px; /* clear the floating theme toggle on mobile */
+        }
+        /* ---------- Theme toggle (moon/sun) ---------- */
+        .theme-toggle {
+            position: absolute; /* mobile: floats top-right, out of the flow */
+            top: 10px;
+            right: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            padding: 0;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            cursor: pointer;
+            transition: background 0.12s, color 0.12s;
+        }
+        .theme-toggle:hover { background: var(--primary); color: var(--paper-white); }
+        .theme-toggle svg { width: 16px; height: 16px; display: block; }
+        .theme-toggle .icon-sun { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+        :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+            :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+        }
+        .topnav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        .site-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px 12px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: var(--muted-gray);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            padding: 4px 0 3px;
+            transition: color 0.15s, border-color 0.15s;
+        }
+        .nav-link:hover { color: var(--primary); }
+        .nav-link.active {
+            color: var(--redaction-black);
+            border-bottom-color: var(--tertiary-green);
+        }
+        .ticker {
+            width: 100%;
+            background: var(--redaction-black);
+            color: var(--paper-white);
+        }
+        .ticker-inner {
+            max-width: 1472px;
+            margin: 0 auto;
+            padding: 8px 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ticker-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+        }
+        .ticker-inner b { color: var(--paper-white); }
+
+        .main-wrap {
+            flex: 1 0 auto;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
+        }
+
+        .page-head { margin-bottom: 28px; }
+        .page-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 900;
+            font-size: 36px;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .page-title .accent { color: var(--tertiary-green); }
+        .page-sub {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--on-surface-variant);
+            max-width: 40em;
+        }
+
+        .section {
+            margin-top: 40px;
+        }
+        .section-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            border-top: 2px solid var(--primary);
+            background: var(--paper-white);
+            margin-top: auto;
+        }
+        .footer-inner {
+            max-width: 1472px;
+            margin: 0 auto;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--muted-gray);
+        }
+
+        @media (min-width: 768px) {
+            .topbar-inner, .ticker-inner, .footer-inner, .main-wrap {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            .topbar-inner { flex-direction: row; align-items: center; padding-top: 16px; padding-bottom: 16px; }
+            .topnav { width: auto; justify-content: flex-end; }
+            .theme-toggle { position: static; margin-left: 4px; }
+            .main-wrap { padding-top: 40px; }
+            .wordmark { font-size: 26px; white-space: nowrap; padding-right: 0; }
+            .page-title { font-size: 48px; }
+        }
+
+        /* ---------- Changelog ----------
+           One card per commit that actually moved the data. Each card carries a
+           stable anchor (the short SHA) so a single change can be linked to,
+           which is the difference between a page you read and a page you cite. */
+        .change-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .change-toolbar label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+        }
+        .change-toolbar input, .change-toolbar select {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            padding: 9px 11px;
+        }
+        .change-toolbar input { flex: 1 1 220px; min-width: 0; }
+        .change-toolbar input:focus-visible,
+        .change-toolbar select:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+        .entry {
+            border: 1px solid var(--outline-variant);
+            border-left: 4px solid var(--tertiary-green);
+            background: var(--paper-white);
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            scroll-margin-top: 120px;
+        }
+        .entry:target {
+            border-left-color: var(--secondary);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        .entry-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 14px;
+            margin-bottom: 10px;
+        }
+        .entry-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+        }
+        .entry-title {
+            font-family: 'Chivo', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            line-height: 1.25;
+            flex: 1 1 260px;
+        }
+        .entry-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted-gray);
+            text-decoration: none;
+            border-bottom: 1px solid var(--outline-variant);
+        }
+        .entry-link:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+        .group { margin-top: 12px; }
+        .group-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--on-primary);
+            background: var(--muted-gray);
+            padding: 2px 7px;
+        }
+        .group.added .group-name { background: var(--tertiary-green); }
+        .group.removed .group-name { background: var(--secondary); }
+        .group.changed .group-name { background: var(--alert-orange); }
+        .group-rows {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .row-pill {
+            font-size: 13px;
+            line-height: 1.35;
+            border: 1px solid var(--outline-variant);
+            background: var(--surface-container-low);
+            padding: 5px 9px;
+        }
+        .row-pill b { font-weight: 700; }
+        .row-pill .rp-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--paper-white);
+            padding: 1px 5px;
+            margin-right: 5px;
+        }
+        .rp-type.complete { background: var(--secondary); }
+        .rp-type.partial { background: var(--alert-orange); }
+        .rp-type.age { background: var(--age-purple); }
+        .row-pill .rp-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--muted-gray);
+            margin-left: 5px;
+        }
+
+        .empty, .loading {
+            border: 1px dashed var(--outline-variant);
+            padding: 32px 20px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--muted-gray);
+        }
+        .more-wrap { text-align: center; margin-top: 20px; }
+        .more-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            padding: 11px 18px;
+            cursor: pointer;
+        }
+        .more-btn:hover { background: var(--primary); color: var(--on-primary); }
+        .feed-note {
+            border: 1px solid var(--outline-variant);
+            background: var(--surface-container-low);
+            padding: 12px 14px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+        .feed-note a { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="wordmark">Global Censorship Tracker</div>
+            <nav class="topnav" aria-label="Site">
+                <div class="site-nav-links">
+                    <a href="/" class="nav-link">Blocked Websites</a>
+                    <a href="/age-verification" class="nav-link">Age Verification</a>
+                    <a href="/vpn-tracker" class="nav-link">VPN</a>
+                    <a href="/changes" class="nav-link active">What Changed</a>
+                </div>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span>&#9632;&nbsp; Change Log</span>
+            <span>Dated changes: <b id="tickerChanges">--</b></span>
+            <span>Row edits: <b id="tickerEdits">--</b></span>
+            <span data-meta-row hidden>Data updated: <b data-meta="data-updated"></b></span>
+            <span data-meta-row hidden>Sources checked: <b data-meta="sources-checked"></b></span>
+        </div>
+    </div>
+
+    <main class="main-wrap">
+        <div class="page-head">
+            <h1 class="page-title">What <span class="accent">Changed</span></h1>
+            <p class="page-sub">Every addition, removal and revision to the index, dated and
+            linkable. Generated from the dataset's own history, so nothing here is written
+            twice: if the data changed, this changed.</p>
+        </div>
+
+        <p class="feed-note">
+            <b>Follow it:</b> <a href="feed.xml">subscribe to the RSS feed</a> in any reader —
+            no account, no email address, no third party told what you read. Each change below
+            has its own link: use the <b>#</b> to cite one.
+        </p>
+
+        <noscript>
+            <div class="empty">This page renders <a href="changelog.json">changelog.json</a>
+            with JavaScript. That file, and the <a href="feed.xml">RSS feed</a>, are both plain
+            text you can read directly.</div>
+        </noscript>
+
+        <div class="change-toolbar">
+            <label for="changeSearch">Filter</label>
+            <input type="text" id="changeSearch" placeholder="Platform or country… e.g. TikTok, France" autocomplete="off">
+            <label for="changeKind" class="visually-hidden">Kind of change</label>
+            <select id="changeKind">
+                <option value="">All kinds of change</option>
+                <option value="added">Additions only</option>
+                <option value="removed">Removals only</option>
+                <option value="changed">Revisions only</option>
+                <option value="renamed">Renames only</option>
+            </select>
+        </div>
+
+        <div id="changeList"><div class="loading">Loading the change history…</div></div>
+        <div class="more-wrap"><button class="more-btn" id="showMore" type="button" hidden>Show older changes</button></div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">&copy; 2026 Censorship_Tracker &mdash; change log</div>
+    </footer>
+
+    <script src="assets/site.js"></script>
+    <script>
+        const PAGE = 25;
+        let events = [];
+        let shown = PAGE;
+
+        const KINDS = [
+            ['added', 'Added'],
+            ['removed', 'Removed'],
+            ['changed', 'Revised'],
+            ['renamed', 'Renamed'],
+        ];
+
+        const esc = Site.escapeHTML;
+
+        // One row inside a change card. Renames and revisions say what moved,
+        // because "Facebook — France" on its own does not tell you whether the
+        // restriction is new, gone, or simply better sourced than it was.
+        function pill(row, kind) {
+            let note = '';
+            if (kind === 'renamed') note = `was ${row.was}`;
+            else if (row.fields) note = row.fields.join(', ') + ' updated';
+            else if (row.since) note = row.since;
+            return `<span class="row-pill">
+                <span class="rp-type ${esc(row.type)}">${esc(row.type)}</span>
+                <b>${esc(row.platform)}</b> &mdash; ${esc(row.country)}
+                ${note ? `<span class="rp-note">${esc(note)}</span>` : ''}
+            </span>`;
+        }
+
+        function card(event) {
+            const groups = KINDS.map(([kind, label]) => {
+                const rows = event[kind] || [];
+                if (!rows.length) return '';
+                return `<div class="group ${kind}">
+                    <span class="group-name">${label} &middot; ${rows.length}</span>
+                    <div class="group-rows">${rows.map(r => pill(r, kind)).join('')}</div>
+                </div>`;
+            }).join('');
+            return `<article class="entry" id="${esc(event.id)}">
+                <div class="entry-head">
+                    <span class="entry-date">${esc(Site.fmtDate(event.date))}</span>
+                    <h2 class="entry-title">${esc(event.subject)}</h2>
+                    <a class="entry-link" href="#${esc(event.id)}" aria-label="Link to this change, ${esc(event.subject)}">#</a>
+                </div>
+                ${groups}
+            </article>`;
+        }
+
+        // Filtering keeps a change only if some row inside it survives, and shows
+        // only the surviving rows — otherwise searching "France" returns a card
+        // full of the other forty countries edited in the same commit.
+        function narrow(event, term, kind) {
+            const out = { ...event };
+            let total = 0;
+            KINDS.forEach(([k]) => {
+                let rows = event[k] || [];
+                if (kind && k !== kind) rows = [];
+                if (term) {
+                    rows = rows.filter(r =>
+                        r.platform.toLowerCase().includes(term) ||
+                        r.country.toLowerCase().includes(term) ||
+                        (r.was || '').toLowerCase().includes(term));
+                }
+                out[k] = rows;
+                total += rows.length;
+            });
+            return total ? out : null;
+        }
+
+        function render() {
+            const term = document.getElementById('changeSearch').value.trim().toLowerCase();
+            const kind = document.getElementById('changeKind').value;
+            const matched = events.map(e => narrow(e, term, kind)).filter(Boolean);
+            const list = document.getElementById('changeList');
+            const more = document.getElementById('showMore');
+            if (!matched.length) {
+                list.innerHTML = `<div class="empty">No changes match that filter.
+                    ${term || kind ? '<button class="more-btn" id="clearFilters" type="button" style="margin-top:14px">Clear the filter</button>' : ''}</div>`;
+                more.hidden = true;
+                return;
+            }
+            list.innerHTML = matched.slice(0, shown).map(card).join('');
+            more.hidden = matched.length <= shown;
+            more.textContent = `Show older changes (${matched.length - shown} left)`;
+        }
+
+        document.getElementById('changeList').addEventListener('click', e => {
+            if (!e.target.closest('#clearFilters')) return;
+            document.getElementById('changeSearch').value = '';
+            document.getElementById('changeKind').value = '';
+            render();
+        });
+        document.getElementById('showMore').addEventListener('click', () => {
+            shown += PAGE;
+            render();
+        });
+        ['changeSearch', 'changeKind'].forEach(id =>
+            document.getElementById(id).addEventListener('input', () => { shown = PAGE; render(); }));
+
+        // A deep link may point at a change that has not been paged in yet, so
+        // load enough to reach it before scrolling — otherwise the anchor lands
+        // on nothing and the citation looks broken.
+        function jumpToHash() {
+            const id = location.hash.slice(1);
+            if (!id) return;
+            const index = events.findIndex(e => e.id === id);
+            if (index >= shown) { shown = index + 1; render(); }
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ block: 'center' });
+        }
+
+        Site.loadMeta();
+        fetch('changelog.json', { cache: 'no-cache' })
+            .then(res => res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`)))
+            .then(data => {
+                events = data.events || [];
+                document.getElementById('tickerChanges').textContent = events.length;
+                document.getElementById('tickerEdits').textContent =
+                    events.reduce((n, e) => n + (e.total || 0), 0);
+                render();
+                jumpToHash();
+            })
+            .catch(err => {
+                document.getElementById('changeList').innerHTML =
+                    `<div class="empty">Could not load changelog.json — ${esc(err.message)}.<br>
+                     Regenerate it with <code>python3 build_changelog.py</code>.</div>`;
+            });
+        window.addEventListener('hashchange', jumpToHash);
+    </script>
+</body>
+</html>

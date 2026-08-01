@@ -74,9 +74,14 @@ window.COUNTRY_TO_ISO = {
     "Albania": "AL",
     "North Macedonia": "MK",
 
-    // Name variants used by vpn_data.json / age_verification_data.json
+    // Name variants used by vpn_data.json / age_verification_data.json.
+    // "United Kingdom" is also still the short form in eight CSV rows the 2026
+    // rename pass did not reach; without it those restrictions resolve to no ISO
+    // code at all and vanish from the map, the dossiers and the country lookup —
+    // silently, since an unmapped name is simply skipped.
     "United Arab Emirates": "AE",
     "United Kingdom of Great Britain and Northern Ireland": "GB",
+    "United Kingdom": "GB",
     "Belarus": "BY",
     "Iraq": "IQ",
     "Oman": "OM",

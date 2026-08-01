@@ -1,0 +1,1566 @@
+{
+  "generated_utc": "2026-08-01T11:37:52+00:00",
+  "count": 171,
+  "by_kind": {
+    "primary": 32,
+    "measurement": 5,
+    "research": 48,
+    "reporting": 79,
+    "reference": 7
+  },
+  "kind_labels": {
+    "primary": "Primary",
+    "measurement": "Measurement",
+    "research": "Research",
+    "reporting": "Reporting",
+    "reference": "Reference"
+  },
+  "kind_blurbs": {
+    "primary": "The instrument itself — a law, decree, regulator decision or the platform's own notice.",
+    "measurement": "Network measurement: somebody probed the connection and recorded what happened.",
+    "research": "Sustained monitoring or legal analysis by an NGO, institute or law firm.",
+    "reporting": "Journalism.",
+    "reference": "Encyclopedic. Used only for countries whose internet is restricted by default."
+  },
+  "sources": {
+    "https://about.fb.com/news/2023/06/changes-to-news-availability-on-our-platforms-in-canada/": {
+      "url": "https://about.fb.com/news/2023/06/changes-to-news-availability-on-our-platforms-in-canada/",
+      "domain": "about.fb.com",
+      "publisher": "Meta newsroom",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://ag.ny.gov/resources/individuals/consumer-issues/technology/protecting-children-online": {
+      "url": "https://ag.ny.gov/resources/individuals/consumer-issues/technology/protecting-children-online",
+      "domain": "ag.ny.gov",
+      "publisher": "New York Attorney General",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://apnews.com/article/denmark-social-media-ban-australia-1e96a3df3276cc2033a6f04effb89f51": {
+      "url": "https://apnews.com/article/denmark-social-media-ban-australia-1e96a3df3276cc2033a6f04effb89f51",
+      "domain": "apnews.com",
+      "publisher": "Associated Press",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://arkansasadvocate.com/2025/12/16/federal-court-again-blocks-arkansas-social-media-restrictions/": {
+      "url": "https://arkansasadvocate.com/2025/12/16/federal-court-again-blocks-arkansas-social-media-restrictions/",
+      "domain": "arkansasadvocate.com",
+      "publisher": "Arkansas Advocate",
+      "kind": "reporting",
+      "date": "2025-12-16",
+      "archived": false,
+      "title": ""
+    },
+    "https://avpassociation.com/us-state-age-verification-laws-for-adult-content/": {
+      "url": "https://avpassociation.com/us-state-age-verification-laws-for-adult-content/",
+      "domain": "avpassociation.com",
+      "publisher": "Age Verification Providers Association",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://balkaninsight.com/2025/07/09/turkish-court-orders-block-on-xs-grok-for-insulting-leaders/bi/": {
+      "url": "https://balkaninsight.com/2025/07/09/turkish-court-orders-block-on-xs-grok-for-insulting-leaders/bi/",
+      "domain": "balkaninsight.com",
+      "publisher": "Balkan Insight",
+      "kind": "reporting",
+      "date": "2025-07-09",
+      "archived": false,
+      "title": ""
+    },
+    "https://blog.twitch.tv/en/2023/12/05/an-update-on-twitch-in-korea/": {
+      "url": "https://blog.twitch.tv/en/2023/12/05/an-update-on-twitch-in-korea/",
+      "domain": "blog.twitch.tv",
+      "publisher": "Twitch blog",
+      "kind": "primary",
+      "date": "2023-12-05",
+      "archived": false,
+      "title": ""
+    },
+    "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420": {
+      "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420",
+      "domain": "capitol.texas.gov",
+      "publisher": "Texas Legislature",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://citizenlab.ca/2014/07/line-kakaotalk-disruptions-china/": {
+      "url": "https://citizenlab.ca/2014/07/line-kakaotalk-disruptions-china/",
+      "domain": "citizenlab.ca",
+      "publisher": "Citizen Lab",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://citizenlab.ca/2021/03/tiktok-vs-douyin-security-privacy-analysis/": {
+      "url": "https://citizenlab.ca/2021/03/tiktok-vs-douyin-security-privacy-analysis/",
+      "domain": "citizenlab.ca",
+      "publisher": "Citizen Lab",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://citizenlab.ca/research/line-kakaotalk-disruptions-china/": {
+      "url": "https://citizenlab.ca/research/line-kakaotalk-disruptions-china/",
+      "domain": "citizenlab.ca",
+      "publisher": "Citizen Lab",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://coconuts.co/jakarta/news/indonesias-it-ministry-may-lift-bans-on-reddit-vimeo-if-they-register-as-pses/": {
+      "url": "https://coconuts.co/jakarta/news/indonesias-it-ministry-may-lift-bans-on-reddit-vimeo-if-they-register-as-pses/",
+      "domain": "coconuts.co",
+      "publisher": "Coconuts",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://courthousenews.com/sixth-circuit-revives-ohios-parental-consent-law-for-kids-social-media/": {
+      "url": "https://courthousenews.com/sixth-circuit-revives-ohios-parental-consent-law-for-kids-social-media/",
+      "domain": "courthousenews.com",
+      "publisher": "Courthouse News Service",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://cpj.org/2022/03/taliban-detain-and-release-at-least-7-journalists-and-media-workers-ban-broadcasts-from-bbc-voa-dw/": {
+      "url": "https://cpj.org/2022/03/taliban-detain-and-release-at-least-7-journalists-and-media-workers-ban-broadcasts-from-bbc-voa-dw/",
+      "domain": "cpj.org",
+      "publisher": "Committee to Protect Journalists",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://cpj.org/2022/07/turkey-blocks-websites-of-voice-of-america-and-deutsche-welle/": {
+      "url": "https://cpj.org/2022/07/turkey-blocks-websites-of-voice-of-america-and-deutsche-welle/",
+      "domain": "cpj.org",
+      "publisher": "Committee to Protect Journalists",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://cpj.org/2024/03/venezuela-pulls-german-tv-station-deutsche-welle-off-the-air-after-critical-report/": {
+      "url": "https://cpj.org/2024/03/venezuela-pulls-german-tv-station-deutsche-welle-off-the-air-after-critical-report/",
+      "domain": "cpj.org",
+      "publisher": "Committee to Protect Journalists",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://crtc.gc.ca/eng/archive/2022/2022-68.htm": {
+      "url": "https://crtc.gc.ca/eng/archive/2022/2022-68.htm",
+      "domain": "crtc.gc.ca",
+      "publisher": "CRTC (Canada)",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://deadline.com/2022/02/foxtel-australia-suspend-russian-channel-rt-ukraine-invasion-1234960915/": {
+      "url": "https://deadline.com/2022/02/foxtel-australia-suspend-russian-channel-rt-ukraine-invasion-1234960915/",
+      "domain": "deadline.com",
+      "publisher": "Deadline",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://deadline.com/2022/03/directv-drops-rt-america-russia-ukraine-1234968328/": {
+      "url": "https://deadline.com/2022/03/directv-drops-rt-america-russia-ukraine-1234968328/",
+      "domain": "deadline.com",
+      "publisher": "Deadline",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://devactivity.com/insights/navigating-digital-divides-accessing-git-productivity-tools-in-challenged-regions/": {
+      "url": "https://devactivity.com/insights/navigating-digital-divides-accessing-git-productivity-tools-in-challenged-regions/",
+      "domain": "devactivity.com",
+      "publisher": "DevActivity",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://docs.github.com/en/site-policy/other-site-policies/github-and-trade-controls": {
+      "url": "https://docs.github.com/en/site-policy/other-site-policies/github-and-trade-controls",
+      "domain": "docs.github.com",
+      "publisher": "GitHub docs",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.royanews.tv/news/63626/Government-source-clarifies-TikTok-ban-in-Jordan": {
+      "url": "https://en.royanews.tv/news/63626/Government-source-clarifies-TikTok-ban-in-Jordan",
+      "domain": "en.royanews.tv",
+      "publisher": "Roya News",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.wikipedia.org/wiki/CGTN_(TV_channel)": {
+      "url": "https://en.wikipedia.org/wiki/CGTN_(TV_channel)",
+      "domain": "en.wikipedia.org",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.wikipedia.org/wiki/Censorship_of_YouTube": {
+      "url": "https://en.wikipedia.org/wiki/Censorship_of_YouTube",
+      "domain": "en.wikipedia.org",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.wikipedia.org/wiki/Internet_censorship_in_China": {
+      "url": "https://en.wikipedia.org/wiki/Internet_censorship_in_China",
+      "domain": "en.wikipedia.org",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.wikipedia.org/wiki/Internet_censorship_in_Iran": {
+      "url": "https://en.wikipedia.org/wiki/Internet_censorship_in_Iran",
+      "domain": "en.wikipedia.org",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.wikipedia.org/wiki/Internet_in_Eritrea": {
+      "url": "https://en.wikipedia.org/wiki/Internet_in_Eritrea",
+      "domain": "en.wikipedia.org",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.wikipedia.org/wiki/Internet_in_North_Korea": {
+      "url": "https://en.wikipedia.org/wiki/Internet_in_North_Korea",
+      "domain": "en.wikipedia.org",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.wikipedia.org/wiki/Internet_in_Turkmenistan": {
+      "url": "https://en.wikipedia.org/wiki/Internet_in_Turkmenistan",
+      "domain": "en.wikipedia.org",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://en.zona.media/article/2026/04/07/russian_internet_censorship_2026": {
+      "url": "https://en.zona.media/article/2026/04/07/russian_internet_censorship_2026",
+      "domain": "en.zona.media",
+      "publisher": "Mediazona",
+      "kind": "reporting",
+      "date": "2026-04-07",
+      "archived": false,
+      "title": ""
+    },
+    "https://eurasianet.org/turkmenistan-domestic-developments-69": {
+      "url": "https://eurasianet.org/turkmenistan-domestic-developments-69",
+      "domain": "eurasianet.org",
+      "publisher": "Eurasianet",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://europeanjournalists.org/blog/2021/11/03/belarus-government-must-restore-access-to-deutsche-welle-website/": {
+      "url": "https://europeanjournalists.org/blog/2021/11/03/belarus-government-must-restore-access-to-deutsche-welle-website/",
+      "domain": "europeanjournalists.org",
+      "publisher": "European Federation of Journalists",
+      "kind": "research",
+      "date": "2021-11-03",
+      "archived": false,
+      "title": ""
+    },
+    "https://explorer.ooni.org/m/20240406122250.018354_RU_webconnectivity_171d76e7f399ff4f": {
+      "url": "https://explorer.ooni.org/m/20240406122250.018354_RU_webconnectivity_171d76e7f399ff4f",
+      "domain": "explorer.ooni.org",
+      "publisher": "OONI Explorer",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/belarus/freedom-net/2024": {
+      "url": "https://freedomhouse.org/country/belarus/freedom-net/2024",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/china/freedom-net/2022": {
+      "url": "https://freedomhouse.org/country/china/freedom-net/2022",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/china/freedom-net/2024": {
+      "url": "https://freedomhouse.org/country/china/freedom-net/2024",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/cuba/freedom-net/2022": {
+      "url": "https://freedomhouse.org/country/cuba/freedom-net/2022",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/egypt/freedom-net/2021": {
+      "url": "https://freedomhouse.org/country/egypt/freedom-net/2021",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/egypt/freedom-net/2023": {
+      "url": "https://freedomhouse.org/country/egypt/freedom-net/2023",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/iran/freedom-net/2024": {
+      "url": "https://freedomhouse.org/country/iran/freedom-net/2024",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/kazakhstan/freedom-net/2016": {
+      "url": "https://freedomhouse.org/country/kazakhstan/freedom-net/2016",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/kyrgyzstan/freedom-net/2024": {
+      "url": "https://freedomhouse.org/country/kyrgyzstan/freedom-net/2024",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/myanmar/freedom-net/2021": {
+      "url": "https://freedomhouse.org/country/myanmar/freedom-net/2021",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/myanmar/freedom-net/2024": {
+      "url": "https://freedomhouse.org/country/myanmar/freedom-net/2024",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/saudi-arabia/freedom-net/2019": {
+      "url": "https://freedomhouse.org/country/saudi-arabia/freedom-net/2019",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/ukraine/freedom-net/2023": {
+      "url": "https://freedomhouse.org/country/ukraine/freedom-net/2023",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/united-arab-emirates/freedom-net/2023": {
+      "url": "https://freedomhouse.org/country/united-arab-emirates/freedom-net/2023",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/united-arab-emirates/freedom-net/2024": {
+      "url": "https://freedomhouse.org/country/united-arab-emirates/freedom-net/2024",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/country/vietnam/freedom-net/2024": {
+      "url": "https://freedomhouse.org/country/vietnam/freedom-net/2024",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://freedomhouse.org/report/freedom-net": {
+      "url": "https://freedomhouse.org/report/freedom-net",
+      "domain": "freedomhouse.org",
+      "publisher": "Freedom House",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://github.blog/2021-01-05-advancing-developer-freedom-github-is-fully-available-in-iran/": {
+      "url": "https://github.blog/2021-01-05-advancing-developer-freedom-github-is-fully-available-in-iran/",
+      "domain": "github.blog",
+      "publisher": "GitHub blog",
+      "kind": "primary",
+      "date": "2021-01-05",
+      "archived": false,
+      "title": ""
+    },
+    "https://help.grindr.com/hc/en-us/articles/1500010811581-Censored-countries-regions": {
+      "url": "https://help.grindr.com/hc/en-us/articles/1500010811581-Censored-countries-regions",
+      "domain": "help.grindr.com",
+      "publisher": "Grindr support",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://help.netflix.com/en/node/14164": {
+      "url": "https://help.netflix.com/en/node/14164",
+      "domain": "help.netflix.com",
+      "publisher": "Netflix help centre",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries": {
+      "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries",
+      "domain": "help.openai.com",
+      "publisher": "OpenAI help centre",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://iapp.org/news/a/why-linkedin-was-banned-in-russia": {
+      "url": "https://iapp.org/news/a/why-linkedin-was-banned-in-russia",
+      "domain": "iapp.org",
+      "publisher": "IAPP",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://kathmandupost.com/science-technology/2025/08/27/telegram-moves-to-register-in-nepal-after-government-ban": {
+      "url": "https://kathmandupost.com/science-technology/2025/08/27/telegram-moves-to-register-in-nepal-after-government-ban",
+      "domain": "kathmandupost.com",
+      "publisher": "The Kathmandu Post",
+      "kind": "reporting",
+      "date": "2025-08-27",
+      "archived": false,
+      "title": ""
+    },
+    "https://kun.uz/en/news/2025/10/31/banned-but-paying-taxes-tiktok-listed-among-uzbekistans-major-e-service-taxpayers": {
+      "url": "https://kun.uz/en/news/2025/10/31/banned-but-paying-taxes-tiktok-listed-among-uzbekistans-major-e-service-taxpayers",
+      "domain": "kun.uz",
+      "publisher": "Kun.uz",
+      "kind": "reporting",
+      "date": "2025-10-31",
+      "archived": false,
+      "title": ""
+    },
+    "https://le.utah.gov/~2025/bills/static/SB0142.html": {
+      "url": "https://le.utah.gov/~2025/bills/static/SB0142.html",
+      "domain": "le.utah.gov",
+      "publisher": "Utah Legislature",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://leave-russia.org/twitch": {
+      "url": "https://leave-russia.org/twitch",
+      "domain": "leave-russia.org",
+      "publisher": "Leave Russia (KSE Institute)",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://leg.colorado.gov/bills/SB26-051": {
+      "url": "https://leg.colorado.gov/bills/SB26-051",
+      "domain": "leg.colorado.gov",
+      "publisher": "Colorado General Assembly",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://lis.virginia.gov/bill-details/20251/SB854": {
+      "url": "https://lis.virginia.gov/bill-details/20251/SB854",
+      "domain": "lis.virginia.gov",
+      "publisher": "Virginia Legislative Information System",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://loveingroup.com/us-age-verification-laws-west-virginia-deadline/": {
+      "url": "https://loveingroup.com/us-age-verification-laws-west-virginia-deadline/",
+      "domain": "loveingroup.com",
+      "publisher": "Lovein Group",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://manassa.news/en/stories/29786": {
+      "url": "https://manassa.news/en/stories/29786",
+      "domain": "manassa.news",
+      "publisher": "Al-Manassa",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://meduza.io/en/news/2021/09/03/roskomnadzor-blocks-six-vpn-services-including-top-rated-providers": {
+      "url": "https://meduza.io/en/news/2021/09/03/roskomnadzor-blocks-six-vpn-services-including-top-rated-providers",
+      "domain": "meduza.io",
+      "publisher": "Meduza",
+      "kind": "reporting",
+      "date": "2021-09-03",
+      "archived": false,
+      "title": ""
+    },
+    "https://nebraskapublicmedia.org/en/news/news-articles/federal-judge-blocks-nebraskas-social-media-age-verification-law-from-going-into-effect-in-july/": {
+      "url": "https://nebraskapublicmedia.org/en/news/news-articles/federal-judge-blocks-nebraskas-social-media-age-verification-law-from-going-into-effect-in-july/",
+      "domain": "nebraskapublicmedia.org",
+      "publisher": "Nebraska Public Media",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://netchoice.org/netchoice-v-carr-georgia-sb-351/": {
+      "url": "https://netchoice.org/netchoice-v-carr-georgia-sb-351/",
+      "domain": "netchoice.org",
+      "publisher": "NetChoice",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://netchoice.org/netchoice-v-skrmetti-tennessee/": {
+      "url": "https://netchoice.org/netchoice-v-skrmetti-tennessee/",
+      "domain": "netchoice.org",
+      "publisher": "NetChoice",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://netchoice.org/netchoice-wins-permanent-block-of-louisiana-age-verification-law-protecting-free-speech-and-parental-rights/": {
+      "url": "https://netchoice.org/netchoice-wins-permanent-block-of-louisiana-age-verification-law-protecting-free-speech-and-parental-rights/",
+      "domain": "netchoice.org",
+      "publisher": "NetChoice",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://newsroom.spotify.com/2022-03-02/spotifys-statement-in-response-to-the-war-in-ukraine/": {
+      "url": "https://newsroom.spotify.com/2022-03-02/spotifys-statement-in-response-to-the-war-in-ukraine/",
+      "domain": "newsroom.spotify.com",
+      "publisher": "Spotify newsroom",
+      "kind": "primary",
+      "date": "2022-03-02",
+      "archived": false,
+      "title": ""
+    },
+    "https://oag.ca.gov/sb976": {
+      "url": "https://oag.ca.gov/sb976",
+      "domain": "oag.ca.gov",
+      "publisher": "California Attorney General",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://on.substack.com/p/our-position-on-the-online-safety": {
+      "url": "https://on.substack.com/p/our-position-on-the-online-safety",
+      "domain": "on.substack.com",
+      "publisher": "Substack",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://ooni.org/post/2023-russia-a-year-after-the-conflict/": {
+      "url": "https://ooni.org/post/2023-russia-a-year-after-the-conflict/",
+      "domain": "ooni.org",
+      "publisher": "OONI",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://proprivacy.com/guides/are-vpns-legal": {
+      "url": "https://proprivacy.com/guides/are-vpns-legal",
+      "domain": "proprivacy.com",
+      "publisher": "ProPrivacy",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://protonvpn.com/blog/algeria-blocks-roblox": {
+      "url": "https://protonvpn.com/blog/algeria-blocks-roblox",
+      "domain": "protonvpn.com",
+      "publisher": "Proton VPN",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules": {
+      "url": "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules",
+      "domain": "reclaimthenet.org",
+      "publisher": "Reclaim The Net",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://rsf.org/en/bbc-news-persian-can-be-accessed-again-online-iran-thanks-rsf-mirror-site": {
+      "url": "https://rsf.org/en/bbc-news-persian-can-be-accessed-again-online-iran-thanks-rsf-mirror-site",
+      "domain": "rsf.org",
+      "publisher": "Reporters Without Borders",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://sanctionsnews.bakermckenzie.com/ukraine-introduces-a-new-sanctions-package-against-russian-it-and-sports-industries/": {
+      "url": "https://sanctionsnews.bakermckenzie.com/ukraine-introduces-a-new-sanctions-package-against-russian-it-and-sports-industries/",
+      "domain": "sanctionsnews.bakermckenzie.com",
+      "publisher": "Baker McKenzie sanctions news",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://searchengineland.com/china-blocks-duckduckgo-privacy-search-engine-203855": {
+      "url": "https://searchengineland.com/china-blocks-duckduckgo-privacy-search-engine-203855",
+      "domain": "searchengineland.com",
+      "publisher": "Search Engine Land",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://support.apple.com/HT212614": {
+      "url": "https://support.apple.com/HT212614",
+      "domain": "support.apple.com",
+      "publisher": "Apple support",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://support.spotify.com/us/article/full-list-of-territories-where-spotify-is-available/": {
+      "url": "https://support.spotify.com/us/article/full-list-of-territories-where-spotify-is-available/",
+      "domain": "support.spotify.com",
+      "publisher": "Spotify support",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://techcrunch.com/2014/10/30/messaging-app-and-voice-calling-provider-viber-is-now-blocked-in-china/": {
+      "url": "https://techcrunch.com/2014/10/30/messaging-app-and-voice-calling-provider-viber-is-now-blocked-in-china/",
+      "domain": "techcrunch.com",
+      "publisher": "TechCrunch",
+      "kind": "reporting",
+      "date": "2014-10-30",
+      "archived": false,
+      "title": ""
+    },
+    "https://techcrunch.com/2016/12/26/1431709/": {
+      "url": "https://techcrunch.com/2016/12/26/1431709/",
+      "domain": "techcrunch.com",
+      "publisher": "TechCrunch",
+      "kind": "reporting",
+      "date": "2016-12-26",
+      "archived": false,
+      "title": ""
+    },
+    "https://techcrunch.com/2017/03/16/china-blocks-pinterest/": {
+      "url": "https://techcrunch.com/2017/03/16/china-blocks-pinterest/",
+      "domain": "techcrunch.com",
+      "publisher": "TechCrunch",
+      "kind": "reporting",
+      "date": "2017-03-16",
+      "archived": false,
+      "title": ""
+    },
+    "https://techcrunch.com/2017/07/29/apple-removes-vpn-apps-from-the-app-store-in-china/": {
+      "url": "https://techcrunch.com/2017/07/29/apple-removes-vpn-apps-from-the-app-store-in-china/",
+      "domain": "techcrunch.com",
+      "publisher": "TechCrunch",
+      "kind": "reporting",
+      "date": "2017-07-29",
+      "archived": false,
+      "title": ""
+    },
+    "https://techcrunch.com/2023/07/06/threads-surges-to-top-5-on-apples-china-app-store-despite-ban/": {
+      "url": "https://techcrunch.com/2023/07/06/threads-surges-to-top-5-on-apples-china-app-store-despite-ban/",
+      "domain": "techcrunch.com",
+      "publisher": "TechCrunch",
+      "kind": "reporting",
+      "date": "2023-07-06",
+      "archived": false,
+      "title": ""
+    },
+    "https://therecord.media/russia-bans-viber-terrorism-trafficking": {
+      "url": "https://therecord.media/russia-bans-viber-terrorism-trafficking",
+      "domain": "therecord.media",
+      "publisher": "The Record",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/": {
+      "url": "https://time.com/4642916/china-vpn-internet-great-firewall-censorship/",
+      "domain": "time.com",
+      "publisher": "TIME",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://variety.com/2022/tv/news/taliban-bans-bbc-dw-voa-afghanistan-news-ban-1235216796/": {
+      "url": "https://variety.com/2022/tv/news/taliban-bans-bbc-dw-voa-afghanistan-news-ban-1235216796/",
+      "domain": "variety.com",
+      "publisher": "Variety",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://vietnamnet.vn/en/vietnam-to-block-telegram-telecom-firms-must-report-by-june-2-2404153.html": {
+      "url": "https://vietnamnet.vn/en/vietnam-to-block-telegram-telecom-firms-must-report-by-june-2-2404153.html",
+      "domain": "vietnamnet.vn",
+      "publisher": "VietNamNet",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://web.archive.org/web/20210204080512/https://www.washingtonpost.com/business/iranian-users-of-signal-messaging-service-say-app-blocked/2021/01/25/262b9a68-5f4b-11eb-a177-7765f29a9524_story.html": {
+      "url": "https://web.archive.org/web/20210204080512/https://www.washingtonpost.com/business/iranian-users-of-signal-messaging-service-say-app-blocked/2021/01/25/262b9a68-5f4b-11eb-a177-7765f29a9524_story.html",
+      "domain": "washingtonpost.com",
+      "publisher": "The Washington Post",
+      "kind": "reporting",
+      "date": "2021-01-25",
+      "archived": true,
+      "title": ""
+    },
+    "https://web.archive.org/web/20260618022442/https://www.thegazette.com/news/state/porn-websites-must-verify-users-age-under-law-signed-by-iowa-gov-reynolds/article_c9b3e1f3-8211-4498-8ac3-5745511170a9.html": {
+      "url": "https://web.archive.org/web/20260618022442/https://www.thegazette.com/news/state/porn-websites-must-verify-users-age-under-law-signed-by-iowa-gov-reynolds/article_c9b3e1f3-8211-4498-8ac3-5745511170a9.html",
+      "domain": "thegazette.com",
+      "publisher": "The Gazette",
+      "kind": "reporting",
+      "date": "2026-06-18",
+      "archived": true,
+      "title": ""
+    },
+    "https://web.archive.org/web/20260702020444/https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions": {
+      "url": "https://web.archive.org/web/20260702020444/https://www.esafety.gov.au/about-us/industry-regulation/social-media-age-restrictions",
+      "domain": "esafety.gov.au",
+      "publisher": "eSafety Commissioner (Australia)",
+      "kind": "primary",
+      "date": "2026-07-02",
+      "archived": true,
+      "title": ""
+    },
+    "https://web.archive.org/web/20260709181239/https://legislature.idaho.gov/sessioninfo/2026/legislation/H0542/": {
+      "url": "https://web.archive.org/web/20260709181239/https://legislature.idaho.gov/sessioninfo/2026/legislation/H0542/",
+      "domain": "legislature.idaho.gov",
+      "publisher": "Idaho Legislature",
+      "kind": "primary",
+      "date": "2026-07-09",
+      "archived": true,
+      "title": ""
+    },
+    "https://windscribe.com/blog/are-vpns-legal/": {
+      "url": "https://windscribe.com/blog/are-vpns-legal/",
+      "domain": "windscribe.com",
+      "publisher": "Windscribe",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.404media.co/wisconsin-age-verification-bill-vetoed/": {
+      "url": "https://www.404media.co/wisconsin-age-verification-bill-vetoed/",
+      "domain": "404media.co",
+      "publisher": "404 Media",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.aa.com.tr/en/asia-pacific/vietnam-weighs-tighter-social-media-rules-for-children-under-16/4008112": {
+      "url": "https://www.aa.com.tr/en/asia-pacific/vietnam-weighs-tighter-social-media-rules-for-children-under-16/4008112",
+      "domain": "aa.com.tr",
+      "publisher": "Anadolu Agency",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.accessnow.org/iran-internet-shutdowns/": {
+      "url": "https://www.accessnow.org/iran-internet-shutdowns/",
+      "domain": "accessnow.org",
+      "publisher": "Access Now",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.accessnow.org/myanmar-vpn-ban/": {
+      "url": "https://www.accessnow.org/myanmar-vpn-ban/",
+      "domain": "accessnow.org",
+      "publisher": "Access Now",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.accessnow.org/turkmenistan-internet-shutdowns/": {
+      "url": "https://www.accessnow.org/turkmenistan-internet-shutdowns/",
+      "domain": "accessnow.org",
+      "publisher": "Access Now",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.aclund.org/en/legislation/senate-bill-2380": {
+      "url": "https://www.aclund.org/en/legislation/senate-bill-2380",
+      "domain": "aclund.org",
+      "publisher": "ACLU of North Dakota",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.aljazeera.com/news/2026/4/23/turkiye-mps-pass-bill-to-restrict-social-media-use-for-children-under-15": {
+      "url": "https://www.aljazeera.com/news/2026/4/23/turkiye-mps-pass-bill-to-restrict-social-media-use-for-children-under-15",
+      "domain": "aljazeera.com",
+      "publisher": "Al Jazeera",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most": {
+      "url": "https://www.aljazeera.com/news/2026/5/31/iran-reinstates-some-internet-access-but-restrictions-remain-for-most",
+      "domain": "aljazeera.com",
+      "publisher": "Al Jazeera",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.alusra.gov.ae/en/news/cabinet-children-social-media-access/": {
+      "url": "https://www.alusra.gov.ae/en/news/cabinet-children-social-media-access/",
+      "domain": "alusra.gov.ae",
+      "publisher": "Government of the United Arab Emirates",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.arabnews.com/node/2631762/middle-east": {
+      "url": "https://www.arabnews.com/node/2631762/middle-east",
+      "domain": "arabnews.com",
+      "publisher": "Arab News",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/": {
+      "url": "https://www.article19.org/resources/iraq-blanket-ban-access-internet-violation-freedom-expression/",
+      "domain": "article19.org",
+      "publisher": "Article 19",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.bbc.com/news/articles/c5y2nddvmryo": {
+      "url": "https://www.bbc.com/news/articles/c5y2nddvmryo",
+      "domain": "bbc.com",
+      "publisher": "BBC News",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.bbc.com/news/articles/cvg50168ddgo": {
+      "url": "https://www.bbc.com/news/articles/cvg50168ddgo",
+      "domain": "bbc.com",
+      "publisher": "BBC News",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.bbc.com/news/technology-65431914": {
+      "url": "https://www.bbc.com/news/technology-65431914",
+      "domain": "bbc.com",
+      "publisher": "BBC News",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.bbc.com/news/world-asia-55929654": {
+      "url": "https://www.bbc.com/news/world-asia-55929654",
+      "domain": "bbc.com",
+      "publisher": "BBC News",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.biometricupdate.com/202604/gabon-institutes-social-media-age-verification-for-under-16s": {
+      "url": "https://www.biometricupdate.com/202604/gabon-institutes-social-media-age-verification-for-under-16s",
+      "domain": "biometricupdate.com",
+      "publisher": "Biometric Update",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.bleepingcomputer.com/news/security/uk-to-require-id-or-face-scan-before-you-can-make-social-media-accounts/": {
+      "url": "https://www.bleepingcomputer.com/news/security/uk-to-require-id-or-face-scan-before-you-can-make-social-media-accounts/",
+      "domain": "bleepingcomputer.com",
+      "publisher": "BleepingComputer",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.business-humanrights.org/en/latest-news/apples-new-private-relay-feature-wont-be-available-in-china-egypt-and-other-countries/": {
+      "url": "https://www.business-humanrights.org/en/latest-news/apples-new-private-relay-feature-wont-be-available-in-china-egypt-and-other-countries/",
+      "domain": "business-humanrights.org",
+      "publisher": "Business & Human Rights Resource Centre",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.business-standard.com/article/international/myanmar-blocks-wikipedia-in-all-languages-internet-suspended-121022100112_1.html": {
+      "url": "https://www.business-standard.com/article/international/myanmar-blocks-wikipedia-in-all-languages-internet-suspended-121022100112_1.html",
+      "domain": "business-standard.com",
+      "publisher": "Business Standard",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.cnn.com/2021/02/11/media/bbc-news-banned-china/index.html": {
+      "url": "https://www.cnn.com/2021/02/11/media/bbc-news-banned-china/index.html",
+      "domain": "cnn.com",
+      "publisher": "CNN",
+      "kind": "reporting",
+      "date": "2021-02-11",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.cnn.com/2026/02/12/tech/russia-whatsapp-social-media-clampdown-intl": {
+      "url": "https://www.cnn.com/2026/02/12/tech/russia-whatsapp-social-media-clampdown-intl",
+      "domain": "cnn.com",
+      "publisher": "CNN",
+      "kind": "reporting",
+      "date": "2026-02-12",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.comparitech.com/blog/vpn-privacy/vpn-etisalat/": {
+      "url": "https://www.comparitech.com/blog/vpn-privacy/vpn-etisalat/",
+      "domain": "comparitech.com",
+      "publisher": "Comparitech",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.computing.co.uk/news/2025/legislation-regulation/spotify-introduces-facial-age-checks-in-uk": {
+      "url": "https://www.computing.co.uk/news/2025/legislation-regulation/spotify-introduces-facial-age-checks-in-uk",
+      "domain": "computing.co.uk",
+      "publisher": "Computing",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rt-russia-today-and-sputnik-s-broadcasting-in-the-eu/": {
+      "url": "https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rt-russia-today-and-sputnik-s-broadcasting-in-the-eu/",
+      "domain": "consilium.europa.eu",
+      "publisher": "Council of the European Union",
+      "kind": "primary",
+      "date": "2022-03-02",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.dabangasudan.org/en/all-news/article/sudan-to-block-whatsapp-calls-citing-security-concerns": {
+      "url": "https://www.dabangasudan.org/en/all-news/article/sudan-to-block-whatsapp-calls-citing-security-concerns",
+      "domain": "dabangasudan.org",
+      "publisher": "Radio Dabanga",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data": {
+      "url": "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data",
+      "domain": "eff.org",
+      "publisher": "Electronic Frontier Foundation",
+      "kind": "research",
+      "date": "2022-12-01",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.eff.org/deeplinks/2025/08/americans-be-warned-lessons-reddits-chaotic-uk-age-verification-rollout": {
+      "url": "https://www.eff.org/deeplinks/2025/08/americans-be-warned-lessons-reddits-chaotic-uk-age-verification-rollout",
+      "domain": "eff.org",
+      "publisher": "Electronic Frontier Foundation",
+      "kind": "research",
+      "date": "2025-08-01",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.flsenate.gov/Session/Bill/2024/3": {
+      "url": "https://www.flsenate.gov/Session/Bill/2024/3",
+      "domain": "flsenate.gov",
+      "publisher": "Florida Senate",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.franceinfo.fr/internet/reseaux-sociaux/interdiction-des-reseaux-sociaux-aux-moins-de-15-ans-telephones-interdits-au-lycee-ce-que-contient-la-proposition-de-loi-qui-doit-etre-votee-ce-mardi_8115896.html": {
+      "url": "https://www.franceinfo.fr/internet/reseaux-sociaux/interdiction-des-reseaux-sociaux-aux-moins-de-15-ans-telephones-interdits-au-lycee-ce-que-contient-la-proposition-de-loi-qui-doit-etre-votee-ce-mardi_8115896.html",
+      "domain": "franceinfo.fr",
+      "publisher": "franceinfo",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.gov.uk/government/publications/iran-country-policy-and-information-notes/country-policy-and-information-note-social-media-surveillance-and-sur-place-activities-iran-april-2025-accessible": {
+      "url": "https://www.gov.uk/government/publications/iran-country-policy-and-information-notes/country-policy-and-information-note-social-media-surveillance-and-sur-place-activities-iran-april-2025-accessible",
+      "domain": "gov.uk",
+      "publisher": "UK Government",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.hrw.org/news/2017/05/16/ukraine-revoke-ban-dozens-russian-web-companies": {
+      "url": "https://www.hrw.org/news/2017/05/16/ukraine-revoke-ban-dozens-russian-web-companies",
+      "domain": "hrw.org",
+      "publisher": "Human Rights Watch",
+      "kind": "research",
+      "date": "2017-05-16",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.hrw.org/news/2020/04/07/covid-19-unblock-voice-over-ip-platforms-gulf": {
+      "url": "https://www.hrw.org/news/2020/04/07/covid-19-unblock-voice-over-ip-platforms-gulf",
+      "domain": "hrw.org",
+      "publisher": "Human Rights Watch",
+      "kind": "research",
+      "date": "2020-04-07",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-on-internet-freedom-protection-day": {
+      "url": "https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-on-internet-freedom-protection-day",
+      "domain": "hrw.org",
+      "publisher": "Human Rights Watch",
+      "kind": "research",
+      "date": "2026-03-12",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.hrw.org/world-report/2024/country-chapters/north-korea": {
+      "url": "https://www.hrw.org/world-report/2024/country-chapters/north-korea",
+      "domain": "hrw.org",
+      "publisher": "Human Rights Watch",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.interface-eu.org/publications/social-media-age-gating-eu": {
+      "url": "https://www.interface-eu.org/publications/social-media-age-gating-eu",
+      "domain": "interface-eu.org",
+      "publisher": "interface (Stiftung Neue Verantwortung)",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.legislation.gov.uk/ukpga/2023/50/contents": {
+      "url": "https://www.legislation.gov.uk/ukpga/2023/50/contents",
+      "domain": "legislation.gov.uk",
+      "publisher": "UK legislation",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.loeb.com/en/insights/publications/2026/06/childrens-online-privacy-2026-state-app-store-design-code-and-social-media-laws": {
+      "url": "https://www.loeb.com/en/insights/publications/2026/06/childrens-online-privacy-2026-state-app-store-design-code-and-social-media-laws",
+      "domain": "loeb.com",
+      "publisher": "Loeb & Loeb",
+      "kind": "research",
+      "date": "2026-06-01",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.malaymail.com/news/malaysia/2026/06/01/malaysias-under-16-social-media-rule-starts-today-what-parents-need-to-know/221674": {
+      "url": "https://www.malaymail.com/news/malaysia/2026/06/01/malaysias-under-16-social-media-rule-starts-today-what-parents-need-to-know/221674",
+      "domain": "malaymail.com",
+      "publisher": "Malay Mail",
+      "kind": "reporting",
+      "date": "2026-06-01",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.mississippifreepress.org/bluesky-is-back-for-mississippi-adults-but-larger-social-giants-still-havent-implemented-required-age-checks/": {
+      "url": "https://www.mississippifreepress.org/bluesky-is-back-for-mississippi-adults-but-larger-social-giants-still-havent-implemented-required-age-checks/",
+      "domain": "mississippifreepress.org",
+      "publisher": "Mississippi Free Press",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.neplp.lv/en/restricting-access-websites": {
+      "url": "https://www.neplp.lv/en/restricting-access-websites",
+      "domain": "neplp.lv",
+      "publisher": "NEPLP (Latvia)",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.ofcom.org.uk/online-safety/illegal-and-harmful-content/russia-related-sanctions-for-online-services": {
+      "url": "https://www.ofcom.org.uk/online-safety/illegal-and-harmful-content/russia-related-sanctions-for-online-services",
+      "domain": "ofcom.org.uk",
+      "publisher": "Ofcom",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1635206&lang=2&reg=48": {
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1635206&lang=2&reg=48",
+      "domain": "pib.gov.in",
+      "publisher": "Press Information Bureau (India)",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15211.htm": {
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15211.htm",
+      "domain": "planalto.gov.br",
+      "publisher": "Presidency of the Republic (Brazil)",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/business/media-telecom/netflix-suspends-service-russia-report-2022-03-06/": {
+      "url": "https://www.reuters.com/business/media-telecom/netflix-suspends-service-russia-report-2022-03-06/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2022-03-06",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/legal/litigation/canada-introduces-legislation-ban-social-media-children-under-16-2026-06-10/": {
+      "url": "https://www.reuters.com/legal/litigation/canada-introduces-legislation-ban-social-media-children-under-16-2026-06-10/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2026-06-10",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/legal/litigation/french-lawmakers-vote-social-media-ban-children-2026-07-21/": {
+      "url": "https://www.reuters.com/legal/litigation/french-lawmakers-vote-social-media-ban-children-2026-07-21/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2026-07-21",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/sustainability/society-equity/which-countries-have-blocked-whatsapp-2025-08-14/": {
+      "url": "https://www.reuters.com/sustainability/society-equity/which-countries-have-blocked-whatsapp-2025-08-14/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2025-08-14",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/technology/turkey-blocks-roblox-access-over-abuse-concerns-justice-minister-says-2024-08-08/": {
+      "url": "https://www.reuters.com/technology/turkey-blocks-roblox-access-over-abuse-concerns-justice-minister-says-2024-08-08/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2024-08-08",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/world/africa/somalia-bans-tiktok-telegram-1xbet-over-horrific-content-misinformation-2023-08-21/": {
+      "url": "https://www.reuters.com/world/africa/somalia-bans-tiktok-telegram-1xbet-over-horrific-content-misinformation-2023-08-21/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2023-08-21",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/world/asia-pacific/indonesia-bans-search-engine-duckduckgo-gambling-pornography-concerns-2024-08-02/": {
+      "url": "https://www.reuters.com/world/asia-pacific/indonesia-bans-search-engine-duckduckgo-gambling-pornography-concerns-2024-08-02/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2024-08-02",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.reuters.com/world/europe/portugal-approves-restrictions-social-media-access-children-2026-02-12/": {
+      "url": "https://www.reuters.com/world/europe/portugal-approves-restrictions-social-media-access-children-2026-02-12/",
+      "domain": "reuters.com",
+      "publisher": "Reuters",
+      "kind": "reporting",
+      "date": "2026-02-12",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.rfa.org/english/myanmar/2025/01/02/cybersecurity-law-vpn/": {
+      "url": "https://www.rfa.org/english/myanmar/2025/01/02/cybersecurity-law-vpn/",
+      "domain": "rfa.org",
+      "publisher": "Radio Free Asia",
+      "kind": "reporting",
+      "date": "2025-01-02",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.rferl.org/a/russia-bans-deutsche-welle-rt/31685084.html": {
+      "url": "https://www.rferl.org/a/russia-bans-deutsche-welle-rt/31685084.html",
+      "domain": "rferl.org",
+      "publisher": "Radio Free Europe / Radio Liberty",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.rferl.org/a/taliban-bans-tiktok-video-game-pubg/31814523.html": {
+      "url": "https://www.rferl.org/a/taliban-bans-tiktok-video-game-pubg/31814523.html",
+      "domain": "rferl.org",
+      "publisher": "Radio Free Europe / Radio Liberty",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.rferl.org/a/turkmenistan-last-messaging-app-internet/32535618.html": {
+      "url": "https://www.rferl.org/a/turkmenistan-last-messaging-app-internet/32535618.html",
+      "domain": "rferl.org",
+      "publisher": "Radio Free Europe / Radio Liberty",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.scotusblog.com/2025/08/supreme-court-allows-mississippi-restrictions-on-childrens-social-media-access-to-remain-in-place/": {
+      "url": "https://www.scotusblog.com/2025/08/supreme-court-allows-mississippi-restrictions-on-childrens-social-media-access-to-remain-in-place/",
+      "domain": "scotusblog.com",
+      "publisher": "SCOTUSblog",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.scotusblog.com/2026/07/supreme-court-allows-texas-to-enforce-law-requiring-age-verification-and-parental-consent-on-app/": {
+      "url": "https://www.scotusblog.com/2026/07/supreme-court-allows-texas-to-enforce-law-requiring-age-verification-and-parental-consent-on-app/",
+      "domain": "scotusblog.com",
+      "publisher": "SCOTUSblog",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.scstatehouse.gov/sess126_2025-2026/bills/3431.htm": {
+      "url": "https://www.scstatehouse.gov/sess126_2025-2026/bills/3431.htm",
+      "domain": "scstatehouse.gov",
+      "publisher": "South Carolina Legislature",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.stlpr.org/government-politics-issues/2025-12-02/foes-of-missouris-age-verification-for-porn-websites-may-face-steep-legal-hurdles": {
+      "url": "https://www.stlpr.org/government-politics-issues/2025-12-02/foes-of-missouris-age-verification-for-porn-websites-may-face-steep-legal-hurdles",
+      "domain": "stlpr.org",
+      "publisher": "St. Louis Public Radio",
+      "kind": "reporting",
+      "date": "2025-12-02",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.techradar.com/vpn/vpn-privacy-security/pakistan-begins-blocking-unregistered-vpn-apps-and-this-popular-service-is-among-the-casualties": {
+      "url": "https://www.techradar.com/vpn/vpn-privacy-security/pakistan-begins-blocking-unregistered-vpn-apps-and-this-popular-service-is-among-the-casualties",
+      "domain": "techradar.com",
+      "publisher": "TechRadar",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.techradar.com/vpn/vpn-privacy-security/pakistans-quest-to-regulate-vpn-usage-is-still-up-and-running": {
+      "url": "https://www.techradar.com/vpn/vpn-privacy-security/pakistans-quest-to-regulate-vpn-usage-is-still-up-and-running",
+      "domain": "techradar.com",
+      "publisher": "TechRadar",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.techradar.com/vpn/vpn-privacy-security/russia-is-using-dns-and-dpi-to-block-youtube-telegram-and-whatsapp-while-pushing-state-controlled-max-as-alternative": {
+      "url": "https://www.techradar.com/vpn/vpn-privacy-security/russia-is-using-dns-and-dpi-to-block-youtube-telegram-and-whatsapp-while-pushing-state-controlled-max-as-alternative",
+      "domain": "techradar.com",
+      "publisher": "TechRadar",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.techradar.com/vpn/vpn-services/russias-battle-against-vpns-is-entering-a-new-phase-heres-what-to-expect-in-2026": {
+      "url": "https://www.techradar.com/vpn/vpn-services/russias-battle-against-vpns-is-entering-a-new-phase-heres-what-to-expect-in-2026",
+      "domain": "techradar.com",
+      "publisher": "TechRadar",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.techradar.com/vpn/vpn-services/vpns-are-disappearing-from-indias-app-stores-and-a-2022-law-may-be-the-culprit": {
+      "url": "https://www.techradar.com/vpn/vpn-services/vpns-are-disappearing-from-indias-app-stores-and-a-2022-law-may-be-the-culprit",
+      "domain": "techradar.com",
+      "publisher": "TechRadar",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.theguardian.com/world/2017/jan/05/apple-removes-new-york-times-app-in-china": {
+      "url": "https://www.theguardian.com/world/2017/jan/05/apple-removes-new-york-times-app-in-china",
+      "domain": "theguardian.com",
+      "publisher": "The Guardian",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.theguardian.com/world/2022/mar/04/russia-completely-blocks-access-to-facebook-and-twitter": {
+      "url": "https://www.theguardian.com/world/2022/mar/04/russia-completely-blocks-access-to-facebook-and-twitter",
+      "domain": "theguardian.com",
+      "publisher": "The Guardian",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.themoscowtimes.com/2022/03/21/russian-court-bans-instagram-facebook-as-extremist-a77017": {
+      "url": "https://www.themoscowtimes.com/2022/03/21/russian-court-bans-instagram-facebook-as-extremist-a77017",
+      "domain": "themoscowtimes.com",
+      "publisher": "The Moscow Times",
+      "kind": "reporting",
+      "date": "2022-03-21",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.themoscowtimes.com/2023/07/07/russia-blocks-metas-twitter-competitor-app-lawmaker-a81773": {
+      "url": "https://www.themoscowtimes.com/2023/07/07/russia-blocks-metas-twitter-competitor-app-lawmaker-a81773",
+      "domain": "themoscowtimes.com",
+      "publisher": "The Moscow Times",
+      "kind": "reporting",
+      "date": "2023-07-07",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.themoscowtimes.com/2024/08/09/russia-blocks-signal-messenger-for-violating-countrys-legislation-a85983": {
+      "url": "https://www.themoscowtimes.com/2024/08/09/russia-blocks-signal-messenger-for-violating-countrys-legislation-a85983",
+      "domain": "themoscowtimes.com",
+      "publisher": "The Moscow Times",
+      "kind": "reporting",
+      "date": "2024-08-09",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.themoscowtimes.com/2024/10/09/russia-bans-messaging-platform-discord-a86618": {
+      "url": "https://www.themoscowtimes.com/2024/10/09/russia-bans-messaging-platform-discord-a86618",
+      "domain": "themoscowtimes.com",
+      "publisher": "The Moscow Times",
+      "kind": "reporting",
+      "date": "2024-10-09",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.themoscowtimes.com/2025/12/04/roskomnadzor-confirms-its-blocking-snapchat-and-facetime-calls-a91336": {
+      "url": "https://www.themoscowtimes.com/2025/12/04/roskomnadzor-confirms-its-blocking-snapchat-and-facetime-calls-a91336",
+      "domain": "themoscowtimes.com",
+      "publisher": "The Moscow Times",
+      "kind": "reporting",
+      "date": "2025-12-04",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.tomsguide.com/computing/vpns/here-are-6-sites-requiring-age-verification-will-you-be-affected": {
+      "url": "https://www.tomsguide.com/computing/vpns/here-are-6-sites-requiring-age-verification-will-you-be-affected",
+      "domain": "tomsguide.com",
+      "publisher": "Tom's Guide",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.troutmanprivacy.com/2026/02/alabama-enacts-app-store-law/": {
+      "url": "https://www.troutmanprivacy.com/2026/02/alabama-enacts-app-store-law/",
+      "domain": "troutmanprivacy.com",
+      "publisher": "Troutman Pepper privacy blog",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.turkiyetoday.com/business/turkiye-to-restore-discord-access-soon-minister-says-3221382": {
+      "url": "https://www.turkiyetoday.com/business/turkiye-to-restore-discord-access-soon-minister-says-3221382",
+      "domain": "turkiyetoday.com",
+      "publisher": "Türkiye Today",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.voanews.com/a/iran-blocks-public-access-to-threads-app-raisi-s-account-created-/7171860.html": {
+      "url": "https://www.voanews.com/a/iran-blocks-public-access-to-threads-app-raisi-s-account-created-/7171860.html",
+      "domain": "voanews.com",
+      "publisher": "Voice of America",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.voanews.com/a/russian-court-fines-wikipedia-for-article-about-ukraine-war/7049589.html": {
+      "url": "https://www.voanews.com/a/russian-court-fines-wikipedia-for-article-about-ukraine-war/7049589.html",
+      "domain": "voanews.com",
+      "publisher": "Voice of America",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://www.xinhuanet.com/english/2017-05/07/c_136262175.htm": {
+      "url": "https://www.xinhuanet.com/english/2017-05/07/c_136262175.htm",
+      "domain": "xinhuanet.com",
+      "publisher": "Xinhua (Chinese state media)",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    }
+  }
+}

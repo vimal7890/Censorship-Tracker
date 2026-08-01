@@ -29,6 +29,9 @@
     <link rel="preload" href="assets/fonts/Chivo-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/SourceSans3-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/site.css">
+    <!-- Follow the dataset without an account or an email address. -->
+    <link rel="alternate" type="application/rss+xml" title="Global Censorship Tracker — what changed" href="feed.xml">
     <script src="assets/theme.js"></script>
     <style>
         :root {
@@ -249,6 +252,42 @@
             font-size: 13px; color: var(--on-surface-variant);
         }
         .mx-key span { display: inline-flex; align-items: center; gap: 7px; }
+
+        .mx-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .mx-controls label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-gray);
+        }
+        .mx-controls select, .mx-controls button {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid var(--primary);
+            background: var(--paper-white);
+            color: var(--primary);
+            padding: 8px 11px;
+            cursor: pointer;
+        }
+        .mx-controls button.active { background: var(--primary); color: var(--on-primary); }
+        .mx-controls select:focus-visible,
+        .mx-controls button:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+        .mx-axis {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted-gray);
+            margin-left: auto;
+        }
+        .mx-note-src { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: 6px; }
 
         .matrix-wrap {
             overflow-x: auto; -webkit-overflow-scrolling: touch;
@@ -525,6 +564,7 @@
                     <a href="/" class="nav-link">Blocked Websites</a>
                     <a href="/age-verification" class="nav-link">Age Verification</a>
                     <a href="/vpn-tracker" class="nav-link active">VPN</a>
+                    <a href="/changes" class="nav-link">What Changed</a>
                 </div>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -541,7 +581,8 @@
             <span>Apps tracked: <b id="tickerApps">--</b></span>
             <span>Legislative efforts: <b id="tickerEfforts">--</b></span>
             <span>Private Relay restricted: <b id="tickerRelay">--</b></span>
-            <span>Data As Of: <b>JUL 2026</b></span>
+            <span data-meta-row hidden>Data updated: <b data-meta="data-updated"></b></span>
+            <span data-meta-row hidden>Sources checked: <b data-meta="sources-checked"></b></span>
         </div>
     </div>
 
@@ -582,6 +623,19 @@
                     <span><i class="mx-state restricted" aria-hidden="true"><span class="mx-glyph">!</span>Restricted</i> Degraded, licensed-only or legally risky</span>
                     <span><i class="mx-state blocked" aria-hidden="true"><span class="mx-glyph">&#10005;</span>Blocked</i> Blocked by the state</span>
                     <span><i class="mx-state unavailable" aria-hidden="true"><span class="mx-glyph">&#8856;</span>Unavailable</i> Withdrawn by the provider</span>
+                </div>
+                <!-- 15 providers against a dozen jurisdictions is a wide table
+                     wherever you read it and an unusable one on a phone. Two
+                     ways out, neither of which hides data: narrow to the country
+                     you actually care about, or flip the axes so the long list
+                     runs down the page instead of across it. -->
+                <div class="mx-controls">
+                    <label for="mxCountry">Show</label>
+                    <select id="mxCountry">
+                        <option value="">All jurisdictions</option>
+                    </select>
+                    <button type="button" id="mxTranspose" aria-pressed="false">Flip axes</button>
+                    <span class="mx-axis" id="mxAxisNote">Rows: VPN providers &middot; Columns: jurisdictions</span>
                 </div>
                 <div class="matrix-wrap">
                     <table class="matrix-table" id="appMatrix">
@@ -637,6 +691,7 @@
 
     <div id="hoverTooltip" class="hover-tip" aria-hidden="true"></div>
 
+    <script src="assets/site.js"></script>
     <script>
         function escapeHTML(str) {
             return String(str).replace(/[&<>"']/g, c =>
@@ -761,45 +816,89 @@
             return (app.overrides || {})[country.code] || country.default;
         }
 
+        // Matrix view state. `transposed` swaps which axis runs down the page;
+        // `focusCountry` narrows to one jurisdiction. Both are display choices
+        // over the same data — nothing is ever filtered out of the notes below.
+        let matrixData = null;
+        let transposed = false;
+        let focusCountry = '';
+
+        function mxCell(app, country) {
+            const key = mxStatus(app, country);
+            const meta = MX_STATUS[key] || MX_STATUS.restricted;
+            const named = ((app.overrides || {})[country.code] !== undefined);
+            const tip = registerTip(
+                `<div class="tt-head">${escapeHTML(app.name)} &mdash; ${escapeHTML(country.name)}</div>` +
+                `<div class="tt-verdict ${key}">${meta.glyph} ${meta.label}</div>` +
+                `<div>${escapeHTML(meta.detail.charAt(0).toUpperCase() + meta.detail.slice(1))}.</div>` +
+                `<div class="tt-basis">${named
+                    ? 'Named in reporting for this country'
+                    : `Country baseline &mdash; applies to all ${escapeHTML(country.name)} providers`}</div>` +
+                `<div class="tt-why">${escapeHTML(country.note)}</div>`
+            );
+            // The visible label is short, so each cell carries its own full
+            // reading for anyone not seeing the row and column headers at once.
+            return `<td class="mx-cell" data-tip="${tip}">` +
+                `<span class="mx-state ${key}">` +
+                `<span class="mx-glyph" aria-hidden="true">${meta.glyph}</span>` +
+                `${meta.label}</span>` +
+                `<span class="visually-hidden">${escapeHTML(`${app.name} in ${country.name}: ${meta.label} — ${meta.detail}`)}</span></td>`;
+        }
+
         function renderAppMatrix(matrix) {
-            if (!matrix || !matrix.countries || !matrix.apps) return;
-            const { countries, apps } = matrix;
+            if (matrix) matrixData = matrix;
+            if (!matrixData || !matrixData.countries || !matrixData.apps) return;
+            const { apps } = matrixData;
+            const countries = focusCountry
+                ? matrixData.countries.filter(c => c.code === focusCountry)
+                : matrixData.countries;
+
+            const rows = transposed ? countries : apps;
+            const cols = transposed ? apps : countries;
+            const corner = transposed ? 'Jurisdiction' : 'VPN app';
 
             document.getElementById('appMatrixHead').innerHTML =
-                '<tr><th class="mx-app-head" scope="col">VPN app</th>' +
-                countries.map(c => `<th scope="col">${escapeHTML(c.name)}</th>`).join('') +
+                `<tr><th class="mx-app-head" scope="col">${corner}</th>` +
+                cols.map(c => `<th scope="col">${escapeHTML(c.name)}</th>`).join('') +
                 '</tr>';
 
-            document.getElementById('appMatrixBody').innerHTML = apps.map(app => {
-                const cells = countries.map(c => {
-                    const key = mxStatus(app, c);
-                    const meta = MX_STATUS[key] || MX_STATUS.restricted;
-                    const named = ((app.overrides || {})[c.code] !== undefined);
-                    const tip = registerTip(
-                        `<div class="tt-head">${escapeHTML(app.name)} &mdash; ${escapeHTML(c.name)}</div>` +
-                        `<div class="tt-verdict ${key}">${meta.glyph} ${meta.label}</div>` +
-                        `<div>${escapeHTML(meta.detail.charAt(0).toUpperCase() + meta.detail.slice(1))}.</div>` +
-                        `<div class="tt-basis">${named
-                            ? 'Named in reporting for this country'
-                            : `Country baseline &mdash; applies to all ${escapeHTML(c.name)} providers`}</div>` +
-                        `<div class="tt-why">${escapeHTML(c.note)}</div>`
-                    );
-                    return `<td class="mx-cell" data-tip="${tip}">` +
-                        `<span class="mx-state ${key}">` +
-                        `<span class="mx-glyph" aria-hidden="true">${meta.glyph}</span>` +
-                        `${meta.label}</span></td>`;
-                }).join('');
-                return `<tr><th scope="row" class="mx-app">${escapeHTML(app.name)}</th>${cells}</tr>`;
+            document.getElementById('appMatrixBody').innerHTML = rows.map(row => {
+                const cells = cols.map(col =>
+                    transposed ? mxCell(col, row) : mxCell(row, col)).join('');
+                return `<tr><th scope="row" class="mx-app">${escapeHTML(row.name)}</th>${cells}</tr>`;
             }).join('');
             bindTipContainer(document.getElementById('appMatrix'));
 
-            document.getElementById('matrixNotes').innerHTML = countries.map(c => {
-                const srcs = (c.sources || []).map((s, i) =>
-                    `<a href="${escapeHTML(s)}" target="_blank" rel="noopener noreferrer">[${i + 1}]</a>`
-                ).join('');
-                return `<div class="mx-note"><b>${escapeHTML(c.name)}</b> — ${escapeHTML(c.note)}${srcs}</div>`;
+            document.getElementById('mxAxisNote').textContent = transposed
+                ? 'Rows: jurisdictions · Columns: VPN providers'
+                : 'Rows: VPN providers · Columns: jurisdictions';
+
+            const select = document.getElementById('mxCountry');
+            if (select.options.length <= 1) {
+                select.innerHTML = '<option value="">All jurisdictions</option>' +
+                    matrixData.countries.map(c =>
+                        `<option value="${escapeHTML(c.code)}">${escapeHTML(c.name)}</option>`).join('');
+            }
+
+            // Notes always list every jurisdiction — narrowing the table is a
+            // way to read it, not a claim that the rest stopped applying.
+            document.getElementById('matrixNotes').innerHTML = matrixData.countries.map(c => {
+                const srcs = (c.sources || []).map(s => Site.sourceChip(s)).join(' ');
+                return `<div class="mx-note"><b>${escapeHTML(c.name)}</b> — ${escapeHTML(c.note)}
+                    ${srcs ? `<span class="mx-note-src">${srcs}</span>` : ''}</div>`;
             }).join('');
         }
+
+        document.getElementById('mxCountry').addEventListener('change', e => {
+            focusCountry = e.target.value;
+            renderAppMatrix();
+        });
+        document.getElementById('mxTranspose').addEventListener('click', e => {
+            transposed = !transposed;
+            e.currentTarget.setAttribute('aria-pressed', String(transposed));
+            e.currentTarget.classList.toggle('active', transposed);
+            renderAppMatrix();
+        });
 
         function renderICloudPrivateRelay(relay) {
             if (!relay) return;
@@ -847,6 +946,10 @@
         }
 
         async function loadData() {
+            // Citation cards need the source registry, so wait for it before
+            // anything paints — otherwise the first render shows bare hostnames
+            // and silently replaces them a moment later.
+            await Site.loadSources();
             try {
                 const cached = sessionStorage.getItem('vpn_data_cache');
                 if (cached) {
@@ -902,6 +1005,7 @@
         }
 
         loadData();
+        Site.loadMeta();
     </script>
 </body>
 </html>

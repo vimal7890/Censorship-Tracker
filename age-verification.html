@@ -29,6 +29,9 @@
     <link rel="preload" href="assets/fonts/Chivo-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/SourceSans3-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/site.css">
+    <!-- Follow the dataset without an account or an email address. -->
+    <link rel="alternate" type="application/rss+xml" title="Global Censorship Tracker — what changed" href="feed.xml">
     <script src="assets/theme.js"></script>
     <style>
         :root {
@@ -509,6 +512,7 @@
                     <a href="/" class="nav-link">Blocked Websites</a>
                     <a href="/age-verification" class="nav-link active">Age Verification</a>
                     <a href="/vpn-tracker" class="nav-link">VPN</a>
+                    <a href="/changes" class="nav-link">What Changed</a>
                 </div>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -523,7 +527,8 @@
             <span>&#9632;&nbsp; Age Verification Index</span>
             <span>Passed regimes: <b id="tickerTimeline">--</b></span>
             <span>Legislative efforts: <b id="tickerEfforts">--</b></span>
-            <span>Data As Of: <b>JUL 2026</b></span>
+            <span data-meta-row hidden>Data updated: <b data-meta="data-updated"></b></span>
+            <span data-meta-row hidden>Sources checked: <b data-meta="sources-checked"></b></span>
         </div>
     </div>
 
@@ -553,6 +558,7 @@
         <div class="footer-inner">&copy; 2026 Censorship_Tracker &mdash; Age Verification module</div>
     </footer>
 
+    <script src="assets/site.js"></script>
     <script>
         function statusLabel(status) {
             return status === 'implemented' ? 'Implemented' : 'Scheduled';
@@ -589,8 +595,11 @@
             );
             list.innerHTML = sorted.map(item => {
                 const st = effectiveStatus(item);
+                // A link labelled "Source" tells the reader nothing about what
+                // they are about to open. Site.sourceCard names the publisher,
+                // grades the evidence and dates it — see build_sources.py.
                 const src = item.source
-                    ? `<div class="timeline-source"><a href="${item.source}" target="_blank" rel="noopener noreferrer">Source</a></div>`
+                    ? `<div class="timeline-source">${Site.sourceCard(item.source)}</div>`
                     : '';
                 return `
                     <li class="timeline-item ${st}">
@@ -616,7 +625,7 @@
                 const levelClass = item.level === 'subnational' ? 'subnational'
                     : item.level === 'supranational' ? 'supranational' : '';
                 const src = item.source
-                    ? `<div class="effort-source"><a href="${item.source}" target="_blank" rel="noopener noreferrer">Source</a></div>`
+                    ? `<div class="effort-source">${Site.sourceCard(item.source)}</div>`
                     : '';
                 return `
                     <article class="effort-card ${levelClass}">
@@ -634,6 +643,9 @@
 
         async function loadData() {
             try {
+                // Citation cards need the source registry, so wait for it before
+                // anything paints rather than repainting a moment later.
+                await Site.loadSources();
                 const res = await fetch('age_verification_data.json', { cache: 'no-store' });
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 const data = await res.json();
@@ -650,6 +662,7 @@
         }
 
         loadData();
+        Site.loadMeta();
     </script>
 </body>
 </html>

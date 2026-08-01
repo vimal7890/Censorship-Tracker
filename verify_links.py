@@ -17,10 +17,17 @@ the URL slug, which silently replaced good citations with unrelated pages. So:
 issue a real GET, follow redirects, send a browser User-Agent, and treat the
 bot-protection codes as alive. A source that cannot be verified automatically
 needs a human to look at it — never auto-replace one.
+
+Since it already downloads every page, this also records each one's <title> into
+sources.json, so citations can be shown as a real headline rather than a
+footnote number. Titles are only ever taken from the page itself — never derived
+from a URL slug — so a page that will not serve us simply keeps an empty title
+and the card falls back to publisher and date.
 """
 from __future__ import annotations
 
 import csv
+import html
 import json
 import re
 import subprocess
@@ -32,6 +39,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CSV_PATH = ROOT / "censorship_data.csv"
 JSON_PATHS = [ROOT / "vpn_data.json", ROOT / "age_verification_data.json"]
+# Citation cards (publisher, kind, date, title) — see build_sources.py.
+SOURCES_PATH = ROOT / "sources.json"
 # Written only on a fully clean pass, so its mere presence means "every source
 # resolved and none tripped the Wikipedia/placeholder rules on this date". The
 # homepage reads it to show visitors when the citations were last checked live.
@@ -93,15 +102,62 @@ def wiki_allowed(url: str, rows: list[str]) -> bool:
     return True
 
 
-def status(url: str) -> str:
+TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
+TAG_RE = re.compile(r"<[^>]+>")
+
+
+def clean_title(raw: str) -> str:
+    """Collapse a raw <title> into one readable line.
+
+    Kept deliberately dumb: unescape entities, strip any stray markup, squash
+    whitespace, cap the length. No attempt to strip site-name suffixes — "…|
+    Reuters" is honest, and guessing at which half is the headline is how you
+    end up mangling titles that legitimately contain a pipe or a dash.
+    """
+    text = html.unescape(TAG_RE.sub(" ", raw))
+    text = re.sub(r"\s+", " ", text).strip()
+    return text[:180]
+
+
+def fetch(url: str) -> tuple[str, str]:
+    """(HTTP status code, page title). Title is "" when it cannot be read."""
     try:
         res = subprocess.run(
-            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "-L",
+            ["curl", "-s", "-w", "\n%{http_code}", "-L",
              "--max-time", "25", "-A", UA, url],
-            capture_output=True, text=True, timeout=40)
-        return res.stdout.strip() or "000"
+            capture_output=True, text=True, timeout=40, errors="replace")
     except Exception:
-        return "000"
+        return "000", ""
+    body, _, code = res.stdout.rpartition("\n")
+    code = code.strip() or "000"
+    m = TITLE_RE.search(body)
+    return code, clean_title(m.group(1)) if m else ""
+
+
+def write_sources(titles: dict[str, str]) -> None:
+    """Merge freshly fetched titles into sources.json.
+
+    build_sources.py owns the file's shape; this only fills the one field that
+    needs a live fetch. A page that answered without a usable title keeps
+    whatever title was recorded before rather than being blanked, so one bad
+    day for a CDN does not erase good data.
+    """
+    if not SOURCES_PATH.is_file():
+        print(f"note: {SOURCES_PATH.name} missing — run build_sources.py to create it")
+        return
+    payload = json.loads(SOURCES_PATH.read_text(encoding="utf-8"))
+    entries = payload.get("sources", {})
+    added = 0
+    for url, title in titles.items():
+        entry = entries.get(url)
+        if entry is None or not title or entry.get("title") == title:
+            continue
+        entry["title"] = title
+        added += 1
+    payload["titles_captured_utc"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    SOURCES_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    have = sum(1 for e in entries.values() if e.get("title"))
+    print(f"{SOURCES_PATH.name}: {added} title(s) updated, {have}/{len(entries)} now titled")
 
 
 def main() -> int:
@@ -110,7 +166,9 @@ def main() -> int:
     print(f"checking {len(urls)} unique source URLs...")
 
     with ThreadPoolExecutor(max_workers=12) as pool:
-        codes = dict(zip(urls, pool.map(status, urls)))
+        results = dict(zip(urls, pool.map(fetch, urls)))
+    codes = {u: r[0] for u, r in results.items()}
+    write_sources({u: r[1] for u, r in results.items()})
 
     dead = {u: c for u, c in codes.items() if c not in ALIVE}
     wiki = [u for u in urls if "wikipedia.org" in u and not wiki_allowed(u, where[u])]

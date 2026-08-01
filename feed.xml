@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed</title>
+    <link>https://censorship.my/changes</link>
+    <description>Every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 01 Aug 2026 11:37:55 +0000</lastBuildDate>
+    <atom:link href="https://censorship.my/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Replace 'Commonwealth of Australia' with 'Australia'</title>
+      <link>https://censorship.my/changes#d70c77be7d</link>
+      <guid isPermaLink="false">d70c77be7d815a32495f0cf06548c1288462e3ba</guid>
+      <pubDate>Mon, 27 Jul 2026 16:45:07 +0100</pubDate>
+      <description>&lt;p&gt;12 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — Australia (age): notes&lt;/li&gt;&lt;li&gt;Instagram — Australia (age): notes&lt;/li&gt;&lt;li&gt;Reddit — Australia (age): notes&lt;/li&gt;&lt;li&gt;Russia Today — Australia (partial): notes&lt;/li&gt;&lt;li&gt;Snapchat — Australia (age): notes&lt;/li&gt;&lt;li&gt;Substack — Australia (age) — was Commonwealth of Australia&lt;/li&gt;&lt;li&gt;Threads — Australia (age): notes&lt;/li&gt;&lt;li&gt;TikTok — Australia (age): notes&lt;/li&gt;&lt;li&gt;Tumblr — Australia (age): notes&lt;/li&gt;&lt;li&gt;Twitch — Australia (age): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Australia (age): notes&lt;/li&gt;&lt;li&gt;YouTube — Australia (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 'Saudi Arabia' with 'Kingdom of Saudi Arabia'</title>
+      <link>https://censorship.my/changes#88788289b5</link>
+      <guid isPermaLink="false">88788289b5eaf2ec901619d640a7bccae5c2d476</guid>
+      <pubDate>Mon, 27 Jul 2026 16:42:40 +0100</pubDate>
+      <description>&lt;p&gt;4 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Kingdom of Saudi Arabia (complete) — was Saudi Arabia&lt;/li&gt;&lt;li&gt;Grindr — Kingdom of Saudi Arabia (complete): notes&lt;/li&gt;&lt;li&gt;LINE — Kingdom of Saudi Arabia (partial) — was Saudi Arabia&lt;/li&gt;&lt;li&gt;New York Times — Kingdom of Saudi Arabia (partial): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 'Australia' with 'Commonwealth of Australia'</title>
+      <link>https://censorship.my/changes#36cff48549</link>
+      <guid isPermaLink="false">36cff48549629fa73d800645e51e84c0bfc8667f</guid>
+      <pubDate>Mon, 27 Jul 2026 16:42:07 +0100</pubDate>
+      <description>&lt;p&gt;12 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;Instagram — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;Reddit — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;Russia Today — Commonwealth of Australia (partial): notes&lt;/li&gt;&lt;li&gt;Snapchat — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;Substack — Commonwealth of Australia (age) — was Australia&lt;/li&gt;&lt;li&gt;Threads — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;TikTok — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;Tumblr — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;Twitch — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;li&gt;YouTube — Commonwealth of Australia (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename Syria to Syrian Arab Republic</title>
+      <link>https://censorship.my/changes#a719ffa6ee</link>
+      <guid isPermaLink="false">a719ffa6ee59e9cbf835d841895c41070cac5a81</guid>
+      <pubDate>Mon, 27 Jul 2026 16:41:30 +0100</pubDate>
+      <description>&lt;p&gt;1 changed, 4 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Crimea (complete): notes&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ChatGPT — Syrian Arab Republic (complete): notes&lt;/li&gt;&lt;li&gt;GitHub — Syrian Arab Republic (partial): notes&lt;/li&gt;&lt;li&gt;Grindr — Syrian Arab Republic (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — Syrian Arab Republic (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename United States to United States of America</title>
+      <link>https://censorship.my/changes#637d5f548f</link>
+      <guid isPermaLink="false">637d5f548f12c65dfa9e894f02a01b3f2a1aea03</guid>
+      <pubDate>Mon, 27 Jul 2026 16:40:25 +0100</pubDate>
+      <description>&lt;p&gt;2 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — United States of America (partial) — was United States&lt;/li&gt;&lt;li&gt;Russia Today — United States of America (partial) — was United States&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 'China' with 'People's Republic of China'</title>
+      <link>https://censorship.my/changes#8c549b64c9</link>
+      <guid isPermaLink="false">8c549b64c9c1c23e9b9a4503536d1ac8629dc66c</guid>
+      <pubDate>Mon, 27 Jul 2026 16:39:21 +0100</pubDate>
+      <description>&lt;p&gt;1 changed, 39 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Crimea (complete): notes&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;BBC News — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Bluesky — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;ChatGPT — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Discord — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;DuckDuckGo — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Facebook — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;GitHub — People's Republic of China (partial) — was China&lt;/li&gt;&lt;li&gt;Google — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Grindr — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Instagram — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;KakaoTalk — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;LINE — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;LinkedIn — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Medium — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;New York Times — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Odnoklassniki — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Pinterest — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Quora — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Reddit — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Reuters — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Rumble — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Signal — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Snapchat — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Spotify — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Substack — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Telegram — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Threads — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;TikTok — People's Republic of China (complete): notes&lt;/li&gt;&lt;li&gt;Tumblr — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Twitch — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Viber — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Vimeo — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;WhatsApp — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Wikipedia — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;YouTube — People's Republic of China (complete) — was China&lt;/li&gt;&lt;li&gt;Zoom — People's Republic of China (partial): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add source link for NYT Texas SB 2420 entry</title>
+      <link>https://censorship.my/changes#c3b4bad454</link>
+      <guid isPermaLink="false">c3b4bad45441f947700929b303015ac56d14660d</guid>
+      <pubDate>Mon, 27 Jul 2026 16:39:14 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — Texas (age): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace Turkey/Iran names with updated forms</title>
+      <link>https://censorship.my/changes#a2702ef119</link>
+      <guid isPermaLink="false">a2702ef119f382d025ff64604638a187671b499f</guid>
+      <pubDate>Mon, 27 Jul 2026 16:37:40 +0100</pubDate>
+      <description>&lt;p&gt;57 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Associated Press — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;BBC News — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Bluesky — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;ChatGPT — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Discord — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;DuckDuckGo — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Facebook — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;GitHub — Islamic Republic of Iran (partial): notes&lt;/li&gt;&lt;li&gt;Google — Islamic Republic of Iran (partial) — was Iran&lt;/li&gt;&lt;li&gt;Grindr — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Instagram — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;KakaoTalk — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;LINE — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;LinkedIn — Islamic Republic of Iran (partial): notes&lt;/li&gt;&lt;li&gt;Medium — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Odnoklassniki — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Patreon — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Pinterest — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Quora — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Reddit — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Reuters — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Roblox — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Rumble — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Signal — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Snapchat — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Spotify — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Substack — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Telegram — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Threads — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;TikTok — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Tinder — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Tumblr — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Twitch — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;Viber — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Vimeo — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;VKontakte — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;WhatsApp — Islamic Republic of Iran (complete): notes&lt;/li&gt;&lt;li&gt;Wikipedia — Islamic Republic of Iran (partial) — was Iran&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Islamic Republic of Iran (complete) — was Iran&lt;/li&gt;&lt;li&gt;+17 more&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add missing source links for CGTN entries (Eritrea, Germany, UK, USA)</title>
+      <link>https://censorship.my/changes#d99dbfacb2</link>
+      <guid isPermaLink="false">d99dbfacb29ade34be2837dab5af70f815454a63</guid>
+      <pubDate>Mon, 27 Jul 2026 16:31:06 +0100</pubDate>
+      <description>&lt;p&gt;4 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;CGTN — Germany (partial): source&lt;/li&gt;&lt;li&gt;CGTN — United Kingdom (partial): source&lt;/li&gt;&lt;li&gt;CGTN — United States (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Retire the CPJ catch-all and cite Turkey's DW block specifically</title>
+      <link>https://censorship.my/changes#a6b7d7720f</link>
+      <guid isPermaLink="false">a6b7d7720f303a69958c261d37b45503d1cd9c39</guid>
+      <pubDate>Fri, 24 Jul 2026 10:53:45 +0100</pubDate>
+      <description>&lt;p&gt;65 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Associated Press — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;BBC News — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Bluesky — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;CGTN — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Discord — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;DuckDuckGo — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Facebook — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;GitHub — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Google — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Instagram — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;KakaoTalk — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;LINE — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;LinkedIn — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Medium — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Netflix — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;New York Times — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Odnoklassniki — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Patreon — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Pinterest — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Quora — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Reddit — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Reuters — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Roblox — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Rumble — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Russia Today — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Signal — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Snapchat — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Spotify — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Substack — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Telegram — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Threads — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;TikTok — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Tinder — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Tumblr — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Twitch — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Viber — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Vimeo — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;+25 more&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Source DW's Afghanistan, Belarus, Russia and Venezuela rows</title>
+      <link>https://censorship.my/changes#ffe46d960e</link>
+      <guid isPermaLink="false">ffe46d960e8d91af6c41a6bdddcb6aeec63f3195</guid>
+      <pubDate>Fri, 24 Jul 2026 01:04:35 +0100</pubDate>
+      <description>&lt;p&gt;4 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Afghanistan (partial): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Belarus (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Russia (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Venezuela (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move Rumble's Russia block to April 2024 and cite the OONI measurement</title>
+      <link>https://censorship.my/changes#59501afaa0</link>
+      <guid isPermaLink="false">59501afaa07da3a86951381bbc1c3f4cc2819558</guid>
+      <pubDate>Fri, 24 Jul 2026 00:50:45 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Rumble — Russia (complete): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add GitHub's complete block in Turkmenistan</title>
+      <link>https://censorship.my/changes#9dd00568ed</link>
+      <guid isPermaLink="false">9dd00568ed031660533fb221929bfa4c153df3f4</guid>
+      <pubDate>Thu, 23 Jul 2026 11:13:42 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Track France's under-15 ban, and let scheduled laws start themselves</title>
+      <link>https://censorship.my/changes#4d616d546a</link>
+      <guid isPermaLink="false">4d616d546a2fef84f9a5a5bc3d413f73cc42c879</guid>
+      <pubDate>Wed, 22 Jul 2026 20:56:22 +0100</pubDate>
+      <description>&lt;p&gt;9 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — France (age)&lt;/li&gt;&lt;li&gt;Instagram — France (age)&lt;/li&gt;&lt;li&gt;Reddit — France (age)&lt;/li&gt;&lt;li&gt;Snapchat — France (age)&lt;/li&gt;&lt;li&gt;Threads — France (age)&lt;/li&gt;&lt;li&gt;TikTok — France (age)&lt;/li&gt;&lt;li&gt;Twitch — France (age)&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — France (age)&lt;/li&gt;&lt;li&gt;YouTube — France (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;1 removed, 92 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;YouTube — United Arab Emirates (age)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Afghanistan (partial): source&lt;/li&gt;&lt;li&gt;Russia Today — Albania (complete): source&lt;/li&gt;&lt;li&gt;Substack — Australia (age): source&lt;/li&gt;&lt;li&gt;Al Jazeera — Bahrain (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Belarus (complete): source&lt;/li&gt;&lt;li&gt;Rumble — Brazil (complete): source&lt;/li&gt;&lt;li&gt;Al Jazeera — China (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — China (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — China (complete): source&lt;/li&gt;&lt;li&gt;Facebook — China (complete): source&lt;/li&gt;&lt;li&gt;GitHub — China (partial): source&lt;/li&gt;&lt;li&gt;Google — China (complete): source&lt;/li&gt;&lt;li&gt;Instagram — China (complete): source&lt;/li&gt;&lt;li&gt;Reddit — China (complete): source&lt;/li&gt;&lt;li&gt;Reuters — China (complete): source&lt;/li&gt;&lt;li&gt;Signal — China (complete): source&lt;/li&gt;&lt;li&gt;Telegram — China (complete): source&lt;/li&gt;&lt;li&gt;WhatsApp — China (complete): source&lt;/li&gt;&lt;li&gt;Wikipedia — China (complete): source&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — China (complete): source&lt;/li&gt;&lt;li&gt;YouTube — China (complete): source&lt;/li&gt;&lt;li&gt;Zoom — China (partial): source&lt;/li&gt;&lt;li&gt;ChatGPT — Cuba (complete): source&lt;/li&gt;&lt;li&gt;Al Jazeera — Egypt (complete): source&lt;/li&gt;&lt;li&gt;Roblox — Egypt (complete): source&lt;/li&gt;&lt;li&gt;CGTN — Germany (partial): source&lt;/li&gt;&lt;li&gt;TikTok — India (complete): source&lt;/li&gt;&lt;li&gt;Vimeo — Indonesia (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — Iran (complete): source&lt;/li&gt;&lt;li&gt;Discord — Iran (complete): source&lt;/li&gt;&lt;li&gt;DuckDuckGo — Iran (complete): source&lt;/li&gt;&lt;li&gt;Facebook — Iran (complete): source&lt;/li&gt;&lt;li&gt;Google — Iran (partial): source&lt;/li&gt;&lt;li&gt;Grindr — Iran (complete): source&lt;/li&gt;&lt;li&gt;LINE — Iran (complete): source&lt;/li&gt;&lt;li&gt;LinkedIn — Iran (partial): source&lt;/li&gt;&lt;li&gt;Medium — Iran (complete): source&lt;/li&gt;&lt;li&gt;Netflix — Iran (complete): source&lt;/li&gt;&lt;li&gt;Odnoklassniki — Iran (complete): source&lt;/li&gt;&lt;li&gt;Patreon — Iran (complete): source&lt;/li&gt;&lt;li&gt;+52 more&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Roblox Turkey source URL to live Reuters technology article</title>
+      <link>https://censorship.my/changes#80e61915ab</link>
+      <guid isPermaLink="false">80e61915ab36358a6a316127ec8d3d3fad1fa6de</guid>
+      <pubDate>Tue, 21 Jul 2026 23:56:44 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Roblox — Turkey (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Roblox Qatar source to specific ILoveQatar news article URL</title>
+      <link>https://censorship.my/changes#eec33f2aa2</link>
+      <guid isPermaLink="false">eec33f2aa269522ce2a1bd1b3ad6b9c865940bdc</guid>
+      <pubDate>Tue, 21 Jul 2026 23:54:10 +0100</pubDate>
+      <description>&lt;p&gt;2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Roblox — Qatar (complete): source&lt;/li&gt;&lt;li&gt;Roblox — Turkey (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update TikTok Kyrgyzstan source URL to Freedom House report</title>
+      <link>https://censorship.my/changes#66bb393e9b</link>
+      <guid isPermaLink="false">66bb393e9bfc8e8cedd163d151e699f07611b3e6</guid>
+      <pubDate>Tue, 21 Jul 2026 23:52:52 +0100</pubDate>
+      <description>&lt;p&gt;2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — Kyrgyzstan (complete): source&lt;/li&gt;&lt;li&gt;Roblox — Qatar (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Roblox Egypt source URL to specific Egypt Today news article</title>
+      <link>https://censorship.my/changes#860a3f43da</link>
+      <guid isPermaLink="false">860a3f43da9a8f34f27af9814e5189fc56dab252</guid>
+      <pubDate>Tue, 21 Jul 2026 23:52:09 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Roblox — Egypt (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update source for Telegram ban in Vietnam to VietNamNet report</title>
+      <link>https://censorship.my/changes#8303308f49</link>
+      <guid isPermaLink="false">8303308f49210b431e91e1d28ea51260972b7574</guid>
+      <pubDate>Tue, 21 Jul 2026 23:51:45 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Vietnam (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update source for Kyrgyzstan TikTok ban to RFE/RL</title>
+      <link>https://censorship.my/changes#54d0f1738f</link>
+      <guid isPermaLink="false">54d0f1738f4ef34004cdb0c2a1399cf94357355b</guid>
+      <pubDate>Tue, 21 Jul 2026 23:51:21 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — Kyrgyzstan (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove false Substack Russia censorship entry with invalid source link</title>
+      <link>https://censorship.my/changes#d84dcecd7e</link>
+      <guid isPermaLink="false">d84dcecd7ea79276bf63ddfbb865154096772717</guid>
+      <pubDate>Tue, 21 Jul 2026 23:50:42 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Substack — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Substack Australia source to Freedom House report</title>
+      <link>https://censorship.my/changes#029f1842a1</link>
+      <guid isPermaLink="false">029f1842a176d18c444b00507c22147b2c519d4a</guid>
+      <pubDate>Tue, 21 Jul 2026 23:48:57 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Substack — Australia (age): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Grindr dataset using Grindr official Help Center source</title>
+      <link>https://censorship.my/changes#b78b2243e9</link>
+      <guid isPermaLink="false">b78b2243e941c1fa786130f7e75e3de3b6e843ed</guid>
+      <pubDate>Tue, 21 Jul 2026 23:47:26 +0100</pubDate>
+      <description>&lt;p&gt;11 added, 8 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Afghanistan (complete)&lt;/li&gt;&lt;li&gt;Grindr — China (complete)&lt;/li&gt;&lt;li&gt;Grindr — Cuba (complete)&lt;/li&gt;&lt;li&gt;Grindr — Iraq (complete)&lt;/li&gt;&lt;li&gt;Grindr — Jordan (complete)&lt;/li&gt;&lt;li&gt;Grindr — Malaysia (complete)&lt;/li&gt;&lt;li&gt;Grindr — Maldives (complete)&lt;/li&gt;&lt;li&gt;Grindr — Qatar (complete)&lt;/li&gt;&lt;li&gt;Grindr — Saudi Arabia (complete)&lt;/li&gt;&lt;li&gt;Grindr — Sudan (complete)&lt;/li&gt;&lt;li&gt;Grindr — Syria (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Eritrea (complete): notes, source&lt;/li&gt;&lt;li&gt;Grindr — Indonesia (complete): notes, source&lt;/li&gt;&lt;li&gt;Grindr — Iran (complete): date, notes, source&lt;/li&gt;&lt;li&gt;Grindr — Lebanon (complete): notes, source&lt;/li&gt;&lt;li&gt;Grindr — North Korea (complete): date, notes, source&lt;/li&gt;&lt;li&gt;Grindr — Pakistan (complete): notes, source&lt;/li&gt;&lt;li&gt;Grindr — Turkey (complete): notes, source&lt;/li&gt;&lt;li&gt;Grindr — United Arab Emirates (complete): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Clean up censorship_data.csv formatting</title>
+      <link>https://censorship.my/changes#6ea8589d49</link>
+      <guid isPermaLink="false">6ea8589d4946d916413ddaab61391b1ee217e7ab</guid>
+      <pubDate>Tue, 21 Jul 2026 23:40:48 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — North Korea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Fix PIB press release URL for TikTok India in censorship_data.csv</title>
+      <link>https://censorship.my/changes#115e66af0e</link>
+      <guid isPermaLink="false">115e66af0ec24062b51754fa541c22adde51482c</guid>
+      <pubDate>Tue, 21 Jul 2026 23:40:40 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — India (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace references of UK and UAE with United Kingdom and United Arab Emirates</title>
+      <link>https://censorship.my/changes#f740e57cf9</link>
+      <guid isPermaLink="false">f740e57cf9a6bbf85a2f0e809a7f79837a87b9f0</guid>
+      <pubDate>Tue, 21 Jul 2026 23:40:04 +0100</pubDate>
+      <description>&lt;p&gt;4 changed, 23 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Germany (partial): notes&lt;/li&gt;&lt;li&gt;Viber — Iran (complete): notes&lt;/li&gt;&lt;li&gt;Viber — Oman (partial): notes&lt;/li&gt;&lt;li&gt;Substack — United Kingdom (age): notes&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Discord — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Facebook — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Grindr — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Instagram — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;KakaoTalk — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;LINE — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;New York Times — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Roblox — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;Snapchat — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;TikTok — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Tinder — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Viber — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;WhatsApp — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;YouTube — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;CGTN — United Kingdom (partial): notes&lt;/li&gt;&lt;li&gt;Discord — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Reddit — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Russia Today — United Kingdom (complete) — was UK&lt;/li&gt;&lt;li&gt;Spotify — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Tumblr — United Kingdom (age) — was UK&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — United Kingdom (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace Wikipedia sources in censorship_data.csv with verified independent sources for non-exempt countries</title>
+      <link>https://censorship.my/changes#520d6009bb</link>
+      <guid isPermaLink="false">520d6009bb8f9e754a1bdcdb6cdef07e03fc07f8</guid>
+      <pubDate>Tue, 21 Jul 2026 23:25:58 +0100</pubDate>
+      <description>&lt;p&gt;23 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Cuba (complete): source&lt;/li&gt;&lt;li&gt;Medium — Egypt (complete): source&lt;/li&gt;&lt;li&gt;TikTok — India (complete): source&lt;/li&gt;&lt;li&gt;Grindr — Indonesia (complete): source&lt;/li&gt;&lt;li&gt;Vimeo — Indonesia (complete): source&lt;/li&gt;&lt;li&gt;Tumblr — Kazakhstan (complete): source&lt;/li&gt;&lt;li&gt;Facebook — Myanmar (complete): source&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Myanmar (complete): source&lt;/li&gt;&lt;li&gt;Telegram — Pakistan (complete): source&lt;/li&gt;&lt;li&gt;Facebook — Russia (complete): source&lt;/li&gt;&lt;li&gt;GitHub — Russia (partial): source&lt;/li&gt;&lt;li&gt;Instagram — Russia (complete): source&lt;/li&gt;&lt;li&gt;Substack — Russia (complete): source&lt;/li&gt;&lt;li&gt;Wikipedia — Russia (partial): source&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Russia (complete): source&lt;/li&gt;&lt;li&gt;TikTok — Somalia (partial): source&lt;/li&gt;&lt;li&gt;Grindr — Turkey (complete): source&lt;/li&gt;&lt;li&gt;Grindr — UAE (complete): source&lt;/li&gt;&lt;li&gt;Roblox — UAE (partial): source&lt;/li&gt;&lt;li&gt;Tinder — UAE (complete): source&lt;/li&gt;&lt;li&gt;Tumblr — UK (age): source&lt;/li&gt;&lt;li&gt;Medium — Vietnam (complete): source&lt;/li&gt;&lt;li&gt;Telegram — Vietnam (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update source for Odnoklassniki and VKontakte banning in Ukraine to Human Rights Watch report</title>
+      <link>https://censorship.my/changes#13246969a1</link>
+      <guid isPermaLink="false">13246969a154f8c76ead55aaab90633ec1021946</guid>
+      <pubDate>Tue, 21 Jul 2026 23:17:13 +0100</pubDate>
+      <description>&lt;p&gt;2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Odnoklassniki — Ukraine (complete): notes, source&lt;/li&gt;&lt;li&gt;VKontakte — Ukraine (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Al Jazeera UAE entry with Freedom House 2024 citation and details</title>
+      <link>https://censorship.my/changes#db31b7b246</link>
+      <guid isPermaLink="false">db31b7b246968ba36c21a3d2f5cffef92d825026</guid>
+      <pubDate>Tue, 21 Jul 2026 23:14:32 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Al Jazeera status for UAE to partial censorship</title>
+      <link>https://censorship.my/changes#35b6ffc2ed</link>
+      <guid isPermaLink="false">35b6ffc2ed77154dbb9593ab9663a173c0cf6905</guid>
+      <pubDate>Tue, 21 Jul 2026 17:00:27 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove Al Jazeera / UAE entry as restriction has been fully lifted</title>
+      <link>https://censorship.my/changes#377a3c5402</link>
+      <guid isPermaLink="false">377a3c5402fe30bfcafb8a75d5ff23643b747a09</guid>
+      <pubDate>Tue, 21 Jul 2026 16:55:18 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update platform label to DW (Deutsche Welle) to support acronym searching</title>
+      <link>https://censorship.my/changes#23308837b6</link>
+      <guid isPermaLink="false">23308837b65a8a6925c4839aaaccb53747fc4589</guid>
+      <pubDate>Tue, 21 Jul 2026 16:54:18 +0100</pubDate>
+      <description>&lt;p&gt;9 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Afghanistan (partial) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Belarus (complete) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — China (complete) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Eritrea (complete) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — North Korea (complete) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Russia (complete) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Turkey (complete) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Turkmenistan (complete) — was Deutsche Welle&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Venezuela (partial) — was Deutsche Welle&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Al Jazeera post-Al-Ula boycott status for UAE, Saudi Arabia, and Bahrain</title>
+      <link>https://censorship.my/changes#b81722c7f9</link>
+      <guid isPermaLink="false">b81722c7f93263427a8551fdb24b840cb52ff325</guid>
+      <pubDate>Tue, 21 Jul 2026 16:53:09 +0100</pubDate>
+      <description>&lt;p&gt;1 added, 1 removed, 2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Bahrain (complete): notes&lt;/li&gt;&lt;li&gt;Al Jazeera — Saudi Arabia (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Venezuela censorship entry for X (formerly Twitter)</title>
+      <link>https://censorship.my/changes#f97048055a</link>
+      <guid isPermaLink="false">f97048055a568b20db1a2d19ddf0800c5471b51c</guid>
+      <pubDate>Tue, 21 Jul 2026 16:51:41 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X (formerly Twitter) — Venezuela (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Deutsche Welle censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e57a531995</link>
+      <guid isPermaLink="false">e57a531995f47a8625b5c871886f69070ad8f8c0</guid>
+      <pubDate>Tue, 21 Jul 2026 16:50:29 +0100</pubDate>
+      <description>&lt;p&gt;9 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Afghanistan (partial)&lt;/li&gt;&lt;li&gt;Deutsche Welle — Belarus (complete)&lt;/li&gt;&lt;li&gt;Deutsche Welle — China (complete)&lt;/li&gt;&lt;li&gt;Deutsche Welle — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Deutsche Welle — North Korea (complete)&lt;/li&gt;&lt;li&gt;Deutsche Welle — Russia (complete)&lt;/li&gt;&lt;li&gt;Deutsche Welle — Turkey (complete)&lt;/li&gt;&lt;li&gt;Deutsche Welle — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Deutsche Welle — Venezuela (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Al Jazeera and CGTN censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e02e0c691e</link>
+      <guid isPermaLink="false">e02e0c691ec00e079014b59994e3148eda14d54f</guid>
+      <pubDate>Tue, 21 Jul 2026 16:49:02 +0100</pubDate>
+      <description>&lt;p&gt;15 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Bahrain (complete)&lt;/li&gt;&lt;li&gt;Al Jazeera — China (complete)&lt;/li&gt;&lt;li&gt;Al Jazeera — Egypt (complete)&lt;/li&gt;&lt;li&gt;Al Jazeera — Eritrea (complete)&lt;/li&gt;&lt;li&gt;CGTN — Eritrea (complete)&lt;/li&gt;&lt;li&gt;CGTN — Germany (partial)&lt;/li&gt;&lt;li&gt;Al Jazeera — Israel (complete)&lt;/li&gt;&lt;li&gt;Al Jazeera — North Korea (complete)&lt;/li&gt;&lt;li&gt;CGTN — North Korea (complete)&lt;/li&gt;&lt;li&gt;Al Jazeera — Saudi Arabia (complete)&lt;/li&gt;&lt;li&gt;Al Jazeera — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;CGTN — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Al Jazeera — UAE (complete)&lt;/li&gt;&lt;li&gt;CGTN — UK (partial)&lt;/li&gt;&lt;li&gt;CGTN — United States (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Netflix restriction entry for Crimea</title>
+      <link>https://censorship.my/changes#d2e682893f</link>
+      <guid isPermaLink="false">d2e682893f8c4c6b7159bccda5ea58a09e4afcd9</guid>
+      <pubDate>Tue, 21 Jul 2026 16:40:28 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Crimea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add North Korea and Turkmenistan to New York Times</title>
+      <link>https://censorship.my/changes#54ee0e0832</link>
+      <guid isPermaLink="false">54ee0e083275d6067dd956081a6d83db10d0a9d0</guid>
+      <pubDate>Tue, 21 Jul 2026 13:11:04 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — North Korea (complete)&lt;/li&gt;&lt;li&gt;New York Times — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Delete six unsupported rows, source three that checked out</title>
+      <link>https://censorship.my/changes#f5dd3fb23f</link>
+      <guid isPermaLink="false">f5dd3fb23f372f6923ac84c8c7e4b9d858d8c653</guid>
+      <pubDate>Mon, 20 Jul 2026 19:49:32 +0100</pubDate>
+      <description>&lt;p&gt;6 removed, 3 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Associated Press — China (complete)&lt;/li&gt;&lt;li&gt;Netflix — China (complete)&lt;/li&gt;&lt;li&gt;Roblox — China (complete)&lt;/li&gt;&lt;li&gt;New York Times — Russia (complete)&lt;/li&gt;&lt;li&gt;Reuters — Russia (complete)&lt;/li&gt;&lt;li&gt;KakaoTalk — Saudi Arabia (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DuckDuckGo — China (complete): notes, source&lt;/li&gt;&lt;li&gt;Spotify — China (complete): notes, source&lt;/li&gt;&lt;li&gt;Reddit — Indonesia (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Make HEAVY_CENSORSHIP a fallback and add Eritrea to it</title>
+      <link>https://censorship.my/changes#02e17e96fe</link>
+      <guid isPermaLink="false">02e17e96fe9c2a3edf169ffacb2cf5d9cc908973</guid>
+      <pubDate>Mon, 20 Jul 2026 18:41:32 +0100</pubDate>
+      <description>&lt;p&gt;85 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Bluesky — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;ChatGPT — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Discord — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;DuckDuckGo — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Facebook — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;GitHub — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Google — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Grindr — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Instagram — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;KakaoTalk — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;LINE — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;LinkedIn — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Medium — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;New York Times — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Odnoklassniki — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Patreon — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Pinterest — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Quora — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Reddit — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Roblox — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Rumble — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Russia Today — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Signal — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Snapchat — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Spotify — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Substack — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Telegram — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Threads — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;TikTok — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Tinder — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Tumblr — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Twitch — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Viber — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Vimeo — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;VKontakte — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;WeChat — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;WhatsApp — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Wikipedia — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;+45 more&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 27 fabricated and generic sources with verified ones</title>
+      <link>https://censorship.my/changes#28ff50c189</link>
+      <guid isPermaLink="false">28ff50c1893c412d5b976e0cda7c4c150921a635</guid>
+      <pubDate>Mon, 20 Jul 2026 18:37:02 +0100</pubDate>
+      <description>&lt;p&gt;27 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Afghanistan (partial): source&lt;/li&gt;&lt;li&gt;TikTok — Afghanistan (complete): source&lt;/li&gt;&lt;li&gt;Roblox — Algeria (complete): source&lt;/li&gt;&lt;li&gt;Facebook — Canada (partial): source&lt;/li&gt;&lt;li&gt;Instagram — Canada (partial): source&lt;/li&gt;&lt;li&gt;Threads — Canada (partial): source&lt;/li&gt;&lt;li&gt;BBC News — China (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — China (complete): source&lt;/li&gt;&lt;li&gt;KakaoTalk — China (complete): source&lt;/li&gt;&lt;li&gt;LinkedIn — China (complete): source&lt;/li&gt;&lt;li&gt;Pinterest — China (complete): source&lt;/li&gt;&lt;li&gt;Snapchat — China (complete): source&lt;/li&gt;&lt;li&gt;BBC News — Iran (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — Iran (complete): source&lt;/li&gt;&lt;li&gt;Grindr — Lebanon (complete): source&lt;/li&gt;&lt;li&gt;Reuters — Myanmar (complete): source&lt;/li&gt;&lt;li&gt;Reuters — North Korea (complete): source&lt;/li&gt;&lt;li&gt;LINE — Oman (partial): source&lt;/li&gt;&lt;li&gt;LINE — Qatar (partial): source&lt;/li&gt;&lt;li&gt;BBC News — Russia (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — Russia (complete): source&lt;/li&gt;&lt;li&gt;LinkedIn — Russia (complete): source&lt;/li&gt;&lt;li&gt;Patreon — Russia (complete): source&lt;/li&gt;&lt;li&gt;Viber — Russia (complete): source&lt;/li&gt;&lt;li&gt;Zoom — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;Substack — United Kingdom (age): source&lt;/li&gt;&lt;li&gt;Reuters — Vietnam (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Drop the stale WeChat Iran row and fix its Wikipedia sources</title>
+      <link>https://censorship.my/changes#abf70a22c6</link>
+      <guid isPermaLink="false">abf70a22c6db158fe8fac2fb751e648eb1fa34c1</guid>
+      <pubDate>Mon, 20 Jul 2026 18:15:44 +0100</pubDate>
+      <description>&lt;p&gt;1 removed, 2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WeChat — Iran (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WeChat — North Korea (complete): source&lt;/li&gt;&lt;li&gt;WeChat — Turkmenistan (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Map microstates, and separate RT website bans from broadcast bans</title>
+      <link>https://censorship.my/changes#4ae3087473</link>
+      <guid isPermaLink="false">4ae30874737714921830149c6948a36c21c5bb62</guid>
+      <pubDate>Mon, 20 Jul 2026 18:10:17 +0100</pubDate>
+      <description>&lt;p&gt;3 added, 2 removed, 2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Australia (partial)&lt;/li&gt;&lt;li&gt;Russia Today — Canada (partial)&lt;/li&gt;&lt;li&gt;Russia Today — Malta (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Australia (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Canada (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — UK (complete): notes, source&lt;/li&gt;&lt;li&gt;Russia Today — Ukraine (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;83 added, 17 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Albania (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Australia (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Austria (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Belgium (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Bulgaria (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Canada (complete)&lt;/li&gt;&lt;li&gt;Associated Press — China (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Croatia (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Cyprus (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Czech Republic (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Denmark (complete)&lt;/li&gt;&lt;li&gt;Associated Press — Eritrea (complete)&lt;/li&gt;&lt;li&gt;BBC News — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Bluesky — Eritrea (complete)&lt;/li&gt;&lt;li&gt;ChatGPT — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Discord — Eritrea (complete)&lt;/li&gt;&lt;li&gt;DuckDuckGo — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Facebook — Eritrea (complete)&lt;/li&gt;&lt;li&gt;GitHub — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Google — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Grindr — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Instagram — Eritrea (complete)&lt;/li&gt;&lt;li&gt;KakaoTalk — Eritrea (complete)&lt;/li&gt;&lt;li&gt;LINE — Eritrea (complete)&lt;/li&gt;&lt;li&gt;LinkedIn — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Medium — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Netflix — Eritrea (complete)&lt;/li&gt;&lt;li&gt;New York Times — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Odnoklassniki — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Patreon — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Pinterest — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Quora — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Reddit — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Roblox — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Rumble — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Signal — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Snapchat — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Spotify — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Substack — Eritrea (complete)&lt;/li&gt;&lt;li&gt;+43 more&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Afghanistan (partial): source&lt;/li&gt;&lt;li&gt;Facebook — Australia (age): source&lt;/li&gt;&lt;li&gt;Instagram — Australia (age): source&lt;/li&gt;&lt;li&gt;Reddit — Australia (age): source&lt;/li&gt;&lt;li&gt;Snapchat — Australia (age): source&lt;/li&gt;&lt;li&gt;Threads — Australia (age): source&lt;/li&gt;&lt;li&gt;TikTok — Australia (age): source&lt;/li&gt;&lt;li&gt;Tumblr — Australia (age): source&lt;/li&gt;&lt;li&gt;Twitch — Australia (age): source&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Australia (age): source&lt;/li&gt;&lt;li&gt;YouTube — Australia (age): source&lt;/li&gt;&lt;li&gt;BBC News — China (complete): source&lt;/li&gt;&lt;li&gt;BBC News — Iran (complete): source&lt;/li&gt;&lt;li&gt;Signal — Iran (complete): source&lt;/li&gt;&lt;li&gt;BBC News — North Korea (complete): source&lt;/li&gt;&lt;li&gt;BBC News — Russia (complete): source&lt;/li&gt;&lt;li&gt;BBC News — Vietnam (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add New York Times to censorship tracker</title>
+      <link>https://censorship.my/changes#27e5976b1d</link>
+      <guid isPermaLink="false">27e5976b1da365ccfca4f13fec77c08b6ba36632</guid>
+      <pubDate>Mon, 20 Jul 2026 12:38:19 +0100</pubDate>
+      <description>&lt;p&gt;13 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — China (complete)&lt;/li&gt;&lt;li&gt;Reuters — China (complete)&lt;/li&gt;&lt;li&gt;Reuters — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Reuters — Iran (complete)&lt;/li&gt;&lt;li&gt;Reuters — Myanmar (complete)&lt;/li&gt;&lt;li&gt;Reuters — North Korea (complete)&lt;/li&gt;&lt;li&gt;New York Times — Russia (complete)&lt;/li&gt;&lt;li&gt;Reuters — Russia (complete)&lt;/li&gt;&lt;li&gt;New York Times — Saudi Arabia (partial)&lt;/li&gt;&lt;li&gt;New York Times — Texas (age)&lt;/li&gt;&lt;li&gt;Reuters — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;New York Times — UAE (partial)&lt;/li&gt;&lt;li&gt;Reuters — Vietnam (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add partial restrictions for Meta platforms in Canada</title>
+      <link>https://censorship.my/changes#6262d7a199</link>
+      <guid isPermaLink="false">6262d7a19964b0f1090efaa994a49c2ae938f377</guid>
+      <pubDate>Mon, 20 Jul 2026 12:37:16 +0100</pubDate>
+      <description>&lt;p&gt;3 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — Canada (partial)&lt;/li&gt;&lt;li&gt;Instagram — Canada (partial)&lt;/li&gt;&lt;li&gt;Threads — Canada (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove KakaoTalk South Korea entry</title>
+      <link>https://censorship.my/changes#88a476d3d3</link>
+      <guid isPermaLink="false">88a476d3d321667905ce542a5b9c66a17f953cb3</guid>
+      <pubDate>Mon, 20 Jul 2026 12:35:25 +0100</pubDate>
+      <description>&lt;p&gt;6 added, 1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Afghanistan (partial)&lt;/li&gt;&lt;li&gt;BBC News — China (complete)&lt;/li&gt;&lt;li&gt;BBC News — Iran (complete)&lt;/li&gt;&lt;li&gt;BBC News — North Korea (complete)&lt;/li&gt;&lt;li&gt;BBC News — Russia (complete)&lt;/li&gt;&lt;li&gt;BBC News — Vietnam (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;KakaoTalk — South Korea (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add KakaoTalk censorship data and UI assets</title>
+      <link>https://censorship.my/changes#e5f69a190b</link>
+      <guid isPermaLink="false">e5f69a190b7f08ae564fea645fbfdc117131f220</guid>
+      <pubDate>Mon, 20 Jul 2026 12:33:56 +0100</pubDate>
+      <description>&lt;p&gt;7 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;KakaoTalk — China (complete)&lt;/li&gt;&lt;li&gt;KakaoTalk — Iran (complete)&lt;/li&gt;&lt;li&gt;KakaoTalk — North Korea (complete)&lt;/li&gt;&lt;li&gt;KakaoTalk — Saudi Arabia (partial)&lt;/li&gt;&lt;li&gt;KakaoTalk — South Korea (age)&lt;/li&gt;&lt;li&gt;KakaoTalk — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;KakaoTalk — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update TikTok Afghanistan entry with a description and a non-Wikipedia source</title>
+      <link>https://censorship.my/changes#e983a03cfa</link>
+      <guid isPermaLink="false">e983a03cfaf158ce3524a63e46c6761d1fcd56f2</guid>
+      <pubDate>Mon, 20 Jul 2026 12:26:13 +0100</pubDate>
+      <description>&lt;p&gt;20 added, 1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — Iran (complete)&lt;/li&gt;&lt;li&gt;DuckDuckGo — Iran (complete)&lt;/li&gt;&lt;li&gt;Google — Iran (partial)&lt;/li&gt;&lt;li&gt;LINE — Iran (complete)&lt;/li&gt;&lt;li&gt;LinkedIn — Iran (partial)&lt;/li&gt;&lt;li&gt;Medium — Iran (complete)&lt;/li&gt;&lt;li&gt;Netflix — Iran (complete)&lt;/li&gt;&lt;li&gt;Odnoklassniki — Iran (complete)&lt;/li&gt;&lt;li&gt;Quora — Iran (complete)&lt;/li&gt;&lt;li&gt;Reddit — Iran (complete)&lt;/li&gt;&lt;li&gt;Roblox — Iran (complete)&lt;/li&gt;&lt;li&gt;Rumble — Iran (complete)&lt;/li&gt;&lt;li&gt;Spotify — Iran (complete)&lt;/li&gt;&lt;li&gt;TikTok — Iran (complete)&lt;/li&gt;&lt;li&gt;Twitch — Iran (complete)&lt;/li&gt;&lt;li&gt;Vimeo — Iran (complete)&lt;/li&gt;&lt;li&gt;VKontakte — Iran (complete)&lt;/li&gt;&lt;li&gt;WeChat — Iran (partial)&lt;/li&gt;&lt;li&gt;Wikipedia — Iran (partial)&lt;/li&gt;&lt;li&gt;Yandex — Iran (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — Afghanistan (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Zoom China info: local partners and stopped direct sales</title>
+      <link>https://censorship.my/changes#f4dbbf9834</link>
+      <guid isPermaLink="false">f4dbbf98349a446f7a25a0b05acd1d3decb104b1</guid>
+      <pubDate>Mon, 20 Jul 2026 12:23:06 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — China (partial): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Zoom as completely blocked in Iran and Turkmenistan</title>
+      <link>https://censorship.my/changes#dc75bab148</link>
+      <guid isPermaLink="false">dc75bab148f6c1473844b6c1a1c42021729949f7</guid>
+      <pubDate>Mon, 20 Jul 2026 12:20:47 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — Iran (complete)&lt;/li&gt;&lt;li&gt;Zoom — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Patreon and Pinterest entries for Iran and Turkmenistan</title>
+      <link>https://censorship.my/changes#00926cd8ea</link>
+      <guid isPermaLink="false">00926cd8ea1c1034e4bd2e5a103d705efb15496f</guid>
+      <pubDate>Mon, 20 Jul 2026 12:19:12 +0100</pubDate>
+      <description>&lt;p&gt;4 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Patreon — Iran (complete)&lt;/li&gt;&lt;li&gt;Pinterest — Iran (complete)&lt;/li&gt;&lt;li&gt;Patreon — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Pinterest — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rewrite TikTok China description to reflect actual history</title>
+      <link>https://censorship.my/changes#e4164fabdf</link>
+      <guid isPermaLink="false">e4164fabdf0052a0af289de7ec8ffda03dae7858</guid>
+      <pubDate>Mon, 20 Jul 2026 12:09:16 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — China (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace TikTok China source with Citizen Lab research report</title>
+      <link>https://censorship.my/changes#1c491b1a94</link>
+      <guid isPermaLink="false">1c491b1a94461f0331badbeec442c3daafe0b9f7</guid>
+      <pubDate>Mon, 20 Jul 2026 11:56:21 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — China (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Fix platform chart tooltip to show only hovered ban type; add TikTok China entry</title>
+      <link>https://censorship.my/changes#5d62dd1fac</link>
+      <guid isPermaLink="false">5d62dd1fac0e2243b34f6ea1cd6c03e69505da3b</guid>
+      <pubDate>Mon, 20 Jul 2026 11:53:20 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — China (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Quora restriction row for Turkmenistan</title>
+      <link>https://censorship.my/changes#aa230b2dd3</link>
+      <guid isPermaLink="false">aa230b2dd321ebed3d3c2a0891413f7abc11abe4</guid>
+      <pubDate>Mon, 20 Jul 2026 09:36:17 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Quora — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Zoom entries: remove outdated UAE VoIP ban, add China restriction</title>
+      <link>https://censorship.my/changes#6eea8a7f05</link>
+      <guid isPermaLink="false">6eea8a7f055a1344891a1cd083623e493d248e8e</guid>
+      <pubDate>Mon, 20 Jul 2026 00:57:51 +0100</pubDate>
+      <description>&lt;p&gt;1 added, 1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — China (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add North Korea to every platform</title>
+      <link>https://censorship.my/changes#94c7e2c6cb</link>
+      <guid isPermaLink="false">94c7e2c6cb7ad5d0042afb0bd98278a9f38c0f6c</guid>
+      <pubDate>Sun, 19 Jul 2026 21:37:51 +0100</pubDate>
+      <description>&lt;p&gt;11 added, 1 removed, 29 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — North Korea (complete)&lt;/li&gt;&lt;li&gt;Grindr — North Korea (complete)&lt;/li&gt;&lt;li&gt;Medium — North Korea (complete)&lt;/li&gt;&lt;li&gt;Odnoklassniki — North Korea (complete)&lt;/li&gt;&lt;li&gt;Patreon — North Korea (complete)&lt;/li&gt;&lt;li&gt;Pinterest — North Korea (complete)&lt;/li&gt;&lt;li&gt;Quora — North Korea (complete)&lt;/li&gt;&lt;li&gt;Roblox — North Korea (complete)&lt;/li&gt;&lt;li&gt;Tinder — North Korea (complete)&lt;/li&gt;&lt;li&gt;VKontakte — North Korea (complete)&lt;/li&gt;&lt;li&gt;Zoom — North Korea (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — North Korea (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bluesky — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;ChatGPT — North Korea (complete): date, notes, source&lt;/li&gt;&lt;li&gt;Discord — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;DuckDuckGo — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Facebook — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Google — North Korea (complete): date, notes&lt;/li&gt;&lt;li&gt;Instagram — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;LINE — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;LinkedIn — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Reddit — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Rumble — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Signal — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Snapchat — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Spotify — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Substack — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Telegram — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Threads — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;TikTok — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Tumblr — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Twitch — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Viber — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Vimeo — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;WeChat — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;WhatsApp — North Korea (complete): date, notes&lt;/li&gt;&lt;li&gt;Wikipedia — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Yandex — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;YouTube — North Korea (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Drop the "not an active block" hedge from Spotify Turkmenistan</title>
+      <link>https://censorship.my/changes#3816d8fcd2</link>
+      <guid isPermaLink="false">3816d8fcd21444d1d3f1b91d44eb2b233b8471a7</guid>
+      <pubDate>Sun, 19 Jul 2026 21:35:24 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Spotify — Turkmenistan (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
