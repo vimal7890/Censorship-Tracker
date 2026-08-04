@@ -93,6 +93,15 @@ Notes:
   headline, and dressing one up as if it were would be inventing a citation in
   the least detectable way possible. A page that will not serve us keeps an
   empty title and its card falls back to publisher, kind and date.
+- **A challenge page is not a headline either.** Cloudflare and friends answer
+  with HTTP 200 and a page of their own, so the status check passes and the
+  `<title>` reads `Just a moment...`. One run filed seven of those as headlines,
+  including a "Vercel Security Checkpoint" under OONI's byline — a fabricated
+  citation by any other name. `CHALLENGE_TITLES` in `verify_links.py` lists the
+  titles that are not headlines; they are dropped on the way in and cleared from
+  `sources.json` on the way out. It matches whole titles, never substrings,
+  because on this site *Access Denied* and *captcha* are things real headlines
+  say. `tests/test_source_titles.py` enforces both halves of that.
 - **A 200 is not a verification.** The checker answers "does this URL resolve?"
   and nothing more, and a surprising number of sites answer a missing page with
   a 200: Intercom, Quartz, Reuters, Newsweek and Zoom's knowledge base all

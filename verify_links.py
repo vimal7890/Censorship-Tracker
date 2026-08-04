@@ -23,6 +23,13 @@ sources.json, so citations can be shown as a real headline rather than a
 footnote number. Titles are only ever taken from the page itself — never derived
 from a URL slug — so a page that will not serve us simply keeps an empty title
 and the card falls back to publisher and date.
+
+"Will not serve us" has to include the pages that answer 200 with a challenge
+instead of an article. A Cloudflare interstitial is a successful request whose
+title is "Just a moment...", and storing that would put the CDN's furniture on a
+citation card under the byline of a real publisher. CHALLENGE_TITLES below is
+the list of titles that are not headlines; they are dropped on the way in, and
+any that an earlier run already stored are cleared on the way out.
 """
 from __future__ import annotations
 
@@ -105,6 +112,75 @@ def wiki_allowed(url: str, rows: list[str]) -> bool:
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 
+# Titles that are the CDN's furniture rather than the page's headline.
+#
+# The bot-protection codes are treated as alive on purpose (see ALIVE above),
+# but the interstitials that answer 200 slip past that entirely: the status says
+# the page is fine and the <title> says "Just a moment...". Recording that as a
+# headline would be inventing a citation out of a Cloudflare challenge, which is
+# the failure mode this whole script exists to prevent. Same for the "page not
+# found" bodies served with a 200 that README.md warns about.
+#
+# Matched against the *whole* title, never as substrings. This is a censorship
+# tracker: "Access Denied" and "captcha" are things real headlines say here, and
+# a story called "Access Denied: Internet Shutdowns in 2025 | Access Now" must
+# survive. A challenge page's title is the entire title and carries no publisher
+# suffix, so equality is both sufficient and much safer than containment.
+CHALLENGE_TITLES = {
+    "just a moment",
+    "one moment please",
+    "attention required",
+    "checking your browser",
+    "checking your browser before accessing",
+    "checking if the site connection is secure",
+    "security checkpoint",
+    "vercel security checkpoint",
+    "access denied",
+    "access to this page has been denied",
+    "forbidden",
+    "403 forbidden",
+    "you have been blocked",
+    "request blocked",
+    "too many requests",
+    "rate limited",
+    "are you a robot",
+    "are you a human",
+    "verify you are human",
+    "verifying you are human",
+    "human verification",
+    "bot verification",
+    "captcha",
+    "captcha challenge",
+    "please enable javascript",
+    "please enable cookies",
+    "javascript is required",
+    "javascript is disabled",
+    "page not found",
+    "404 not found",
+    "404 page not found",
+    "not found",
+    "error",
+    "site unavailable",
+    "service unavailable",
+}
+
+# Bot-protection vendors brand their interstitials ("Attention Required! |
+# Cloudflare"). Stripping a trailing vendor name lets the phrase in front be
+# matched on its own. Only these names are stripped — none of them is a
+# publisher this dataset cites, so no real citation can lose its suffix here.
+VENDOR_SUFFIX_RE = re.compile(
+    r"\s*[|·:—–-]\s*(cloudflare|vercel|incapsula|imperva|akamai|fastly|sucuri|datadome)\s*$",
+    re.I)
+
+
+def is_challenge_title(title: str) -> bool:
+    """True when a <title> is a challenge/error page rather than a headline."""
+    text = re.sub(r"\s+", " ", (title or "")).strip()
+    text = VENDOR_SUFFIX_RE.sub("", text)
+    # Trailing ellipses and punctuation are decoration on these pages
+    # ("Just a moment...", "Are you a robot?"), never meaning.
+    return text.strip(" .!?…").lower() in CHALLENGE_TITLES
+
 
 def clean_title(raw: str) -> str:
     """Collapse a raw <title> into one readable line.
@@ -131,7 +207,10 @@ def fetch(url: str) -> tuple[str, str]:
     body, _, code = res.stdout.rpartition("\n")
     code = code.strip() or "000"
     m = TITLE_RE.search(body)
-    return code, clean_title(m.group(1)) if m else ""
+    title = clean_title(m.group(1)) if m else ""
+    # A challenge page is "cannot be read" as far as titles go, so it falls back
+    # to the documented empty title rather than becoming a fake headline.
+    return code, "" if is_challenge_title(title) else title
 
 
 def write_sources(titles: dict[str, str]) -> None:
@@ -141,6 +220,11 @@ def write_sources(titles: dict[str, str]) -> None:
     needs a live fetch. A page that answered without a usable title keeps
     whatever title was recorded before rather than being blanked, so one bad
     day for a CDN does not erase good data.
+
+    The one thing that *is* blanked is a stored challenge-page title, which
+    earlier runs of this script recorded before they knew to reject them. Only
+    known-bad values are cleared, so the rule above still holds: this erases a
+    CDN's furniture, never a headline.
     """
     if not SOURCES_PATH.is_file():
         print(f"note: {SOURCES_PATH.name} missing — run build_sources.py to create it")
@@ -148,6 +232,11 @@ def write_sources(titles: dict[str, str]) -> None:
     payload = json.loads(SOURCES_PATH.read_text(encoding="utf-8"))
     entries = payload.get("sources", {})
     added = 0
+    cleared = 0
+    for entry in entries.values():
+        if is_challenge_title(entry.get("title") or ""):
+            entry["title"] = ""
+            cleared += 1
     for url, title in titles.items():
         entry = entries.get(url)
         if entry is None or not title or entry.get("title") == title:
@@ -157,7 +246,9 @@ def write_sources(titles: dict[str, str]) -> None:
     payload["titles_captured_utc"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     SOURCES_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     have = sum(1 for e in entries.values() if e.get("title"))
-    print(f"{SOURCES_PATH.name}: {added} title(s) updated, {have}/{len(entries)} now titled")
+    note = f", {cleared} challenge page(s) left untitled" if cleared else ""
+    print(f"{SOURCES_PATH.name}: {added} title(s) updated, "
+          f"{have}/{len(entries)} now titled{note}")
 
 
 def main() -> int:
