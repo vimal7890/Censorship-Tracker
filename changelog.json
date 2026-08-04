@@ -1,8 +1,28 @@
 {
-  "generated_utc": "2026-08-04T14:43:33+00:00",
-  "count": 117,
-  "latest": "2026-07-27",
+  "generated_utc": "2026-08-04T14:44:20+00:00",
+  "count": 118,
+  "latest": "2026-08-04",
   "events": [
+    {
+      "id": "e6bbd033dc",
+      "sha": "e6bbd033dc86f728aec68ddbfaab296eda3aff1e",
+      "date": "2026-08-04",
+      "iso": "2026-08-04T15:44:10+01:00",
+      "subject": "Add Al Jazeera restriction in Pakistan",
+      "author": "Vimal",
+      "total": 1,
+      "added": [
+        {
+          "platform": "Al Jazeera",
+          "country": "Pakistan",
+          "type": "partial",
+          "since": "03/08/2026"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "d70c77be7d",
       "sha": "d70c77be7d815a32495f0cf06548c1288462e3ba",
@@ -9797,14 +9817,14 @@
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "age",
-          "since": "01/06/2026"
+          "type": "partial",
+          "since": "January 2026"
         },
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "partial",
-          "since": "January 2026"
+          "type": "age",
+          "since": "01/06/2026"
         },
         {
           "platform": "YouTube",

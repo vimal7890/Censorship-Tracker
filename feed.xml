@@ -5,8 +5,15 @@
     <link>https://censorship.my/changes</link>
     <description>Every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms, straight from the dataset's history.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Aug 2026 14:43:33 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 14:44:20 +0000</lastBuildDate>
     <atom:link href="https://censorship.my/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Add Al Jazeera restriction in Pakistan</title>
+      <link>https://censorship.my/changes#e6bbd033dc</link>
+      <guid isPermaLink="false">e6bbd033dc86f728aec68ddbfaab296eda3aff1e</guid>
+      <pubDate>Tue, 04 Aug 2026 15:44:10 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Pakistan (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Replace 'Commonwealth of Australia' with 'Australia'</title>
       <link>https://censorship.my/changes#d70c77be7d</link>
@@ -419,13 +426,6 @@
       <guid isPermaLink="false">94c7e2c6cb7ad5d0042afb0bd98278a9f38c0f6c</guid>
       <pubDate>Sun, 19 Jul 2026 21:37:51 +0100</pubDate>
       <description>&lt;p&gt;11 added, 1 removed, 29 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — North Korea (complete)&lt;/li&gt;&lt;li&gt;Grindr — North Korea (complete)&lt;/li&gt;&lt;li&gt;Medium — North Korea (complete)&lt;/li&gt;&lt;li&gt;Odnoklassniki — North Korea (complete)&lt;/li&gt;&lt;li&gt;Patreon — North Korea (complete)&lt;/li&gt;&lt;li&gt;Pinterest — North Korea (complete)&lt;/li&gt;&lt;li&gt;Quora — North Korea (complete)&lt;/li&gt;&lt;li&gt;Roblox — North Korea (complete)&lt;/li&gt;&lt;li&gt;Tinder — North Korea (complete)&lt;/li&gt;&lt;li&gt;VKontakte — North Korea (complete)&lt;/li&gt;&lt;li&gt;Zoom — North Korea (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — North Korea (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bluesky — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;ChatGPT — North Korea (complete): date, notes, source&lt;/li&gt;&lt;li&gt;Discord — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;DuckDuckGo — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Facebook — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Google — North Korea (complete): date, notes&lt;/li&gt;&lt;li&gt;Instagram — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;LINE — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;LinkedIn — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Reddit — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Rumble — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Signal — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Snapchat — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Spotify — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Substack — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Telegram — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Threads — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;TikTok — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Tumblr — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Twitch — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Viber — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Vimeo — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;WeChat — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;WhatsApp — North Korea (complete): date, notes&lt;/li&gt;&lt;li&gt;Wikipedia — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Yandex — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;YouTube — North Korea (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Drop the "not an active block" hedge from Spotify Turkmenistan</title>
-      <link>https://censorship.my/changes#3816d8fcd2</link>
-      <guid isPermaLink="false">3816d8fcd21444d1d3f1b91d44eb2b233b8471a7</guid>
-      <pubDate>Sun, 19 Jul 2026 21:35:24 +0100</pubDate>
-      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Spotify — Turkmenistan (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
