@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-01T11:37:55+00:00",
+  "generated_utc": "2026-08-04T14:43:33+00:00",
   "count": 117,
   "latest": "2026-07-27",
   "events": [
@@ -9797,14 +9797,14 @@
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "partial",
-          "since": "January 2026"
+          "type": "age",
+          "since": "01/06/2026"
         },
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "age",
-          "since": "01/06/2026"
+          "type": "partial",
+          "since": "January 2026"
         },
         {
           "platform": "YouTube",

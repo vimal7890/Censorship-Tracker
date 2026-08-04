@@ -144,6 +144,7 @@ REGISTRY: dict[str, tuple[str, str]] = {
     "eurasianet.org": ("Eurasianet", "reporting"),
     "balkaninsight.com": ("Balkan Insight", "reporting"),
     "kathmandupost.com": ("The Kathmandu Post", "reporting"),
+    "journalismpakistan.com": ("JournalismPakistan", "reporting"),
     "business-standard.com": ("Business Standard", "reporting"),
     "vietnamnet.vn": ("VietNamNet", "reporting"),
     "coconuts.co": ("Coconuts", "reporting"),
