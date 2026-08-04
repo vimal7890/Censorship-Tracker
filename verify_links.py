@@ -39,6 +39,7 @@ import json
 import re
 import subprocess
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timezone, datetime
 from pathlib import Path
@@ -62,6 +63,16 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
 # 2025, so treating it as dead would resurrect exactly the false positives that
 # caused the bad substitutions in the first place.
 ALIVE = {"200", "301", "302", "303", "307", "308", "401", "403", "406", "429"}
+
+# Codes that mean "ask again", not "this page is gone". Cloudflare answers 52x
+# when it cannot reach the origin, and "000" is curl giving up on a slow DNS
+# lookup or TLS handshake. journalismpakistan.com returned 522, 522, then 200 to
+# three identical requests, which is the whole problem: one unlucky GET would
+# have reported a live citation as dead, and a dead report is what invites
+# somebody to "repair" a perfectly good source with a search hit. Retrying costs
+# a couple of seconds on a run that already takes a minute.
+TRANSIENT = {"000", "408", "425", "500", "502", "503", "504", "522", "523", "524"}
+RETRIES = 2
 
 # Wikipedia stays banned as a source, with one carve-out. In the countries
 # whose internet is restricted by default there is often no platform-specific
@@ -196,7 +207,19 @@ def clean_title(raw: str) -> str:
 
 
 def fetch(url: str) -> tuple[str, str]:
-    """(HTTP status code, page title). Title is "" when it cannot be read."""
+    """(HTTP status code, page title), retrying while the failure looks transient."""
+    code, title = "000", ""
+    for attempt in range(RETRIES + 1):
+        code, title = fetch_once(url)
+        if code not in TRANSIENT:
+            break
+        if attempt < RETRIES:
+            time.sleep(1 + attempt)
+    return code, title
+
+
+def fetch_once(url: str) -> tuple[str, str]:
+    """One GET. (HTTP status code, page title); title is "" when unreadable."""
     try:
         res = subprocess.run(
             ["curl", "-s", "-w", "\n%{http_code}", "-L",
