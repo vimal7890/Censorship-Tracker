@@ -5,8 +5,15 @@
     <link>https://censorship.my/changes</link>
     <description>Every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms, straight from the dataset's history.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Aug 2026 15:07:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 15:20:59 +0000</lastBuildDate>
     <atom:link href="https://censorship.my/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Replace the Wikipedia and dead citations on four rows</title>
+      <link>https://censorship.my/changes#ca88d75270</link>
+      <guid isPermaLink="false">ca88d752709b173de7f37c2254c928a708857848</guid>
+      <pubDate>Tue, 04 Aug 2026 16:20:27 +0100</pubDate>
+      <description>&lt;p&gt;1 removed, 3 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Germany (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DuckDuckGo — People's Republic of China (complete): notes, source&lt;/li&gt;&lt;li&gt;CGTN — United Kingdom (partial): notes, source&lt;/li&gt;&lt;li&gt;CGTN — United States of America (partial): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Add Al Jazeera restriction in Pakistan</title>
       <link>https://censorship.my/changes#e6bbd033dc</link>
@@ -419,13 +426,6 @@
       <guid isPermaLink="false">6eea8a7f055a1344891a1cd083623e493d248e8e</guid>
       <pubDate>Mon, 20 Jul 2026 00:57:51 +0100</pubDate>
       <description>&lt;p&gt;1 added, 1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — China (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Add North Korea to every platform</title>
-      <link>https://censorship.my/changes#94c7e2c6cb</link>
-      <guid isPermaLink="false">94c7e2c6cb7ad5d0042afb0bd98278a9f38c0f6c</guid>
-      <pubDate>Sun, 19 Jul 2026 21:37:51 +0100</pubDate>
-      <description>&lt;p&gt;11 added, 1 removed, 29 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — North Korea (complete)&lt;/li&gt;&lt;li&gt;Grindr — North Korea (complete)&lt;/li&gt;&lt;li&gt;Medium — North Korea (complete)&lt;/li&gt;&lt;li&gt;Odnoklassniki — North Korea (complete)&lt;/li&gt;&lt;li&gt;Patreon — North Korea (complete)&lt;/li&gt;&lt;li&gt;Pinterest — North Korea (complete)&lt;/li&gt;&lt;li&gt;Quora — North Korea (complete)&lt;/li&gt;&lt;li&gt;Roblox — North Korea (complete)&lt;/li&gt;&lt;li&gt;Tinder — North Korea (complete)&lt;/li&gt;&lt;li&gt;VKontakte — North Korea (complete)&lt;/li&gt;&lt;li&gt;Zoom — North Korea (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — North Korea (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bluesky — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;ChatGPT — North Korea (complete): date, notes, source&lt;/li&gt;&lt;li&gt;Discord — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;DuckDuckGo — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Facebook — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Google — North Korea (complete): date, notes&lt;/li&gt;&lt;li&gt;Instagram — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;LINE — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;LinkedIn — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Reddit — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Rumble — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Signal — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Snapchat — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Spotify — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Substack — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Telegram — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Threads — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;TikTok — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Tumblr — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Twitch — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Viber — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Vimeo — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;WeChat — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;WhatsApp — North Korea (complete): date, notes&lt;/li&gt;&lt;li&gt;Wikipedia — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;Yandex — North Korea (complete): notes&lt;/li&gt;&lt;li&gt;YouTube — North Korea (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,8 +1,61 @@
 {
-  "generated_utc": "2026-08-04T15:07:17+00:00",
-  "count": 118,
+  "generated_utc": "2026-08-04T15:20:59+00:00",
+  "count": 119,
   "latest": "2026-08-04",
   "events": [
+    {
+      "id": "ca88d75270",
+      "sha": "ca88d752709b173de7f37c2254c928a708857848",
+      "date": "2026-08-04",
+      "iso": "2026-08-04T16:20:27+01:00",
+      "subject": "Replace the Wikipedia and dead citations on four rows",
+      "author": "Vimal",
+      "total": 4,
+      "added": [],
+      "removed": [
+        {
+          "platform": "CGTN",
+          "country": "Germany",
+          "type": "partial",
+          "since": "February 2021"
+        }
+      ],
+      "changed": [
+        {
+          "platform": "DuckDuckGo",
+          "country": "People's Republic of China",
+          "type": "complete",
+          "since": "September 2014",
+          "fields": [
+            "notes",
+            "source"
+          ]
+        },
+        {
+          "platform": "CGTN",
+          "country": "United Kingdom",
+          "type": "partial",
+          "since": "February 2021",
+          "fields": [
+            "notes",
+            "source"
+          ]
+        },
+        {
+          "platform": "CGTN",
+          "country": "United States of America",
+          "type": "partial",
+          "since": "February 2019",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "2018"
+        }
+      ],
+      "renamed": []
+    },
     {
       "id": "e6bbd033dc",
       "sha": "e6bbd033dc86f728aec68ddbfaab296eda3aff1e",
