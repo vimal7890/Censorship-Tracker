@@ -1,12 +1,12 @@
 {
-  "generated_utc": "2026-08-04T15:07:13+00:00",
-  "count": 172,
+  "generated_utc": "2026-08-04T15:19:20+00:00",
+  "count": 173,
   "by_kind": {
-    "primary": 32,
+    "primary": 33,
     "measurement": 5,
-    "research": 48,
-    "reporting": 80,
-    "reference": 7
+    "research": 50,
+    "reporting": 79,
+    "reference": 6
   },
   "kind_labels": {
     "primary": "Primary",
@@ -140,6 +140,15 @@
       "archived": false,
       "title": "Sixth Circuit revives Ohio's parental consent law for kids' social media | Courthouse News Service"
     },
+    "https://cpj.org/2020/02/us-reclassifies-5-chinese-state-media-organization/": {
+      "url": "https://cpj.org/2020/02/us-reclassifies-5-chinese-state-media-organization/",
+      "domain": "cpj.org",
+      "publisher": "Committee to Protect Journalists",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": "U.S. reclassifies 5 Chinese state media organizations as ‘foreign missions’ - Committee to Protect Journalists"
+    },
     "https://cpj.org/2022/03/taliban-detain-and-release-at-least-7-journalists-and-media-workers-ban-broadcasts-from-bbc-voa-dw/": {
       "url": "https://cpj.org/2022/03/taliban-detain-and-release-at-least-7-journalists-and-media-workers-ban-broadcasts-from-bbc-voa-dw/",
       "domain": "cpj.org",
@@ -220,15 +229,6 @@
       "date": "",
       "archived": false,
       "title": "Roya News | Government source clarifies TikTok ban in Jordan"
-    },
-    "https://en.wikipedia.org/wiki/CGTN_(TV_channel)": {
-      "url": "https://en.wikipedia.org/wiki/CGTN_(TV_channel)",
-      "domain": "en.wikipedia.org",
-      "publisher": "Wikipedia",
-      "kind": "reference",
-      "date": "",
-      "archived": false,
-      "title": "CGTN (TV channel) - Wikipedia"
     },
     "https://en.wikipedia.org/wiki/Censorship_of_YouTube": {
       "url": "https://en.wikipedia.org/wiki/Censorship_of_YouTube",
@@ -716,15 +716,6 @@
       "archived": false,
       "title": "Ukraine introduces a new sanctions package against Russian IT and sports industries - Global Sanctions and Export Controls Blog"
     },
-    "https://searchengineland.com/china-blocks-duckduckgo-privacy-search-engine-203855": {
-      "url": "https://searchengineland.com/china-blocks-duckduckgo-privacy-search-engine-203855",
-      "domain": "searchengineland.com",
-      "publisher": "Search Engine Land",
-      "kind": "reporting",
-      "date": "",
-      "archived": false,
-      "title": ""
-    },
     "https://support.apple.com/HT212614": {
       "url": "https://support.apple.com/HT212614",
       "domain": "support.apple.com",
@@ -1067,6 +1058,15 @@
       "archived": false,
       "title": "Best VPNs for Etisalat & UAE That Still Work in 2026"
     },
+    "https://www.comparitech.com/privacy-security-tools/blockedinchina/duckduckgo/": {
+      "url": "https://www.comparitech.com/privacy-security-tools/blockedinchina/duckduckgo/",
+      "domain": "comparitech.com",
+      "publisher": "Comparitech",
+      "kind": "research",
+      "date": "",
+      "archived": false,
+      "title": "Can you access DuckDuckGo in China? - Comparitech"
+    },
     "https://www.computing.co.uk/news/2025/legislation-regulation/spotify-introduces-facial-age-checks-in-uk": {
       "url": "https://www.computing.co.uk/news/2025/legislation-regulation/spotify-introduces-facial-age-checks-in-uk",
       "domain": "computing.co.uk",
@@ -1246,6 +1246,15 @@
       "date": "",
       "archived": false,
       "title": "Russia-related sanctions for online services"
+    },
+    "https://www.ofcom.org.uk/tv-radio-and-on-demand/broadcast-standards/ofcom-revokes-cgtn-licence-to-broadcast-in-uk": {
+      "url": "https://www.ofcom.org.uk/tv-radio-and-on-demand/broadcast-standards/ofcom-revokes-cgtn-licence-to-broadcast-in-uk",
+      "domain": "ofcom.org.uk",
+      "publisher": "Ofcom",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": "Ofcom revokes CGTN's licence to broadcast in the UK"
     },
     "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1635206&lang=2&reg=48": {
       "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1635206&lang=2&reg=48",
