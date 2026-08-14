@@ -133,7 +133,6 @@ REGISTRY: dict[str, tuple[str, str]] = {
     "courthousenews.com": ("Courthouse News Service", "reporting"),
     "aljazeera.com": ("Al Jazeera", "reporting"),
     "arabnews.com": ("Arab News", "reporting"),
-    "franceinfo.fr": ("franceinfo", "reporting"),
     "malaymail.com": ("Malay Mail", "reporting"),
     "themoscowtimes.com": ("The Moscow Times", "reporting"),
     "meduza.io": ("Meduza", "reporting"),

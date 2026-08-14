@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Give every row a stage and a coverage grade, and write both into the CSV.
 
-"Age verification" and "partial" were doing too much work. A French law adopted
-in July 2026 that bites in September 2026, a Chinese block that OONI has
+"Age verification" and "partial" were doing too much work. A scheduled law
+that takes effect in a future month, a Chinese block that OONI has
 measured every week for a decade, and a single news story saying a country has
 started throttling something were all rendered identically. They are not the
 same claim and the site should not pretend otherwise.

@@ -1,8 +1,76 @@
 {
-  "generated_utc": "2026-08-04T15:20:59+00:00",
-  "count": 119,
-  "latest": "2026-08-04",
+  "generated_utc": "2026-08-14T16:48:46+00:00",
+  "count": 120,
+  "latest": "2026-08-14",
   "events": [
+    {
+      "id": "7ccb4ef2a4",
+      "sha": "7ccb4ef2a4582cc22d783312f73a40728e038dc7",
+      "date": "2026-08-14",
+      "iso": "2026-08-14T17:48:43+01:00",
+      "subject": "Remove struck-down France age ban",
+      "author": "Vimal",
+      "total": 9,
+      "added": [],
+      "removed": [
+        {
+          "platform": "Facebook",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "Instagram",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "Reddit",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "Snapchat",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "Threads",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "TikTok",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "Twitch",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "X (formerly Twitter)",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        },
+        {
+          "platform": "YouTube",
+          "country": "France",
+          "type": "age",
+          "since": "1 September 2026"
+        }
+      ],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "ca88d75270",
       "sha": "ca88d752709b173de7f37c2254c928a708857848",
