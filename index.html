@@ -910,24 +910,6 @@
             margin-bottom: 8px;
         }
 
-        /* Chip overflow. Russia Today alone carries 37 territories, which pushes
-           everything below it off the screen; the rest stay one click away. */
-        .country-tag.overflow[hidden] { display: none; }
-        .chip-more {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            border: 1px dashed var(--muted-gray);
-            background: transparent;
-            color: var(--on-surface-variant);
-            padding: 9px 13px;
-            cursor: pointer;
-        }
-        .chip-more:hover { border-color: var(--primary); color: var(--primary); }
-        .chip-more:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
-
         /* Compact list: collapse every row to its heading so 49 platform names
            fit on one or two screens, and expand one at a time. */
         .platform-list.compact .platform-body { display: none; }
@@ -2709,7 +2691,6 @@
             }
 
             const TYPE_INFO_CLASS = { complete: '', partial: 'partial-info', age: 'age-info' };
-            const CHIP_LIMIT = 14;
 
             // Case-file panels are rendered as empty shells and filled the first
             // time they open (fillPanel). Building all 450+ up front is ~4,000
@@ -2735,7 +2716,7 @@
                     </div>
                     <div class="platform-body">
                         <div class="chip-row">
-                            ${groups.map((g, i) => {
+                            ${groups.map(g => {
                                 const multi = g.types.length > 1;
                                 const typeKey = g.types.join('-');
                                 const tagId = `tag-${banDomId(platform.name, g.country, typeKey)}`;
@@ -2744,16 +2725,8 @@
                                 const title = multi
                                     ? g.types.map(t => TYPE_LABEL[t] || t).join(' + ')
                                     : (TYPE_LABEL[g.types[0]] || '');
-                                // Russia Today alone spans 37 territories, which
-                                // buries every row under it. Past the cutoff the
-                                // chips are rendered but hidden, so the "+N more"
-                                // toggle is instant and deep links still resolve.
-                                const over = i >= CHIP_LIMIT ? ' overflow' : '';
-                                return `<button id="${tagId}" class="country-tag ${cls}${over}"${style}${over ? ' hidden' : ''} title="${escapeHTML(title)}" data-platform="${escapeHTML(platform.name)}" data-country="${escapeHTML(g.country)}" data-types="${g.types.join('|')}">${escapeHTML(g.country)}</button>`;
+                                return `<button id="${tagId}" class="country-tag ${cls}"${style} title="${escapeHTML(title)}" data-platform="${escapeHTML(platform.name)}" data-country="${escapeHTML(g.country)}" data-types="${g.types.join('|')}">${escapeHTML(g.country)}</button>`;
                             }).join('')}
-                            ${countryCount > CHIP_LIMIT
-                                ? `<button class="chip-more" type="button" data-more="1" aria-expanded="false">+${countryCount - CHIP_LIMIT} more</button>`
-                                : ''}
                         </div>
                         ${groups.map(g => {
                             const multi = g.types.length > 1;
@@ -3142,11 +3115,9 @@
             const info = resolveInfoPanel(platform, country, [type]);
             const countryPrefix = banDomId(platform, country);
             const tag = document.querySelector(`[id^="tag-${countryPrefix}"]`);
-            // The target chip may be past the "+N more" cutoff, or its whole row
-            // collapsed in compact mode; open whatever is hiding it first, or the
-            // jump lands on nothing.
+            // The whole row may be collapsed in compact mode; open it before
+            // scrolling so the jump lands on the visible target.
             if (tag) {
-                revealChip(tag);
                 const row = tag.closest('.platform-row');
                 if (row) row.classList.add('open');
             }
@@ -3158,24 +3129,6 @@
                 // "read this record" does not mean "now find it yourself".
                 if (tag) tag.focus({ preventScroll: true });
             }
-        }
-
-        // Expand a row's hidden chip overflow so a deep link can reach a chip
-        // that is currently behind the "+N more" toggle.
-        function revealChip(tag) {
-            if (!tag.classList.contains('overflow')) return;
-            const row = tag.closest('.chip-row');
-            const more = row && row.querySelector('.chip-more');
-            if (more && more.getAttribute('aria-expanded') !== 'true') toggleChipOverflow(more);
-        }
-
-        function toggleChipOverflow(button) {
-            const row = button.closest('.chip-row');
-            const open = button.getAttribute('aria-expanded') === 'true';
-            const hidden = row.querySelectorAll('.country-tag.overflow');
-            hidden.forEach(el => { el.hidden = open; });
-            button.setAttribute('aria-expanded', String(!open));
-            button.textContent = open ? `+${hidden.length} more` : 'Show fewer';
         }
 
         function wireRowJumps(containerId) {
@@ -3630,8 +3583,6 @@
         // onclick handlers, so no platform/country name is ever interpolated
         // into an executable attribute (a name with a quote would break it).
         document.getElementById('platformGrid').addEventListener('click', e => {
-            const more = e.target.closest('.chip-more');
-            if (more) { toggleChipOverflow(more); return; }
             // In compact mode the row heading is the expander.
             const meta = e.target.closest('.platform-meta');
             if (meta && document.getElementById('platformGrid').classList.contains('compact')) {

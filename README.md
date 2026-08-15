@@ -342,10 +342,10 @@ so any view can be bookmarked and shared.
 
 Case-file panels are rendered lazily — the grid ships as light shells and a
 panel's markup is built the first time it is opened — so editing search does not
-rebuild 450+ hidden panels on every keystroke. Long rows collapse past 14
-country chips (Russia Today alone spans 37, which buried everything under it),
-and **Compact list** collapses every row to its heading so 49 platform names fit
-on a screen or two. Deep links open whatever is hiding their target first.
+rebuild 450+ hidden panels on every keystroke. Every country chip is shown in its
+row, and **Compact list** optionally collapses each row to its heading so 49
+platform names fit on a screen or two. Deep links open a collapsed row before
+focusing their target.
 
 An empty result offers to undo whichever narrowing actually caused it, rather
 than leaving the visitor to guess which of four to clear.
@@ -379,7 +379,7 @@ Things that were broken, are fixed, and are pinned by
   `tabindex="-1"`. Clicking a country on the map used to leave a keyboard
   visitor parked on the map while the answer rendered somewhere below them.
 - Revealing a case file from a dossier or the recent list focuses the chip it
-  opened, expanding any collapsed row or chip overflow hiding it.
+  opened, expanding a collapsed platform row when Compact list is active.
 - Every form control on every page resolves to a name.
 
 ## VPN matrix on a small screen
