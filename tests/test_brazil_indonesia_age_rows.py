@@ -24,7 +24,7 @@ BRAZIL_AGE_REQUIRED = {
     "Snapchat",
     "TikTok",
     "Twitch",
-    "X (formerly Twitter)",
+    "X",
     "YouTube",
 }
 
@@ -34,7 +34,7 @@ INDONESIA_AGE_REQUIRED = {
     "Facebook",
     "Instagram",
     "TikTok",
-    "X (formerly Twitter)",
+    "X",
     "YouTube",
 }
 
@@ -127,8 +127,8 @@ def main() -> int:
     assert has("DuckDuckGo", "Indonesia", "complete"), "DuckDuckGo Indonesia ban missing"
     assert has("Reddit", "Indonesia", "complete"), "Reddit Indonesia ban missing"
     # Grok partial ban (Jan 2026) was lifted in early 2026 — must not reappear
-    assert not has("X (formerly Twitter)", "Indonesia", "partial"), "stale X Grok Indonesia partial"
-    assert has("X (formerly Twitter)", "Indonesia", "age"), "X Indonesia age missing"
+    assert not has("X", "Indonesia", "partial"), "stale X Grok Indonesia partial"
+    assert has("X", "Indonesia", "age"), "X Indonesia age missing"
 
     print("OK: Brazil age platforms:", sorted(brazil_platforms))
     print("OK: Indonesia age platforms:", sorted(indo_platforms))

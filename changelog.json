@@ -1,8 +1,28 @@
 {
-  "generated_utc": "2026-08-15T13:06:27+00:00",
-  "count": 123,
+  "generated_utc": "2026-08-15T17:51:26+00:00",
+  "count": 124,
   "latest": "2026-08-15",
   "events": [
+    {
+      "id": "1d1ab1db80",
+      "sha": "1d1ab1db801847fbaf84c99d83073786d87d8faa",
+      "date": "2026-08-15",
+      "iso": "2026-08-15T14:06:56+01:00",
+      "subject": "Merge Greenland into Denmark map entity",
+      "author": "Vimal",
+      "total": 1,
+      "added": [],
+      "removed": [
+        {
+          "platform": "Russia Today",
+          "country": "Greenland",
+          "type": "complete",
+          "since": "March 2022"
+        }
+      ],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "0c53aa8054",
       "sha": "0c53aa8054eab1303cccfa0588d5e7e714495424",
@@ -10235,14 +10255,14 @@
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "partial",
-          "since": "January 2026"
+          "type": "age",
+          "since": "01/06/2026"
         },
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "age",
-          "since": "01/06/2026"
+          "type": "partial",
+          "since": "January 2026"
         },
         {
           "platform": "YouTube",

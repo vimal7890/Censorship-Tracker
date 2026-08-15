@@ -22,7 +22,7 @@ UAE_AGE_REQUIRED = {
     "Instagram",
     "Snapchat",
     "TikTok",
-    "X (formerly Twitter)",
+    "X",
 }
 
 # Social set minus Discord (complete ban still in force for Türkiye).
@@ -34,7 +34,7 @@ TURKEY_AGE_REQUIRED = {
     "Snapchat",
     "TikTok",
     "Twitch",
-    "X (formerly Twitter)",
+    "X",
     "YouTube",
 }
 
@@ -105,8 +105,8 @@ def main() -> int:
     assert has(rows, "Discord", "United Arab Emirates", "partial"), "UAE Discord VoIP partial missing"
     assert has(rows, "WhatsApp", "United Arab Emirates", "partial"), "UAE WhatsApp VoIP partial missing"
     assert has(rows, "Discord", "Türkiye", "complete"), "Türkiye Discord complete missing"
-    assert has(rows, "X (formerly Twitter)", "Türkiye", "partial"), "Türkiye X Grok partial missing"
-    assert has(rows, "X (formerly Twitter)", "Türkiye", "age"), "Türkiye X age missing"
+    assert has(rows, "X", "Türkiye", "partial"), "Türkiye X Grok partial missing"
+    assert has(rows, "X", "Türkiye", "age"), "Türkiye X age missing"
 
     print("OK: UAE age platforms:", sorted(uae_platforms))
     print("OK: Türkiye age platforms:", sorted(turkey_platforms))

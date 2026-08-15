@@ -23,7 +23,7 @@ GABON_AGE_REQUIRED = {
     "Snapchat",
     "TikTok",
     "Twitch",
-    "X (formerly Twitter)",
+    "X",
     "YouTube",
 }
 
