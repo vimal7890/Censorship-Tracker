@@ -17,6 +17,7 @@ window.COUNTRY_TO_ISO = {
     "Egypt": "EG",
     "Eritrea": "ER",
     "Gabon": "GA",
+    "Greenland": "GL",
     "India": "IN",
     "Indonesia": "ID",
     "Islamic Republic of Iran": "IR",

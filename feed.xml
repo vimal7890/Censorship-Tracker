@@ -5,8 +5,15 @@
     <link>https://censorship.my/changes</link>
     <description>Every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms, straight from the dataset's history.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 15 Aug 2026 11:34:52 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 12:56:10 +0000</lastBuildDate>
     <atom:link href="https://censorship.my/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Remove inaccurate Twitch South Korea restriction entry</title>
+      <link>https://censorship.my/changes#f5aecd235c</link>
+      <guid isPermaLink="false">f5aecd235c4778136e958d64907402fd964f52f2</guid>
+      <pubDate>Sat, 15 Aug 2026 12:35:32 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Twitch — South Korea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Cite EUR-Lex for the RT broadcast ban</title>
       <link>https://censorship.my/changes#c23e3165c6</link>
@@ -419,13 +426,6 @@
       <guid isPermaLink="false">1c491b1a94461f0331badbeec442c3daafe0b9f7</guid>
       <pubDate>Mon, 20 Jul 2026 11:56:21 +0100</pubDate>
       <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — China (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Fix platform chart tooltip to show only hovered ban type; add TikTok China entry</title>
-      <link>https://censorship.my/changes#5d62dd1fac</link>
-      <guid isPermaLink="false">5d62dd1fac0e2243b34f6ea1cd6c03e69505da3b</guid>
-      <pubDate>Mon, 20 Jul 2026 11:53:20 +0100</pubDate>
-      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — China (complete)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
