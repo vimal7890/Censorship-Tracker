@@ -18,6 +18,7 @@ changing them, which is the right thing for CI. Individually:
 
 | Script                | Generates                        | Why it exists                                                      |
 |-----------------------|----------------------------------|--------------------------------------------------------------------|
+| `build_countries.py`  | `assets/countries.js`            | Canonical names, aliases, ISO/map metadata for every data source    |
 | `build_sources.py`    | `sources.json`                   | Publisher, evidence kind and date for every cited URL              |
 | `build_status.py`     | CSV `status` / `evidence` cols   | Grades each row's stage and how well it is sourced                 |
 | `build_timezones.py`  | `assets/timezones.js`            | Time zone → country, for the client-side "use my region" guess     |
@@ -126,13 +127,16 @@ Notes:
   case file listing each restriction.
 - New platforms need an icon + brand colour added to `PLATFORM_ICONS` /
   `PLATFORM_COLORS` in `index.html`; otherwise the row renders without a logo.
-- **New country names need an ISO mapping** in
-  [`assets/countries.js`](assets/countries.js) (`COUNTRY_TO_ISO`) so the world
-  map can shade them — `tests/test_world_map.py` enforces this, and also
-  enforces that the ISO code is actually drawable: either a path in
-  `world.svg` or a `MICROSTATE_LATLON` entry that projects inside the viewBox.
-  Subnational
-  jurisdictions (e.g. US states) map to their parent country with
+- **Country names come from the canonical registry** in
+  [`country_registry.json`](country_registry.json). It is the source of truth
+  for the human-readable names, aliases, ISO codes, subnational notes, map
+  aliases and microstate coordinates. `build_countries.py` validates every
+  censorship and VPN country name against it and generates
+  [`assets/countries.js`](assets/countries.js); do not edit that generated file
+  by hand. `build_timezones.py` uses the same registry when it attaches
+  canonical names to the IANA zone lookup. `tests/test_country_registry.py`
+  catches drift between the CSV, VPN JSON, browser mapping and timezone asset.
+  Subnational jurisdictions (e.g. US states) map to their parent country with
   `{ iso: "US", subnational: true }` and are aggregated under it on the map.
 
 ## Citations
@@ -357,7 +361,9 @@ to need a scroll to the map or a hunt through the filter row. The lookup block
 sits above the search box and opens a territory's full dossier.
 
 **Use my region** guesses from `Intl.DateTimeFormat().resolvedOptions().timeZone`
-and a generated lookup table (`build_timezones.py`). Every other way of doing
+and a generated lookup table (`build_timezones.py`). The table keeps the
+complete IANA zone → ISO lookup and adds canonical display names from
+`country_registry.json` for recognized territories. Every other way of doing
 this is wrong for this audience: the Geolocation API throws a permission prompt
 and returns coordinates that then need a reverse-geocoding request, and IP
 lookup services are a third-party request that tells someone else you were

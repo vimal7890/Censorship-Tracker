@@ -47,6 +47,7 @@ from datetime import date
 from pathlib import Path
 
 import sources
+from country_registry import load_registry
 
 ROOT = Path(__file__).resolve().parent
 CSV_PATH = ROOT / "censorship_data.csv"
@@ -143,6 +144,11 @@ def main(argv: list[str]) -> int:
 
     with CSV_PATH.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
+
+    load_registry().validate_names(
+        (row.get("country") or "" for row in rows),
+        "censorship_data.csv",
+    )
 
     changed = 0
     stale_scheduled = []

@@ -691,6 +691,7 @@
 
     <div id="hoverTooltip" class="hover-tip" aria-hidden="true"></div>
 
+    <script src="assets/countries.js"></script>
     <script src="assets/site.js"></script>
     <script>
         function escapeHTML(str) {
@@ -702,6 +703,12 @@
             return s === 'complete' ? 'Complete ban' : 'Heavy restriction';
         }
 
+        function displayCountry(name) {
+            return window.canonicalCountryName
+                ? (window.canonicalCountryName(name) || name)
+                : name;
+        }
+
         function renderTable(rows) {
             const body = document.getElementById('vpnTableBody');
             const sorted = rows.slice().sort((a, b) => {
@@ -710,7 +717,7 @@
             });
             body.innerHTML = sorted.map(r => `
                 <tr>
-                    <td class="country">${r.country}</td>
+                    <td class="country">${escapeHTML(displayCountry(r.country))}</td>
                     <td><span class="badge ${r.severity}">${severityLabel(r.severity)}</span></td>
                     <td class="since">${r.since || '—'}</td>
                     <td class="summary">${r.summary || ''}</td>
@@ -828,12 +835,12 @@
             const meta = MX_STATUS[key] || MX_STATUS.restricted;
             const named = ((app.overrides || {})[country.code] !== undefined);
             const tip = registerTip(
-                `<div class="tt-head">${escapeHTML(app.name)} &mdash; ${escapeHTML(country.name)}</div>` +
+                `<div class="tt-head">${escapeHTML(app.name)} &mdash; ${escapeHTML(displayCountry(country.name))}</div>` +
                 `<div class="tt-verdict ${key}">${meta.glyph} ${meta.label}</div>` +
                 `<div>${escapeHTML(meta.detail.charAt(0).toUpperCase() + meta.detail.slice(1))}.</div>` +
                 `<div class="tt-basis">${named
                     ? 'Named in reporting for this country'
-                    : `Country baseline &mdash; applies to all ${escapeHTML(country.name)} providers`}</div>` +
+                    : `Country baseline &mdash; applies to all ${escapeHTML(displayCountry(country.name))} providers`}</div>` +
                 `<div class="tt-why">${escapeHTML(country.note)}</div>`
             );
             // The visible label is short, so each cell carries its own full
@@ -842,7 +849,7 @@
                 `<span class="mx-state ${key}">` +
                 `<span class="mx-glyph" aria-hidden="true">${meta.glyph}</span>` +
                 `${meta.label}</span>` +
-                `<span class="visually-hidden">${escapeHTML(`${app.name} in ${country.name}: ${meta.label} — ${meta.detail}`)}</span></td>`;
+                `<span class="visually-hidden">${escapeHTML(`${app.name} in ${displayCountry(country.name)}: ${meta.label} — ${meta.detail}`)}</span></td>`;
         }
 
         function renderAppMatrix(matrix) {
@@ -859,7 +866,7 @@
 
             document.getElementById('appMatrixHead').innerHTML =
                 `<tr><th class="mx-app-head" scope="col">${corner}</th>` +
-                cols.map(c => `<th scope="col">${escapeHTML(c.name)}</th>`).join('') +
+                cols.map(c => `<th scope="col">${escapeHTML(displayCountry(c.name))}</th>`).join('') +
                 '</tr>';
 
             document.getElementById('appMatrixBody').innerHTML = rows.map(row => {
@@ -877,14 +884,14 @@
             if (select.options.length <= 1) {
                 select.innerHTML = '<option value="">All jurisdictions</option>' +
                     matrixData.countries.map(c =>
-                        `<option value="${escapeHTML(c.code)}">${escapeHTML(c.name)}</option>`).join('');
+                        `<option value="${escapeHTML(c.code)}">${escapeHTML(displayCountry(c.name))}</option>`).join('');
             }
 
             // Notes always list every jurisdiction — narrowing the table is a
             // way to read it, not a claim that the rest stopped applying.
             document.getElementById('matrixNotes').innerHTML = matrixData.countries.map(c => {
                 const srcs = (c.sources || []).map(s => Site.sourceChip(s)).join(' ');
-                return `<div class="mx-note"><b>${escapeHTML(c.name)}</b> — ${escapeHTML(c.note)}
+                return `<div class="mx-note"><b>${escapeHTML(displayCountry(c.name))}</b> — ${escapeHTML(c.note)}
                     ${srcs ? `<span class="mx-note-src">${srcs}</span>` : ''}</div>`;
             }).join('');
         }
@@ -924,7 +931,7 @@
                         : '';
                     return `
                         <div class="icloud-country-item">
-                            <span class="icloud-c-name">${escapeHTML(c.name)}</span>
+                            <span class="icloud-c-name">${escapeHTML(displayCountry(c.name))}</span>
                             <span class="icloud-c-reason">&mdash; ${escapeHTML(c.reason)}</span>
                             ${noICloudNote}
                         </div>`;

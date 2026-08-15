@@ -1,6 +1,3 @@
-import json
-import re
-
 csv_entries = """Russia Today,Australia,March 2022,complete,"Banned and broadcasts suspended following the invasion of Ukraine.",https://www.theguardian.com/media/2022/mar/01/foxtel-and-sbs-suspend-russia-today-broadcasts-in-australia
 Russia Today,Austria,March 2022,complete,"Banned by EU Regulation 2022/350 following the invasion of Ukraine.",https://eur-lex.europa.eu/eli/reg/2022/350/oj
 Russia Today,Belgium,March 2022,complete,"Banned by EU Regulation 2022/350 following the invasion of Ukraine.",https://eur-lex.europa.eu/eli/reg/2022/350/oj
@@ -42,42 +39,18 @@ if not content.endswith("\n"):
 with open("censorship_data.csv", "w") as f:
     f.write(content + csv_entries + "\n")
 
-countries_to_add = {
-    "Austria": "AT",
-    "Belgium": "BE",
-    "Bulgaria": "BG",
-    "Croatia": "HR",
-    "Cyprus": "CY",
-    "Czech Republic": "CZ",
-    "Estonia": "EE",
-    "Finland": "FI",
-    "Germany": "DE",
-    "Greece": "GR",
-    "Hungary": "HU",
-    "Ireland": "IE",
-    "Lithuania": "LT",
-    "Luxembourg": "LU",
-    "Malta": "MT",
-    "Poland": "PL",
-    "Romania": "RO",
-    "Slovakia": "SK",
-    "Slovenia": "SI",
-    "Sweden": "SE"
+from country_registry import load_registry
+
+# The map is generated from the canonical registry. Refuse to append a new
+# country until its canonical name is registered instead of silently editing a
+# generated asset that the next build would overwrite.
+new_countries = {
+    "Australia", "Austria", "Belgium", "Bulgaria", "Canada", "Croatia",
+    "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France",
+    "Germany", "Greece", "Hungary", "Ireland", "Italy", "Latvia",
+    "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal",
+    "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", "United Kingdom",
+    "Ukraine"
 }
-
-with open("assets/countries.js", "r") as f:
-    countries_js = f.read()
-
-# find "Viet Nam": "VN",
-pattern = r'("Viet Nam": "VN",)'
-insertion = ""
-for country, code in countries_to_add.items():
-    if f'"{country}":' not in countries_js:
-        insertion += f'\n    "{country}": "{code}",'
-
-new_js = re.sub(pattern, r'\1' + insertion, countries_js)
-
-with open("assets/countries.js", "w") as f:
-    f.write(new_js)
-
-print("Done")
+load_registry().validate_names(new_countries, "update_rt.py")
+print("Done — run python3 build.py to regenerate assets/countries.js and derived files")

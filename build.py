@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Run every generator, in order, then the tests.
 
-The site now derives five files from the data instead of restating it by hand —
-sources.json, the CSV's status/evidence columns, meta.json, changelog.json and
-feed.xml, plus the prerendered index. They have to be regenerated after any data
-change, and the order matters: statuses are graded from the source registry, and
-meta.json counts the statuses.
+The site now derives its browser country mapping, source registry, CSV
+status/evidence columns, timezone table, metadata, changelog/feed and
+prerendered index from the data instead of restating them by hand. They have to
+be regenerated after any data change, and the order matters: statuses are
+graded from the source registry, and meta.json counts the statuses.
 
     python3 build.py            # regenerate everything, then run the tests
     python3 build.py --check    # fail if anything is out of date, change nothing
@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent
 
 # (script, args, why it comes here)
 STEPS = [
+    ("build_countries.py", [], "canonical country names and map metadata for every dataset"),
     ("build_sources.py", [], "publisher and evidence kind for every citation"),
     ("build_status.py", [], "grade each row's stage and coverage — needs sources.json"),
     ("build_timezones.py", [], "time zone to country, for the client-side region guess"),

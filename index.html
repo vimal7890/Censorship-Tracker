@@ -2821,7 +2821,7 @@
         const TYPE_ORDER = { complete: 0, partial: 1, age: 2 };
         const TYPE_LABEL = { complete: 'Complete Ban', partial: 'Partial Ban', age: 'Age Verification' };
         const TYPE_COLORS = { complete: 'var(--secondary)', partial: 'var(--alert-orange)', age: 'var(--age-purple)' };
-        const ISO_DISPLAY = { US: 'United States of America' };
+        const ISO_DISPLAY = window.COUNTRY_CANONICAL_NAMES || { US: 'United States of America' };
         const countryIndex = new Map(); // ISO code -> aggregated record
 
         function escapeHTML(value) {
@@ -2848,8 +2848,11 @@
                 const rec = countryIndex.get(iso);
                 const subnational = window.isSubnational(ban.country);
                 const note = window.subnationalNote ? window.subnationalNote(ban.country) : '';
+                const canonicalName = window.canonicalCountryName
+                    ? window.canonicalCountryName(ban.country)
+                    : ban.country;
                 if (subnational) rec.subnationalNames.add(ban.country);
-                else if (!rec.display) rec.display = ban.country;
+                else if (!rec.display) rec.display = canonicalName || ban.country;
                 rec.entries.push({ platform: platform.name, country: ban.country, since: ban.since,
                     type: ban.type, status: ban.status, evidence: ban.evidence,
                     source: ban.source, subnational, note });
@@ -3361,8 +3364,12 @@
 
         function populateHeroLookup() {
             const counts = new Map();
-            censorshipData.forEach(p => p.bannedIn.forEach(b =>
-                counts.set(b.country, (counts.get(b.country) || 0) + 1)));
+            censorshipData.forEach(p => p.bannedIn.forEach(b => {
+                const country = window.canonicalCountryName
+                    ? (window.canonicalCountryName(b.country) || b.country)
+                    : b.country;
+                counts.set(country, (counts.get(country) || 0) + 1);
+            }));
             const sel = document.getElementById('heroCountry');
             [...counts.keys()].sort((a, b) => a.localeCompare(b)).forEach(country => {
                 const opt = document.createElement('option');
