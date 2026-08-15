@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-08-15T11:12:57+00:00",
-  "count": 171,
+  "generated_utc": "2026-08-15T11:34:48+00:00",
+  "count": 170,
   "by_kind": {
-    "primary": 33,
+    "primary": 32,
     "measurement": 5,
     "research": 50,
     "reporting": 77,
@@ -76,15 +76,6 @@
       "date": "2025-07-09",
       "archived": false,
       "title": "Turkish Court Orders Block on X’s Grok for Insulting Leaders | Balkan Insight"
-    },
-    "https://blog.twitch.tv/en/2023/12/05/an-update-on-twitch-in-korea/": {
-      "url": "https://blog.twitch.tv/en/2023/12/05/an-update-on-twitch-in-korea/",
-      "domain": "blog.twitch.tv",
-      "publisher": "Twitch blog",
-      "kind": "primary",
-      "date": "2023-12-05",
-      "archived": false,
-      "title": ""
     },
     "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420": {
       "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2420",

@@ -1,8 +1,265 @@
 {
-  "generated_utc": "2026-08-15T11:13:03+00:00",
-  "count": 120,
-  "latest": "2026-08-14",
+  "generated_utc": "2026-08-15T11:34:52+00:00",
+  "count": 121,
+  "latest": "2026-08-15",
   "events": [
+    {
+      "id": "c23e3165c6",
+      "sha": "c23e3165c62f43d286b036db937c0e35d30154c3",
+      "date": "2026-08-15",
+      "iso": "2026-08-15T12:13:17+01:00",
+      "subject": "Cite EUR-Lex for the RT broadcast ban",
+      "author": "Vimal",
+      "total": 27,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "platform": "Russia Today",
+          "country": "Austria",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Belgium",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Bulgaria",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Croatia",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Cyprus",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Czech Republic",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Denmark",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Estonia",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Finland",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "France",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Germany",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Greece",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Hungary",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Ireland",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Italy",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Latvia",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Lithuania",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Luxembourg",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Malta",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Netherlands",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Poland",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Portugal",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Romania",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Slovakia",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Slovenia",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Spain",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Russia Today",
+          "country": "Sweden",
+          "type": "complete",
+          "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        }
+      ],
+      "renamed": []
+    },
     {
       "id": "effe4e27c7",
       "sha": "effe4e27c78a2424c6c0d75a94ec4f715b65b840",
@@ -9938,14 +10195,14 @@
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "partial",
-          "since": "January 2026"
+          "type": "age",
+          "since": "01/06/2026"
         },
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "age",
-          "since": "01/06/2026"
+          "type": "partial",
+          "since": "January 2026"
         },
         {
           "platform": "YouTube",

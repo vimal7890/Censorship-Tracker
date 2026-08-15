@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-15T11:13:03+00:00",
+  "generated_utc": "2026-08-15T11:34:52+00:00",
   "data_updated": "2026-08-15",
   "dataset_updated": {
     "censorship_data.csv": "2026-08-15",
@@ -9,24 +9,24 @@
   "sources_checked": "2026-08-04",
   "sources_count": 173,
   "censorship": {
-    "entries": 445,
+    "entries": 444,
     "platforms": 49,
-    "territories": 78,
+    "territories": 77,
     "by_type": {
-      "complete": 326,
+      "complete": 325,
       "partial": 52,
       "age": 67
     },
     "by_status": {
       "reported": 326,
       "enforced": 6,
-      "in_force": 98,
+      "in_force": 97,
       "scheduled": 15
     },
     "by_evidence": {
       "uncorroborated": 22,
       "country-default": 170,
-      "dedicated": 253
+      "dedicated": 252
     }
   },
   "vpn": {
