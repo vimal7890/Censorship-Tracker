@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-14T16:47:34+00:00",
+  "generated_utc": "2026-08-15T11:12:57+00:00",
   "count": 171,
   "by_kind": {
     "primary": 33,
@@ -183,7 +183,7 @@
       "kind": "primary",
       "date": "",
       "archived": false,
-      "title": "Broadcasting Decision CRTC 2022-68 | CRTC"
+      "title": "Azure WAF"
     },
     "https://deadline.com/2022/02/foxtel-australia-suspend-russian-channel-rt-ukraine-invasion-1234960915/": {
       "url": "https://deadline.com/2022/02/foxtel-australia-suspend-russian-channel-rt-ukraine-invasion-1234960915/",
@@ -292,6 +292,15 @@
       "date": "2026-04-07",
       "archived": false,
       "title": "Russia’s internet censorship in 2026: VPN crackdowns, mobile shutdowns, Telegram blocks and the state messenger Max"
+    },
+    "https://eur-lex.europa.eu/eli/reg/2022/350/oj": {
+      "url": "https://eur-lex.europa.eu/eli/reg/2022/350/oj",
+      "domain": "eur-lex.europa.eu",
+      "publisher": "EUR-Lex (Official Journal of the EU)",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": "Regulation - 2022/350 - EN - EUR-Lex"
     },
     "https://eurasianet.org/turkmenistan-domestic-developments-69": {
       "url": "https://eurasianet.org/turkmenistan-domestic-developments-69",
@@ -1029,7 +1038,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": ""
+      "title": "Myanmar blocks Wikipedia in all languages, internet suspended: NetBlocks | International News Others - Business Standard"
     },
     "https://www.cnn.com/2021/02/11/media/bbc-news-banned-china/index.html": {
       "url": "https://www.cnn.com/2021/02/11/media/bbc-news-banned-china/index.html",
@@ -1075,15 +1084,6 @@
       "date": "",
       "archived": false,
       "title": ""
-    },
-    "https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rt-russia-today-and-sputnik-s-broadcasting-in-the-eu/": {
-      "url": "https://www.consilium.europa.eu/en/press/press-releases/2022/03/02/eu-imposes-sanctions-on-state-owned-outlets-rt-russia-today-and-sputnik-s-broadcasting-in-the-eu/",
-      "domain": "consilium.europa.eu",
-      "publisher": "Council of the European Union",
-      "kind": "primary",
-      "date": "2022-03-02",
-      "archived": false,
-      "title": "Browser check - Consilium"
     },
     "https://www.dabangasudan.org/en/all-news/article/sudan-to-block-whatsapp-calls-citing-security-concerns": {
       "url": "https://www.dabangasudan.org/en/all-news/article/sudan-to-block-whatsapp-calls-citing-security-concerns",

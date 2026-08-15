@@ -47,6 +47,7 @@ from urllib.parse import unquote, urlparse
 REGISTRY: dict[str, tuple[str, str]] = {
     # -- Governments, legislatures and regulators (the instrument itself) -----
     "consilium.europa.eu": ("Council of the European Union", "primary"),
+    "eur-lex.europa.eu": ("EUR-Lex (Official Journal of the EU)", "primary"),
     "planalto.gov.br": ("Presidency of the Republic (Brazil)", "primary"),
     "alusra.gov.ae": ("Government of the United Arab Emirates", "primary"),
     "pib.gov.in": ("Press Information Bureau (India)", "primary"),

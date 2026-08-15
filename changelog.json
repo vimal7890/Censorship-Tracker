@@ -1,13 +1,13 @@
 {
-  "generated_utc": "2026-08-14T16:48:46+00:00",
+  "generated_utc": "2026-08-15T11:13:03+00:00",
   "count": 120,
   "latest": "2026-08-14",
   "events": [
     {
-      "id": "7ccb4ef2a4",
-      "sha": "7ccb4ef2a4582cc22d783312f73a40728e038dc7",
+      "id": "effe4e27c7",
+      "sha": "effe4e27c78a2424c6c0d75a94ec4f715b65b840",
       "date": "2026-08-14",
-      "iso": "2026-08-14T17:48:43+01:00",
+      "iso": "2026-08-14T17:48:46+01:00",
       "subject": "Remove struck-down France age ban",
       "author": "Vimal",
       "total": 9,
