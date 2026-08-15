@@ -1,8 +1,60 @@
 {
-  "generated_utc": "2026-08-15T17:54:11+00:00",
-  "count": 126,
+  "generated_utc": "2026-08-15T17:56:20+00:00",
+  "count": 127,
   "latest": "2026-08-15",
   "events": [
+    {
+      "id": "3d21ae5820",
+      "sha": "3d21ae58209af23a69cf4b60535ba3eb5c90f500",
+      "date": "2026-08-15",
+      "iso": "2026-08-15T18:56:11+01:00",
+      "subject": "Rename Kingdom of Saudi Arabia to Saudi Arabia",
+      "author": "Vimal",
+      "total": 4,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "renamed": [
+        {
+          "platform": "Al Jazeera",
+          "country": "Saudi Arabia",
+          "type": "complete",
+          "since": "May 2017",
+          "renamed": "country",
+          "was": "Kingdom of Saudi Arabia"
+        },
+        {
+          "platform": "Grindr",
+          "country": "Saudi Arabia",
+          "type": "complete",
+          "since": "Longstanding",
+          "renamed": "country",
+          "was": "Kingdom of Saudi Arabia",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "LINE",
+          "country": "Saudi Arabia",
+          "type": "partial",
+          "since": "Longstanding",
+          "renamed": "country",
+          "was": "Kingdom of Saudi Arabia"
+        },
+        {
+          "platform": "New York Times",
+          "country": "Saudi Arabia",
+          "type": "partial",
+          "since": "Late 2018",
+          "renamed": "country",
+          "was": "Kingdom of Saudi Arabia",
+          "fields": [
+            "notes"
+          ]
+        }
+      ]
+    },
     {
       "id": "62dc090e9f",
       "sha": "62dc090e9f4a5c9ffee726f3c02ed406b63d891c",
