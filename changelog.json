@@ -1,8 +1,94 @@
 {
-  "generated_utc": "2026-08-15T17:51:56+00:00",
-  "count": 125,
+  "generated_utc": "2026-08-15T17:54:11+00:00",
+  "count": 126,
   "latest": "2026-08-15",
   "events": [
+    {
+      "id": "62dc090e9f",
+      "sha": "62dc090e9f4a5c9ffee726f3c02ed406b63d891c",
+      "date": "2026-08-15",
+      "iso": "2026-08-15T18:54:01+01:00",
+      "subject": "Rename DW platform to Deutsche Welle",
+      "author": "Vimal",
+      "total": 9,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "renamed": [
+        {
+          "platform": "Deutsche Welle",
+          "country": "Afghanistan",
+          "type": "partial",
+          "since": "March 2022",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "Belarus",
+          "type": "complete",
+          "since": "October 2021",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "Eritrea",
+          "type": "complete",
+          "since": "Ongoing",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "North Korea",
+          "type": "complete",
+          "since": "Forever",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "People's Republic of China",
+          "type": "complete",
+          "since": "Longstanding",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "Russia",
+          "type": "complete",
+          "since": "February 2022",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "Turkmenistan",
+          "type": "complete",
+          "since": "Ongoing",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "Türkiye",
+          "type": "complete",
+          "since": "June 2022",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        },
+        {
+          "platform": "Deutsche Welle",
+          "country": "Venezuela",
+          "type": "partial",
+          "since": "March 2024",
+          "renamed": "platform",
+          "was": "DW (Deutsche Welle)"
+        }
+      ]
+    },
     {
       "id": "319f7eabe2",
       "sha": "319f7eabe2f0ee4f0e67122184d51ad15a310005",
@@ -10405,14 +10491,14 @@
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "partial",
-          "since": "January 2026"
+          "type": "age",
+          "since": "01/06/2026"
         },
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "age",
-          "since": "01/06/2026"
+          "type": "partial",
+          "since": "January 2026"
         },
         {
           "platform": "YouTube",
