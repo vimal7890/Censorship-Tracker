@@ -1,8 +1,158 @@
 {
-  "generated_utc": "2026-08-15T17:51:26+00:00",
-  "count": 124,
+  "generated_utc": "2026-08-15T17:51:56+00:00",
+  "count": 125,
   "latest": "2026-08-15",
   "events": [
+    {
+      "id": "319f7eabe2",
+      "sha": "319f7eabe2f0ee4f0e67122184d51ad15a310005",
+      "date": "2026-08-15",
+      "iso": "2026-08-15T18:51:44+01:00",
+      "subject": "Rename X formerly Twitter platform to X",
+      "author": "Vimal",
+      "total": 17,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "renamed": [
+        {
+          "platform": "X",
+          "country": "Australia",
+          "type": "age",
+          "since": "10/12/2025",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Brazil",
+          "type": "age",
+          "since": "17/03/2026",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Eritrea",
+          "type": "complete",
+          "since": "Ongoing",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Gabon",
+          "type": "age",
+          "since": "February 2027",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Indonesia",
+          "type": "age",
+          "since": "28/03/2026",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Islamic Republic of Iran",
+          "type": "complete",
+          "since": "2009",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Malaysia",
+          "type": "age",
+          "since": "01/06/2026",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Myanmar",
+          "type": "complete",
+          "since": "2021",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "North Korea",
+          "type": "complete",
+          "since": "Forever",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "People's Republic of China",
+          "type": "complete",
+          "since": "June 2009",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Russia",
+          "type": "complete",
+          "since": "March 2022",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Turkmenistan",
+          "type": "complete",
+          "since": "2008",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "late 2026",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Türkiye",
+          "type": "partial",
+          "since": "July 2025",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "United Arab Emirates",
+          "type": "age",
+          "since": "June 2027",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "United Kingdom",
+          "type": "age",
+          "since": "25/07/2025",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        },
+        {
+          "platform": "X",
+          "country": "Venezuela",
+          "type": "complete",
+          "since": "August 2024",
+          "renamed": "platform",
+          "was": "X (formerly Twitter)"
+        }
+      ]
+    },
     {
       "id": "1d1ab1db80",
       "sha": "1d1ab1db801847fbaf84c99d83073786d87d8faa",
@@ -10255,14 +10405,14 @@
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "age",
-          "since": "01/06/2026"
+          "type": "partial",
+          "since": "January 2026"
         },
         {
           "platform": "X (formerly Twitter)",
           "country": "Malaysia",
-          "type": "partial",
-          "since": "January 2026"
+          "type": "age",
+          "since": "01/06/2026"
         },
         {
           "platform": "YouTube",

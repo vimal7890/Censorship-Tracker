@@ -5,8 +5,15 @@
     <link>https://censorship.my/changes</link>
     <description>Every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms, straight from the dataset's history.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 15 Aug 2026 17:51:26 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 17:51:56 +0000</lastBuildDate>
     <atom:link href="https://censorship.my/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename X formerly Twitter platform to X</title>
+      <link>https://censorship.my/changes#319f7eabe2</link>
+      <guid isPermaLink="false">319f7eabe2f0ee4f0e67122184d51ad15a310005</guid>
+      <pubDate>Sat, 15 Aug 2026 18:51:44 +0100</pubDate>
+      <description>&lt;p&gt;17 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — Australia (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Brazil (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Eritrea (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Gabon (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Indonesia (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Islamic Republic of Iran (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Malaysia (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Myanmar (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — North Korea (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — People's Republic of China (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Russia (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Turkmenistan (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Türkiye (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Türkiye (partial) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — United Arab Emirates (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — United Kingdom (age) — was X (formerly Twitter)&lt;/li&gt;&lt;li&gt;X — Venezuela (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Merge Greenland into Denmark map entity</title>
       <link>https://censorship.my/changes#1d1ab1db80</link>
@@ -419,13 +426,6 @@
       <guid isPermaLink="false">dc75bab148f6c1473844b6c1a1c42021729949f7</guid>
       <pubDate>Mon, 20 Jul 2026 12:20:47 +0100</pubDate>
       <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — Iran (complete)&lt;/li&gt;&lt;li&gt;Zoom — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Add Patreon and Pinterest entries for Iran and Turkmenistan</title>
-      <link>https://censorship.my/changes#00926cd8ea</link>
-      <guid isPermaLink="false">00926cd8ea1c1034e4bd2e5a103d705efb15496f</guid>
-      <pubDate>Mon, 20 Jul 2026 12:19:12 +0100</pubDate>
-      <description>&lt;p&gt;4 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Patreon — Iran (complete)&lt;/li&gt;&lt;li&gt;Pinterest — Iran (complete)&lt;/li&gt;&lt;li&gt;Patreon — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Pinterest — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
   </channel>
 </rss>
