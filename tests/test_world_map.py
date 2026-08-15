@@ -31,6 +31,14 @@ def parse_country_map(js_text):
     return mapping
 
 
+def parse_map_aliases(js_text):
+    """Extract map-only child-territory aliases (child ISO -> parent ISO)."""
+    block = re.search(r"MAP_ISO_ALIASES\s*=\s*\{(.*?)\}\s*;", js_text, re.S)
+    if not block:
+        return {}
+    return dict(re.findall(r"([A-Z]{2}):\s*\"([A-Z]{2})\"", block.group(1)))
+
+
 def parse_microstates(js_text):
     """Extract MICROSTATE_LATLON (ISO -> [lon, lat]) from assets/countries.js."""
     block = re.search(r"MICROSTATE_LATLON\s*=\s*\{(.*?)\}\s*;", js_text, re.S)
@@ -70,8 +78,16 @@ def main():
     id_set = set(ids)
     assert len(id_set) > 150, f"expected a full world map, got {len(id_set)} countries"
 
-    mapping = parse_country_map(COUNTRIES_JS.read_text(encoding="utf-8"))
+    countries_js = COUNTRIES_JS.read_text(encoding="utf-8")
+    mapping = parse_country_map(countries_js)
     assert mapping, "COUNTRY_TO_ISO not found in countries.js"
+    aliases = parse_map_aliases(countries_js)
+    assert aliases.get("GL") == "DK", "Greenland must share Denmark's map entity"
+    assert "MAP_ISO_ALIASES" in countries_js, "map aliases missing from countries.js"
+    for child, parent in aliases.items():
+        assert child in id_set, f"map alias child {child} has no world.svg path"
+        assert parent in id_set, f"map alias parent {parent} has no world.svg path"
+        assert child != parent, f"map alias {child} points to itself"
 
     with CSV_PATH.open(encoding="utf-8") as fh:
         csv_countries = {row["country"] for row in csv.DictReader(fh)}
@@ -115,6 +131,7 @@ def main():
         'id="countryJump"',
         'id="statsSection"',
         'id="recentSection"',
+        "mapPathsForIso",
     ):
         assert needle in index_html, f"index.html missing: {needle}"
 

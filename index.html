@@ -1933,7 +1933,7 @@
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Russia Today</h3>
-                        <p class="pr-countries"><b>Russia Today</b> is restricted in 38 countries and territories: Albania (complete ban), Australia (partial restriction), Austria (complete ban), Belgium (complete ban), Bulgaria (complete ban), Canada (partial restriction), Croatia (complete ban), Cyprus (complete ban), Czech Republic (complete ban), Denmark (complete ban), Eritrea (complete ban), Estonia (complete ban), Finland (complete ban), France (complete ban), Germany (complete ban), Greece (complete ban), Greenland (complete ban), Hungary (complete ban), Ireland (complete ban), Italy (complete ban), Latvia (complete ban), Lithuania (complete ban), Luxembourg (complete ban), Malta (complete ban), Montenegro (complete ban), Netherlands (complete ban), North Korea (complete ban), North Macedonia (complete ban), Poland (complete ban), Portugal (complete ban), Romania (complete ban), Slovakia (complete ban), Slovenia (complete ban), Spain (complete ban), Sweden (complete ban), Ukraine (complete ban), United Kingdom (complete ban), United States of America (partial restriction).</p>
+                        <p class="pr-countries"><b>Russia Today</b> is restricted in 37 countries and territories: Albania (complete ban), Australia (partial restriction), Austria (complete ban), Belgium (complete ban), Bulgaria (complete ban), Canada (partial restriction), Croatia (complete ban), Cyprus (complete ban), Czech Republic (complete ban), Denmark (complete ban), Eritrea (complete ban), Estonia (complete ban), Finland (complete ban), France (complete ban), Germany (complete ban), Greece (complete ban), Hungary (complete ban), Ireland (complete ban), Italy (complete ban), Latvia (complete ban), Lithuania (complete ban), Luxembourg (complete ban), Malta (complete ban), Montenegro (complete ban), Netherlands (complete ban), North Korea (complete ban), North Macedonia (complete ban), Poland (complete ban), Portugal (complete ban), Romania (complete ban), Slovakia (complete ban), Slovenia (complete ban), Spain (complete ban), Sweden (complete ban), Ukraine (complete ban), United Kingdom (complete ban), United States of America (partial restriction).</p>
                     </article>
                     <article class="pr-row">
                         <h3 class="pr-name">Signal</h3>
@@ -2375,7 +2375,8 @@
         // and map are ready so the highlight and record list resolve.
         function openDossierFromHash() {
             const country = new URLSearchParams(location.hash.slice(1)).get('country');
-            if (country && countryIndex.has(country)) openDossier(country);
+            const iso = country && (window.mapIsoOf ? window.mapIsoOf(country) : country);
+            if (iso && countryIndex.has(iso)) openDossier(iso);
         }
 
         // Minimal RFC 4180 CSV parser (handles quoted fields containing
@@ -2861,8 +2862,9 @@
         function buildCountryIndex() {
             countryIndex.clear();
             censorshipData.forEach(platform => platform.bannedIn.forEach(ban => {
-                const iso = window.isoOf(ban.country);
-                if (!iso) return;
+                const rawIso = window.isoOf(ban.country);
+                if (!rawIso) return;
+                const iso = window.mapIsoOf ? window.mapIsoOf(rawIso) : rawIso;
                 if (!countryIndex.has(iso)) {
                     countryIndex.set(iso, {
                         iso, display: null, entries: [],
@@ -2987,7 +2989,8 @@
             markers.setAttribute('class', 'microstate-layer');
             svgRoot.appendChild(markers);
             countryIndex.forEach((rec, iso) => {
-                if (svgRoot.querySelector('#' + iso)) return;
+                const paths = window.mapPathsForIso ? window.mapPathsForIso(iso) : [iso];
+                if (paths.some(pathIso => svgRoot.querySelector('#' + pathIso))) return;
                 const lonLat = (window.MICROSTATE_LATLON || {})[iso];
                 if (!lonLat) return;
                 const { x, y } = window.projectLonLat(lonLat[0], lonLat[1]);
@@ -3006,17 +3009,21 @@
             });
 
             countryIndex.forEach((rec, iso) => {
-                const el = svgRoot.querySelector('#' + iso);
-                if (!el) return;
                 const total = rec.entries.length;
-                el.classList.add('has-data', bucketClass(total));
-                if (rec.subnationalOnly) el.classList.add('subnational');
-                el.setAttribute('tabindex', '0');
-                el.setAttribute('role', 'button');
-                el.setAttribute('aria-label',
-                    `${rec.display}: ${total} tracked restriction${total === 1 ? '' : 's'} — ` +
-                    `${rec.counts.complete} complete, ${rec.counts.partial} partial, ${rec.counts.age} age verification`);
-                el.dataset.iso = iso;
+                const paths = window.mapPathsForIso ? window.mapPathsForIso(iso) : [iso];
+                paths.forEach(pathIso => {
+                    const el = svgRoot.querySelector('#' + pathIso);
+                    if (!el) return;
+                    el.classList.add('has-data', bucketClass(total));
+                    if (rec.subnationalOnly) el.classList.add('subnational');
+                    el.setAttribute('tabindex', '0');
+                    el.setAttribute('role', 'button');
+                    el.setAttribute('aria-label',
+                        `${rec.display}: ${total} tracked restriction${total === 1 ? '' : 's'} — ` +
+                        `${rec.counts.complete} complete, ${rec.counts.partial} partial, ${rec.counts.age} age verification`);
+                    // Child-territory paths point back to the one sovereign dossier.
+                    el.dataset.iso = iso;
+                });
             });
 
             const mapMove = e => {
@@ -3074,14 +3081,16 @@
         }
 
         function openDossier(iso) {
+            iso = window.mapIsoOf ? window.mapIsoOf(iso) : iso;
             const rec = countryIndex.get(iso);
             if (!rec) return;
             openDossierIso = iso;
             const svgRoot = document.querySelector('#worldMap svg');
             if (svgRoot) {
                 svgRoot.querySelectorAll('.has-data.selected').forEach(el => el.classList.remove('selected'));
-                const el = svgRoot.querySelector('#' + iso);
-                if (el) el.classList.add('selected');
+                svgRoot.querySelectorAll('.has-data').forEach(el => {
+                    if (el.dataset.iso === iso) el.classList.add('selected');
+                });
             }
             const n = rec.entries.length;
             document.getElementById('dossierTitle').textContent =
@@ -3414,7 +3423,8 @@
         // when the territory has no ISO code the map can highlight.
         function openLookup(name) {
             if (!name) return;
-            const iso = window.isoOf(name);
+            const rawIso = window.isoOf(name);
+            const iso = rawIso && (window.mapIsoOf ? window.mapIsoOf(rawIso) : rawIso);
             if (iso && countryIndex.has(iso)) { openDossier(iso); return; }
             const sel = document.getElementById('countryFilter');
             if ([...sel.options].some(o => o.value === name)) {
@@ -3460,8 +3470,9 @@
             try {
                 zone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
                 const table = await loadTimezoneMap();
-                const iso = table[zone];
-                if (!iso) throw new Error('unmapped');
+                const rawIso = table[zone];
+                if (!rawIso) throw new Error('unmapped');
+                const iso = window.mapIsoOf ? window.mapIsoOf(rawIso) : rawIso;
                 const rec = countryIndex.get(iso);
                 const sel = document.getElementById('heroCountry');
                 const name = (rec && rec.display) || null;
@@ -3471,7 +3482,10 @@
                         somewhere else.`, true);
                     return;
                 }
-                const match = [...sel.options].find(o => window.isoOf(o.value) === iso);
+                const match = [...sel.options].find(o => {
+                    const optionIso = window.isoOf(o.value);
+                    return (window.mapIsoOf ? window.mapIsoOf(optionIso) : optionIso) === iso;
+                });
                 if (match) sel.value = match.value;
                 finish(`Guessed <b>${escapeHTML(name)}</b> from your device's clock
                     (<b>${escapeHTML(zone)}</b>). Nothing left your browser &mdash; correct it above

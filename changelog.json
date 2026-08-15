@@ -1,8 +1,28 @@
 {
-  "generated_utc": "2026-08-15T12:56:10+00:00",
-  "count": 122,
+  "generated_utc": "2026-08-15T13:06:27+00:00",
+  "count": 123,
   "latest": "2026-08-15",
   "events": [
+    {
+      "id": "0c53aa8054",
+      "sha": "0c53aa8054eab1303cccfa0588d5e7e714495424",
+      "date": "2026-08-15",
+      "iso": "2026-08-15T13:57:06+01:00",
+      "subject": "Extend Russia Today restriction to Greenland",
+      "author": "Vimal",
+      "total": 1,
+      "added": [
+        {
+          "platform": "Russia Today",
+          "country": "Greenland",
+          "type": "complete",
+          "since": "March 2022"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "f5aecd235c",
       "sha": "f5aecd235c4778136e958d64907402fd964f52f2",

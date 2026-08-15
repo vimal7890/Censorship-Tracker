@@ -17,7 +17,6 @@ window.COUNTRY_TO_ISO = {
     "Egypt": "EG",
     "Eritrea": "ER",
     "Gabon": "GA",
-    "Greenland": "GL",
     "India": "IN",
     "Indonesia": "ID",
     "Islamic Republic of Iran": "IR",
@@ -132,6 +131,25 @@ window.COUNTRY_TO_ISO = {
     "Tonga": "TO",
     "Tuvalu": "TV",
     "Vatican City": "VA"
+};
+
+// Map-only territory aliases: data and dossiers stay keyed to the sovereign
+// country, while the SVG may still paint a separate outline for its territory.
+window.MAP_ISO_ALIASES = {
+    // Greenland is part of the Kingdom of Denmark, not a second map dossier.
+    GL: "DK"
+};
+
+window.mapIsoOf = function (iso) {
+    return (window.MAP_ISO_ALIASES || {})[iso] || iso;
+};
+
+window.mapPathsForIso = function (iso) {
+    const paths = [iso];
+    Object.entries(window.MAP_ISO_ALIASES || {}).forEach(([alias, parent]) => {
+        if (parent === iso) paths.push(alias);
+    });
+    return paths;
 };
 
 // Territories with no path in assets/world.svg. The amCharts worldLow outline
