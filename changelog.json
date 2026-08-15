@@ -1,8 +1,76 @@
 {
-  "generated_utc": "2026-08-15T17:56:20+00:00",
-  "count": 127,
+  "generated_utc": "2026-08-15T17:58:18+00:00",
+  "count": 128,
   "latest": "2026-08-15",
   "events": [
+    {
+      "id": "edfb22aa86",
+      "sha": "edfb22aa867ee95423cb5b6452434d4ee58370e4",
+      "date": "2026-08-15",
+      "iso": "2026-08-15T18:58:08+01:00",
+      "subject": "Rename Syrian Arab Republic to Syria",
+      "author": "Vimal",
+      "total": 5,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "platform": "Netflix",
+          "country": "Crimea",
+          "type": "complete",
+          "since": "2016 (U.S. sanctions)",
+          "fields": [
+            "notes"
+          ]
+        }
+      ],
+      "renamed": [
+        {
+          "platform": "ChatGPT",
+          "country": "Syria",
+          "type": "complete",
+          "since": "2023",
+          "renamed": "country",
+          "was": "Syrian Arab Republic",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "GitHub",
+          "country": "Syria",
+          "type": "partial",
+          "since": "2019",
+          "renamed": "country",
+          "was": "Syrian Arab Republic",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "Grindr",
+          "country": "Syria",
+          "type": "complete",
+          "since": "Longstanding",
+          "renamed": "country",
+          "was": "Syrian Arab Republic",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "Netflix",
+          "country": "Syria",
+          "type": "complete",
+          "since": "2016 (U.S. sanctions)",
+          "renamed": "country",
+          "was": "Syrian Arab Republic",
+          "fields": [
+            "notes"
+          ]
+        }
+      ]
+    },
     {
       "id": "3d21ae5820",
       "sha": "3d21ae58209af23a69cf4b60535ba3eb5c90f500",
