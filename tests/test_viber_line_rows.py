@@ -28,7 +28,7 @@ EXPECTED_TYPE = {
         "Oman": "partial",
         "Qatar": "partial",
         "Russia": "complete",
-        "Kingdom of Saudi Arabia": "partial",
+        "Saudi Arabia": "partial",
         "Turkmenistan": "complete",
         "United Arab Emirates": "partial",
     },
@@ -73,7 +73,7 @@ def main() -> int:
             assert row["type"] in {"complete", "partial"}, row
             # A blank source is allowed, per README.md: when no page can be
             # found that actually documents the claim, leaving the field empty
-            # beats attaching one that does not. LINE/Kingdom of Saudi Arabia is the live
+            # beats attaching one that does not. LINE/Saudi Arabia is the live
             # example — the only reporting found says the calling block was
             # lifted on 20 September 2017, so it cannot cite that as evidence
             # of a current restriction. What is not allowed is a non-URL.

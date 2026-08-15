@@ -1,9 +1,9 @@
 {
-  "generated_utc": "2026-08-15T13:06:28+00:00",
+  "generated_utc": "2026-08-15T17:55:35+00:00",
   "data_updated": "2026-08-15",
   "dataset_updated": {
     "censorship_data.csv": "2026-08-15",
-    "vpn_data.json": "2026-07-27",
+    "vpn_data.json": "2026-08-15",
     "age_verification_data.json": "2026-08-14"
   },
   "sources_checked": "2026-08-04",
