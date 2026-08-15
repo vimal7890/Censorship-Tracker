@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-08-04T15:19:20+00:00",
-  "count": 173,
+  "generated_utc": "2026-08-14T16:47:34+00:00",
+  "count": 171,
   "by_kind": {
     "primary": 33,
     "measurement": 5,
     "research": 50,
-    "reporting": 79,
+    "reporting": 77,
     "reference": 6
   },
   "kind_labels": {
@@ -1121,15 +1121,6 @@
       "archived": false,
       "title": "House Bill 3 (2024) - The Florida Senate"
     },
-    "https://www.franceinfo.fr/internet/reseaux-sociaux/interdiction-des-reseaux-sociaux-aux-moins-de-15-ans-telephones-interdits-au-lycee-ce-que-contient-la-proposition-de-loi-qui-doit-etre-votee-ce-mardi_8115896.html": {
-      "url": "https://www.franceinfo.fr/internet/reseaux-sociaux/interdiction-des-reseaux-sociaux-aux-moins-de-15-ans-telephones-interdits-au-lycee-ce-que-contient-la-proposition-de-loi-qui-doit-etre-votee-ce-mardi_8115896.html",
-      "domain": "franceinfo.fr",
-      "publisher": "franceinfo",
-      "kind": "reporting",
-      "date": "",
-      "archived": false,
-      "title": "Interdiction des réseaux sociaux aux moins de 15 ans, téléphones bannis au lycée… Ce que contient la loi largement adoptée par le Parlement – franceinfo"
-    },
     "https://www.gov.uk/government/publications/iran-country-policy-and-information-notes/country-policy-and-information-note-social-media-surveillance-and-sur-place-activities-iran-april-2025-accessible": {
       "url": "https://www.gov.uk/government/publications/iran-country-policy-and-information-notes/country-policy-and-information-note-social-media-surveillance-and-sur-place-activities-iran-april-2025-accessible",
       "domain": "gov.uk",
@@ -1289,15 +1280,6 @@
       "publisher": "Reuters",
       "kind": "reporting",
       "date": "2026-06-10",
-      "archived": false,
-      "title": "reuters.com"
-    },
-    "https://www.reuters.com/legal/litigation/french-lawmakers-vote-social-media-ban-children-2026-07-21/": {
-      "url": "https://www.reuters.com/legal/litigation/french-lawmakers-vote-social-media-ban-children-2026-07-21/",
-      "domain": "reuters.com",
-      "publisher": "Reuters",
-      "kind": "reporting",
-      "date": "2026-07-21",
       "archived": false,
       "title": "reuters.com"
     },

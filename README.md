@@ -165,8 +165,8 @@ date, not as `web.archive.org`.
 
 ## Status and coverage
 
-Three restriction types were doing too much work. A French law adopted in July
-2026 that bites in September 2026, a Chinese block OONI has measured weekly for
+Three restriction types were doing too much work. A scheduled law with a future
+start date, a Chinese block OONI has measured weekly for
 a decade, and one news story saying a country started throttling something all
 rendered identically. `build_status.py` splits that across two derived columns:
 
@@ -235,12 +235,13 @@ entry carries a `status` of `implemented` or `scheduled` — but **the badge on
 the page is not read straight from that field**. The page compares
 `implementation_date` (ISO `YYYY-MM-DD`) against today in the viewer's own
 timezone, so a scheduled law promotes itself to *Implemented* on the morning it
-takes effect, with no edit and no redeploy. France's under-15 ban flips on
-2026-09-01, Türkiye's on 2026-10-01, Gabon's in February 2027.
+takes effect, with no edit and no redeploy. Türkiye's under-15 ban flips in
+late 2026 and Gabon's in February 2027.
 
 So `status` records what was legislated and the page works out whether that
 date has arrived. Keep writing `scheduled` for a future law; there is no need
-to go back and change it later.
+to go back and change it later. Do remove an entry if the underlying law is
+struck down before it can take effect.
 
 One escape hatch: set `"auto_advance": false` on an entry whose date should not
 be trusted to arrive on time — one still facing a court challenge, or where

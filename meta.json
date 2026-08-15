@@ -1,32 +1,32 @@
 {
-  "generated_utc": "2026-08-04T15:20:59+00:00",
-  "data_updated": "2026-08-04",
+  "generated_utc": "2026-08-14T16:47:37+00:00",
+  "data_updated": "2026-08-14",
   "dataset_updated": {
-    "censorship_data.csv": "2026-08-04",
+    "censorship_data.csv": "2026-08-14",
     "vpn_data.json": "2026-07-27",
-    "age_verification_data.json": "2026-07-27"
+    "age_verification_data.json": "2026-08-14"
   },
   "sources_checked": "2026-08-04",
   "sources_count": 173,
   "censorship": {
-    "entries": 454,
+    "entries": 445,
     "platforms": 49,
     "territories": 78,
     "by_type": {
       "complete": 326,
       "partial": 52,
-      "age": 76
+      "age": 67
     },
     "by_status": {
       "reported": 326,
       "enforced": 6,
       "in_force": 98,
-      "scheduled": 24
+      "scheduled": 15
     },
     "by_evidence": {
       "uncorroborated": 22,
       "country-default": 170,
-      "dedicated": 262
+      "dedicated": 253
     }
   },
   "vpn": {
@@ -35,7 +35,7 @@
     "rejected_efforts": 1
   },
   "age_verification": {
-    "timeline": 9,
+    "timeline": 8,
     "legislative_efforts": 41
   }
 }
