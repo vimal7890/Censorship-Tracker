@@ -35,6 +35,8 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+from stable_write import write_json
+
 ROOT = Path(__file__).resolve().parent
 CSV_PATH = ROOT / "censorship_data.csv"
 VPN_PATH = ROOT / "vpn_data.json"
@@ -120,9 +122,9 @@ def main() -> int:
         "vpn": json_len(VPN_PATH, "restrictions", "legislative_efforts", "rejected_efforts"),
         "age_verification": json_len(AGE_PATH, "timeline", "legislative_efforts"),
     }
-    OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    wrote = write_json(OUT, payload)
 
-    print(f"wrote {OUT.name}")
+    print(f"{'wrote' if wrote else 'unchanged'} {OUT.name}")
     print(f"  data updated:    {payload['data_updated'] or '(unknown)'}")
     print(f"  sources checked: {payload['sources_checked'] or '(never — run verify_links.py)'}")
     for name, when in dataset_dates.items():

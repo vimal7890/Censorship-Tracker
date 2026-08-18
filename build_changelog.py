@@ -42,6 +42,8 @@ from email.utils import format_datetime
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+from stable_write import write_json
+
 ROOT = Path(__file__).resolve().parent
 CSV_NAME = "censorship_data.csv"
 OUT_JSON = ROOT / "changelog.json"
@@ -277,16 +279,19 @@ def main(argv: list[str]) -> int:
     if limit:
         events = events[:limit]
 
-    OUT_JSON.write_text(json.dumps({
+    wrote = write_json(OUT_JSON, {
         "generated_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "count": len(events),
         "latest": events[0]["date"],
         "events": events,
-    }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    write_feed(events)
+    })
+    # The feed is a projection of the same events, so it only needs rewriting
+    # when they changed — its lastBuildDate would otherwise be the sole diff.
+    if wrote or not OUT_FEED.is_file():
+        write_feed(events)
 
     rows = sum(e["total"] for e in events)
-    print(f"wrote {OUT_JSON.name} and {OUT_FEED.name}: "
+    print(f"{'wrote' if wrote else 'unchanged'} {OUT_JSON.name} and {OUT_FEED.name}: "
           f"{len(events)} dated changes covering {rows} row edits")
     print(f"  newest: {events[0]['date']} — {events[0]['subject']} ({summarise(events[0])})")
     return 0
