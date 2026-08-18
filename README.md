@@ -420,6 +420,17 @@ The homepage renders three derived views of the same CSV (no separate data):
 - **Most Recent Restrictions** — latest dated entries, parsed leniently from
   the free-text `since` column (undated values like "Forever" are skipped).
 
+## Reusing the data
+
+The whole dataset ships as one self-describing artifact at
+[`https://censorship.my/data.json`](https://censorship.my/data.json) —
+every row plus the resolved ISO code and subnational flag, a field-by-field
+schema, and the license inline. `schema_version` only moves when a field
+changes meaning, so consumers can pin against it. The raw CSV is at
+[`https://censorship.my/censorship_data.csv`](https://censorship.my/censorship_data.csv)
+for anyone who prefers the working format. Both are CC BY 4.0: credit
+"Global Censorship Tracker, censorship.my".
+
 ## License
 
 The code — build scripts, tests, and the site's HTML/CSS/JS — is MIT licensed

@@ -30,6 +30,7 @@ STEPS = [
     ("build_timezones.py", [], "time zone to country, for the client-side region guess"),
     ("prerender.py", [], "bake the index for crawlers and no-JS visitors"),
     ("build_pages.py", [], "static country/platform pages and the sitemap — needs sources.json"),
+    ("build_data.py", [], "the dataset as one documented artifact, for reuse"),
     ("build_changelog.py", [], "changelog and RSS from the dataset's git history"),
     ("build_meta.py", [], "freshness and counts — needs the status columns"),
 ]

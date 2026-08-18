@@ -24,6 +24,7 @@ GENERATORS = {
     "build_sources.py": ["sources.json"],
     "build_meta.py": ["meta.json"],
     "build_timezones.py": ["assets/timezones.js"],
+    "build_data.py": ["data.json"],
 }
 
 
