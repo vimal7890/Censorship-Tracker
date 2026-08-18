@@ -23,6 +23,7 @@ changing them, which is the right thing for CI. Individually:
 | `build_status.py`     | CSV `status` / `evidence` cols   | Grades each row's stage and how well it is sourced                 |
 | `build_timezones.py`  | `assets/timezones.js`            | Time zone → country, for the client-side "use my region" guess     |
 | `prerender.py`        | baked index in `index.html`      | Crawlers and no-JS visitors get the real list                      |
+| `build_pages.py`      | `country/`, `platform/`, `sitemap.xml` | A real URL per territory and per platform, so "is X banned in Y" has a page to land on |
 | `build_changelog.py`  | `changelog.json`, `feed.xml`     | Dated changelog and RSS, from the dataset's commits                |
 | `build_meta.py`       | `meta.json`                      | The site's two freshness dates and its coverage counts             |
 
