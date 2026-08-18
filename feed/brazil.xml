@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Brazil</title>
+    <link>https://censorship.my/country/brazil/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Brazil, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:51:44 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/brazil.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename X formerly Twitter platform to X</title>
+      <link>https://censorship.my/changes#319f7eabe2</link>
+      <guid isPermaLink="false">319f7eabe2f0ee4f0e67122184d51ad15a310005</guid>
+      <pubDate>Sat, 15 Aug 2026 18:51:44 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — Brazil (age) — was X (formerly Twitter)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Rumble — Brazil (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Tumblr ban status: remove Indonesia, add China, North Korea, Turkmenistan, and other countries</title>
+      <link>https://censorship.my/changes#10694c63d4</link>
+      <guid isPermaLink="false">10694c63d4894d599c376599437b86227b230045</guid>
+      <pubDate>Sun, 19 Jul 2026 17:42:19 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Tumblr — Brazil (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Rumble censorship data for Brazil, Russia, North Korea, China, and Turkmenistan</title>
+      <link>https://censorship.my/changes#4c2d77c6d8</link>
+      <guid isPermaLink="false">4c2d77c6d8d74a0977a950e633b261f2524b9839</guid>
+      <pubDate>Fri, 17 Jul 2026 20:32:11 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Rumble — Brazil (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Threads platform with ban and age-restriction data</title>
+      <link>https://censorship.my/changes#e52af766ea</link>
+      <guid isPermaLink="false">e52af766ea1a301a8dbc84cb979f6b4c8379b91e</guid>
+      <pubDate>Mon, 13 Jul 2026 16:56:33 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Threads — Brazil (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Brazil and Indonesia under-16 age-verification rows</title>
+      <link>https://censorship.my/changes#7362ae3905</link>
+      <guid isPermaLink="false">7362ae39051613958d62c6a07de8689a8da60a02</guid>
+      <pubDate>Sat, 11 Jul 2026 13:03:51 +0100</pubDate>
+      <description>&lt;p&gt;9 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — Brazil (age)&lt;/li&gt;&lt;li&gt;Facebook — Brazil (age)&lt;/li&gt;&lt;li&gt;Instagram — Brazil (age)&lt;/li&gt;&lt;li&gt;Reddit — Brazil (age)&lt;/li&gt;&lt;li&gt;Snapchat — Brazil (age)&lt;/li&gt;&lt;li&gt;TikTok — Brazil (age)&lt;/li&gt;&lt;li&gt;Twitch — Brazil (age)&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Brazil (age)&lt;/li&gt;&lt;li&gt;YouTube — Brazil (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

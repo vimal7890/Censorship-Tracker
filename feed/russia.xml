@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Russia</title>
+    <link>https://censorship.my/country/russia/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Russia, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:54:01 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/russia.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename DW platform to Deutsche Welle</title>
+      <link>https://censorship.my/changes#62dc090e9f</link>
+      <guid isPermaLink="false">62dc090e9f4a5c9ffee726f3c02ed406b63d891c</guid>
+      <pubDate>Sat, 15 Aug 2026 18:54:01 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Russia (complete) — was DW (Deutsche Welle)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename X formerly Twitter platform to X</title>
+      <link>https://censorship.my/changes#319f7eabe2</link>
+      <guid isPermaLink="false">319f7eabe2f0ee4f0e67122184d51ad15a310005</guid>
+      <pubDate>Sat, 15 Aug 2026 18:51:44 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — Russia (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Source DW's Afghanistan, Belarus, Russia and Venezuela rows</title>
+      <link>https://censorship.my/changes#ffe46d960e</link>
+      <guid isPermaLink="false">ffe46d960e8d91af6c41a6bdddcb6aeec63f3195</guid>
+      <pubDate>Fri, 24 Jul 2026 01:04:35 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Russia (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move Rumble's Russia block to April 2024 and cite the OONI measurement</title>
+      <link>https://censorship.my/changes#59501afaa0</link>
+      <guid isPermaLink="false">59501afaa07da3a86951381bbc1c3f4cc2819558</guid>
+      <pubDate>Fri, 24 Jul 2026 00:50:45 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Rumble — Russia (complete): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;6 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Associated Press — Russia (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — Russia (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Russia (complete): source&lt;/li&gt;&lt;li&gt;GitHub — Russia (partial): source&lt;/li&gt;&lt;li&gt;Instagram — Russia (complete): source&lt;/li&gt;&lt;li&gt;Wikipedia — Russia (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove false Substack Russia censorship entry with invalid source link</title>
+      <link>https://censorship.my/changes#d84dcecd7e</link>
+      <guid isPermaLink="false">d84dcecd7ea79276bf63ddfbb865154096772717</guid>
+      <pubDate>Tue, 21 Jul 2026 23:50:42 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Substack — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace Wikipedia sources in censorship_data.csv with verified independent sources for non-exempt countries</title>
+      <link>https://censorship.my/changes#520d6009bb</link>
+      <guid isPermaLink="false">520d6009bb8f9e754a1bdcdb6cdef07e03fc07f8</guid>
+      <pubDate>Tue, 21 Jul 2026 23:25:58 +0100</pubDate>
+      <description>&lt;p&gt;6 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — Russia (complete): source&lt;/li&gt;&lt;li&gt;GitHub — Russia (partial): source&lt;/li&gt;&lt;li&gt;Instagram — Russia (complete): source&lt;/li&gt;&lt;li&gt;Substack — Russia (complete): source&lt;/li&gt;&lt;li&gt;Wikipedia — Russia (partial): source&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Russia (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update platform label to DW (Deutsche Welle) to support acronym searching</title>
+      <link>https://censorship.my/changes#23308837b6</link>
+      <guid isPermaLink="false">23308837b65a8a6925c4839aaaccb53747fc4589</guid>
+      <pubDate>Tue, 21 Jul 2026 16:54:18 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Russia (complete) — was Deutsche Welle&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Deutsche Welle censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e57a531995</link>
+      <guid isPermaLink="false">e57a531995f47a8625b5c871886f69070ad8f8c0</guid>
+      <pubDate>Tue, 21 Jul 2026 16:50:29 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Delete six unsupported rows, source three that checked out</title>
+      <link>https://censorship.my/changes#f5dd3fb23f</link>
+      <guid isPermaLink="false">f5dd3fb23f372f6923ac84c8c7e4b9d858d8c653</guid>
+      <pubDate>Mon, 20 Jul 2026 19:49:32 +0100</pubDate>
+      <description>&lt;p&gt;2 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — Russia (complete)&lt;/li&gt;&lt;li&gt;Reuters — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 27 fabricated and generic sources with verified ones</title>
+      <link>https://censorship.my/changes#28ff50c189</link>
+      <guid isPermaLink="false">28ff50c1893c412d5b976e0cda7c4c150921a635</guid>
+      <pubDate>Mon, 20 Jul 2026 18:37:02 +0100</pubDate>
+      <description>&lt;p&gt;5 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Russia (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — Russia (complete): source&lt;/li&gt;&lt;li&gt;LinkedIn — Russia (complete): source&lt;/li&gt;&lt;li&gt;Patreon — Russia (complete): source&lt;/li&gt;&lt;li&gt;Viber — Russia (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;1 added, 1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Associated Press — Russia (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Russia (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add New York Times to censorship tracker</title>
+      <link>https://censorship.my/changes#27e5976b1d</link>
+      <guid isPermaLink="false">27e5976b1da365ccfca4f13fec77c08b6ba36632</guid>
+      <pubDate>Mon, 20 Jul 2026 12:38:19 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — Russia (complete)&lt;/li&gt;&lt;li&gt;Reuters — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove KakaoTalk South Korea entry</title>
+      <link>https://censorship.my/changes#88a476d3d3</link>
+      <guid isPermaLink="false">88a476d3d321667905ce542a5b9c66a17f953cb3</guid>
+      <pubDate>Mon, 20 Jul 2026 12:35:25 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove OnlyFans from tracked platforms</title>
+      <link>https://censorship.my/changes#4592c948f2</link>
+      <guid isPermaLink="false">4592c948f250eca0e6d4828aceb36f7648c46839</guid>
+      <pubDate>Sun, 19 Jul 2026 17:42:59 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;OnlyFans — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update source and details for Rumble's ban in Russia</title>
+      <link>https://censorship.my/changes#1558dc23d5</link>
+      <guid isPermaLink="false">1558dc23d5c5b6ec58d5721d4a2f53d189d4a527</guid>
+      <pubDate>Sun, 19 Jul 2026 17:34:30 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Rumble — Russia (complete): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Rumble censorship data for Brazil, Russia, North Korea, China, and Turkmenistan</title>
+      <link>https://censorship.my/changes#4c2d77c6d8</link>
+      <guid isPermaLink="false">4c2d77c6d8d74a0977a950e633b261f2524b9839</guid>
+      <pubDate>Fri, 17 Jul 2026 20:32:11 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Rumble — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Substack censorship data</title>
+      <link>https://censorship.my/changes#bd72cee7a4</link>
+      <guid isPermaLink="false">bd72cee7a46548688d577b1a45b4c4ba1877a806</guid>
+      <pubDate>Fri, 17 Jul 2026 20:31:28 +0100</pubDate>
+      <description>&lt;p&gt;5 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ChatGPT — Russia (complete)&lt;/li&gt;&lt;li&gt;GitHub — Russia (partial)&lt;/li&gt;&lt;li&gt;OnlyFans — Russia (complete)&lt;/li&gt;&lt;li&gt;Patreon — Russia (complete)&lt;/li&gt;&lt;li&gt;Substack — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Viber and LINE censorship tracking data including Russia block for Viber</title>
+      <link>https://censorship.my/changes#bf4c6a27b5</link>
+      <guid isPermaLink="false">bf4c6a27b5fa5c513041a681c595bd2a5f3d9646</guid>
+      <pubDate>Tue, 14 Jul 2026 13:09:03 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LINE — Russia (complete)&lt;/li&gt;&lt;li&gt;Viber — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Threads platform with ban and age-restriction data</title>
+      <link>https://censorship.my/changes#e52af766ea</link>
+      <guid isPermaLink="false">e52af766ea1a301a8dbc84cb979f6b4c8379b91e</guid>
+      <pubDate>Mon, 13 Jul 2026 16:56:33 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Threads — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove Snapchat Russia December note</title>
+      <link>https://censorship.my/changes#5a45869df2</link>
+      <guid isPermaLink="false">5a45869df2771bff2dafa3acb12e4324fdb14e9a</guid>
+      <pubDate>Mon, 13 Jul 2026 15:05:48 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Snapchat — Russia (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Netflix Russia and Signal Iran case details with sources</title>
+      <link>https://censorship.my/changes#fae849753e</link>
+      <guid isPermaLink="false">fae849753ea1ff73bca2c4431e629d4ed25fcd14</guid>
+      <pubDate>Mon, 13 Jul 2026 12:32:53 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Russia (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Revert "Add country flag emojis to labels"</title>
+      <link>https://censorship.my/changes#40bcc71c49</link>
+      <guid isPermaLink="false">40bcc71c49a434ad6b08a13a25872eb99c20df44</guid>
+      <pubDate>Sun, 12 Jul 2026 21:35:25 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LinkedIn — Russia (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add country flag emojis to labels</title>
+      <link>https://censorship.my/changes#a5dad3141b</link>
+      <guid isPermaLink="false">a5dad3141bdf0fa19b0420bd98b27474e107b9ce</guid>
+      <pubDate>Sun, 12 Jul 2026 21:33:08 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LinkedIn — Russia (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update LinkedIn Russia censorship info and fix outdated navigation tests</title>
+      <link>https://censorship.my/changes#46876fcf49</link>
+      <guid isPermaLink="false">46876fcf49c8f1f6d16ba797878fa8d87705a9d5</guid>
+      <pubDate>Sun, 12 Jul 2026 21:22:50 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LinkedIn — Russia (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Use British English spelling in page copy</title>
+      <link>https://censorship.my/changes#831091990d</link>
+      <guid isPermaLink="false">831091990d22e2f7ce5d440b163de672b0381779</guid>
+      <pubDate>Sun, 12 Jul 2026 17:05:19 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WhatsApp — Russia (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Cite Spotify newsroom for Russia service suspension</title>
+      <link>https://censorship.my/changes#3d82268fd9</link>
+      <guid isPermaLink="false">3d82268fd911bd74915fa6a8267040d43daa3774</guid>
+      <pubDate>Sat, 11 Jul 2026 13:24:26 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Spotify — Russia (complete): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;14 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — Russia (complete)&lt;/li&gt;&lt;li&gt;Facebook — Russia (complete)&lt;/li&gt;&lt;li&gt;Instagram — Russia (complete)&lt;/li&gt;&lt;li&gt;LinkedIn — Russia (complete)&lt;/li&gt;&lt;li&gt;Netflix — Russia (complete)&lt;/li&gt;&lt;li&gt;Signal — Russia (complete)&lt;/li&gt;&lt;li&gt;Snapchat — Russia (complete)&lt;/li&gt;&lt;li&gt;Spotify — Russia (complete)&lt;/li&gt;&lt;li&gt;Telegram — Russia (complete)&lt;/li&gt;&lt;li&gt;Twitch — Russia (partial)&lt;/li&gt;&lt;li&gt;WhatsApp — Russia (complete)&lt;/li&gt;&lt;li&gt;Wikipedia — Russia (partial)&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Russia (complete)&lt;/li&gt;&lt;li&gt;YouTube — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

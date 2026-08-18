@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in United Arab Emirates</title>
+    <link>https://censorship.my/country/united-arab-emirates/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in United Arab Emirates, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:51:44 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/united-arab-emirates.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename X formerly Twitter platform to X</title>
+      <link>https://censorship.my/changes#319f7eabe2</link>
+      <guid isPermaLink="false">319f7eabe2f0ee4f0e67122184d51ad15a310005</guid>
+      <pubDate>Sat, 15 Aug 2026 18:51:44 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — United Arab Emirates (age) — was X (formerly Twitter)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;1 removed, 6 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;YouTube — United Arab Emirates (age)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — United Arab Emirates (partial): source&lt;/li&gt;&lt;li&gt;KakaoTalk — United Arab Emirates (partial): source&lt;/li&gt;&lt;li&gt;LINE — United Arab Emirates (partial): source&lt;/li&gt;&lt;li&gt;New York Times — United Arab Emirates (partial): source&lt;/li&gt;&lt;li&gt;Roblox — United Arab Emirates (partial): source&lt;/li&gt;&lt;li&gt;WhatsApp — United Arab Emirates (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Grindr dataset using Grindr official Help Center source</title>
+      <link>https://censorship.my/changes#b78b2243e9</link>
+      <guid isPermaLink="false">b78b2243e941c1fa786130f7e75e3de3b6e843ed</guid>
+      <pubDate>Tue, 21 Jul 2026 23:47:26 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — United Arab Emirates (complete): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace references of UK and UAE with United Kingdom and United Arab Emirates</title>
+      <link>https://censorship.my/changes#f740e57cf9</link>
+      <guid isPermaLink="false">f740e57cf9a6bbf85a2f0e809a7f79837a87b9f0</guid>
+      <pubDate>Tue, 21 Jul 2026 23:40:04 +0100</pubDate>
+      <description>&lt;p&gt;16 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Discord — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Facebook — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Grindr — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Instagram — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;KakaoTalk — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;LINE — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;New York Times — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Roblox — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;Snapchat — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;TikTok — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Tinder — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Viber — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;WhatsApp — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;YouTube — United Arab Emirates (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace Wikipedia sources in censorship_data.csv with verified independent sources for non-exempt countries</title>
+      <link>https://censorship.my/changes#520d6009bb</link>
+      <guid isPermaLink="false">520d6009bb8f9e754a1bdcdb6cdef07e03fc07f8</guid>
+      <pubDate>Tue, 21 Jul 2026 23:25:58 +0100</pubDate>
+      <description>&lt;p&gt;3 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — UAE (complete): source&lt;/li&gt;&lt;li&gt;Roblox — UAE (partial): source&lt;/li&gt;&lt;li&gt;Tinder — UAE (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Al Jazeera UAE entry with Freedom House 2024 citation and details</title>
+      <link>https://censorship.my/changes#db31b7b246</link>
+      <guid isPermaLink="false">db31b7b246968ba36c21a3d2f5cffef92d825026</guid>
+      <pubDate>Tue, 21 Jul 2026 23:14:32 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Al Jazeera status for UAE to partial censorship</title>
+      <link>https://censorship.my/changes#35b6ffc2ed</link>
+      <guid isPermaLink="false">35b6ffc2ed77154dbb9593ab9663a173c0cf6905</guid>
+      <pubDate>Tue, 21 Jul 2026 17:00:27 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove Al Jazeera / UAE entry as restriction has been fully lifted</title>
+      <link>https://censorship.my/changes#377a3c5402</link>
+      <guid isPermaLink="false">377a3c5402fe30bfcafb8a75d5ff23643b747a09</guid>
+      <pubDate>Tue, 21 Jul 2026 16:55:18 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Al Jazeera post-Al-Ula boycott status for UAE, Saudi Arabia, and Bahrain</title>
+      <link>https://censorship.my/changes#b81722c7f9</link>
+      <guid isPermaLink="false">b81722c7f93263427a8551fdb24b840cb52ff325</guid>
+      <pubDate>Tue, 21 Jul 2026 16:53:09 +0100</pubDate>
+      <description>&lt;p&gt;1 added, 1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Al Jazeera and CGTN censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e02e0c691e</link>
+      <guid isPermaLink="false">e02e0c691ec00e079014b59994e3148eda14d54f</guid>
+      <pubDate>Tue, 21 Jul 2026 16:49:02 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — UAE (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add New York Times to censorship tracker</title>
+      <link>https://censorship.my/changes#27e5976b1d</link>
+      <guid isPermaLink="false">27e5976b1da365ccfca4f13fec77c08b6ba36632</guid>
+      <pubDate>Mon, 20 Jul 2026 12:38:19 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add KakaoTalk censorship data and UI assets</title>
+      <link>https://censorship.my/changes#e5f69a190b</link>
+      <guid isPermaLink="false">e5f69a190b7f08ae564fea645fbfdc117131f220</guid>
+      <pubDate>Mon, 20 Jul 2026 12:33:56 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;KakaoTalk — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Zoom entries: remove outdated UAE VoIP ban, add China restriction</title>
+      <link>https://censorship.my/changes#6eea8a7f05</link>
+      <guid isPermaLink="false">6eea8a7f055a1344891a1cd083623e493d248e8e</guid>
+      <pubDate>Mon, 20 Jul 2026 00:57:51 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove duplicate same-type ban rows from censorship data</title>
+      <link>https://censorship.my/changes#77fd0ad720</link>
+      <guid isPermaLink="false">77fd0ad7204bbd1255fb1ce3ef01459038a05474</guid>
+      <pubDate>Sun, 19 Jul 2026 17:32:10 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Skype — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Substack censorship data</title>
+      <link>https://censorship.my/changes#bd72cee7a4</link>
+      <guid isPermaLink="false">bd72cee7a46548688d577b1a45b4c4ba1877a806</guid>
+      <pubDate>Fri, 17 Jul 2026 20:31:28 +0100</pubDate>
+      <description>&lt;p&gt;5 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — UAE (complete)&lt;/li&gt;&lt;li&gt;Roblox — UAE (partial)&lt;/li&gt;&lt;li&gt;Skype — UAE (partial)&lt;/li&gt;&lt;li&gt;Tinder — UAE (complete)&lt;/li&gt;&lt;li&gt;Zoom — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Viber and LINE censorship tracking data including Russia block for Viber</title>
+      <link>https://censorship.my/changes#bf4c6a27b5</link>
+      <guid isPermaLink="false">bf4c6a27b5fa5c513041a681c595bd2a5f3d9646</guid>
+      <pubDate>Tue, 14 Jul 2026 13:09:03 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LINE — UAE (partial)&lt;/li&gt;&lt;li&gt;Viber — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add YouTube UAE age row to meet plan minimum platform set</title>
+      <link>https://censorship.my/changes#6443fb2315</link>
+      <guid isPermaLink="false">6443fb23153f13f3d1bead706438e92372627cda</guid>
+      <pubDate>Sat, 11 Jul 2026 13:16:42 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;YouTube — UAE (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add pending UAE and Turkey under-15 age-verification rows</title>
+      <link>https://censorship.my/changes#ed2a3269c4</link>
+      <guid isPermaLink="false">ed2a3269c48a2e5a2d845e4a27ece95fcdcd06f8</guid>
+      <pubDate>Sat, 11 Jul 2026 13:13:59 +0100</pubDate>
+      <description>&lt;p&gt;5 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — UAE (age)&lt;/li&gt;&lt;li&gt;Instagram — UAE (age)&lt;/li&gt;&lt;li&gt;Snapchat — UAE (age)&lt;/li&gt;&lt;li&gt;TikTok — UAE (age)&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — UAE (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename labels and mark UAE Discord as partial (VoIP)</title>
+      <link>https://censorship.my/changes#2af5651c13</link>
+      <guid isPermaLink="false">2af5651c13b5aa6be3dd6b99bcf4f05dae6cc7d9</guid>
+      <pubDate>Sat, 11 Jul 2026 12:57:12 +0100</pubDate>
+      <description>&lt;p&gt;1 added, 1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — UAE (partial)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — UAE (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — UAE (complete)&lt;/li&gt;&lt;li&gt;WhatsApp — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Germany</title>
+    <link>https://censorship.my/country/germany/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Germany, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 12:13:17 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/germany.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Cite EUR-Lex for the RT broadcast ban</title>
+      <link>https://censorship.my/changes#c23e3165c6</link>
+      <guid isPermaLink="false">c23e3165c62f43d286b036db937c0e35d30154c3</guid>
+      <pubDate>Sat, 15 Aug 2026 12:13:17 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Germany (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace the Wikipedia and dead citations on four rows</title>
+      <link>https://censorship.my/changes#ca88d75270</link>
+      <guid isPermaLink="false">ca88d752709b173de7f37c2254c928a708857848</guid>
+      <pubDate>Tue, 04 Aug 2026 16:20:27 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Germany (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add missing source links for CGTN entries (Eritrea, Germany, UK, USA)</title>
+      <link>https://censorship.my/changes#d99dbfacb2</link>
+      <guid isPermaLink="false">d99dbfacb29ade34be2837dab5af70f815454a63</guid>
+      <pubDate>Mon, 27 Jul 2026 16:31:06 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Germany (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Germany (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace references of UK and UAE with United Kingdom and United Arab Emirates</title>
+      <link>https://censorship.my/changes#f740e57cf9</link>
+      <guid isPermaLink="false">f740e57cf9a6bbf85a2f0e809a7f79837a87b9f0</guid>
+      <pubDate>Tue, 21 Jul 2026 23:40:04 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Germany (partial): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Al Jazeera and CGTN censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e02e0c691e</link>
+      <guid isPermaLink="false">e02e0c691ec00e079014b59994e3148eda14d54f</guid>
+      <pubDate>Tue, 21 Jul 2026 16:49:02 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Germany (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Germany (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

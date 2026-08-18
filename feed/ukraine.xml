@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Ukraine</title>
+    <link>https://censorship.my/country/ukraine/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Ukraine, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:58:08 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/ukraine.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename Syrian Arab Republic to Syria</title>
+      <link>https://censorship.my/changes#edfb22aa86</link>
+      <guid isPermaLink="false">edfb22aa867ee95423cb5b6452434d4ee58370e4</guid>
+      <pubDate>Sat, 15 Aug 2026 18:58:08 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Crimea (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename Syria to Syrian Arab Republic</title>
+      <link>https://censorship.my/changes#a719ffa6ee</link>
+      <guid isPermaLink="false">a719ffa6ee59e9cbf835d841895c41070cac5a81</guid>
+      <pubDate>Mon, 27 Jul 2026 16:41:30 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Crimea (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 'China' with 'People's Republic of China'</title>
+      <link>https://censorship.my/changes#8c549b64c9</link>
+      <guid isPermaLink="false">8c549b64c9c1c23e9b9a4503536d1ac8629dc66c</guid>
+      <pubDate>Mon, 27 Jul 2026 16:39:21 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Crimea (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update source for Odnoklassniki and VKontakte banning in Ukraine to Human Rights Watch report</title>
+      <link>https://censorship.my/changes#13246969a1</link>
+      <guid isPermaLink="false">13246969a154f8c76ead55aaab90633ec1021946</guid>
+      <pubDate>Tue, 21 Jul 2026 23:17:13 +0100</pubDate>
+      <description>&lt;p&gt;2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Odnoklassniki — Ukraine (complete): notes, source&lt;/li&gt;&lt;li&gt;VKontakte — Ukraine (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Netflix restriction entry for Crimea</title>
+      <link>https://censorship.my/changes#d2e682893f</link>
+      <guid isPermaLink="false">d2e682893f8c4c6b7159bccda5ea58a09e4afcd9</guid>
+      <pubDate>Tue, 21 Jul 2026 16:40:28 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Crimea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Map microstates, and separate RT website bans from broadcast bans</title>
+      <link>https://censorship.my/changes#4ae3087473</link>
+      <guid isPermaLink="false">4ae30874737714921830149c6948a36c21c5bb62</guid>
+      <pubDate>Mon, 20 Jul 2026 18:10:17 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Ukraine (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Ukraine (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Widen year chart for legible labels; upgrade Yandex sourcing and add Latvia/North Korea</title>
+      <link>https://censorship.my/changes#7be00d5701</link>
+      <guid isPermaLink="false">7be00d5701d2608424f671bdab9d7e886113aa56</guid>
+      <pubDate>Sun, 19 Jul 2026 19:27:04 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Yandex — Ukraine (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Odnoklassniki bans: Ukraine (2017), Latvia (2022), China (Great Firewall)</title>
+      <link>https://censorship.my/changes#0fbcd76f94</link>
+      <guid isPermaLink="false">0fbcd76f947d9d297892a1ab827d63c38cffc80d</guid>
+      <pubDate>Sun, 19 Jul 2026 17:52:49 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Odnoklassniki — Ukraine (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Substack censorship data</title>
+      <link>https://censorship.my/changes#bd72cee7a4</link>
+      <guid isPermaLink="false">bd72cee7a46548688d577b1a45b4c4ba1877a806</guid>
+      <pubDate>Fri, 17 Jul 2026 20:31:28 +0100</pubDate>
+      <description>&lt;p&gt;3 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — Crimea (partial)&lt;/li&gt;&lt;li&gt;VKontakte — Ukraine (complete)&lt;/li&gt;&lt;li&gt;Yandex — Ukraine (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

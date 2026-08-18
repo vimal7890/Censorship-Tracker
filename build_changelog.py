@@ -13,6 +13,9 @@ added, removed, or had their date / notes / source changed. Output:
   changelog.json   what changes.html renders
   feed.xml         RSS 2.0, one item per dated change, so the tracker can be
                    followed in a reader without an account or an email address
+  feed/<slug>.xml  the same events filtered to one territory — "what changed
+                   in Iran?" is the question a person actually following one
+                   place has, and the global feed buries it
 
 Rows are keyed on (platform, country, type), which is what makes an entry the
 same entry across commits. A row that changes type — a partial block hardened
@@ -48,6 +51,7 @@ ROOT = Path(__file__).resolve().parent
 CSV_NAME = "censorship_data.csv"
 OUT_JSON = ROOT / "changelog.json"
 OUT_FEED = ROOT / "feed.xml"
+FEED_DIR = ROOT / "feed"
 
 SITE = "https://censorship.my"
 FEED_TITLE = "Global Censorship Tracker — what changed"
@@ -175,7 +179,12 @@ def diff(before: dict, after: dict) -> dict:
         if "since" in fields:
             entry["since_was"] = before[key]["since"]
         changed.append(entry)
-    sort = lambda items: sorted(items, key=lambda e: (e["country"].lower(), e["platform"].lower()))
+    # The key includes type: two rows can differ only by it (X — Malaysia has
+    # both a partial and an age row), and a (country, platform) sort leaves
+    # their order to set-iteration luck, which flips run to run and makes the
+    # build check see phantom changes.
+    sort = lambda items: sorted(items, key=lambda e: (
+        e["country"].lower(), e["platform"].lower(), e.get("type", "")))
     return {"added": sort(added), "removed": sort(removed),
             "changed": sort(changed), "renamed": sort(renamed)}
 
@@ -234,37 +243,131 @@ def item_body(event: dict) -> str:
     return "".join(lines)
 
 
-def write_feed(events: list[dict]) -> None:
-    now = datetime.now(timezone.utc)
+def feed_xml(*, title: str, link: str, self_href: str, description: str,
+             events: list[dict], build_date: datetime) -> str:
     items = []
     for event in events[:60]:
-        link = f"{SITE}/changes#{event['id']}"
+        permalink = f"{SITE}/changes#{event['id']}"
         try:
             when = datetime.fromisoformat(event["iso"])
         except ValueError:
-            when = now
+            when = build_date
         items.append(
             "    <item>\n"
             f"      <title>{escape(event['subject'])}</title>\n"
-            f"      <link>{escape(link)}</link>\n"
+            f"      <link>{escape(permalink)}</link>\n"
             f"      <guid isPermaLink=\"false\">{event['sha']}</guid>\n"
             f"      <pubDate>{format_datetime(when)}</pubDate>\n"
             f"      <description>{escape(item_body(event))}</description>\n"
             "    </item>")
-    xml = (
+    return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
         "  <channel>\n"
-        f"    <title>{escape(FEED_TITLE)}</title>\n"
-        f"    <link>{SITE}/changes</link>\n"
-        f"    <description>{escape(FEED_DESC)}</description>\n"
+        f"    <title>{escape(title)}</title>\n"
+        f"    <link>{escape(link)}</link>\n"
+        f"    <description>{escape(description)}</description>\n"
         "    <language>en</language>\n"
-        f"    <lastBuildDate>{format_datetime(now)}</lastBuildDate>\n"
-        f'    <atom:link href="{SITE}/feed.xml" rel="self" type="application/rss+xml"/>\n'
+        f"    <lastBuildDate>{format_datetime(build_date)}</lastBuildDate>\n"
+        f'    <atom:link href="{escape(self_href)}" rel="self" type="application/rss+xml"/>\n'
         + "\n".join(items) + "\n"
         "  </channel>\n"
         "</rss>\n")
-    OUT_FEED.write_text(xml, encoding="utf-8")
+
+
+def write_feed(events: list[dict]) -> None:
+    OUT_FEED.write_text(
+        feed_xml(title=FEED_TITLE, link=f"{SITE}/changes",
+                 self_href=f"{SITE}/feed.xml", description=FEED_DESC,
+                 events=events, build_date=datetime.now(timezone.utc)),
+        encoding="utf-8")
+
+
+def country_rename_chain(events: list[dict]) -> dict[str, str]:
+    """old country name -> the name that replaced it, from the events themselves.
+
+    The registry only knows current names, but the feed filter below has to
+    place "Kingdom of Saudi Arabia" rows from 2026 history under today's
+    Saudi Arabia. The changelog already extracts country renames explicitly,
+    so the chain is derived from the same events rather than hand-typed.
+    """
+    chain: dict[str, str] = {}
+    for event in reversed(events):  # oldest first
+        for entry in event.get("renamed", []):
+            if entry.get("renamed") == "country":
+                chain[entry["was"]] = entry["country"]
+    return chain
+
+
+def follow(name: str, chain: dict[str, str]) -> str:
+    seen = set()
+    while name in chain and name not in seen:
+        seen.add(name)
+        name = chain[name]
+    return name
+
+
+def write_territory_feeds(events: list[dict]) -> tuple[int, int]:
+    """One filtered feed per territory, feed/<slug>.xml. -> (written, kept).
+
+    Content is deterministic — lastBuildDate is the newest included event, not
+    now() — so an unchanged territory keeps a byte-identical feed and the
+    build check stays quiet. Feeds for territories that left the dataset are
+    deleted; a stale feed asserting "nothing since June" would be a claim
+    nobody is maintaining.
+    """
+    from territories import group_by_territory, load_rows
+    from country_registry import load_registry
+
+    registry = load_registry()
+    chain = country_rename_chain(events)
+
+    def iso_of(country: str) -> str:
+        info = registry.resolve(follow(country, chain))
+        return info["iso"] if info else ""
+
+    groups = group_by_territory(load_rows())
+    FEED_DIR.mkdir(exist_ok=True)
+    expected: set[Path] = set()
+    written = kept = 0
+    for group in groups.values():
+        iso = group["iso"]
+        filtered_events = []
+        for event in events:
+            parts = {}
+            for kind in ("added", "removed", "changed", "renamed"):
+                parts[kind] = [r for r in event[kind]
+                               if iso_of(r["country"]) == iso
+                               or (r.get("renamed") == "country"
+                                   and iso_of(r["was"]) == iso)]
+            total = sum(len(v) for v in parts.values())
+            if total:
+                filtered_events.append({**event, **parts, "total": total})
+        if not filtered_events:
+            continue
+        target = FEED_DIR / f"{group['slug']}.xml"
+        expected.add(target)
+        try:
+            newest = datetime.fromisoformat(filtered_events[0]["iso"])
+        except ValueError:
+            newest = datetime.now(timezone.utc)
+        name = group["display"]
+        xml = feed_xml(
+            title=f"Global Censorship Tracker — what changed in {name}",
+            link=f"{SITE}/country/{group['slug']}/",
+            self_href=f"{SITE}/feed/{group['slug']}.xml",
+            description=(f"Every addition, removal and revision to the tracked "
+                         f"restrictions in {name}, straight from the dataset's history."),
+            events=filtered_events, build_date=newest)
+        if target.is_file() and target.read_text(encoding="utf-8") == xml:
+            kept += 1
+            continue
+        target.write_text(xml, encoding="utf-8")
+        written += 1
+    for stale in FEED_DIR.glob("*.xml"):
+        if stale not in expected:
+            stale.unlink()
+    return written, kept
 
 
 def main(argv: list[str]) -> int:
@@ -289,10 +392,12 @@ def main(argv: list[str]) -> int:
     # when they changed — its lastBuildDate would otherwise be the sole diff.
     if wrote or not OUT_FEED.is_file():
         write_feed(events)
+    fw, fk = write_territory_feeds(events)
 
     rows = sum(e["total"] for e in events)
     print(f"{'wrote' if wrote else 'unchanged'} {OUT_JSON.name} and {OUT_FEED.name}: "
           f"{len(events)} dated changes covering {rows} row edits")
+    print(f"feed/: {fw + fk} territory feeds ({fw} written, {fk} unchanged)")
     print(f"  newest: {events[0]['date']} — {events[0]['subject']} ({summarise(events[0])})")
     return 0
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Denmark</title>
+    <link>https://censorship.my/country/denmark/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Denmark, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 14:06:56 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/denmark.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Merge Greenland into Denmark map entity</title>
+      <link>https://censorship.my/changes#1d1ab1db80</link>
+      <guid isPermaLink="false">1d1ab1db801847fbaf84c99d83073786d87d8faa</guid>
+      <pubDate>Sat, 15 Aug 2026 14:06:56 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Greenland (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Extend Russia Today restriction to Greenland</title>
+      <link>https://censorship.my/changes#0c53aa8054</link>
+      <guid isPermaLink="false">0c53aa8054eab1303cccfa0588d5e7e714495424</guid>
+      <pubDate>Sat, 15 Aug 2026 13:57:06 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Greenland (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Cite EUR-Lex for the RT broadcast ban</title>
+      <link>https://censorship.my/changes#c23e3165c6</link>
+      <guid isPermaLink="false">c23e3165c62f43d286b036db937c0e35d30154c3</guid>
+      <pubDate>Sat, 15 Aug 2026 12:13:17 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Denmark (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Denmark (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

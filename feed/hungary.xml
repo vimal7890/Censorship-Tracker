@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Hungary</title>
+    <link>https://censorship.my/country/hungary/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Hungary, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 12:13:17 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/hungary.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Cite EUR-Lex for the RT broadcast ban</title>
+      <link>https://censorship.my/changes#c23e3165c6</link>
+      <guid isPermaLink="false">c23e3165c62f43d286b036db937c0e35d30154c3</guid>
+      <pubDate>Sat, 15 Aug 2026 12:13:17 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Hungary (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Hungary (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
