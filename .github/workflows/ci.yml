@@ -1,0 +1,29 @@
+# Every push and PR: regenerate everything and fail if the committed files
+# drift from what the data derives — a stale prerender block, a changelog
+# citing a sha that no longer exists, a meta.json that miscounts. This is the
+# check build.py --check was written for; it just never ran anywhere.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # build_changelog.py replays the CSV's whole history and
+          # build_meta.py dates each dataset from its last commit.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Runs every generator, diffs the working tree, then runs the tests.
+      # Stdlib only — nothing to install.
+      - run: python3 build.py --check

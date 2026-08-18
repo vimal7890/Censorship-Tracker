@@ -21,6 +21,20 @@
     <meta name="twitter:title" content="Global Censorship Tracker">
     <meta name="twitter:description" content="Live index of banned, restricted and age-gated apps and websites worldwide — government blocks, throttling and age-verification laws, mapped and sourced.">
     <meta name="twitter:image" content="https://censorship.my/og-image.png">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "Global Censorship Tracker",
+      "description": "Index of banned, restricted and age-gated apps and websites worldwide — government blocks, throttling and age-verification laws, each entry dated and cited.",
+      "url": "https://censorship.my/",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "creator": {"@type": "Organization", "name": "Global Censorship Tracker", "url": "https://censorship.my/"},
+      "distribution": [
+        {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://censorship.my/data.json"},
+        {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://censorship.my/censorship_data.csv"}
+      ]
+    }</script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="favicon-32.png">
@@ -2520,7 +2534,11 @@
             [...counts.keys()].sort((a, b) => a.localeCompare(b)).forEach(country => {
                 const opt = document.createElement('option');
                 opt.value = country;
-                opt.textContent = `${country} (${counts.get(country)})`;
+                // A state listed between countries needs to say why it is
+                // there — "Texas (1) — U.S. state law" — or the list reads as
+                // if the tracker cannot tell a state from a country.
+                const note = window.subnationalNote ? window.subnationalNote(country) : '';
+                opt.textContent = `${country} (${counts.get(country)})${note ? ` — ${note}` : ''}`;
                 sel.appendChild(opt);
             });
         }
@@ -3364,17 +3382,29 @@
 
         function populateHeroLookup() {
             const counts = new Map();
+            // Subnational rows (Texas, Crimea) fold into their parent here but
+            // are listed separately in the country lens below, so the two
+            // dropdowns show different totals for the same place. Naming the
+            // folded territories in the option is what stops that reading as
+            // a bug: "United States of America — 4 (incl. Mississippi, Texas)".
+            const folded = new Map();
             censorshipData.forEach(p => p.bannedIn.forEach(b => {
                 const country = window.canonicalCountryName
                     ? (window.canonicalCountryName(b.country) || b.country)
                     : b.country;
                 counts.set(country, (counts.get(country) || 0) + 1);
+                if (window.isSubnational && window.isSubnational(b.country)) {
+                    if (!folded.has(country)) folded.set(country, new Set());
+                    folded.get(country).add(b.country);
+                }
             }));
             const sel = document.getElementById('heroCountry');
             [...counts.keys()].sort((a, b) => a.localeCompare(b)).forEach(country => {
                 const opt = document.createElement('option');
                 opt.value = country;
-                opt.textContent = `${country} — ${counts.get(country)} restriction${counts.get(country) === 1 ? '' : 's'}`;
+                const parts = folded.get(country);
+                const suffix = parts ? ` (incl. ${[...parts].sort().join(', ')})` : '';
+                opt.textContent = `${country} — ${counts.get(country)} restriction${counts.get(country) === 1 ? '' : 's'}${suffix}`;
                 sel.appendChild(opt);
             });
         }

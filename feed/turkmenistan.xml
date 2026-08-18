@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Turkmenistan</title>
+    <link>https://censorship.my/country/turkmenistan/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Turkmenistan, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:54:01 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/turkmenistan.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename DW platform to Deutsche Welle</title>
+      <link>https://censorship.my/changes#62dc090e9f</link>
+      <guid isPermaLink="false">62dc090e9f4a5c9ffee726f3c02ed406b63d891c</guid>
+      <pubDate>Sat, 15 Aug 2026 18:54:01 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Turkmenistan (complete) — was DW (Deutsche Welle)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename X formerly Twitter platform to X</title>
+      <link>https://censorship.my/changes#319f7eabe2</link>
+      <guid isPermaLink="false">319f7eabe2f0ee4f0e67122184d51ad15a310005</guid>
+      <pubDate>Sat, 15 Aug 2026 18:51:44 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — Turkmenistan (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Retire the CPJ catch-all and cite Turkey's DW block specifically</title>
+      <link>https://censorship.my/changes#a6b7d7720f</link>
+      <guid isPermaLink="false">a6b7d7720f303a69958c261d37b45503d1cd9c39</guid>
+      <pubDate>Fri, 24 Jul 2026 10:53:45 +0100</pubDate>
+      <description>&lt;p&gt;8 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;Associated Press — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;CGTN — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;New York Times — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;Reuters — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;WeChat — Turkmenistan (complete): source&lt;/li&gt;&lt;li&gt;Zoom — Turkmenistan (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add GitHub's complete block in Turkmenistan</title>
+      <link>https://censorship.my/changes#9dd00568ed</link>
+      <guid isPermaLink="false">9dd00568ed031660533fb221929bfa4c153df3f4</guid>
+      <pubDate>Thu, 23 Jul 2026 11:13:42 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;GitHub — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update platform label to DW (Deutsche Welle) to support acronym searching</title>
+      <link>https://censorship.my/changes#23308837b6</link>
+      <guid isPermaLink="false">23308837b65a8a6925c4839aaaccb53747fc4589</guid>
+      <pubDate>Tue, 21 Jul 2026 16:54:18 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Turkmenistan (complete) — was Deutsche Welle&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Deutsche Welle censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e57a531995</link>
+      <guid isPermaLink="false">e57a531995f47a8625b5c871886f69070ad8f8c0</guid>
+      <pubDate>Tue, 21 Jul 2026 16:50:29 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Al Jazeera and CGTN censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e02e0c691e</link>
+      <guid isPermaLink="false">e02e0c691ec00e079014b59994e3148eda14d54f</guid>
+      <pubDate>Tue, 21 Jul 2026 16:49:02 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;CGTN — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add North Korea and Turkmenistan to New York Times</title>
+      <link>https://censorship.my/changes#54ee0e0832</link>
+      <guid isPermaLink="false">54ee0e083275d6067dd956081a6d83db10d0a9d0</guid>
+      <pubDate>Tue, 21 Jul 2026 13:11:04 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 27 fabricated and generic sources with verified ones</title>
+      <link>https://censorship.my/changes#28ff50c189</link>
+      <guid isPermaLink="false">28ff50c1893c412d5b976e0cda7c4c150921a635</guid>
+      <pubDate>Mon, 20 Jul 2026 18:37:02 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — Turkmenistan (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Drop the stale WeChat Iran row and fix its Wikipedia sources</title>
+      <link>https://censorship.my/changes#abf70a22c6</link>
+      <guid isPermaLink="false">abf70a22c6db158fe8fac2fb751e648eb1fa34c1</guid>
+      <pubDate>Mon, 20 Jul 2026 18:15:44 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WeChat — Turkmenistan (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Associated Press — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add New York Times to censorship tracker</title>
+      <link>https://censorship.my/changes#27e5976b1d</link>
+      <guid isPermaLink="false">27e5976b1da365ccfca4f13fec77c08b6ba36632</guid>
+      <pubDate>Mon, 20 Jul 2026 12:38:19 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Reuters — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add KakaoTalk censorship data and UI assets</title>
+      <link>https://censorship.my/changes#e5f69a190b</link>
+      <guid isPermaLink="false">e5f69a190b7f08ae564fea645fbfdc117131f220</guid>
+      <pubDate>Mon, 20 Jul 2026 12:33:56 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;KakaoTalk — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Zoom as completely blocked in Iran and Turkmenistan</title>
+      <link>https://censorship.my/changes#dc75bab148</link>
+      <guid isPermaLink="false">dc75bab148f6c1473844b6c1a1c42021729949f7</guid>
+      <pubDate>Mon, 20 Jul 2026 12:20:47 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Zoom — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Patreon and Pinterest entries for Iran and Turkmenistan</title>
+      <link>https://censorship.my/changes#00926cd8ea</link>
+      <guid isPermaLink="false">00926cd8ea1c1034e4bd2e5a103d705efb15496f</guid>
+      <pubDate>Mon, 20 Jul 2026 12:19:12 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Patreon — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Pinterest — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Quora restriction row for Turkmenistan</title>
+      <link>https://censorship.my/changes#aa230b2dd3</link>
+      <guid isPermaLink="false">aa230b2dd321ebed3d3c2a0891413f7abc11abe4</guid>
+      <pubDate>Mon, 20 Jul 2026 09:36:17 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Quora — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Drop the "not an active block" hedge from Spotify Turkmenistan</title>
+      <link>https://censorship.my/changes#3816d8fcd2</link>
+      <guid isPermaLink="false">3816d8fcd21444d1d3f1b91d44eb2b233b8471a7</guid>
+      <pubDate>Sun, 19 Jul 2026 21:35:24 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Spotify — Turkmenistan (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Spotify Turkmenistan (never launched, not a technical block)</title>
+      <link>https://censorship.my/changes#6edb2df8a3</link>
+      <guid isPermaLink="false">6edb2df8a35d363acc8b9397fd60aa7fc307356a</guid>
+      <pubDate>Sun, 19 Jul 2026 19:31:50 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Spotify — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Tumblr ban status: remove Indonesia, add China, North Korea, Turkmenistan, and other countries</title>
+      <link>https://censorship.my/changes#10694c63d4</link>
+      <guid isPermaLink="false">10694c63d4894d599c376599437b86227b230045</guid>
+      <pubDate>Sun, 19 Jul 2026 17:42:19 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Tumblr — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Vimeo bans for China, North Korea, and Turkmenistan</title>
+      <link>https://censorship.my/changes#e00675d719</link>
+      <guid isPermaLink="false">e00675d719fca5886a5eddec69b19a35fc885261</guid>
+      <pubDate>Sun, 19 Jul 2026 17:41:29 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Vimeo — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Substack censorship data for North Korea and Turkmenistan</title>
+      <link>https://censorship.my/changes#07072b8ff3</link>
+      <guid isPermaLink="false">07072b8ff321d2abd3cc109902eea303a417fcb6</guid>
+      <pubDate>Fri, 17 Jul 2026 20:32:37 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Substack — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Rumble censorship data for Brazil, Russia, North Korea, China, and Turkmenistan</title>
+      <link>https://censorship.my/changes#4c2d77c6d8</link>
+      <guid isPermaLink="false">4c2d77c6d8d74a0977a950e633b261f2524b9839</guid>
+      <pubDate>Fri, 17 Jul 2026 20:32:11 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Rumble — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Google complete ban in Turkmenistan</title>
+      <link>https://censorship.my/changes#353f36375a</link>
+      <guid isPermaLink="false">353f36375a8245f38ffc8d33d5f4383bd14b149d</guid>
+      <pubDate>Fri, 17 Jul 2026 18:57:38 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Google — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Turkmenistan to WeChat data</title>
+      <link>https://censorship.my/changes#e612c9d4ef</link>
+      <guid isPermaLink="false">e612c9d4ef63e6095d767c19c33cb7814bdc09c4</guid>
+      <pubDate>Tue, 14 Jul 2026 15:28:56 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WeChat — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Viber and LINE censorship tracking data including Russia block for Viber</title>
+      <link>https://censorship.my/changes#bf4c6a27b5</link>
+      <guid isPermaLink="false">bf4c6a27b5fa5c513041a681c595bd2a5f3d9646</guid>
+      <pubDate>Tue, 14 Jul 2026 13:09:03 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LINE — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Viber — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Threads platform with ban and age-restriction data</title>
+      <link>https://censorship.my/changes#e52af766ea</link>
+      <guid isPermaLink="false">e52af766ea1a301a8dbc84cb979f6b4c8379b91e</guid>
+      <pubDate>Mon, 13 Jul 2026 16:56:33 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Threads — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove Pornhub and expand Bluesky country coverage</title>
+      <link>https://censorship.my/changes#c989c44cfd</link>
+      <guid isPermaLink="false">c989c44cfd8ed7ab3b9422d239012a32bd532e63</guid>
+      <pubDate>Mon, 13 Jul 2026 14:43:03 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bluesky — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove Google Turkmenistan ban entry</title>
+      <link>https://censorship.my/changes#6916912792</link>
+      <guid isPermaLink="false">6916912792ffdcfca3f3a1c8486a758ba9f5b766</guid>
+      <pubDate>Sun, 12 Jul 2026 16:52:20 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Google — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Google complete ban for Turkmenistan</title>
+      <link>https://censorship.my/changes#243789c523</link>
+      <guid isPermaLink="false">243789c523263935ca5b8c25688a25af085e9b5f</guid>
+      <pubDate>Sun, 12 Jul 2026 16:50:21 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Google — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add DuckDuckGo complete ban for Turkmenistan</title>
+      <link>https://censorship.my/changes#0f9de7ec40</link>
+      <guid isPermaLink="false">0f9de7ec40086fedae2d03520507f191492848d2</guid>
+      <pubDate>Sat, 11 Jul 2026 13:33:14 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DuckDuckGo — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;12 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Facebook — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Instagram — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;LinkedIn — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Reddit — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Signal — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Snapchat — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;Telegram — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;TikTok — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;WhatsApp — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Turkmenistan (complete)&lt;/li&gt;&lt;li&gt;YouTube — Turkmenistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

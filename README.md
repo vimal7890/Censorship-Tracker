@@ -23,6 +23,7 @@ changing them, which is the right thing for CI. Individually:
 | `build_status.py`     | CSV `status` / `evidence` cols   | Grades each row's stage and how well it is sourced                 |
 | `build_timezones.py`  | `assets/timezones.js`            | Time zone → country, for the client-side "use my region" guess     |
 | `prerender.py`        | baked index in `index.html`      | Crawlers and no-JS visitors get the real list                      |
+| `build_pages.py`      | `country/`, `platform/`, `sitemap.xml` | A real URL per territory and per platform, so "is X banned in Y" has a page to land on |
 | `build_changelog.py`  | `changelog.json`, `feed.xml`     | Dated changelog and RSS, from the dataset's commits                |
 | `build_meta.py`       | `meta.json`                      | The site's two freshness dates and its coverage counts             |
 
@@ -418,3 +419,23 @@ The homepage renders three derived views of the same CSV (no separate data):
   type breakdown, per-year chart, top territories).
 - **Most Recent Restrictions** — latest dated entries, parsed leniently from
   the free-text `since` column (undated values like "Forever" are skipped).
+
+## Reusing the data
+
+The whole dataset ships as one self-describing artifact at
+[`https://censorship.my/data.json`](https://censorship.my/data.json) —
+every row plus the resolved ISO code and subnational flag, a field-by-field
+schema, and the license inline. `schema_version` only moves when a field
+changes meaning, so consumers can pin against it. The raw CSV is at
+[`https://censorship.my/censorship_data.csv`](https://censorship.my/censorship_data.csv)
+for anyone who prefers the working format. Both are CC BY 4.0: credit
+"Global Censorship Tracker, censorship.my".
+
+## License
+
+The code — build scripts, tests, and the site's HTML/CSS/JS — is MIT licensed
+([LICENSE](LICENSE)). The dataset and the files derived from it are Creative
+Commons Attribution 4.0 ([LICENSE-DATA](LICENSE-DATA)): reuse it freely,
+credit "Global Censorship Tracker, censorship.my". They are separated because
+they invite different reuse — nobody citing the data should have to read a
+software license to learn whether they may.

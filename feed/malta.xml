@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Malta</title>
+    <link>https://censorship.my/country/malta/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Malta, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 12:13:17 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/malta.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Cite EUR-Lex for the RT broadcast ban</title>
+      <link>https://censorship.my/changes#c23e3165c6</link>
+      <guid isPermaLink="false">c23e3165c62f43d286b036db937c0e35d30154c3</guid>
+      <pubDate>Sat, 15 Aug 2026 12:13:17 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Malta (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Map microstates, and separate RT website bans from broadcast bans</title>
+      <link>https://censorship.my/changes#4ae3087473</link>
+      <guid isPermaLink="false">4ae30874737714921830149c6948a36c21c5bb62</guid>
+      <pubDate>Mon, 20 Jul 2026 18:10:17 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — Malta (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

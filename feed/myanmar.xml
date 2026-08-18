@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Myanmar</title>
+    <link>https://censorship.my/country/myanmar/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Myanmar, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:51:44 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/myanmar.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename X formerly Twitter platform to X</title>
+      <link>https://censorship.my/changes#319f7eabe2</link>
+      <guid isPermaLink="false">319f7eabe2f0ee4f0e67122184d51ad15a310005</guid>
+      <pubDate>Sat, 15 Aug 2026 18:51:44 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — Myanmar (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace Wikipedia sources in censorship_data.csv with verified independent sources for non-exempt countries</title>
+      <link>https://censorship.my/changes#520d6009bb</link>
+      <guid isPermaLink="false">520d6009bb8f9e754a1bdcdb6cdef07e03fc07f8</guid>
+      <pubDate>Tue, 21 Jul 2026 23:25:58 +0100</pubDate>
+      <description>&lt;p&gt;2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — Myanmar (complete): source&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Myanmar (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 27 fabricated and generic sources with verified ones</title>
+      <link>https://censorship.my/changes#28ff50c189</link>
+      <guid isPermaLink="false">28ff50c1893c412d5b976e0cda7c4c150921a635</guid>
+      <pubDate>Mon, 20 Jul 2026 18:37:02 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Reuters — Myanmar (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add New York Times to censorship tracker</title>
+      <link>https://censorship.my/changes#27e5976b1d</link>
+      <guid isPermaLink="false">27e5976b1da365ccfca4f13fec77c08b6ba36632</guid>
+      <pubDate>Mon, 20 Jul 2026 12:38:19 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Reuters — Myanmar (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Reclassify X in Myanmar as a complete ban</title>
+      <link>https://censorship.my/changes#e1e970f241</link>
+      <guid isPermaLink="false">e1e970f241d96a4a1afbc47cbf684abfa0d3634e</guid>
+      <pubDate>Sat, 11 Jul 2026 13:18:16 +0100</pubDate>
+      <description>&lt;p&gt;1 added, 1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X (formerly Twitter) — Myanmar (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X (formerly Twitter) — Myanmar (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;3 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — Myanmar (complete)&lt;/li&gt;&lt;li&gt;Wikipedia — Myanmar (complete)&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — Myanmar (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

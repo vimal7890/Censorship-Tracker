@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Sudan</title>
+    <link>https://censorship.my/country/sudan/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Sudan, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Tue, 21 Jul 2026 23:47:26 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/sudan.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Update Grindr dataset using Grindr official Help Center source</title>
+      <link>https://censorship.my/changes#b78b2243e9</link>
+      <guid isPermaLink="false">b78b2243e941c1fa786130f7e75e3de3b6e843ed</guid>
+      <pubDate>Tue, 21 Jul 2026 23:47:26 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Sudan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add WhatsApp VoIP partial restrictions beyond the UAE</title>
+      <link>https://censorship.my/changes#7268c39dcb</link>
+      <guid isPermaLink="false">7268c39dcb34da26d849ea6dfcec3ed5ab57f421</guid>
+      <pubDate>Sun, 12 Jul 2026 16:39:18 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WhatsApp — Sudan (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

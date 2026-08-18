@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-15T17:58:18+00:00",
+  "generated_utc": "2026-08-18T10:44:22+00:00",
   "count": 128,
   "latest": "2026-08-15",
   "events": [
@@ -2179,14 +2179,6 @@
         {
           "platform": "X (formerly Twitter)",
           "country": "Türkiye",
-          "type": "partial",
-          "since": "July 2025",
-          "renamed": "country",
-          "was": "Turkey"
-        },
-        {
-          "platform": "X (formerly Twitter)",
-          "country": "Türkiye",
           "type": "age",
           "since": "late 2026",
           "renamed": "country",
@@ -2194,6 +2186,14 @@
           "fields": [
             "notes"
           ]
+        },
+        {
+          "platform": "X (formerly Twitter)",
+          "country": "Türkiye",
+          "type": "partial",
+          "since": "July 2025",
+          "renamed": "country",
+          "was": "Turkey"
         },
         {
           "platform": "YouTube",

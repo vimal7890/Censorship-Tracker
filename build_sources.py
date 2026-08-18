@@ -22,6 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import sources
+from stable_write import write_json
 
 ROOT = Path(__file__).resolve().parent
 CSV_PATH = ROOT / "censorship_data.csv"
@@ -44,12 +45,13 @@ def collect() -> list[str]:
 
 
 def main() -> int:
-    previous: dict[str, dict] = {}
+    previous_payload: dict = {}
     if OUT.is_file():
         try:
-            previous = json.loads(OUT.read_text(encoding="utf-8")).get("sources", {})
-        except (json.JSONDecodeError, AttributeError):
-            previous = {}
+            previous_payload = json.loads(OUT.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            previous_payload = {}
+    previous: dict[str, dict] = previous_payload.get("sources", {}) or {}
 
     urls = collect()
     entries: dict[str, dict] = {}
@@ -74,10 +76,15 @@ def main() -> int:
         "kind_blurbs": sources.KIND_BLURB,
         "sources": entries,
     }
-    OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    # verify_links.py stamps when it last captured titles; carry that through a
+    # regeneration the same way the titles themselves are carried.
+    if "titles_captured_utc" in previous_payload:
+        payload["titles_captured_utc"] = previous_payload["titles_captured_utc"]
+    wrote = write_json(OUT, payload)
 
     titled = sum(1 for e in entries.values() if e["title"])
-    print(f"wrote {OUT.name}: {len(entries)} sources, {titled} with a fetched title")
+    print(f"{'wrote' if wrote else 'unchanged'} {OUT.name}: "
+          f"{len(entries)} sources, {titled} with a fetched title")
     print("  " + " · ".join(f"{k} {v}" for k, v in payload["by_kind"].items()))
     if unregistered:
         print(f"\n{len(set(unregistered))} domain(s) not in sources.REGISTRY — "

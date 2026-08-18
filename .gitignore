@@ -1,1 +1,7 @@
 .claude/
+.freebuff/
+.pytest_cache/
+__pycache__/
+output/
+soho-venue-explorer/
+tmp/

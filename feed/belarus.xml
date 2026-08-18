@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Belarus</title>
+    <link>https://censorship.my/country/belarus/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Belarus, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:54:01 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/belarus.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename DW platform to Deutsche Welle</title>
+      <link>https://censorship.my/changes#62dc090e9f</link>
+      <guid isPermaLink="false">62dc090e9f4a5c9ffee726f3c02ed406b63d891c</guid>
+      <pubDate>Sat, 15 Aug 2026 18:54:01 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Belarus (complete) — was DW (Deutsche Welle)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Source DW's Afghanistan, Belarus, Russia and Venezuela rows</title>
+      <link>https://censorship.my/changes#ffe46d960e</link>
+      <guid isPermaLink="false">ffe46d960e8d91af6c41a6bdddcb6aeec63f3195</guid>
+      <pubDate>Fri, 24 Jul 2026 01:04:35 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Belarus (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Belarus (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update platform label to DW (Deutsche Welle) to support acronym searching</title>
+      <link>https://censorship.my/changes#23308837b6</link>
+      <guid isPermaLink="false">23308837b65a8a6925c4839aaaccb53747fc4589</guid>
+      <pubDate>Tue, 21 Jul 2026 16:54:18 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Belarus (complete) — was Deutsche Welle&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Deutsche Welle censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e57a531995</link>
+      <guid isPermaLink="false">e57a531995f47a8625b5c871886f69070ad8f8c0</guid>
+      <pubDate>Tue, 21 Jul 2026 16:50:29 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Belarus (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

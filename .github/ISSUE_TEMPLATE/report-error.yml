@@ -1,0 +1,36 @@
+name: Report an error
+description: The tracker lists something wrong — a lifted ban, a wrong date, a dead or unrelated citation.
+title: "[Correction] <what is wrong>"
+labels: ["data", "correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections are the most valuable contribution this project gets — a
+        tracker that only ever adds rows drifts into fiction. Thank you.
+  - type: input
+    id: row
+    attributes:
+      label: Which entry
+      placeholder: e.g. Telegram in Russia (complete ban)
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of error
+      options:
+        - The restriction was lifted / never existed
+        - The date is wrong
+        - The type is wrong (complete vs partial vs age)
+        - The citation is dead, unrelated, or doesn't support the claim
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How you know
+      description: What you observed or read — ideally with a URL naming this platform in this territory.
+    validations:
+      required: true

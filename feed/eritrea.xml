@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Eritrea</title>
+    <link>https://censorship.my/country/eritrea/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Eritrea, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:54:01 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/eritrea.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename DW platform to Deutsche Welle</title>
+      <link>https://censorship.my/changes#62dc090e9f</link>
+      <guid isPermaLink="false">62dc090e9f4a5c9ffee726f3c02ed406b63d891c</guid>
+      <pubDate>Sat, 15 Aug 2026 18:54:01 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Eritrea (complete) — was DW (Deutsche Welle)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename X formerly Twitter platform to X</title>
+      <link>https://censorship.my/changes#319f7eabe2</link>
+      <guid isPermaLink="false">319f7eabe2f0ee4f0e67122184d51ad15a310005</guid>
+      <pubDate>Sat, 15 Aug 2026 18:51:44 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — Eritrea (complete) — was X (formerly Twitter)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add missing source links for CGTN entries (Eritrea, Germany, UK, USA)</title>
+      <link>https://censorship.my/changes#d99dbfacb2</link>
+      <guid isPermaLink="false">d99dbfacb29ade34be2837dab5af70f815454a63</guid>
+      <pubDate>Mon, 27 Jul 2026 16:31:06 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — Eritrea (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Retire the CPJ catch-all and cite Turkey's DW block specifically</title>
+      <link>https://censorship.my/changes#a6b7d7720f</link>
+      <guid isPermaLink="false">a6b7d7720f303a69958c261d37b45503d1cd9c39</guid>
+      <pubDate>Fri, 24 Jul 2026 10:53:45 +0100</pubDate>
+      <description>&lt;p&gt;47 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Associated Press — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;BBC News — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Bluesky — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;CGTN — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;ChatGPT — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Discord — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;DuckDuckGo — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;DW (Deutsche Welle) — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Facebook — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;GitHub — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Google — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Instagram — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;KakaoTalk — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;LINE — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;LinkedIn — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Medium — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Netflix — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;New York Times — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Odnoklassniki — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Patreon — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Pinterest — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Quora — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Reddit — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Reuters — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Roblox — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Rumble — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Russia Today — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Signal — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Snapchat — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Spotify — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Substack — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Telegram — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Threads — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;TikTok — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Tinder — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Tumblr — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Twitch — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Viber — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;Vimeo — Eritrea (complete): source&lt;/li&gt;&lt;li&gt;+7 more&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Grindr dataset using Grindr official Help Center source</title>
+      <link>https://censorship.my/changes#b78b2243e9</link>
+      <guid isPermaLink="false">b78b2243e941c1fa786130f7e75e3de3b6e843ed</guid>
+      <pubDate>Tue, 21 Jul 2026 23:47:26 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Eritrea (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update platform label to DW (Deutsche Welle) to support acronym searching</title>
+      <link>https://censorship.my/changes#23308837b6</link>
+      <guid isPermaLink="false">23308837b65a8a6925c4839aaaccb53747fc4589</guid>
+      <pubDate>Tue, 21 Jul 2026 16:54:18 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;DW (Deutsche Welle) — Eritrea (complete) — was Deutsche Welle&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Deutsche Welle censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e57a531995</link>
+      <guid isPermaLink="false">e57a531995f47a8625b5c871886f69070ad8f8c0</guid>
+      <pubDate>Tue, 21 Jul 2026 16:50:29 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Deutsche Welle — Eritrea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Al Jazeera and CGTN censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e02e0c691e</link>
+      <guid isPermaLink="false">e02e0c691ec00e079014b59994e3148eda14d54f</guid>
+      <pubDate>Tue, 21 Jul 2026 16:49:02 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Eritrea (complete)&lt;/li&gt;&lt;li&gt;CGTN — Eritrea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Make HEAVY_CENSORSHIP a fallback and add Eritrea to it</title>
+      <link>https://censorship.my/changes#02e17e96fe</link>
+      <guid isPermaLink="false">02e17e96fe9c2a3edf169ffacb2cf5d9cc908973</guid>
+      <pubDate>Mon, 20 Jul 2026 18:41:32 +0100</pubDate>
+      <description>&lt;p&gt;43 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Bluesky — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;ChatGPT — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Discord — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;DuckDuckGo — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Facebook — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;GitHub — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Google — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Grindr — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Instagram — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;KakaoTalk — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;LINE — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;LinkedIn — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Medium — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;New York Times — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Odnoklassniki — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Patreon — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Pinterest — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Quora — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Reddit — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Roblox — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Rumble — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Russia Today — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Signal — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Snapchat — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Spotify — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Substack — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Telegram — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Threads — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;TikTok — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Tinder — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Tumblr — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Twitch — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Viber — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Vimeo — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;VKontakte — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;WeChat — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;WhatsApp — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;Wikipedia — Eritrea (complete): notes&lt;/li&gt;&lt;li&gt;+3 more&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Russia Today to censorship tracker</title>
+      <link>https://censorship.my/changes#6e4a878e0d</link>
+      <guid isPermaLink="false">6e4a878e0de24cb127b3014053c9533d0f2b79c6</guid>
+      <pubDate>Mon, 20 Jul 2026 13:02:54 +0100</pubDate>
+      <description>&lt;p&gt;44 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Associated Press — Eritrea (complete)&lt;/li&gt;&lt;li&gt;BBC News — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Bluesky — Eritrea (complete)&lt;/li&gt;&lt;li&gt;ChatGPT — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Discord — Eritrea (complete)&lt;/li&gt;&lt;li&gt;DuckDuckGo — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Facebook — Eritrea (complete)&lt;/li&gt;&lt;li&gt;GitHub — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Google — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Grindr — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Instagram — Eritrea (complete)&lt;/li&gt;&lt;li&gt;KakaoTalk — Eritrea (complete)&lt;/li&gt;&lt;li&gt;LINE — Eritrea (complete)&lt;/li&gt;&lt;li&gt;LinkedIn — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Medium — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Netflix — Eritrea (complete)&lt;/li&gt;&lt;li&gt;New York Times — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Odnoklassniki — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Patreon — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Pinterest — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Quora — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Reddit — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Roblox — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Rumble — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Russia Today — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Signal — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Snapchat — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Spotify — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Substack — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Telegram — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Threads — Eritrea (complete)&lt;/li&gt;&lt;li&gt;TikTok — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Tinder — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Tumblr — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Twitch — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Viber — Eritrea (complete)&lt;/li&gt;&lt;li&gt;Vimeo — Eritrea (complete)&lt;/li&gt;&lt;li&gt;VKontakte — Eritrea (complete)&lt;/li&gt;&lt;li&gt;WeChat — Eritrea (complete)&lt;/li&gt;&lt;li&gt;WhatsApp — Eritrea (complete)&lt;/li&gt;&lt;li&gt;+4 more&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add New York Times to censorship tracker</title>
+      <link>https://censorship.my/changes#27e5976b1d</link>
+      <guid isPermaLink="false">27e5976b1da365ccfca4f13fec77c08b6ba36632</guid>
+      <pubDate>Mon, 20 Jul 2026 12:38:19 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Reuters — Eritrea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;YouTube — Eritrea (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Syria</title>
+    <link>https://censorship.my/country/syria/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Syria, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:58:08 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/syria.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename Syrian Arab Republic to Syria</title>
+      <link>https://censorship.my/changes#edfb22aa86</link>
+      <guid isPermaLink="false">edfb22aa867ee95423cb5b6452434d4ee58370e4</guid>
+      <pubDate>Sat, 15 Aug 2026 18:58:08 +0100</pubDate>
+      <description>&lt;p&gt;4 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ChatGPT — Syria (complete): notes&lt;/li&gt;&lt;li&gt;GitHub — Syria (partial): notes&lt;/li&gt;&lt;li&gt;Grindr — Syria (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — Syria (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Rename Syria to Syrian Arab Republic</title>
+      <link>https://censorship.my/changes#a719ffa6ee</link>
+      <guid isPermaLink="false">a719ffa6ee59e9cbf835d841895c41070cac5a81</guid>
+      <pubDate>Mon, 27 Jul 2026 16:41:30 +0100</pubDate>
+      <description>&lt;p&gt;4 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ChatGPT — Syrian Arab Republic (complete): notes&lt;/li&gt;&lt;li&gt;GitHub — Syrian Arab Republic (partial): notes&lt;/li&gt;&lt;li&gt;Grindr — Syrian Arab Republic (complete): notes&lt;/li&gt;&lt;li&gt;Netflix — Syrian Arab Republic (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ChatGPT — Syria (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Grindr dataset using Grindr official Help Center source</title>
+      <link>https://censorship.my/changes#b78b2243e9</link>
+      <guid isPermaLink="false">b78b2243e941c1fa786130f7e75e3de3b6e843ed</guid>
+      <pubDate>Tue, 21 Jul 2026 23:47:26 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Syria (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Substack censorship data</title>
+      <link>https://censorship.my/changes#bd72cee7a4</link>
+      <guid isPermaLink="false">bd72cee7a46548688d577b1a45b4c4ba1877a806</guid>
+      <pubDate>Fri, 17 Jul 2026 20:31:28 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;ChatGPT — Syria (complete)&lt;/li&gt;&lt;li&gt;GitHub — Syria (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Netflix Syria case detail and official source</title>
+      <link>https://censorship.my/changes#5f5dc5e383</link>
+      <guid isPermaLink="false">5f5dc5e383f3ee1fb6e9d4cbc12d02a41824b4a4</guid>
+      <pubDate>Mon, 13 Jul 2026 12:25:06 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Syria (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Netflix — Syria (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

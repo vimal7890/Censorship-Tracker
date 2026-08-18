@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Saudi Arabia</title>
+    <link>https://censorship.my/country/saudi-arabia/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Saudi Arabia, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:56:11 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/saudi-arabia.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Rename Kingdom of Saudi Arabia to Saudi Arabia</title>
+      <link>https://censorship.my/changes#3d21ae5820</link>
+      <guid isPermaLink="false">3d21ae58209af23a69cf4b60535ba3eb5c90f500</guid>
+      <pubDate>Sat, 15 Aug 2026 18:56:11 +0100</pubDate>
+      <description>&lt;p&gt;4 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Saudi Arabia (complete) — was Kingdom of Saudi Arabia&lt;/li&gt;&lt;li&gt;Grindr — Saudi Arabia (complete): notes&lt;/li&gt;&lt;li&gt;LINE — Saudi Arabia (partial) — was Kingdom of Saudi Arabia&lt;/li&gt;&lt;li&gt;New York Times — Saudi Arabia (partial): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace 'Saudi Arabia' with 'Kingdom of Saudi Arabia'</title>
+      <link>https://censorship.my/changes#88788289b5</link>
+      <guid isPermaLink="false">88788289b5eaf2ec901619d640a7bccae5c2d476</guid>
+      <pubDate>Mon, 27 Jul 2026 16:42:40 +0100</pubDate>
+      <description>&lt;p&gt;4 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Kingdom of Saudi Arabia (complete) — was Saudi Arabia&lt;/li&gt;&lt;li&gt;Grindr — Kingdom of Saudi Arabia (complete): notes&lt;/li&gt;&lt;li&gt;LINE — Kingdom of Saudi Arabia (partial) — was Saudi Arabia&lt;/li&gt;&lt;li&gt;New York Times — Kingdom of Saudi Arabia (partial): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Saudi Arabia (complete): source&lt;/li&gt;&lt;li&gt;LINE — Saudi Arabia (partial): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Grindr dataset using Grindr official Help Center source</title>
+      <link>https://censorship.my/changes#b78b2243e9</link>
+      <guid isPermaLink="false">b78b2243e941c1fa786130f7e75e3de3b6e843ed</guid>
+      <pubDate>Tue, 21 Jul 2026 23:47:26 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Saudi Arabia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Al Jazeera post-Al-Ula boycott status for UAE, Saudi Arabia, and Bahrain</title>
+      <link>https://censorship.my/changes#b81722c7f9</link>
+      <guid isPermaLink="false">b81722c7f93263427a8551fdb24b840cb52ff325</guid>
+      <pubDate>Tue, 21 Jul 2026 16:53:09 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Saudi Arabia (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Al Jazeera and CGTN censorship data and logo assets</title>
+      <link>https://censorship.my/changes#e02e0c691e</link>
+      <guid isPermaLink="false">e02e0c691ec00e079014b59994e3148eda14d54f</guid>
+      <pubDate>Tue, 21 Jul 2026 16:49:02 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Saudi Arabia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Delete six unsupported rows, source three that checked out</title>
+      <link>https://censorship.my/changes#f5dd3fb23f</link>
+      <guid isPermaLink="false">f5dd3fb23f372f6923ac84c8c7e4b9d858d8c653</guid>
+      <pubDate>Mon, 20 Jul 2026 19:49:32 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;KakaoTalk — Saudi Arabia (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add New York Times to censorship tracker</title>
+      <link>https://censorship.my/changes#27e5976b1d</link>
+      <guid isPermaLink="false">27e5976b1da365ccfca4f13fec77c08b6ba36632</guid>
+      <pubDate>Mon, 20 Jul 2026 12:38:19 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — Saudi Arabia (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add KakaoTalk censorship data and UI assets</title>
+      <link>https://censorship.my/changes#e5f69a190b</link>
+      <guid isPermaLink="false">e5f69a190b7f08ae564fea645fbfdc117131f220</guid>
+      <pubDate>Mon, 20 Jul 2026 12:33:56 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;KakaoTalk — Saudi Arabia (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Substack censorship data</title>
+      <link>https://censorship.my/changes#bd72cee7a4</link>
+      <guid isPermaLink="false">bd72cee7a46548688d577b1a45b4c4ba1877a806</guid>
+      <pubDate>Fri, 17 Jul 2026 20:31:28 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LINE — Saudi Arabia (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

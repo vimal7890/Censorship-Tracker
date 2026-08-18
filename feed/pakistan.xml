@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Pakistan</title>
+    <link>https://censorship.my/country/pakistan/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Pakistan, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Tue, 04 Aug 2026 15:44:10 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/pakistan.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Add Al Jazeera restriction in Pakistan</title>
+      <link>https://censorship.my/changes#e6bbd033dc</link>
+      <guid isPermaLink="false">e6bbd033dc86f728aec68ddbfaab296eda3aff1e</guid>
+      <pubDate>Tue, 04 Aug 2026 15:44:10 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — Pakistan (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Audit every source for relevance and rot, not just for a 200</title>
+      <link>https://censorship.my/changes#1d850ded20</link>
+      <guid isPermaLink="false">1d850ded20a7f2536d7f9e79f3948d8a790fcc81</guid>
+      <pubDate>Wed, 22 Jul 2026 19:23:00 +0100</pubDate>
+      <description>&lt;p&gt;2 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Pakistan (complete): source&lt;/li&gt;&lt;li&gt;Tinder — Pakistan (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Update Grindr dataset using Grindr official Help Center source</title>
+      <link>https://censorship.my/changes#b78b2243e9</link>
+      <guid isPermaLink="false">b78b2243e941c1fa786130f7e75e3de3b6e843ed</guid>
+      <pubDate>Tue, 21 Jul 2026 23:47:26 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Pakistan (complete): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Replace Wikipedia sources in censorship_data.csv with verified independent sources for non-exempt countries</title>
+      <link>https://censorship.my/changes#520d6009bb</link>
+      <guid isPermaLink="false">520d6009bb8f9e754a1bdcdb6cdef07e03fc07f8</guid>
+      <pubDate>Tue, 21 Jul 2026 23:25:58 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Pakistan (complete): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Substack censorship data</title>
+      <link>https://censorship.my/changes#bd72cee7a4</link>
+      <guid isPermaLink="false">bd72cee7a46548688d577b1a45b4c4ba1877a806</guid>
+      <pubDate>Fri, 17 Jul 2026 20:31:28 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — Pakistan (complete)&lt;/li&gt;&lt;li&gt;Tinder — Pakistan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Remove TikTok Pakistan entry; platform no longer blocked</title>
+      <link>https://censorship.my/changes#ae50cff4a0</link>
+      <guid isPermaLink="false">ae50cff4a039c303bfd8fd7a60106fa9aa5a4f45</guid>
+      <pubDate>Sat, 11 Jul 2026 13:25:06 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;TikTok — Pakistan (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Pakistan (complete)&lt;/li&gt;&lt;li&gt;TikTok — Pakistan (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

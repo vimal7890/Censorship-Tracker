@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Nepal</title>
+    <link>https://censorship.my/country/nepal/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Nepal, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 11 Jul 2026 12:44:00 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/nepal.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Move all ban data into censorship_data.csv</title>
+      <link>https://censorship.my/changes#95df396aab</link>
+      <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>
+      <pubDate>Sat, 11 Jul 2026 12:44:00 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Nepal (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
