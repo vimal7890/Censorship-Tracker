@@ -1,0 +1,25 @@
+The Global Censorship Tracker dataset is licensed under the Creative Commons
+Attribution 4.0 International license (CC BY 4.0).
+
+Covered files:
+
+  - censorship_data.csv
+  - vpn_data.json
+  - age_verification_data.json
+  - files derived from them at build time (sources.json, changelog.json,
+    meta.json, data.json, feed.xml)
+
+You are free to share and adapt this data for any purpose, including
+commercially, provided you give appropriate credit. A citation of the form
+
+  Global Censorship Tracker, https://censorship.my
+  (data: github.com/vimal7890/Censorship-Tracker, CC BY 4.0)
+
+satisfies the attribution requirement.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Note that the dataset cites third-party sources (news articles, government
+documents, research reports). Those cited works remain under their own
+copyrights; the CC BY 4.0 grant covers this dataset's own compilation —
+the rows, fields, gradings and annotations — not the pages it links to.

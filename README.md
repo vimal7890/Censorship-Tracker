@@ -418,3 +418,12 @@ The homepage renders three derived views of the same CSV (no separate data):
   type breakdown, per-year chart, top territories).
 - **Most Recent Restrictions** — latest dated entries, parsed leniently from
   the free-text `since` column (undated values like "Forever" are skipped).
+
+## License
+
+The code — build scripts, tests, and the site's HTML/CSS/JS — is MIT licensed
+([LICENSE](LICENSE)). The dataset and the files derived from it are Creative
+Commons Attribution 4.0 ([LICENSE-DATA](LICENSE-DATA)): reuse it freely,
+credit "Global Censorship Tracker, censorship.my". They are separated because
+they invite different reuse — nobody citing the data should have to read a
+software license to learn whether they may.
