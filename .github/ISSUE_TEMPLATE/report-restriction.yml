@@ -1,0 +1,56 @@
+name: Report a restriction
+description: A platform is blocked, throttled or age-gated somewhere and the tracker doesn't list it.
+title: "[Restriction] <platform> in <territory>"
+labels: ["data", "new-restriction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks — reports like this are how the index grows. The one thing that
+        makes a report shippable is a **source you have personally opened that
+        names this platform in this territory**. See CONTRIBUTING.md for what
+        counts.
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: e.g. Telegram
+    validations:
+      required: true
+  - type: input
+    id: territory
+    attributes:
+      label: Country or territory
+      placeholder: e.g. Islamic Republic of Iran
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Kind of restriction
+      options:
+        - Complete ban
+        - Partial restriction (throttling, partial features, some ISPs)
+        - Age verification requirement
+    validations:
+      required: true
+  - type: input
+    id: since
+    attributes:
+      label: Since when
+      placeholder: e.g. April 2018, or "scheduled — takes effect January 2027"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: A page you have actually opened, that names this platform in this territory. Leave empty if you don't have one — the report becomes a lead instead.
+      placeholder: https://…
+  - type: textarea
+    id: details
+    attributes:
+      label: What the source says
+      description: A sentence or two — what happened, who ordered it, what exactly is restricted.
+    validations:
+      required: true

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: The live tracker
+    url: https://censorship.my
+    about: The site this repository builds.
