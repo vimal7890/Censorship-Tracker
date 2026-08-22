@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-08-18T10:41:23+00:00",
+  "generated_utc": "2026-08-22T21:41:31+00:00",
   "title": "Global Censorship Tracker",
   "site": "https://censorship.my",
   "repository": "https://github.com/vimal7890/Censorship-Tracker",
@@ -19,7 +19,7 @@
     "status": "Derived: scheduled | enforced | in_force | reported.",
     "evidence": "Derived: dedicated | country-default | uncorroborated."
   },
-  "count": 444,
+  "count": 445,
   "entries": [
     {
       "platform": "Al Jazeera",
@@ -523,6 +523,18 @@
       "notes": "Brazil's Digital Statute of Children and Adolescents (ECA Digital, Law 15,211/2025) took effect on 17 March 2026. Social media accounts for users under 16 must be linked to a legal guardian, and platforms must use reliable age verification — self-declaration alone is not allowed.",
       "source": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/L15211.htm",
       "status": "in_force",
+      "evidence": "dedicated"
+    },
+    {
+      "platform": "Discord",
+      "country": "Brazil",
+      "iso": "BR",
+      "subnational": false,
+      "since": "17/08/2026",
+      "type": "partial",
+      "notes": "Brazil's National Data Protection Authority (ANPD) ordered Discord on 12 August 2026 to suspend its live video features within three business days, after an investigation prompted by the death of a 13-year-old girl during an online broadcast. Discord complied on 17 August 2026, switching off Go Live screen sharing and camera video inside servers and calls; text chat and voice calls remain available. The suspension stands until ANPD accepts the platform's child-safety safeguards — Discord has asked the agency to withdraw the order.",
+      "source": "https://reclaimthenet.org/brazil-regulator-bans-discord-live-video-features",
+      "status": "reported",
       "evidence": "dedicated"
     },
     {

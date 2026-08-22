@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-08-15T13:06:22+00:00",
-  "count": 170,
+  "generated_utc": "2026-08-22T21:41:30+00:00",
+  "count": 171,
   "by_kind": {
     "primary": 32,
     "measurement": 5,
     "research": 50,
-    "reporting": 77,
+    "reporting": 78,
     "reference": 6
   },
   "kind_labels": {
@@ -688,6 +688,15 @@
       "date": "",
       "archived": false,
       "title": "Algeria bans Roblox over child safety concerns | Proton VPN"
+    },
+    "https://reclaimthenet.org/brazil-regulator-bans-discord-live-video-features": {
+      "url": "https://reclaimthenet.org/brazil-regulator-bans-discord-live-video-features",
+      "domain": "reclaimthenet.org",
+      "publisher": "Reclaim The Net",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
     },
     "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules": {
       "url": "https://reclaimthenet.org/pakistan-blocks-major-vpns-under-new-licensing-rules",
