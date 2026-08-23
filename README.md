@@ -39,7 +39,7 @@ update the tracker. One row per platform+country entry:
 
 | Column      | Meaning                                                                 |
 |-------------|-------------------------------------------------------------------------|
-| `platform`  | Platform name — must match a name in `PLATFORM_ICONS` for a logo to show |
+| `platform`  | Platform name — must match a name in `PLATFORM_ICONS` (assets/icons.js) for a logo to show |
 | `country`   | Country name shown on the tag                                            |
 | `since`     | Free-text date the restriction started                                   |
 | `type`      | `complete` (red), `partial` (orange) or `age` (purple, age verification) |
@@ -126,8 +126,9 @@ Notes:
   homepage those rows render as **one country label** with diagonal stripes
   mixing both type colours (purple age + orange partial), and a combined
   case file listing each restriction.
-- New platforms need an icon + brand colour added to `PLATFORM_ICONS` /
-  `PLATFORM_COLORS` in `index.html`; otherwise the row renders without a logo.
+- New platforms need an icon + brand colour added to `PLATFORM_ICONS` in
+  [`assets/icons.js`](assets/icons.js) and `PLATFORM_COLORS` in
+  [`index.html`](index.html); otherwise the row renders without a logo.
 - **Country names come from the canonical registry** in
   [`country_registry.json`](country_registry.json). It is the source of truth
   for the human-readable names, aliases, ISO codes, subnational notes, map

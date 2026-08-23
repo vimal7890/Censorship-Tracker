@@ -65,10 +65,37 @@ def main() -> int:
         "index.html: the dossier heading needs tabindex=\"-1\" so focus can move into it")
     assert "getElementById('dossierTitle').focus" in index, (
         "index.html: opening a dossier must move focus into it")
+    # ...and focus has to come back when it closes, not drop to <body>.
+    assert "dossierInvoker" in index and "dossierInvoker.focus" in index, (
+        "index.html: closing a dossier must return focus to the element that opened it")
 
     # An empty result has to offer a way out of itself.
     assert "no-results-actions" in index, (
         "index.html: an empty result must suggest which filter to clear")
+
+    # Filtered results must be announced — the grid rebuilding silently leaves
+    # screen-reader users with no feedback at all.
+    assert 'role="status" id="filterStatus"' in index, (
+        "index.html: add the filterStatus live region so result changes are announced")
+    assert "getElementById('filterStatus')" in index, (
+        "index.html: the filterStatus region is never updated by renderPlatforms")
+
+    # Toggles must expose their state, not just paint it.
+    assert 'aria-expanded="false" aria-controls=' in index, (
+        "index.html: country-tag case-file buttons need aria-expanded + aria-controls")
+    assert "setAttribute('aria-expanded'" in index, (
+        "index.html: toggleMoreInfo must keep aria-expanded in step with open/close")
+    assert "aria-pressed" in index and "setAttribute('aria-pressed'" in index, (
+        "index.html: filter/view chips must carry aria-pressed state")
+
+    # A keyboard visitor needs the standard way past the chrome.
+    assert 'class="skip-link"' in index and 'href="#main"' in index, (
+        "index.html: missing skip-to-content link")
+
+    # Inline handlers interpolate nothing here, but they block any future CSP;
+    # behaviour belongs in delegated listeners.
+    assert not re.search(r'\son(click|change|input|submit)="', index), (
+        "index.html: inline event handlers are back — use addEventListener/delegation")
 
     # Region detection stays inside the browser.
     for banned, why in (
@@ -89,7 +116,8 @@ def main() -> int:
         labelled_controls(text, name)
         assert 'lang="en"' in text, f"{name}: <html> has no lang"
 
-    print(f"ok: search field labelled, citations described, focus managed, "
+    print(f"ok: search field labelled, citations described, focus managed both ways, "
+          f"results announced, toggles stateful, skip link present, "
           f"region guess stays local, {len(PAGES)} pages' controls all named")
     return 0
 
