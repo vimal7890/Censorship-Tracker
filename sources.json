@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-08-23T11:49:47+00:00",
-  "count": 175,
+  "generated_utc": "2026-08-23T16:02:39+00:00",
+  "count": 176,
   "by_kind": {
-    "primary": 32,
+    "primary": 33,
     "measurement": 8,
     "research": 50,
     "reporting": 79,
@@ -820,6 +820,15 @@
       "title": "Algeria bans Roblox over child safety concerns | Proton VPN",
       "snapshot": "https://web.archive.org/web/20260808094645/https://protonvpn.com/blog/algeria-blocks-roblox",
       "snapshot_date": "2026-08-08"
+    },
+    "https://protonvpn.com/blog/is-tiktok-banned-oman": {
+      "url": "https://protonvpn.com/blog/is-tiktok-banned-oman",
+      "domain": "protonvpn.com",
+      "publisher": "Proton VPN",
+      "kind": "primary",
+      "date": "",
+      "archived": false,
+      "title": ""
     },
     "https://reclaimthenet.org/brazil-regulator-bans-discord-live-video-features": {
       "url": "https://reclaimthenet.org/brazil-regulator-bans-discord-live-video-features",
