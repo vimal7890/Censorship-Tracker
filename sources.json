@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-08-22T21:41:30+00:00",
-  "count": 171,
+  "generated_utc": "2026-08-23T11:49:47+00:00",
+  "count": 175,
   "by_kind": {
     "primary": 32,
-    "measurement": 5,
+    "measurement": 8,
     "research": 50,
-    "reporting": 78,
+    "reporting": 79,
     "reference": 6
   },
   "kind_labels": {
@@ -342,6 +342,33 @@
       "date": "2021-11-03",
       "archived": false,
       "title": "Belarus: Government must restore access to Deutsche Welle website – European Federation of Journalists"
+    },
+    "https://explorer.ooni.org/findings/2025-tanzania-blocked-twitterx-again": {
+      "url": "https://explorer.ooni.org/findings/2025-tanzania-blocked-twitterx-again",
+      "domain": "explorer.ooni.org",
+      "publisher": "OONI Explorer",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://explorer.ooni.org/findings/2026-gabon-blocked-social-media": {
+      "url": "https://explorer.ooni.org/findings/2026-gabon-blocked-social-media",
+      "domain": "explorer.ooni.org",
+      "publisher": "OONI Explorer",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
+    "https://explorer.ooni.org/findings/2026-uganda-blocked-social-media-following-2026-general-election": {
+      "url": "https://explorer.ooni.org/findings/2026-uganda-blocked-social-media-following-2026-general-election",
+      "domain": "explorer.ooni.org",
+      "publisher": "OONI Explorer",
+      "kind": "measurement",
+      "date": "",
+      "archived": false,
+      "title": ""
     },
     "https://explorer.ooni.org/m/20240406122250.018354_RU_webconnectivity_171d76e7f399ff4f": {
       "url": "https://explorer.ooni.org/m/20240406122250.018354_RU_webconnectivity_171d76e7f399ff4f",
@@ -740,6 +767,15 @@
       "title": "Protecting Our Kids from Social Media Addiction Act (SB 976) | State of California - Department of Justice - Office of the Attorney General",
       "snapshot": "https://web.archive.org/web/20260811155055/https://oag.ca.gov/sb976",
       "snapshot_date": "2026-08-11"
+    },
+    "https://observer.ug/news/uganda-to-maintain-facebook-ban-ict-minister/": {
+      "url": "https://observer.ug/news/uganda-to-maintain-facebook-ban-ict-minister/",
+      "domain": "observer.ug",
+      "publisher": "The Observer (Uganda)",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
     },
     "https://on.substack.com/p/our-position-on-the-online-safety": {
       "url": "https://on.substack.com/p/our-position-on-the-online-safety",

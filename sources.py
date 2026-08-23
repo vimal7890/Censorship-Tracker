@@ -161,6 +161,7 @@ REGISTRY: dict[str, tuple[str, str]] = {
     "nebraskapublicmedia.org": ("Nebraska Public Media", "reporting"),
     "stlpr.org": ("St. Louis Public Radio", "reporting"),
     "xinhuanet.com": ("Xinhua (Chinese state media)", "reporting"),
+    "observer.ug": ("The Observer (Uganda)", "reporting"),
 
     # -- Encyclopedic --------------------------------------------------------
     "en.wikipedia.org": ("Wikipedia", "reference"),
