@@ -257,10 +257,13 @@ def _fallback_kind(host: str) -> str | None:
 def classify(url: str) -> dict:
     """Everything the pages need to render one citation.
 
-    Keys: url, domain, publisher, kind, date, archived_from, registered.
+    Keys: url, domain, publisher, kind, date, archived, registered.
     `registered` is False when the publisher had to be guessed from the domain,
     which is what tests/test_sources.py asserts against so new citations do not
-    quietly ship as bare hostnames.
+    quietly ship as bare hostnames. `archived` is True when the URL itself is a
+    Wayback link (unwrap_archive above); verify_links.py additionally stores a
+    `snapshot` / `snapshot_date` pair on entries it has confirmed a fresh
+    Internet Archive copy of, which the citation cards offer as a fallback.
     """
     target, snapshot = unwrap_archive(url)
     host = domain_of(target)

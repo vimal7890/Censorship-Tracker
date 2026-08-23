@@ -144,7 +144,11 @@ window.Site = (function () {
         if (s.title) bits.push(s.title);
         if (KIND_LABEL[s.kind]) bits.push(KIND_LABEL[s.kind].toLowerCase());
         if (s.date) bits.push(fmtDate(s.date, { long: true }));
+        // Two different archive facts: `archived` means the URL itself is a
+        // Wayback link; `snapshot` means the Archive holds a confirmed copy of
+        // this live URL, taken by the weekly check while the page still exists.
         if (s.archived) bits.push('archived copy');
+        else if (s.snapshot) bits.push('archived copy available');
         return bits.join(', ') + ' (opens in a new tab)';
     }
 
@@ -162,6 +166,10 @@ window.Site = (function () {
     // Full citation card for a case file: what it is, who published it, when.
     // The title line only appears once verify_links.py has fetched a real one —
     // a URL slug is not a headline and is never dressed up as one.
+    //
+    // When the weekly check has confirmed an Internet Archive copy of this
+    // source, a second small link offers it: if the original ever dies, the
+    // evidence stays reachable instead of vanishing with the citation.
     function sourceCard(url) {
         var s = source(url);
         if (!s) return '';
@@ -173,13 +181,19 @@ window.Site = (function () {
             ? '<span class="src-title">' + escapeHTML(s.title) + '</span>'
               + '<span class="src-pub">' + escapeHTML(s.publisher) + '</span>'
             : '<span class="src-title">' + escapeHTML(s.publisher) + '</span>';
-        return '<a class="src-card kind-' + escapeHTML(s.kind || 'other') + '"'
+        var card = '<a class="src-card kind-' + escapeHTML(s.kind || 'other') + '"'
             + ' href="' + escapeHTML(url) + '" target="_blank" rel="noopener"'
             + ' aria-label="' + escapeHTML(sourceLabel(url)) + '">'
             + '<span class="src-kind" aria-hidden="true">' + escapeHTML(KIND_LABEL[s.kind] || 'Source') + '</span>'
             + '<span class="src-body">' + lead
             + '<span class="src-meta">' + escapeHTML(meta.join(' · ')) + '</span></span>'
             + '<span class="src-go" aria-hidden="true">&#8599;</span></a>';
+        if (!s.snapshot) return card;
+        return card
+            + ' <a class="src-chip kind-other"'
+            + ' href="' + escapeHTML(s.snapshot) + '" target="_blank" rel="noopener"'
+            + ' aria-label="Archived copy of ' + escapeHTML(sourceLabel(url)) + '">'
+            + 'ARCHIVE</a>';
     }
 
     /* ---------------- Status and coverage vocabulary ----------------

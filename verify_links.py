@@ -30,6 +30,13 @@ title is "Just a moment...", and storing that would put the CDN's furniture on a
 citation card under the byline of a real publisher. CHALLENGE_TITLES below is
 the list of titles that are not headlines; they are dropped on the way in, and
 any that an earlier run already stored are cleared on the way out.
+
+Since the check already reaches every live URL once a week, it also makes sure
+each one has an Internet Archive snapshot taken while the page still exists —
+so that when a citation later dies, the evidence does not die with it. See
+WAYBACK below for the rules; the headline one is that a stored snapshot is only
+ever one the Archive itself confirmed, never an assumption that a save request
+worked, and archive trouble never fails the pass.
 """
 from __future__ import annotations
 
@@ -43,6 +50,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, timezone, datetime
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent
 CSV_PATH = ROOT / "censorship_data.csv"
@@ -236,13 +244,15 @@ def fetch_once(url: str) -> tuple[str, str]:
     return code, "" if is_challenge_title(title) else title
 
 
-def write_sources(titles: dict[str, str]) -> None:
-    """Merge freshly fetched titles into sources.json.
+def write_sources(titles: dict[str, str], snapshots: dict[str, dict] | None = None) -> None:
+    """Merge freshly fetched titles and confirmed snapshots into sources.json.
 
-    build_sources.py owns the file's shape; this only fills the one field that
-    needs a live fetch. A page that answered without a usable title keeps
+    build_sources.py owns the file's shape; this only fills the fields that
+    need a live fetch. A page that answered without a usable title keeps
     whatever title was recorded before rather than being blanked, so one bad
-    day for a CDN does not erase good data.
+    day for a CDN does not erase good data. The same carry-forward rule covers
+    snapshots: this script only ever overwrites them with a *newer* confirmed
+    snapshot, never with nothing.
 
     The one thing that *is* blanked is a stored challenge-page title, which
     earlier runs of this script recorded before they knew to reject them. Only
@@ -266,15 +276,177 @@ def write_sources(titles: dict[str, str]) -> None:
             continue
         entry["title"] = title
         added += 1
+    snapshotted = 0
+    for url, snap in (snapshots or {}).items():
+        entry = entries.get(url)
+        if entry is None or not snap.get("snapshot"):
+            continue
+        if entry.get("snapshot") == snap["snapshot"] \
+                and entry.get("snapshot_date", "") == snap.get("snapshot_date", ""):
+            continue
+        entry["snapshot"] = snap["snapshot"]
+        entry["snapshot_date"] = snap.get("snapshot_date", "")
+        snapshotted += 1
     payload["titles_captured_utc"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     SOURCES_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     have = sum(1 for e in entries.values() if e.get("title"))
+    snaps = sum(1 for e in entries.values() if e.get("snapshot"))
     note = f", {cleared} challenge page(s) left untitled" if cleared else ""
     print(f"{SOURCES_PATH.name}: {added} title(s) updated, "
           f"{have}/{len(entries)} now titled{note}")
+    print(f"{SOURCES_PATH.name}: {snapshotted} snapshot(s) newly confirmed, "
+          f"{snaps}/{len(entries)} archived")
+
+
+# --- Wayback preservation ----------------------------------------------------
+#
+# A citation that dies takes its evidence with it: the row keeps pointing at a
+# URL that no longer says what it said. This script already reaches every live
+# URL once a week, so it also makes sure each one has a copy on the Internet
+# Archive's servers — taken while the original still exists. The rules:
+#
+#   * A stored snapshot is only ever one the availability API CONFIRMED. A save
+#     request is queued server-side and can fail quietly; assuming it worked
+#     would store a link nobody ever verified, which is the exact sin the rest
+#     of this file exists to prevent.
+#   * A save whose confirmation has not landed yet is simply retried next run.
+#     Saves usually become visible within minutes; a weekly cadence converges.
+#   * Anonymous saves are rate-limited, so there is a per-run budget and a
+#     politeness pause between requests. URLs beyond the budget wait a week.
+#   * Every archive problem is a printed note, never a failed pass: archiving
+#     is preservation layered on top of the check, not part of it.
+
+WAYBACK_AVAILABLE = "https://archive.org/wayback/available?url="
+WAYBACK_SAVE = "https://web.archive.org/save/"
+# Re-request after a year so a living page's copy does not go stale.
+SNAPSHOT_MAX_AGE_DAYS = 365
+# How long to wait before asking whether a just-requested save has appeared.
+SAVE_SETTLE_SECONDS = 20
+# Anonymous saves are rate-limited per IP; stay well inside that.
+MAX_SAVES_PER_RUN = 30
+AVAILABILITY_PAUSE_SECONDS = 0.4
+
+
+def iso_from_timestamp(ts: str) -> str:
+    """Wayback timestamp "YYYYMMDD[hhmmss]" -> "YYYY-MM-DD"; "" when malformed."""
+    ts = (ts or "").strip()
+    if not re.fullmatch(r"\d{8}(\d{6})?", ts):
+        return ""
+    try:
+        date(int(ts[:4]), int(ts[4:6]), int(ts[6:8]))
+    except ValueError:
+        return ""
+    return f"{ts[:4]}-{ts[4:6]}-{ts[6:8]}"
+
+
+def snapshot_age_days(iso_date: str, today: date) -> int | None:
+    """Whole days since a stored snapshot date; None when unusable."""
+    try:
+        then = date.fromisoformat((iso_date or "")[:10])
+    except ValueError:
+        return None
+    days = (today - then).days
+    return days if days >= 0 else None
+
+
+def parse_availability(text: str) -> tuple[str, str]:
+    """(snapshot URL, raw timestamp) from an availability API response."""
+    try:
+        data = json.loads(text)
+    except ValueError:
+        return "", ""
+    closest = ((data.get("archived_snapshots") or {}).get("closest")) or {}
+    # A non-200 stored capture (redirects, DNS errors) is not evidence of the
+    # page's content, so it does not count as archived.
+    if str(closest.get("status") or "") != "200" or not closest.get("url"):
+        return "", ""
+    return closest["url"], str(closest.get("timestamp") or "")
+
+
+def availability(url: str) -> tuple[str, str]:
+    """Ask the Archive what its newest usable capture of `url` is."""
+    try:
+        res = subprocess.run(
+            ["curl", "-s", "--max-time", "20", WAYBACK_AVAILABLE + quote(url, safe="")],
+            capture_output=True, text=True, timeout=30)
+        snap_url, ts = parse_availability(res.stdout)
+        # The API answers with plain http; store the https form so every
+        # snapshot link the site ships is same-scheme with the rest.
+        return snap_url.replace("http://web.archive.org", "https://web.archive.org", 1), ts
+    except Exception:
+        return "", ""
+
+
+def request_save(url: str) -> None:
+    """Fire one anonymous save request; the result is checked separately."""
+    try:
+        subprocess.run(
+            ["curl", "-s", "-L", "--max-time", "60", "-A", UA, WAYBACK_SAVE + url],
+            capture_output=True, text=True, timeout=70)
+    except Exception:
+        pass  # judged by the follow-up availability check, never by this
+
+
+def ensure_snapshots(urls: list[str], entries: dict[str, dict]) -> dict[str, dict]:
+    """{url: {snapshot, snapshot_date}} for every URL worth archiving this run.
+
+    `entries` holds the current sources.json records, so a URL whose stored
+    snapshot is young enough skips the network entirely — after the first few
+    runs this makes the steady-state cost one cheap API call per stale URL,
+    not one per source. URLs that are themselves Wayback links are skipped:
+    they are already archived by definition, and the availability API does not
+    index captures of captures.
+
+    A confirmed capture is always kept even when it is older than the
+    freshness bar — a two-year-old copy beats no copy — but a stale one also
+    earns its URL a save request, so living pages converge toward a current
+    capture instead of resting on whatever the Archive happened to have.
+    """
+    today = date.today()
+    found: dict[str, dict] = {}
+    saves_tried = checked = 0
+
+    def record(url: str, snap_url: str, ts: str) -> None:
+        if snap_url:
+            found[url] = {"snapshot": snap_url, "snapshot_date": iso_from_timestamp(ts)}
+
+    for i, url in enumerate(urls):
+        if url.startswith(("http://web.archive.org/", "https://web.archive.org/")):
+            continue
+        stored = entries.get(url) or {}
+        age = snapshot_age_days(stored.get("snapshot_date") or "", today)
+        if age is not None and age <= SNAPSHOT_MAX_AGE_DAYS:
+            continue
+        time.sleep(AVAILABILITY_PAUSE_SECONDS)
+        checked += 1
+        snap_url, ts = availability(url)
+        if snap_url:
+            record(url, snap_url, ts)
+            fresh = snapshot_age_days(found[url]["snapshot_date"], today)
+            if fresh is not None and fresh <= SNAPSHOT_MAX_AGE_DAYS:
+                continue
+            print(f"  archive: newest capture of {url} is {fresh} days old "
+                  "- keeping it, requesting a fresh one")
+
+        if saves_tried >= MAX_SAVES_PER_RUN:
+            print(f"  archive: save budget reached ({MAX_SAVES_PER_RUN}); "
+                  f"{len(urls) - i} URL(s) wait for the next run")
+            break
+        saves_tried += 1
+        request_save(url)
+        time.sleep(SAVE_SETTLE_SECONDS)
+        snap_url, ts = availability(url)
+        if snap_url:
+            record(url, snap_url, ts)
+            print(f"  archived: {url}")
+        else:
+            print(f"  archive: save requested, not yet visible — {url}")
+    print(f"archive: {checked} URL(s) needed a look, {saves_tried} save(s) requested")
+    return found
 
 
 def main() -> int:
+    no_archive = "--no-archive" in sys.argv[1:]
     where = collect()
     urls = sorted(where)
     print(f"checking {len(urls)} unique source URLs...")
@@ -283,6 +455,18 @@ def main() -> int:
         results = dict(zip(urls, pool.map(fetch, urls)))
     codes = {u: r[0] for u, r in results.items()}
     write_sources({u: r[1] for u, r in results.items()})
+
+    # Preservation pass: make sure every live URL has a fresh-enough Wayback
+    # copy. Only alive URLs are offered to the Archive (it cannot fetch a dead
+    # one either), and any archive failure is non-fatal by design.
+    if not no_archive and SOURCES_PATH.is_file():
+        try:
+            stored = json.loads(SOURCES_PATH.read_text(encoding="utf-8")).get("sources", {})
+            alive = sorted(u for u in urls if codes[u] in ALIVE)
+            snapshots = ensure_snapshots(alive, stored)
+            write_sources({}, snapshots)
+        except Exception as exc:  # never let preservation break verification
+            print(f"note: snapshotting skipped after an error ({exc})")
 
     dead = {u: c for u, c in codes.items() if c not in ALIVE}
     wiki = [u for u in urls if "wikipedia.org" in u and not wiki_allowed(u, where[u])]

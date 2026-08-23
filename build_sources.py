@@ -62,9 +62,14 @@ def main() -> int:
         info = sources.classify(url)
         if not info.pop("registered"):
             unregistered.append(info["domain"])
-        # A title only ever comes from a real fetch, so carry forward any that
-        # a previous verify_links.py run recorded.
-        info["title"] = (previous.get(url) or {}).get("title", "")
+        # Titles and confirmed Wayback snapshots only ever come from a real
+        # fetch, so carry forward whatever previous verify_links.py runs
+        # recorded — regenerating the registry must not throw evidence away.
+        prior = previous.get(url) or {}
+        info["title"] = prior.get("title", "")
+        if prior.get("snapshot"):
+            info["snapshot"] = prior["snapshot"]
+            info["snapshot_date"] = prior.get("snapshot_date", "")
         entries[url] = info
         kinds[info["kind"]] += 1
 
