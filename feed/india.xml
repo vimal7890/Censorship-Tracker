@@ -50,6 +50,13 @@
       <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WeChat — India (complete)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
+      <title>Add India and Pakistan to VPN tracker</title>
+      <link>https://censorship.my/changes#529fc1f3d6</link>
+      <guid isPermaLink="false">529fc1f3d62403df5f067f9b4027ddd2a1955cc4</guid>
+      <pubDate>Sun, 12 Jul 2026 17:09:48 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — India (restricted)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Move all ban data into censorship_data.csv</title>
       <link>https://censorship.my/changes#95df396aab</link>
       <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>

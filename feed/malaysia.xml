@@ -36,6 +36,13 @@
       <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X (formerly Twitter) — Malaysia (partial)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
+      <title>Add Age Verification Tracker page with timeline and legislative efforts</title>
+      <link>https://censorship.my/changes#f5c8bfe2c0</link>
+      <guid isPermaLink="false">f5c8bfe2c0422eb152163dbd3afeb6ad45e8f493</guid>
+      <pubDate>Sat, 11 Jul 2026 13:21:12 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — Malaysia (Under-16 social media rule)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Move all ban data into censorship_data.csv</title>
       <link>https://censorship.my/changes#95df396aab</link>
       <guid isPermaLink="false">95df396aab9e73610f9b3b2f8ca411bcda0c062b</guid>

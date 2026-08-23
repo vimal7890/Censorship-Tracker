@@ -20,6 +20,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from country_registry import load_registry
+from build_status import parse_since
 from stable_write import write_json
 from territories import load_rows
 
@@ -34,6 +35,7 @@ FIELD_DOCS = {
     "iso": "ISO 3166-1 alpha-2 code of the (parent) country.",
     "subnational": "True when the row is a state-level or territorial measure, not a national one.",
     "since": "Free-text date the restriction started or takes effect.",
+    "since_iso": "Derived from since: YYYY-MM-DD where the free-text date parses (month precision becomes the first of the month); empty when undated ('Ongoing', 'Forever', ...).",
     "type": "complete | partial | age (age-verification requirement).",
     "notes": "Case-file text, when the row has something platform-specific to say.",
     "source": "Cited URL. Empty for default-restricted countries with no platform-specific reporting (see the site's methodology).",
@@ -41,18 +43,20 @@ FIELD_DOCS = {
     "evidence": "Derived: dedicated | country-default | uncorroborated.",
 }
 
-
 def main() -> int:
     registry = load_registry()
     entries = []
     for row in load_rows():
         info = registry.resolve(row["country"].strip()) or {}
+        since_text = (row.get("since") or "").strip()
+        parsed = parse_since(since_text)
         entries.append({
             "platform": row["platform"].strip(),
             "country": row["country"].strip(),
             "iso": info.get("iso", ""),
             "subnational": bool(info.get("subnational")),
-            "since": (row.get("since") or "").strip(),
+            "since": since_text,
+            "since_iso": parsed.isoformat() if parsed else "",
             "type": (row.get("type") or "complete").strip(),
             "notes": (row.get("more_info") or "").strip(),
             "source": (row.get("source") or "").strip(),

@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""Turn the git history of the dataset into a changelog and an RSS feed.
+"""Turn the git history of the datasets into a changelog and an RSS feed.
 
 A censorship tracker that only ever shows the current state answers "what is
 blocked?" but not "what changed?" — which is the question anyone following this
-subject actually has. The answer already exists: every edit to
-censorship_data.csv is a commit, with a date and a message. It just was not
-readable by anybody who was not going to run `git log`.
+subject actually has. The answer already exists: every edit to the datasets is
+a commit, with a date and a message. It just was not readable by anybody who
+was not going to run `git log`.
 
-This replays the CSV commit by commit and records, per commit, which rows were
-added, removed, or had their date / notes / source changed. Output:
+This replays the three datasets (the main CSV plus the VPN and age-verification
+JSON files) commit by commit and records, per commit, which rows were added,
+removed, or had their date / notes / source changed. Output:
 
   changelog.json   what changes.html renders
+  changelog-latest.json
+                   a small slice of the same events for the homepage's
+                   "what changed" panel, so visitors do not download the
+                   whole history to read six lines
   feed.xml         RSS 2.0, one item per dated change, so the tracker can be
                    followed in a reader without an account or an email address
   feed/<slug>.xml  the same events filtered to one territory — "what changed
@@ -21,6 +26,12 @@ Rows are keyed on (platform, country, type), which is what makes an entry the
 same entry across commits. A row that changes type — a partial block hardened
 into a complete one — therefore shows as a removal plus an addition, which is
 the honest reading: that is a different restriction, not an edited one.
+
+The two JSON datasets are flattened into that same shape before diffing, under
+pseudo-platform names ("VPNs", "Age verification") so one differ serves all
+three files. Their prose fields are folded into `more_info`, so any material
+edit registers as a revision even when it touches a field the main CSV does
+not have.
 
 Renames are pulled back out of that churn, but only when it can be done without
 guessing. This repo's history is full of them ("Turkey" to "Türkiye", "China" to
@@ -49,7 +60,12 @@ from stable_write import write_json
 
 ROOT = Path(__file__).resolve().parent
 CSV_NAME = "censorship_data.csv"
+# Every dataset whose history belongs in the changelog. A subscriber following
+# the feed cares about the age-verification law moving too, not only about new
+# blocks appearing in the main index.
+DATASET_FILES = [CSV_NAME, "vpn_data.json", "age_verification_data.json"]
 OUT_JSON = ROOT / "changelog.json"
+OUT_LATEST = ROOT / "changelog-latest.json"
 OUT_FEED = ROOT / "feed.xml"
 FEED_DIR = ROOT / "feed"
 
@@ -65,6 +81,10 @@ FEED_DESC = ("Every addition, removal and revision to the tracked index of block
 TRACKED = ("since", "more_info", "source")
 FIELD_LABEL = {"since": "date", "more_info": "notes", "source": "source"}
 
+# How many events the RSS feeds carry. Readers only surface the newest few, so
+# this is generous headroom against silent truncation, not a display setting.
+FEED_ITEM_CAP = 200
+
 
 def git(*args: str) -> str:
     res = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
@@ -72,8 +92,8 @@ def git(*args: str) -> str:
 
 
 def commits() -> list[dict]:
-    """Every commit that touched the CSV, oldest first."""
-    out = git("log", "--reverse", "--format=%H%x1f%cI%x1f%an%x1f%s", "--", CSV_NAME)
+    """Every commit that touched any dataset file, oldest first."""
+    out = git("log", "--reverse", "--format=%H%x1f%cI%x1f%an%x1f%s", "--", *DATASET_FILES)
     entries = []
     for line in out.splitlines():
         parts = line.split("\x1f")
@@ -82,10 +102,68 @@ def commits() -> list[dict]:
     return entries
 
 
-def snapshot(sha: str) -> dict[tuple[str, str, str], dict]:
-    """The CSV at one commit, keyed by (platform, country, type)."""
-    text = git("show", f"{sha}:{CSV_NAME}")
+def _clean(value) -> str:
+    return (value or "").strip() if isinstance(value, str) else str(value or "").strip()
+
+
+def fold_vpn(data: dict) -> dict:
+    """Flatten vpn_data.json into the differ's (platform, country, type) shape.
+
+    Restrictions become "VPNs" rows keyed by their severity; policy efforts
+    carry their title inside `type` because jurisdiction alone is not an
+    identity. `status` — which is where these entries keep their stage and,
+    usually, their dates — maps onto `since`.
+    """
     rows: dict[tuple[str, str, str], dict] = {}
+    for r in data.get("restrictions", []):
+        key = ("VPNs", _clean(r.get("country")), _clean(r.get("severity")) or "restricted")
+        rows[key] = {"since": _clean(r.get("since")),
+                     "more_info": _clean(r.get("summary")),
+                     "source": _clean(r.get("source"))}
+    for section, label in (("legislative_efforts", "bill"), ("rejected_efforts", "rejected bill")):
+        for r in data.get(section, []):
+            title = _clean(r.get("title"))
+            key = ("VPNs", _clean(r.get("jurisdiction")), f"{label}: {title}" if title else label)
+            rows[key] = {"since": _clean(r.get("status")),
+                         "more_info": _clean(r.get("summary")),
+                         "source": _clean(r.get("source"))}
+    return rows
+
+
+def fold_age(data: dict) -> dict:
+    """Flatten age_verification_data.json into the differ's shape.
+
+    Timeline laws are keyed by (country, law name); the prose fields that have
+    no CSV equivalent (pass date, implementation label, threshold) are folded
+    into `more_info` so editing any of them registers as a revision rather
+    than slipping past a differ that only knows three fields.
+    """
+    rows: dict[tuple[str, str, str], dict] = {}
+    for r in data.get("timeline", []):
+        key = ("Age verification", _clean(r.get("country")), _clean(r.get("law")))
+        prose = " · ".join(filter(None, (_clean(r.get("passed_label")),
+                                         _clean(r.get("implementation_label")),
+                                         _clean(r.get("threshold")),
+                                         _clean(r.get("summary")))))
+        rows[key] = {"since": _clean(r.get("implementation_date")),
+                     "more_info": prose,
+                     "source": _clean(r.get("source"))}
+    for r in data.get("legislative_efforts", []):
+        key = ("Age verification", _clean(r.get("country")), _clean(r.get("title")))
+        rows[key] = {"since": _clean(r.get("status")),
+                     "more_info": _clean(r.get("summary")),
+                     "source": _clean(r.get("source"))}
+    return rows
+
+
+def snapshot(sha: str) -> dict[tuple[str, str, str], dict]:
+    """All three datasets at one commit, keyed by (platform, country, type).
+
+    A file that did not exist yet simply contributes no rows; history before
+    the JSON datasets arrived stays exactly as informative as it was.
+    """
+    rows: dict[tuple[str, str, str], dict] = {}
+    text = git("show", f"{sha}:{CSV_NAME}")
     for row in csv.DictReader(io.StringIO(text)):
         platform = (row.get("platform") or "").strip()
         country = (row.get("country") or "").strip()
@@ -93,6 +171,13 @@ def snapshot(sha: str) -> dict[tuple[str, str, str], dict]:
             continue
         key = (platform, country, (row.get("type") or "complete").strip())
         rows[key] = {f: (row.get(f) or "").strip() for f in TRACKED}
+    for name, folder in (("vpn_data.json", fold_vpn), ("age_verification_data.json", fold_age)):
+        blob = git("show", f"{sha}:{name}")
+        if blob.strip():
+            try:
+                rows.update(folder(json.loads(blob)))
+            except json.JSONDecodeError:
+                pass  # a commit that left the file unparseable contributes nothing
     return rows
 
 
@@ -246,7 +331,7 @@ def item_body(event: dict) -> str:
 def feed_xml(*, title: str, link: str, self_href: str, description: str,
              events: list[dict], build_date: datetime) -> str:
     items = []
-    for event in events[:60]:
+    for event in events[:FEED_ITEM_CAP]:
         permalink = f"{SITE}/changes#{event['id']}"
         try:
             when = datetime.fromisoformat(event["iso"])
@@ -370,6 +455,34 @@ def write_territory_feeds(events: list[dict]) -> tuple[int, int]:
     return written, kept
 
 
+def latest_slice(events: list[dict], keep: int = 10) -> dict:
+    """The homepage-sized projection: newest few events, counts only.
+
+    The full changelog.json passed 260 KB because every event carries every
+    touched row's prose. The homepage panel needs none of that — a subject, a
+    date and how many rows moved — so it gets a file of its own rather than
+    asking every visitor to download the archive.
+    """
+    slim = []
+    for event in events[:keep]:
+        slim.append({
+            "id": event["id"],
+            "date": event["date"],
+            "subject": event["subject"],
+            "total": event["total"],
+            "added": len(event["added"]),
+            "removed": len(event["removed"]),
+            "changed": len(event["changed"]),
+            "renamed": len(event["renamed"]),
+        })
+    return {
+        "generated_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "count": len(events),
+        "latest": events[0]["date"] if events else "",
+        "events": slim,
+    }
+
+
 def main(argv: list[str]) -> int:
     limit = 0
     if "--limit" in argv:
@@ -388,15 +501,20 @@ def main(argv: list[str]) -> int:
         "latest": events[0]["date"],
         "events": events,
     })
+    # The slice is derived from the same events; rewrite it under the same
+    # condition so the two files never disagree about what happened.
+    wrote_slice = write_json(OUT_LATEST, latest_slice(events))
     # The feed is a projection of the same events, so it only needs rewriting
     # when they changed — its lastBuildDate would otherwise be the sole diff.
-    if wrote or not OUT_FEED.is_file():
+    if wrote or wrote_slice or not OUT_FEED.is_file():
         write_feed(events)
     fw, fk = write_territory_feeds(events)
 
     rows = sum(e["total"] for e in events)
     print(f"{'wrote' if wrote else 'unchanged'} {OUT_JSON.name} and {OUT_FEED.name}: "
           f"{len(events)} dated changes covering {rows} row edits")
+    print(f"{'wrote' if wrote_slice else 'unchanged'} {OUT_LATEST.name}: "
+          f"newest {len(latest_slice(events)['events'])} event(s) as counts")
     print(f"feed/: {fw + fk} territory feeds ({fw} written, {fk} unchanged)")
     print(f"  newest: {events[0]['date']} — {events[0]['subject']} ({summarise(events[0])})")
     return 0

@@ -22,6 +22,13 @@
       <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — United Kingdom (partial): notes, source&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
+      <title>Replace 'United Kingdom' with 'United Kingdom of Great Britain and Northern Ireland'</title>
+      <link>https://censorship.my/changes#43d6258210</link>
+      <guid isPermaLink="false">43d625821006f7501f259e66a43a0361156723d9</guid>
+      <pubDate>Mon, 27 Jul 2026 16:38:47 +0100</pubDate>
+      <description>&lt;p&gt;1 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — United Kingdom of Great Britain and Northern Ireland (Online Safety Act age assurance): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Add missing source links for CGTN entries (Eritrea, Germany, UK, USA)</title>
       <link>https://censorship.my/changes#d99dbfacb2</link>
       <guid isPermaLink="false">d99dbfacb29ade34be2837dab5af70f815454a63</guid>
@@ -40,7 +47,7 @@
       <link>https://censorship.my/changes#f740e57cf9</link>
       <guid isPermaLink="false">f740e57cf9a6bbf85a2f0e809a7f79837a87b9f0</guid>
       <pubDate>Tue, 21 Jul 2026 23:40:04 +0100</pubDate>
-      <description>&lt;p&gt;1 changed, 7 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Substack — United Kingdom (age): notes&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — United Kingdom (partial): notes&lt;/li&gt;&lt;li&gt;Discord — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Reddit — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Russia Today — United Kingdom (complete) — was UK&lt;/li&gt;&lt;li&gt;Spotify — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Tumblr — United Kingdom (age) — was UK&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — United Kingdom (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
+      <description>&lt;p&gt;2 changed, 7 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — United Kingdom (Online Safety Act age assurance): notes&lt;/li&gt;&lt;li&gt;Substack — United Kingdom (age): notes&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CGTN — United Kingdom (partial): notes&lt;/li&gt;&lt;li&gt;Discord — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Reddit — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Russia Today — United Kingdom (complete) — was UK&lt;/li&gt;&lt;li&gt;Spotify — United Kingdom (age): notes&lt;/li&gt;&lt;li&gt;Tumblr — United Kingdom (age) — was UK&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — United Kingdom (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Replace Wikipedia sources in censorship_data.csv with verified independent sources for non-exempt countries</title>
@@ -78,6 +85,13 @@
       <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Russia Today — UK (complete)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
+      <title>Remove UK from legislative efforts (shelved)</title>
+      <link>https://censorship.my/changes#cee68e1bb3</link>
+      <guid isPermaLink="false">cee68e1bb3de1d631a1fbc1019ab3695e0bf3240</guid>
+      <pubDate>Mon, 20 Jul 2026 01:03:43 +0100</pubDate>
+      <description>&lt;p&gt;1 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — United Kingdom (bill: House of Lords amendment to restrict VPN provision to under-18s)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Remove remaining Roblox age-verification country rows (Australia, Netherlands, New Zealand, UK)</title>
       <link>https://censorship.my/changes#2b7d855bd4</link>
       <guid isPermaLink="false">2b7d855bd4939cb899617cb40d8aa5f298f8d08b</guid>
@@ -113,6 +127,13 @@
       <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Substack — United Kingdom (age)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
+      <title>Specify exact UK OSA implementation date</title>
+      <link>https://censorship.my/changes#39d52c0b01</link>
+      <guid isPermaLink="false">39d52c0b0189dab5439eeacc2885a340e4f9999a</guid>
+      <pubDate>Mon, 13 Jul 2026 15:07:04 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — United Kingdom (Online Safety Act age assurance): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Remove Pornhub and expand Bluesky country coverage</title>
       <link>https://censorship.my/changes#c989c44cfd</link>
       <guid isPermaLink="false">c989c44cfd8ed7ab3b9422d239012a32bd532e63</guid>
@@ -124,7 +145,21 @@
       <link>https://censorship.my/changes#bf8ff6b68a</link>
       <guid isPermaLink="false">bf8ff6b68ace369cad09bf8eb6eb133d46aacea8</guid>
       <pubDate>Mon, 13 Jul 2026 13:08:47 +0100</pubDate>
-      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Pornhub — UK (age)&lt;/li&gt;&lt;/ul&gt;</description>
+      <description>&lt;p&gt;1 added, 1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Pornhub — UK (age)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — United Kingdom (Online Safety Act age assurance): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add VPN Tracker with ban table and legislative efforts</title>
+      <link>https://censorship.my/changes#1cbec51763</link>
+      <guid isPermaLink="false">1cbec51763c92856b5dc3940885f95895f2ad67c</guid>
+      <pubDate>Sat, 11 Jul 2026 13:39:11 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — United Kingdom (bill: House of Lords amendment to restrict VPN provision to under-18s)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Age Verification Tracker page with timeline and legislative efforts</title>
+      <link>https://censorship.my/changes#f5c8bfe2c0</link>
+      <guid isPermaLink="false">f5c8bfe2c0422eb152163dbd3afeb6ad45e8f493</guid>
+      <pubDate>Sat, 11 Jul 2026 13:21:12 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — United Kingdom (Online Safety Act age assurance)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Move all ban data into censorship_data.csv</title>

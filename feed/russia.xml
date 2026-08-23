@@ -75,7 +75,7 @@
       <link>https://censorship.my/changes#f5dd3fb23f</link>
       <guid isPermaLink="false">f5dd3fb23f372f6923ac84c8c7e4b9d858d8c653</guid>
       <pubDate>Mon, 20 Jul 2026 19:49:32 +0100</pubDate>
-      <description>&lt;p&gt;2 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — Russia (complete)&lt;/li&gt;&lt;li&gt;Reuters — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+      <description>&lt;p&gt;2 removed, 1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;New York Times — Russia (complete)&lt;/li&gt;&lt;li&gt;Reuters — Russia (complete)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — Russia (restricted): source&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Replace 27 fabricated and generic sources with verified ones</title>
@@ -104,6 +104,13 @@
       <guid isPermaLink="false">88a476d3d321667905ce542a5b9c66a17f953cb3</guid>
       <pubDate>Mon, 20 Jul 2026 12:35:25 +0100</pubDate>
       <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;BBC News — Russia (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add VPN app availability matrix; consolidate Russia entry</title>
+      <link>https://censorship.my/changes#bdb376558e</link>
+      <guid isPermaLink="false">bdb376558ed4a7ee6bbe3ca115963fb66e2183c9</guid>
+      <pubDate>Mon, 20 Jul 2026 09:36:44 +0100</pubDate>
+      <description>&lt;p&gt;1 removed, 1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — Russia (bill: Roskomnadzor / Digital Ministry VPN crackdown (2025–2026))&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — Russia (restricted): notes&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Remove OnlyFans from tracked platforms</title>
@@ -188,6 +195,13 @@
       <guid isPermaLink="false">831091990d22e2f7ce5d440b163de672b0381779</guid>
       <pubDate>Sun, 12 Jul 2026 17:05:19 +0100</pubDate>
       <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;WhatsApp — Russia (complete): notes&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add VPN Tracker with ban table and legislative efforts</title>
+      <link>https://censorship.my/changes#1cbec51763</link>
+      <guid isPermaLink="false">1cbec51763c92856b5dc3940885f95895f2ad67c</guid>
+      <pubDate>Sat, 11 Jul 2026 13:39:11 +0100</pubDate>
+      <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — Russia (bill: Roskomnadzor / Digital Ministry VPN crackdown (2025–2026))&lt;/li&gt;&lt;li&gt;VPNs — Russia (restricted)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Cite Spotify newsroom for Russia service suspension</title>

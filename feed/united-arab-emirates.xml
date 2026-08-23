@@ -29,11 +29,18 @@
       <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Grindr — United Arab Emirates (complete): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
+      <title>Optimize data loading with instant session caching and path fallback for age-verification and vpn-tracker</title>
+      <link>https://censorship.my/changes#a986b692e0</link>
+      <guid isPermaLink="false">a986b692e09432411c30352be6ec73125891fcff</guid>
+      <pubDate>Tue, 21 Jul 2026 23:45:53 +0100</pubDate>
+      <description>&lt;p&gt;1 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — United Arab Emirates (restricted): source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Replace references of UK and UAE with United Kingdom and United Arab Emirates</title>
       <link>https://censorship.my/changes#f740e57cf9</link>
       <guid isPermaLink="false">f740e57cf9a6bbf85a2f0e809a7f79837a87b9f0</guid>
       <pubDate>Tue, 21 Jul 2026 23:40:04 +0100</pubDate>
-      <description>&lt;p&gt;16 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Discord — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Facebook — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Grindr — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Instagram — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;KakaoTalk — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;LINE — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;New York Times — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Roblox — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;Snapchat — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;TikTok — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Tinder — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Viber — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;WhatsApp — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;YouTube — United Arab Emirates (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
+      <description>&lt;p&gt;1 changed, 16 renamed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — United Arab Emirates (restricted): notes&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Renamed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Al Jazeera — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Discord — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Facebook — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Grindr — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Instagram — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;KakaoTalk — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;LINE — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;New York Times — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;Roblox — United Arab Emirates (partial) — was UAE&lt;/li&gt;&lt;li&gt;Snapchat — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;TikTok — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;Tinder — United Arab Emirates (complete) — was UAE&lt;/li&gt;&lt;li&gt;Viber — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;WhatsApp — United Arab Emirates (partial): notes&lt;/li&gt;&lt;li&gt;X (formerly Twitter) — United Arab Emirates (age): notes&lt;/li&gt;&lt;li&gt;YouTube — United Arab Emirates (age): notes&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Replace Wikipedia sources in censorship_data.csv with verified independent sources for non-exempt countries</title>
@@ -118,6 +125,20 @@
       <guid isPermaLink="false">bf4c6a27b5fa5c513041a681c595bd2a5f3d9646</guid>
       <pubDate>Tue, 14 Jul 2026 13:09:03 +0100</pubDate>
       <description>&lt;p&gt;2 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;LINE — UAE (partial)&lt;/li&gt;&lt;li&gt;Viber — UAE (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add VPN Tracker with ban table and legislative efforts</title>
+      <link>https://censorship.my/changes#1cbec51763</link>
+      <guid isPermaLink="false">1cbec51763c92856b5dc3940885f95895f2ad67c</guid>
+      <pubDate>Sat, 11 Jul 2026 13:39:11 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;VPNs — United Arab Emirates (restricted)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Age Verification Tracker page with timeline and legislative efforts</title>
+      <link>https://censorship.my/changes#f5c8bfe2c0</link>
+      <guid isPermaLink="false">f5c8bfe2c0422eb152163dbd3afeb6ad45e8f493</guid>
+      <pubDate>Sat, 11 Jul 2026 13:21:12 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — United Arab Emirates (Cabinet resolution on children's social media access)&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Add YouTube UAE age row to meet plan minimum platform set</title>

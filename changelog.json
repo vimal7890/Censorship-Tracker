@@ -1,8 +1,28 @@
 {
-  "generated_utc": "2026-08-18T10:44:22+00:00",
-  "count": 128,
-  "latest": "2026-08-15",
+  "generated_utc": "2026-08-22T23:57:56+00:00",
+  "count": 143,
+  "latest": "2026-08-22",
   "events": [
+    {
+      "id": "910ac92793",
+      "sha": "910ac92793f0721cd8cc571e752a3289cac57f88",
+      "date": "2026-08-22",
+      "iso": "2026-08-22T22:41:58+01:00",
+      "subject": "Add ANPD's Brazil-wide Discord live-video suspension",
+      "author": "Vimal",
+      "total": 1,
+      "added": [
+        {
+          "platform": "Discord",
+          "country": "Brazil",
+          "type": "partial",
+          "since": "17/08/2026"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "edfb22aa86",
       "sha": "edfb22aa867ee95423cb5b6452434d4ee58370e4",
@@ -683,9 +703,15 @@
       "iso": "2026-08-14T17:48:46+01:00",
       "subject": "Remove struck-down France age ban",
       "author": "Vimal",
-      "total": 9,
+      "total": 10,
       "added": [],
       "removed": [
+        {
+          "platform": "Age verification",
+          "country": "France",
+          "type": "Under-15 social media ban",
+          "since": "2026-09-01"
+        },
         {
           "platform": "Facebook",
           "country": "France",
@@ -824,11 +850,22 @@
       "iso": "2026-07-27T16:45:07+01:00",
       "subject": "Replace 'Commonwealth of Australia' with 'Australia'",
       "author": "Vimal",
-      "total": 12,
+      "total": 13,
       "added": [],
       "removed": [],
       "changed": [],
       "renamed": [
+        {
+          "platform": "Age verification",
+          "country": "Australia",
+          "type": "Under-16 social media ban",
+          "since": "2025-12-10",
+          "renamed": "country",
+          "was": "Commonwealth of Australia",
+          "fields": [
+            "notes"
+          ]
+        },
         {
           "platform": "Facebook",
           "country": "Australia",
@@ -1019,11 +1056,22 @@
       "iso": "2026-07-27T16:42:07+01:00",
       "subject": "Replace 'Australia' with 'Commonwealth of Australia'",
       "author": "Vimal",
-      "total": 12,
+      "total": 13,
       "added": [],
       "removed": [],
       "changed": [],
       "renamed": [
+        {
+          "platform": "Age verification",
+          "country": "Commonwealth of Australia",
+          "type": "Under-16 social media ban",
+          "since": "2025-12-10",
+          "renamed": "country",
+          "was": "Australia",
+          "fields": [
+            "notes"
+          ]
+        },
         {
           "platform": "Facebook",
           "country": "Commonwealth of Australia",
@@ -1230,11 +1278,291 @@
       "iso": "2026-07-27T16:40:25+01:00",
       "subject": "Rename United States to United States of America",
       "author": "Vimal",
-      "total": 2,
+      "total": 38,
       "added": [],
       "removed": [],
       "changed": [],
       "renamed": [
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "AB 105 adult-site age verification (vetoed)",
+          "since": "Rejected — vetoed 3 April 2026",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "Act 440 (2022) adult-site age verification · Act 456 social media (struck down) · HB 570/977 app stores",
+          "since": "Implemented (adult sites) · Rejected (social media) · Scheduled (app stores, 1 Jul 2027)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "Act 612 adult-site age verification (2023) · Social Media Safety Act (Act 689) + successors Acts 900/901 (2025)",
+          "since": "Implemented (adult sites) · Rejected (social-media acts enjoined)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "Attorney General rule 15 CSR 60-18 (Merchandising Practices Act)",
+          "since": "Implemented — regulation in effect since 30 November 2025",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "H 3424 adult-site age verification (2024) · H 3431 Social Media Regulation Act (2026)",
+          "since": "Implemented (both) — H 3431 challenged, no injunction",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "H 498 adult-site age verification (2024) · HB 542 Stop Harms from Addictive Social Media Act (2026)",
+          "since": "Implemented — HB 542 in force from 1 July 2026",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "H.121 (vetoed 2024) · Age-Appropriate Design Code Act (Act 63, 2025)",
+          "since": "Rejected (veto) · Scheduled (design code, 1 Jan 2027)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 1053 adult-site age verification · SB 180 app-store bill (failed)",
+          "since": "Implemented (HB 1053) · Rejected (SB 180 in committee)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 1181 adult-site age verification · SB 2420 App Store Accountability Act · HB 18 SCOPE Act",
+          "since": "Implemented (HB 1181, SB 2420) · SCOPE Act partly enjoined",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 1561 adult-site age verification (2025) · SB 2380 device/app-store age signals",
+          "since": "Implemented (HB 1561) · Scheduled (SB 2380, 1 Aug 2026)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 164 adult-site age verification (2024) · HB 161 App Store Accountability Act (2026)",
+          "since": "Implemented (HB 164) · Scheduled (HB 161, 1 Jan 2027)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 2112 adult-site age verification",
+          "since": "Implemented — in effect since 26 September 2025",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 278 adult-site age verification",
+          "since": "Implemented — in effect since 15 July 2024",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 3 Online Protections for Minors (social media ban under 14 + adult-site age verification)",
+          "since": "Implemented — enforceable; litigation ongoing",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 43 adult-site age verification",
+          "since": "Implemented — in effect since 1 July 2025",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 4412 adult-site age verification",
+          "since": "Implemented — in effect since 12 June 2026",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 8 (PAVE Act) adult-site age verification",
+          "since": "Implemented — in effect since 1 January 2024",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HB 96 adult-site age verification (2025) · Parental Notification by Social Media Operators Act (2023)",
+          "since": "Implemented — social-media consent law revived on appeal, June 2026",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "HF 864 adult-site age verification",
+          "since": "Implemented — in effect since 1 July 2026",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "LB 1092 adult-site age verification (2024) · LB 383 Parental Rights in Social Media Act (2025)",
+          "since": "Implemented (adult sites) · Rejected (LB 383 core enjoined)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "Maryland Kids Code (HB 603/SB 571)",
+          "since": "Implemented — design code, no ID checks",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "No age-verification law enacted (Alaska, Delaware, Hawaii, Illinois, Maine, Massachusetts, Michigan, Minnesota, Nevada, New Hampshire, New Jersey, New Mexico, Oregon, Pennsylvania, Rhode Island, Washington)",
+          "since": "No law — proposals only in several states",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "Protect Tennessee Minors Act (SB 1792) · Protecting Children from Social Media Act (HB 1891)",
+          "since": "Implemented (both) — Sixth Circuit appeal pending",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SAFE For Kids Act (S7694A) · Safe By Design Act (2026)",
+          "since": "Scheduled — age-assurance rulemaking underway",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 1515 adult-site age verification (2023) · SB 854 under-16 social media time limits (2025)",
+          "since": "Implemented (adult sites) · Rejected (SB 854 enjoined)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 17 adult-site age verification",
+          "since": "Implemented — enforced since August 2024",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 1959 adult-site age verification",
+          "since": "Implemented — in effect since 1 November 2024",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 2346 adult-site age verification (2023) · HB 1126 Walker Montgomery Protecting Children Online Act (2024)",
+          "since": "Implemented (both) — HB 1126 under Fifth Circuit review",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 25-086 (vetoed) · HB 24-1136 youth warnings (enjoined) · SB 26-051 Age Attestation on Computing Devices",
+          "since": "Rejected (veto + injunction) · Scheduled (SB 26-051, 1 Jan 2028)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 287 adult-site age verification · Minor Protection in Social Media Act · App Store Accountability Act (SB 142/HB 498)",
+          "since": "Implemented (adult sites) · Rejected (social media enjoined) · Scheduled (app stores, 6 May 2027)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 3 (2023) and SB 1295 (2025) minors' online safety duties",
+          "since": "Implemented — design duties, no ID checks",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 351 (Act 463): adult-site age verification + under-16 social media parental consent",
+          "since": "Implemented (adult sites) · Rejected (social media enjoined)",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 394 adult-site age verification",
+          "since": "Implemented — in effect since 1 July 2024",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 544 adult-site age verification",
+          "since": "Implemented — in effect since 1 January 2024",
+          "renamed": "country",
+          "was": "United States"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States of America",
+          "type": "SB 976 Protecting Our Kids from Social Media Addiction Act · AB 1043 Digital Age Assurance Act",
+          "since": "Implemented (SB 976 core) · Scheduled (AB 1043, 1 Jan 2027)",
+          "renamed": "country",
+          "was": "United States"
+        },
         {
           "platform": "CGTN",
           "country": "United States of America",
@@ -1250,6 +1578,14 @@
           "since": "March 2022",
           "renamed": "country",
           "was": "United States"
+        },
+        {
+          "platform": "VPNs",
+          "country": "United States of America — Wisconsin",
+          "type": "rejected bill: SB 130 and related state efforts targeting VPN use for restricted content",
+          "since": "Rejected — advanced in legislature then failed amid civil-liberties backlash",
+          "renamed": "country",
+          "was": "United States — Wisconsin"
         }
       ]
     },
@@ -1260,7 +1596,7 @@
       "iso": "2026-07-27T16:39:21+01:00",
       "subject": "Replace 'China' with 'People's Republic of China'",
       "author": "Vimal",
-      "total": 40,
+      "total": 41,
       "added": [],
       "removed": [],
       "changed": [
@@ -1581,6 +1917,14 @@
           "was": "China"
         },
         {
+          "platform": "VPNs",
+          "country": "People's Republic of China",
+          "type": "restricted",
+          "since": "2017 MIIT cleanup onwards",
+          "renamed": "country",
+          "was": "China"
+        },
+        {
           "platform": "WhatsApp",
           "country": "People's Republic of China",
           "type": "complete",
@@ -1649,13 +1993,38 @@
       "renamed": []
     },
     {
+      "id": "43d6258210",
+      "sha": "43d625821006f7501f259e66a43a0361156723d9",
+      "date": "2026-07-27",
+      "iso": "2026-07-27T16:38:47+01:00",
+      "subject": "Replace 'United Kingdom' with 'United Kingdom of Great Britain and Northern Ireland'",
+      "author": "Vimal",
+      "total": 1,
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "renamed": [
+        {
+          "platform": "Age verification",
+          "country": "United Kingdom of Great Britain and Northern Ireland",
+          "type": "Online Safety Act age assurance",
+          "since": "2025-07-25",
+          "renamed": "country",
+          "was": "United Kingdom",
+          "fields": [
+            "notes"
+          ]
+        }
+      ]
+    },
+    {
       "id": "a2702ef119",
       "sha": "a2702ef119f382d025ff64604638a187671b499f",
       "date": "2026-07-27",
       "iso": "2026-07-27T16:37:40+01:00",
       "subject": "Replace Turkey/Iran names with updated forms",
       "author": "Vimal",
-      "total": 57,
+      "total": 59,
       "added": [],
       "removed": [],
       "changed": [],
@@ -2008,6 +2377,17 @@
           "was": "Iran"
         },
         {
+          "platform": "VPNs",
+          "country": "Islamic Republic of Iran",
+          "type": "restricted",
+          "since": "2024 criminalisation of unauthorised VPNs",
+          "renamed": "country",
+          "was": "Iran",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
           "platform": "WhatsApp",
           "country": "Islamic Republic of Iran",
           "type": "complete",
@@ -2060,6 +2440,14 @@
           "fields": [
             "notes"
           ]
+        },
+        {
+          "platform": "Age verification",
+          "country": "Türkiye",
+          "type": "Under-15 social media ban + age verification",
+          "since": "2026-10-01",
+          "renamed": "country",
+          "was": "Turkey"
         },
         {
           "platform": "Discord",
@@ -2256,6 +2644,26 @@
           ]
         }
       ],
+      "renamed": []
+    },
+    {
+      "id": "6787ecbcdc",
+      "sha": "6787ecbcdc9f3aa83e4a9e95cc9b80e08aa120f7",
+      "date": "2026-07-26",
+      "iso": "2026-07-26T13:47:53+01:00",
+      "subject": "Track Vietnam's draft under-16 age-verification decree",
+      "author": "Vimal",
+      "total": 1,
+      "added": [
+        {
+          "platform": "Age verification",
+          "country": "Vietnam",
+          "type": "Draft decree on under-16 social media and online gaming accounts",
+          "since": "Draft — in consultation, not yet adopted"
+        }
+      ],
+      "removed": [],
+      "changed": [],
       "renamed": []
     },
     {
@@ -2960,7 +3368,7 @@
       "iso": "2026-07-22T20:56:22+01:00",
       "subject": "Track France's under-15 ban, and let scheduled laws start themselves",
       "author": "Vimal",
-      "total": 9,
+      "total": 10,
       "added": [
         {
           "platform": "Facebook",
@@ -3018,7 +3426,17 @@
         }
       ],
       "removed": [],
-      "changed": [],
+      "changed": [
+        {
+          "platform": "Age verification",
+          "country": "France",
+          "type": "Under-15 social media ban",
+          "since": "2026-09-01",
+          "fields": [
+            "notes"
+          ]
+        }
+      ],
       "renamed": []
     },
     {
@@ -4238,6 +4656,47 @@
       "renamed": []
     },
     {
+      "id": "a986b692e0",
+      "sha": "a986b692e09432411c30352be6ec73125891fcff",
+      "date": "2026-07-21",
+      "iso": "2026-07-21T23:45:53+01:00",
+      "subject": "Optimize data loading with instant session caching and path fallback for age-verification and vpn-tracker",
+      "author": "Vimal",
+      "total": 3,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "platform": "VPNs",
+          "country": "European Union (debate)",
+          "type": "bill: Age-verification rollout and VPN-circumvention debate",
+          "since": "Policy discussion — no EU-wide VPN ban enacted",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "Iran",
+          "type": "restricted",
+          "since": "2024 criminalisation of unauthorised VPNs",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "United Arab Emirates",
+          "type": "restricted",
+          "since": "Ongoing (cybercrime decrees)",
+          "fields": [
+            "source"
+          ]
+        }
+      ],
+      "renamed": []
+    },
+    {
       "id": "6ea8589d49",
       "sha": "6ea8589d4946d916413ddaab61391b1ee217e7ab",
       "date": "2026-07-21",
@@ -4287,7 +4746,7 @@
       "iso": "2026-07-21T23:40:04+01:00",
       "subject": "Replace references of UK and UAE with United Kingdom and United Arab Emirates",
       "author": "Vimal",
-      "total": 27,
+      "total": 29,
       "added": [],
       "removed": [],
       "changed": [
@@ -4314,6 +4773,24 @@
           "country": "Oman",
           "type": "partial",
           "since": "Longstanding",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "United Arab Emirates",
+          "type": "restricted",
+          "since": "Ongoing (cybercrime decrees)",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "Age verification",
+          "country": "United Kingdom",
+          "type": "Online Safety Act age assurance",
+          "since": "2025-07-25",
           "fields": [
             "notes"
           ]
@@ -4785,6 +5262,33 @@
           ]
         }
       ],
+      "renamed": []
+    },
+    {
+      "id": "c499291c6b",
+      "sha": "c499291c6b69d9e22cc4bcb6d64570f97dfec506",
+      "date": "2026-07-21",
+      "iso": "2026-07-21T23:19:48+01:00",
+      "subject": "Update French under-15 social media ban with final July 21 2026 vote date and Sept 1 enactment",
+      "author": "Vimal",
+      "total": 2,
+      "added": [
+        {
+          "platform": "Age verification",
+          "country": "France",
+          "type": "Under-15 social media ban",
+          "since": "2026-09-01"
+        }
+      ],
+      "removed": [
+        {
+          "platform": "Age verification",
+          "country": "France",
+          "type": "Under-15 social media restriction",
+          "since": "2026-09-01"
+        }
+      ],
+      "changed": [],
       "renamed": []
     },
     {
@@ -5262,7 +5766,7 @@
       "iso": "2026-07-20T19:49:32+01:00",
       "subject": "Delete six unsupported rows, source three that checked out",
       "author": "Vimal",
-      "total": 9,
+      "total": 10,
       "added": [],
       "removed": [
         {
@@ -5330,6 +5834,15 @@
           "since": "2014",
           "fields": [
             "notes",
+            "source"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "Russia",
+          "type": "restricted",
+          "since": "2017 law; sharp escalation 2025–2026",
+          "fields": [
             "source"
           ]
         }
@@ -6484,7 +6997,7 @@
       "iso": "2026-07-20T13:02:54+01:00",
       "subject": "Add Russia Today to censorship tracker",
       "author": "Vimal",
-      "total": 100,
+      "total": 103,
       "added": [
         {
           "platform": "Russia Today",
@@ -6997,6 +7510,15 @@
           ]
         },
         {
+          "platform": "Age verification",
+          "country": "Australia",
+          "type": "Under-16 social media ban",
+          "since": "2025-12-10",
+          "fields": [
+            "source"
+          ]
+        },
+        {
           "platform": "Facebook",
           "country": "Australia",
           "type": "age",
@@ -7127,6 +7649,24 @@
           "country": "Russia",
           "type": "complete",
           "since": "March 2022",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "H 498 adult-site age verification (2024) · HB 542 Stop Harms from Addictive Social Media Act (2026)",
+          "since": "Implemented — HB 542 in force from 1 July 2026",
+          "fields": [
+            "source"
+          ]
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HF 864 adult-site age verification",
+          "since": "Implemented — in effect since 1 July 2026",
           "fields": [
             "source"
           ]
@@ -7680,6 +8220,42 @@
       "renamed": []
     },
     {
+      "id": "bdb376558e",
+      "sha": "bdb376558ed4a7ee6bbe3ca115963fb66e2183c9",
+      "date": "2026-07-20",
+      "iso": "2026-07-20T09:36:44+01:00",
+      "subject": "Add VPN app availability matrix; consolidate Russia entry",
+      "author": "Vimal",
+      "total": 3,
+      "added": [],
+      "removed": [
+        {
+          "platform": "VPNs",
+          "country": "Russia",
+          "type": "bill: Roskomnadzor / Digital Ministry VPN crackdown (2025–2026)",
+          "since": "Active escalation — hundreds of VPNs blocked; protocol filters; ad ban; user fines"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Russia (State Duma)",
+          "type": "bill: Fines for searching extremist content including via VPN",
+          "since": "Passed July 2025; in force from Sept 2025"
+        }
+      ],
+      "changed": [
+        {
+          "platform": "VPNs",
+          "country": "Russia",
+          "type": "restricted",
+          "since": "2017 law; sharp escalation 2025–2026",
+          "fields": [
+            "notes"
+          ]
+        }
+      ],
+      "renamed": []
+    },
+    {
       "id": "aa230b2dd3",
       "sha": "aa230b2dd321ebed3d3c2a0891413f7abc11abe4",
       "date": "2026-07-20",
@@ -7696,6 +8272,46 @@
         }
       ],
       "removed": [],
+      "changed": [],
+      "renamed": []
+    },
+    {
+      "id": "cee68e1bb3",
+      "sha": "cee68e1bb3de1d631a1fbc1019ab3695e0bf3240",
+      "date": "2026-07-20",
+      "iso": "2026-07-20T01:03:43+01:00",
+      "subject": "Remove UK from legislative efforts (shelved)",
+      "author": "Vimal",
+      "total": 1,
+      "added": [],
+      "removed": [
+        {
+          "platform": "VPNs",
+          "country": "United Kingdom",
+          "type": "bill: House of Lords amendment to restrict VPN provision to under-18s",
+          "since": "Lords vote Jan 2026; Commons resistance / government consultation ongoing"
+        }
+      ],
+      "changed": [],
+      "renamed": []
+    },
+    {
+      "id": "60b80a3eea",
+      "sha": "60b80a3eea40e4585a222adc5012688031951e59",
+      "date": "2026-07-20",
+      "iso": "2026-07-20T01:03:12+01:00",
+      "subject": "Remove Myanmar from legislative efforts (already fully banned)",
+      "author": "Vimal",
+      "total": 1,
+      "added": [],
+      "removed": [
+        {
+          "platform": "VPNs",
+          "country": "Myanmar",
+          "type": "bill: Cybersecurity Law VPN service prohibition",
+          "since": "In force from 1 January 2025 for providers"
+        }
+      ],
       "changed": [],
       "renamed": []
     },
@@ -9357,6 +9973,29 @@
       "renamed": []
     },
     {
+      "id": "39d52c0b01",
+      "sha": "39d52c0b0189dab5439eeacc2885a340e4f9999a",
+      "date": "2026-07-13",
+      "iso": "2026-07-13T15:07:04+01:00",
+      "subject": "Specify exact UK OSA implementation date",
+      "author": "Vimal",
+      "total": 1,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "platform": "Age verification",
+          "country": "United Kingdom",
+          "type": "Online Safety Act age assurance",
+          "since": "2025-07-25",
+          "fields": [
+            "notes"
+          ]
+        }
+      ],
+      "renamed": []
+    },
+    {
       "id": "5a45869df2",
       "sha": "5a45869df2771bff2dafa3acb12e4324fdb14e9a",
       "date": "2026-07-13",
@@ -9458,7 +10097,7 @@
       "iso": "2026-07-13T13:08:47+01:00",
       "subject": "Add full US state-by-state age verification coverage",
       "author": "Vimal",
-      "total": 5,
+      "total": 49,
       "added": [
         {
           "platform": "Pornhub",
@@ -9479,6 +10118,216 @@
           "since": "02/02/2026"
         },
         {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "AB 105 adult-site age verification (vetoed)",
+          "since": "Rejected — vetoed 3 April 2026"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Act 440 (2022) adult-site age verification · Act 456 social media (struck down) · HB 570/977 app stores",
+          "since": "Implemented (adult sites) · Rejected (social media) · Scheduled (app stores, 1 Jul 2027)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Act 612 adult-site age verification (2023) · Social Media Safety Act (Act 689) + successors Acts 900/901 (2025)",
+          "since": "Implemented (adult sites) · Rejected (social-media acts enjoined)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Attorney General rule 15 CSR 60-18 (Merchandising Practices Act)",
+          "since": "Implemented — regulation in effect since 30 November 2025"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "H 3424 adult-site age verification (2024) · H 3431 Social Media Regulation Act (2026)",
+          "since": "Implemented (both) — H 3431 challenged, no injunction"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "H 498 adult-site age verification (2024) · HB 542 Stop Harms from Addictive Social Media Act (2026)",
+          "since": "Implemented — HB 542 in force from 1 July 2026"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "H.121 (vetoed 2024) · Age-Appropriate Design Code Act (Act 63, 2025)",
+          "since": "Rejected (veto) · Scheduled (design code, 1 Jan 2027)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 1053 adult-site age verification · SB 180 app-store bill (failed)",
+          "since": "Implemented (HB 1053) · Rejected (SB 180 in committee)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 1181 adult-site age verification · SB 2420 App Store Accountability Act · HB 18 SCOPE Act",
+          "since": "Implemented (HB 1181, SB 2420) · SCOPE Act partly enjoined"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 1561 adult-site age verification (2025) · SB 2380 device/app-store age signals",
+          "since": "Implemented (HB 1561) · Scheduled (SB 2380, 1 Aug 2026)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 164 adult-site age verification (2024) · HB 161 App Store Accountability Act (2026)",
+          "since": "Implemented (HB 164) · Scheduled (HB 161, 1 Jan 2027)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 2112 adult-site age verification",
+          "since": "Implemented — in effect since 26 September 2025"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 278 adult-site age verification",
+          "since": "Implemented — in effect since 15 July 2024"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 3 Online Protections for Minors (social media ban under 14 + adult-site age verification)",
+          "since": "Implemented — enforceable; litigation ongoing"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 43 adult-site age verification",
+          "since": "Implemented — in effect since 1 July 2025"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 4412 adult-site age verification",
+          "since": "Implemented — in effect since 12 June 2026"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 8 (PAVE Act) adult-site age verification",
+          "since": "Implemented — in effect since 1 January 2024"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 96 adult-site age verification (2025) · Parental Notification by Social Media Operators Act (2023)",
+          "since": "Implemented — social-media consent law revived on appeal, June 2026"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HF 864 adult-site age verification",
+          "since": "Implemented — in effect since 1 July 2026"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "LB 1092 adult-site age verification (2024) · LB 383 Parental Rights in Social Media Act (2025)",
+          "since": "Implemented (adult sites) · Rejected (LB 383 core enjoined)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Maryland Kids Code (HB 603/SB 571)",
+          "since": "Implemented — design code, no ID checks"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "No age-verification law enacted (Alaska, Delaware, Hawaii, Illinois, Maine, Massachusetts, Michigan, Minnesota, Nevada, New Hampshire, New Jersey, New Mexico, Oregon, Pennsylvania, Rhode Island, Washington)",
+          "since": "No law — proposals only in several states"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Protect Tennessee Minors Act (SB 1792) · Protecting Children from Social Media Act (HB 1891)",
+          "since": "Implemented (both) — Sixth Circuit appeal pending"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SAFE For Kids Act (S7694A) · Safe By Design Act (2026)",
+          "since": "Scheduled — age-assurance rulemaking underway"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 1515 adult-site age verification (2023) · SB 854 under-16 social media time limits (2025)",
+          "since": "Implemented (adult sites) · Rejected (SB 854 enjoined)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 17 adult-site age verification",
+          "since": "Implemented — enforced since August 2024"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 1959 adult-site age verification",
+          "since": "Implemented — in effect since 1 November 2024"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 2346 adult-site age verification (2023) · HB 1126 Walker Montgomery Protecting Children Online Act (2024)",
+          "since": "Implemented (both) — HB 1126 under Fifth Circuit review"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 25-086 (vetoed) · HB 24-1136 youth warnings (enjoined) · SB 26-051 Age Attestation on Computing Devices",
+          "since": "Rejected (veto + injunction) · Scheduled (SB 26-051, 1 Jan 2028)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 287 adult-site age verification · Minor Protection in Social Media Act · App Store Accountability Act (SB 142/HB 498)",
+          "since": "Implemented (adult sites) · Rejected (social media enjoined) · Scheduled (app stores, 6 May 2027)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 3 (2023) and SB 1295 (2025) minors' online safety duties",
+          "since": "Implemented — design duties, no ID checks"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 351 (Act 463): adult-site age verification + under-16 social media parental consent",
+          "since": "Implemented (adult sites) · Rejected (social media enjoined)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 394 adult-site age verification",
+          "since": "Implemented — in effect since 1 July 2024"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 544 adult-site age verification",
+          "since": "Implemented — in effect since 1 January 2024"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 976 Protecting Our Kids from Social Media Addiction Act · AB 1043 Digital Age Assurance Act",
+          "since": "Implemented (SB 976 core) · Scheduled (AB 1043, 1 Jan 2027)"
+        },
+        {
           "platform": "Bluesky",
           "country": "USA",
           "type": "age",
@@ -9491,8 +10340,73 @@
           "since": "2023–2026 (25 states)"
         }
       ],
-      "removed": [],
-      "changed": [],
+      "removed": [
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 3 Online Protections for Minors",
+          "since": "Enacted; enforceable pending continued litigation"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Parental consent for under-18 social media accounts",
+          "since": "Enacted (2025)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 976 Protecting Our Kids from Social Media Addiction Act",
+          "since": "Enacted; temporarily blocked pending litigation"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SCOPE Act / parental-consent and app-store age rules",
+          "since": "Enacted measures + active challenges"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Social Media Safety Act and successor bills",
+          "since": "Enacted / re-enacted; court blocks and new packages pending enforcement"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Utah Minor Protection in Social Media Act / Social Media Regulation Act",
+          "since": "Enacted; largely enjoined — litigation ongoing"
+        }
+      ],
+      "changed": [
+        {
+          "platform": "Age verification",
+          "country": "Australia",
+          "type": "Under-16 social media ban",
+          "since": "2025-12-10",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "Age verification",
+          "country": "France",
+          "type": "Under-15 social media restriction",
+          "since": "2026-09-01",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "Age verification",
+          "country": "United Kingdom",
+          "type": "Online Safety Act age assurance",
+          "since": "2025-07-25",
+          "fields": [
+            "notes"
+          ]
+        }
+      ],
       "renamed": []
     },
     {
@@ -9647,21 +10561,198 @@
       "renamed": []
     },
     {
-      "id": "831091990d",
-      "sha": "831091990d22e2f7ce5d440b163de672b0381779",
+      "id": "681c756d6a",
+      "sha": "681c756d6a6571cbfa5e7329868b7040f64afce3",
       "date": "2026-07-12",
-      "iso": "2026-07-12T17:05:19+01:00",
-      "subject": "Use British English spelling in page copy",
+      "iso": "2026-07-12T21:03:25+01:00",
+      "subject": "Add Rejected Efforts section and move Wisconsin VPN bill there",
+      "author": "Vimal",
+      "total": 2,
+      "added": [
+        {
+          "platform": "VPNs",
+          "country": "United States — Wisconsin",
+          "type": "rejected bill: SB 130 and related state efforts targeting VPN use for restricted content",
+          "since": "Rejected — advanced in legislature then failed amid civil-liberties backlash"
+        }
+      ],
+      "removed": [
+        {
+          "platform": "VPNs",
+          "country": "United States — Wisconsin",
+          "type": "bill: SB 130 and related state efforts targeting VPN use for restricted content",
+          "since": "Advanced in legislature; faced strong civil-liberties backlash"
+        }
+      ],
+      "changed": [],
+      "renamed": []
+    },
+    {
+      "id": "7f4788090a",
+      "sha": "7f4788090a3b5545c4a74780f9228e6e4bc3957a",
+      "date": "2026-07-12",
+      "iso": "2026-07-12T21:01:39+01:00",
+      "subject": "Trim editorial aside from Myanmar VPN summary",
       "author": "Vimal",
       "total": 1,
       "added": [],
       "removed": [],
       "changed": [
         {
+          "platform": "VPNs",
+          "country": "Myanmar",
+          "type": "complete",
+          "since": "Functional ban from May 2024; Cybersecurity Law in force 1 Jan 2025",
+          "fields": [
+            "notes"
+          ]
+        }
+      ],
+      "renamed": []
+    },
+    {
+      "id": "b6560a2564",
+      "sha": "b6560a2564f742d070da84d1cd384edcd1b0723b",
+      "date": "2026-07-12",
+      "iso": "2026-07-12T17:34:36+01:00",
+      "subject": "Reclassify Myanmar as a complete VPN ban",
+      "author": "Vimal",
+      "total": 2,
+      "added": [
+        {
+          "platform": "VPNs",
+          "country": "Myanmar",
+          "type": "complete",
+          "since": "Functional ban from May 2024; Cybersecurity Law in force 1 Jan 2025"
+        }
+      ],
+      "removed": [
+        {
+          "platform": "VPNs",
+          "country": "Myanmar",
+          "type": "restricted",
+          "since": "Cybersecurity Law / 1 Jan 2025 provider ban"
+        }
+      ],
+      "changed": [],
+      "renamed": []
+    },
+    {
+      "id": "529fc1f3d6",
+      "sha": "529fc1f3d62403df5f067f9b4027ddd2a1955cc4",
+      "date": "2026-07-12",
+      "iso": "2026-07-12T17:09:48+01:00",
+      "subject": "Add India and Pakistan to VPN tracker",
+      "author": "Vimal",
+      "total": 2,
+      "added": [
+        {
+          "platform": "VPNs",
+          "country": "India",
+          "type": "restricted",
+          "since": "CERT-In Direction No. V — in force 28 June 2022"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Pakistan",
+          "type": "restricted",
+          "since": "PTA registration drive from 2024; CVAS-Data licensing from Nov 2025"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
+    {
+      "id": "831091990d",
+      "sha": "831091990d22e2f7ce5d440b163de672b0381779",
+      "date": "2026-07-12",
+      "iso": "2026-07-12T17:05:19+01:00",
+      "subject": "Use British English spelling in page copy",
+      "author": "Vimal",
+      "total": 9,
+      "added": [],
+      "removed": [],
+      "changed": [
+        {
+          "platform": "VPNs",
+          "country": "Belarus",
+          "type": "complete",
+          "since": "2015+",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "China",
+          "type": "restricted",
+          "since": "2017 MIIT cleanup onwards",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "Age verification",
+          "country": "Denmark",
+          "type": "Under-15 social media ban with age tools",
+          "since": "Political agreement — legislation progressing",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "Iran",
+          "type": "restricted",
+          "since": "2024 criminalisation of unauthorised VPNs",
+          "fields": [
+            "date",
+            "notes"
+          ],
+          "since_was": "2024 criminalization of unauthorized VPNs"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Iraq",
+          "type": "complete",
+          "since": "2014+",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "North Korea",
+          "type": "complete",
+          "since": "Longstanding",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "Oman",
+          "type": "restricted",
+          "since": "Telecom encryption rules",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
           "platform": "WhatsApp",
           "country": "Russia",
           "type": "complete",
           "since": "11/02/2026",
+          "fields": [
+            "notes"
+          ]
+        },
+        {
+          "platform": "VPNs",
+          "country": "Turkmenistan",
+          "type": "complete",
+          "since": "2010s–present (intensified 2019+)",
           "fields": [
             "notes"
           ]
@@ -9769,6 +10860,116 @@
           ]
         }
       ],
+      "renamed": []
+    },
+    {
+      "id": "1cbec51763",
+      "sha": "1cbec51763c92856b5dc3940885f95895f2ad67c",
+      "date": "2026-07-11",
+      "iso": "2026-07-11T13:39:11+01:00",
+      "subject": "Add VPN Tracker with ban table and legislative efforts",
+      "author": "Vimal",
+      "total": 16,
+      "added": [
+        {
+          "platform": "VPNs",
+          "country": "Belarus",
+          "type": "complete",
+          "since": "2015+"
+        },
+        {
+          "platform": "VPNs",
+          "country": "China",
+          "type": "restricted",
+          "since": "2017 MIIT cleanup onwards"
+        },
+        {
+          "platform": "VPNs",
+          "country": "European Union (debate)",
+          "type": "bill: Age-verification rollout and VPN-circumvention debate",
+          "since": "Policy discussion — no EU-wide VPN ban enacted"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Iran",
+          "type": "restricted",
+          "since": "2024 criminalization of unauthorized VPNs"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Iraq",
+          "type": "complete",
+          "since": "2014+"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Myanmar",
+          "type": "bill: Cybersecurity Law VPN service prohibition",
+          "since": "In force from 1 January 2025 for providers"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Myanmar",
+          "type": "restricted",
+          "since": "Cybersecurity Law / 1 Jan 2025 provider ban"
+        },
+        {
+          "platform": "VPNs",
+          "country": "North Korea",
+          "type": "complete",
+          "since": "Longstanding"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Oman",
+          "type": "restricted",
+          "since": "Telecom encryption rules"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Russia",
+          "type": "bill: Roskomnadzor / Digital Ministry VPN crackdown (2025–2026)",
+          "since": "Active escalation — hundreds of VPNs blocked; protocol filters; ad ban; user fines"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Russia",
+          "type": "restricted",
+          "since": "2017 law; sharp escalation 2025–2026"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Russia (State Duma)",
+          "type": "bill: Fines for searching extremist content including via VPN",
+          "since": "Passed July 2025; in force from Sept 2025"
+        },
+        {
+          "platform": "VPNs",
+          "country": "Turkmenistan",
+          "type": "complete",
+          "since": "2010s–present (intensified 2019+)"
+        },
+        {
+          "platform": "VPNs",
+          "country": "United Arab Emirates",
+          "type": "restricted",
+          "since": "Ongoing (cybercrime decrees)"
+        },
+        {
+          "platform": "VPNs",
+          "country": "United Kingdom",
+          "type": "bill: House of Lords amendment to restrict VPN provision to under-18s",
+          "since": "Lords vote Jan 2026; Commons resistance / government consultation ongoing"
+        },
+        {
+          "platform": "VPNs",
+          "country": "United States — Wisconsin",
+          "type": "bill: SB 130 and related state efforts targeting VPN use for restricted content",
+          "since": "Advanced in legislature; faced strong civil-liberties backlash"
+        }
+      ],
+      "removed": [],
+      "changed": [],
       "renamed": []
     },
     {
@@ -9957,6 +11158,140 @@
           "since_was": "April 2022"
         }
       ],
+      "renamed": []
+    },
+    {
+      "id": "f5c8bfe2c0",
+      "sha": "f5c8bfe2c0422eb152163dbd3afeb6ad45e8f493",
+      "date": "2026-07-11",
+      "iso": "2026-07-11T13:21:12+01:00",
+      "subject": "Add Age Verification Tracker page with timeline and legislative efforts",
+      "author": "Vimal",
+      "total": 20,
+      "added": [
+        {
+          "platform": "Age verification",
+          "country": "Australia",
+          "type": "Under-16 social media ban",
+          "since": "2025-12-10"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Brazil",
+          "type": "ECA Digital (Law 15,211/2025)",
+          "since": "2026-03-17"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Canada",
+          "type": "Bill C-34 Safe Social Media Act",
+          "since": "Introduced — not yet enacted"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Denmark",
+          "type": "Under-15 social media ban with age tools",
+          "since": "Political agreement — legislation progressing"
+        },
+        {
+          "platform": "Age verification",
+          "country": "European Union",
+          "type": "EU age-verification blueprint and Jutland Declaration",
+          "since": "Commission tools + member-state political commitment"
+        },
+        {
+          "platform": "Age verification",
+          "country": "France",
+          "type": "Under-15 social media restriction",
+          "since": "2026-09-01"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Gabon",
+          "type": "Ordinance No. 0011/PR/2026",
+          "since": "2027-02-01"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Indonesia",
+          "type": "High-risk platform under-16 curbs",
+          "since": "2026-03-28"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Malaysia",
+          "type": "Under-16 social media rule",
+          "since": "2026-06-01"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Portugal",
+          "type": "Under-13 ban; parental consent 13–15 via Digital Mobile Key",
+          "since": "Parliamentary process (not fully in force)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Spain",
+          "type": "Under-16 social media access + mandatory age verification",
+          "since": "Proposed / drafting"
+        },
+        {
+          "platform": "Age verification",
+          "country": "Turkey",
+          "type": "Under-15 social media ban + age verification",
+          "since": "2026-10-01"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United Arab Emirates",
+          "type": "Cabinet resolution on children's social media access",
+          "since": "2027-06-01"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United Kingdom",
+          "type": "Online Safety Act age assurance",
+          "since": "2025-07-25"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "HB 3 Online Protections for Minors",
+          "since": "Enacted; enforceable pending continued litigation"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Parental consent for under-18 social media accounts",
+          "since": "Enacted (2025)"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SB 976 Protecting Our Kids from Social Media Addiction Act",
+          "since": "Enacted; temporarily blocked pending litigation"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "SCOPE Act / parental-consent and app-store age rules",
+          "since": "Enacted measures + active challenges"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Social Media Safety Act and successor bills",
+          "since": "Enacted / re-enacted; court blocks and new packages pending enforcement"
+        },
+        {
+          "platform": "Age verification",
+          "country": "United States",
+          "type": "Utah Minor Protection in Social Media Act / Social Media Regulation Act",
+          "since": "Enacted; largely enjoined — litigation ongoing"
+        }
+      ],
+      "removed": [],
+      "changed": [],
       "renamed": []
     },
     {

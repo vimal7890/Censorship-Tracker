@@ -5,8 +5,15 @@
     <link>https://censorship.my/country/brazil/</link>
     <description>Every addition, removal and revision to the tracked restrictions in Brazil, straight from the dataset's history.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 15 Aug 2026 18:51:44 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 22:41:58 +0100</lastBuildDate>
     <atom:link href="https://censorship.my/feed/brazil.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Add ANPD's Brazil-wide Discord live-video suspension</title>
+      <link>https://censorship.my/changes#910ac92793</link>
+      <guid isPermaLink="false">910ac92793f0721cd8cc571e752a3289cac57f88</guid>
+      <pubDate>Sat, 22 Aug 2026 22:41:58 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Discord — Brazil (partial)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Rename X formerly Twitter platform to X</title>
       <link>https://censorship.my/changes#319f7eabe2</link>
@@ -41,6 +48,13 @@
       <guid isPermaLink="false">e52af766ea1a301a8dbc84cb979f6b4c8379b91e</guid>
       <pubDate>Mon, 13 Jul 2026 16:56:33 +0100</pubDate>
       <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Threads — Brazil (age)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Age Verification Tracker page with timeline and legislative efforts</title>
+      <link>https://censorship.my/changes#f5c8bfe2c0</link>
+      <guid isPermaLink="false">f5c8bfe2c0422eb152163dbd3afeb6ad45e8f493</guid>
+      <pubDate>Sat, 11 Jul 2026 13:21:12 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — Brazil (ECA Digital (Law 15,211/2025))&lt;/li&gt;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Add Brazil and Indonesia under-16 age-verification rows</title>
