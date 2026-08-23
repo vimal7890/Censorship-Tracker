@@ -2738,6 +2738,9 @@
                                 const multi = g.types.length > 1;
                                 const typeKey = g.types.join('-');
                                 const tagId = `tag-${banDomId(platform.name, g.country, typeKey)}`;
+                                // Same id the matching case-file panel gets below,
+                                // so aria-controls points at a real element.
+                                const infoId = `info-${banDomId(platform.name, g.country, typeKey)}`;
                                 const cls = multi ? 'multi' : g.types[0];
                                 const style = multi ? ` style="background:${multiTagBackground(g.types)}"` : '';
                                 const title = multi
