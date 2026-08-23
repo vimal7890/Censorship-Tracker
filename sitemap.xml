@@ -356,12 +356,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://censorship.my/country/tanzania/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://censorship.my/country/turkmenistan/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://censorship.my/country/turkiye/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://censorship.my/country/uganda/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

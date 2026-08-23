@@ -1,32 +1,32 @@
 {
-  "generated_utc": "2026-08-23T00:18:05+00:00",
-  "data_updated": "2026-08-22",
+  "generated_utc": "2026-08-23T12:13:25+00:00",
+  "data_updated": "2026-08-23",
   "dataset_updated": {
-    "censorship_data.csv": "2026-08-22",
+    "censorship_data.csv": "2026-08-23",
     "vpn_data.json": "2026-08-15",
     "age_verification_data.json": "2026-08-14"
   },
   "sources_checked": "2026-08-23",
   "sources_count": 171,
   "censorship": {
-    "entries": 445,
+    "entries": 455,
     "platforms": 49,
-    "territories": 77,
+    "territories": 79,
     "by_type": {
-      "complete": 325,
-      "partial": 53,
+      "complete": 332,
+      "partial": 56,
       "age": 67
     },
     "by_status": {
-      "reported": 327,
-      "enforced": 6,
+      "reported": 328,
+      "enforced": 15,
       "in_force": 97,
       "scheduled": 15
     },
     "by_evidence": {
       "uncorroborated": 22,
       "country-default": 170,
-      "dedicated": 253
+      "dedicated": 263
     }
   },
   "vpn": {

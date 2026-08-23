@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Global Censorship Tracker — what changed in Tanzania</title>
+    <link>https://censorship.my/country/tanzania/</link>
+    <description>Every addition, removal and revision to the tracked restrictions in Tanzania, straight from the dataset's history.</description>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Aug 2026 13:14:49 +0100</lastBuildDate>
+    <atom:link href="https://censorship.my/feed/tanzania.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Add standing platform bans in Tanzania, Uganda and Gabon</title>
+      <link>https://censorship.my/changes#d5e3760f58</link>
+      <guid isPermaLink="false">d5e3760f5897609285d0de6991068a741584f36f</guid>
+      <pubDate>Sun, 23 Aug 2026 13:14:49 +0100</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;X — Tanzania (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

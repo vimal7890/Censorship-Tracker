@@ -1,8 +1,82 @@
 {
-  "generated_utc": "2026-08-22T23:57:56+00:00",
-  "count": 143,
-  "latest": "2026-08-22",
+  "generated_utc": "2026-08-23T12:15:30+00:00",
+  "count": 144,
+  "latest": "2026-08-23",
   "events": [
+    {
+      "id": "d5e3760f58",
+      "sha": "d5e3760f5897609285d0de6991068a741584f36f",
+      "date": "2026-08-23",
+      "iso": "2026-08-23T13:14:49+01:00",
+      "subject": "Add standing platform bans in Tanzania, Uganda and Gabon",
+      "author": "Vimal",
+      "total": 10,
+      "added": [
+        {
+          "platform": "Facebook",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "Instagram",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "TikTok",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "WhatsApp",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "YouTube",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "X",
+          "country": "Tanzania",
+          "type": "complete",
+          "since": "May 2025"
+        },
+        {
+          "platform": "Facebook",
+          "country": "Uganda",
+          "type": "complete",
+          "since": "January 2021"
+        },
+        {
+          "platform": "Instagram",
+          "country": "Uganda",
+          "type": "partial",
+          "since": "18/01/2026"
+        },
+        {
+          "platform": "WhatsApp",
+          "country": "Uganda",
+          "type": "partial",
+          "since": "18/01/2026"
+        },
+        {
+          "platform": "X",
+          "country": "Uganda",
+          "type": "partial",
+          "since": "18/01/2026"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "910ac92793",
       "sha": "910ac92793f0721cd8cc571e752a3289cac57f88",

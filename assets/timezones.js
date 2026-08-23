@@ -461,6 +461,7 @@ window.TZ_TO_COUNTRY = {
 "Africa/Asmera": "Eritrea",
 "Africa/Cairo": "Egypt",
 "Africa/Ceuta": "Spain",
+"Africa/Dar_es_Salaam": "Tanzania",
 "Africa/Djibouti": "Djibouti",
 "Africa/Johannesburg": "South Africa",
 "Africa/Juba": "South Sudan",
