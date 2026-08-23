@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-08-23T12:13:13+00:00",
+  "generated_utc": "2026-08-23T16:02:39+00:00",
   "title": "Global Censorship Tracker",
   "site": "https://censorship.my",
   "repository": "https://github.com/vimal7890/Censorship-Tracker",
@@ -20,7 +20,7 @@
     "status": "Derived: scheduled | enforced | in_force | reported.",
     "evidence": "Derived: dedicated | country-default | uncorroborated."
   },
-  "count": 455,
+  "count": 456,
   "entries": [
     {
       "platform": "Al Jazeera",
@@ -4441,6 +4441,19 @@
       "source": "https://en.wikipedia.org/wiki/Internet_in_North_Korea",
       "status": "reported",
       "evidence": "country-default"
+    },
+    {
+      "platform": "TikTok",
+      "country": "Oman",
+      "iso": "OM",
+      "subnational": false,
+      "since": "13/08/2026",
+      "since_iso": "2026-08-13",
+      "type": "partial",
+      "notes": "TikTok has been inaccessible in Oman since 13 August 2026 — the second disruption in about 18 months — with no official announcement. When users reported the same problem in April 2025, the telecom regulator blamed 'technical reasons' rather than acknowledge a ban. Proton VPN's Observatory recorded a 350% spike in Omani sign-ups as access failed; locals speculate the block followed a one-year prison sentence handed to a creator over a livestream deemed to violate public morals.",
+      "source": "https://protonvpn.com/blog/is-tiktok-banned-oman",
+      "status": "in_force",
+      "evidence": "dedicated"
     },
     {
       "platform": "TikTok",

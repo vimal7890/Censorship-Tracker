@@ -1,8 +1,18 @@
 {
-  "generated_utc": "2026-08-23T12:15:30+00:00",
-  "count": 144,
+  "generated_utc": "2026-08-23T16:05:06+00:00",
+  "count": 145,
   "latest": "2026-08-23",
   "events": [
+    {
+      "id": "c5fbd4368b",
+      "date": "2026-08-23",
+      "subject": "Add Oman's TikTok block to the index",
+      "total": 1,
+      "added": 1,
+      "removed": 0,
+      "changed": 0,
+      "renamed": 0
+    },
     {
       "id": "d5e3760f58",
       "date": "2026-08-23",
@@ -91,16 +101,6 @@
       "added": 0,
       "removed": 1,
       "changed": 0,
-      "renamed": 0
-    },
-    {
-      "id": "c23e3165c6",
-      "date": "2026-08-15",
-      "subject": "Cite EUR-Lex for the RT broadcast ban",
-      "total": 27,
-      "added": 0,
-      "removed": 0,
-      "changed": 27,
       "renamed": 0
     }
   ]

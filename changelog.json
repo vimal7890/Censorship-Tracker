@@ -1,8 +1,28 @@
 {
-  "generated_utc": "2026-08-23T12:15:30+00:00",
-  "count": 144,
+  "generated_utc": "2026-08-23T16:05:06+00:00",
+  "count": 145,
   "latest": "2026-08-23",
   "events": [
+    {
+      "id": "c5fbd4368b",
+      "sha": "c5fbd4368bea91dbaf6da53f04fc615894ba7dfe",
+      "date": "2026-08-23",
+      "iso": "2026-08-23T17:03:52+01:00",
+      "subject": "Add Oman's TikTok block to the index",
+      "author": "Vimal",
+      "total": 1,
+      "added": [
+        {
+          "platform": "TikTok",
+          "country": "Oman",
+          "type": "partial",
+          "since": "13/08/2026"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "d5e3760f58",
       "sha": "d5e3760f5897609285d0de6991068a741584f36f",
