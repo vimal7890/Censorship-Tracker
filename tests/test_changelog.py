@@ -76,21 +76,6 @@ def main() -> int:
             f"the newest commit touching the datasets ({head[:10]}) is not in the "
             "changelog's five most recent events (run: python3 build_changelog.py)")
 
-    # The homepage slice must agree with the file it summarises: same newest
-    # date, counts that match the corresponding full event, no phantom extras.
-    latest_path = ROOT / "changelog-latest.json"
-    assert latest_path.is_file(), "changelog-latest.json missing (run: python3 build_changelog.py)"
-    slim = json.loads(latest_path.read_text(encoding="utf-8"))
-    assert slim["count"] == data["count"], "latest slice and changelog disagree on total events"
-    by_id = {e["id"]: e for e in events}
-    for row in slim["events"]:
-        full = by_id.get(row["id"])
-        assert full, f"latest slice carries unknown event {row['id']}"
-        assert row["date"] == full["date"] and row["subject"] == full["subject"], (
-            f"{row['id']}: slice disagrees with the full event")
-        for kind in KINDS:
-            assert row[kind] == len(full[kind]), f"{row['id']}: {kind} count does not match"
-
     root = ET.fromstring(FEED.read_text(encoding="utf-8"))
     items = root.findall("./channel/item")
     assert items, "feed.xml has no items"

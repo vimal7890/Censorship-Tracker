@@ -1498,44 +1498,6 @@
         .r-date { font-weight: 700; color: var(--primary); flex-shrink: 0; }
         .r-desc b { color: var(--primary); }
 
-        /* ---------- What changed ----------
-           A compact read of changelog.json; the full history lives on /changes. */
-        .change-list { border: 1px solid var(--primary); background: var(--paper-white); }
-        .change-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 6px 12px;
-            border-bottom: 1px solid var(--surface-container-high);
-            padding: 11px 14px;
-            font-size: 14px;
-            color: var(--on-surface-variant);
-        }
-        .change-row:last-child { border-bottom: none; }
-        .change-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-        .change-subject { flex: 1 1 220px; color: var(--primary); }
-        .change-counts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-        .change-counts span { border: 1px solid var(--outline-variant); padding: 2px 6px; }
-        .change-counts .added { border-color: var(--tertiary-green); color: var(--tertiary-green); }
-        .change-counts .removed { border-color: var(--secondary); color: var(--secondary); }
-        .change-counts .changed { border-color: var(--alert-orange); color: var(--alert-orange); }
-        .change-counts .renamed { color: var(--muted-gray); }
-
         /* ---------- Coverage ---------- */
         .coverage { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
         .coverage-row {
@@ -2063,17 +2025,6 @@
                 <h2 class="section-title" id="recent-heading">Most Recent Restrictions</h2>
                 <p class="section-sub">The latest dated entries in the index. Click a row to open its case file.</p>
                 <div class="recent-list" id="recentList"></div>
-            </section>
-
-            <!-- What changed. The dataset's own git history, rendered — a
-                 tracker that only shows the present answers "what is blocked?"
-                 but never "what moved this week?". -->
-            <section class="section-block" id="changesSection" aria-labelledby="changes-heading">
-                <h2 class="section-title" id="changes-heading">What Changed</h2>
-                <p class="section-sub">The most recent edits to the index, straight from the dataset's history.
-                    <a href="/changes">Full changelog &#8594;</a> &middot;
-                    <a href="feed.xml">RSS &#8599;</a></p>
-                <div class="change-list" id="changeFeed"></div>
             </section>
 
             <section class="section-block" id="methodSection" aria-labelledby="method-heading">
@@ -3526,36 +3477,6 @@
             }
         }
 
-        /* ================= What changed ================= */
-
-        // A compact read of changelog-latest.json, which build_changelog.py
-        // derives from the datasets' git history alongside the full changelog.
-        // The homepage only needs the newest few subjects and counts, so it
-        // fetches this kilobyte-scale slice instead of the whole history file
-        // (which /changes loads in full). Silent when the file is absent, so a
-        // deploy that has not run the build never shows an empty box.
-        async function renderChangeFeed() {
-            const section = document.getElementById('changesSection');
-            const res = await fetch('changelog-latest.json', { cache: 'no-cache' }).catch(() => null);
-            if (!res || !res.ok) { section.hidden = true; return; }
-            const data = await res.json().catch(() => null);
-            if (!data || !data.events || !data.events.length) { section.hidden = true; return; }
-            const count = (event, kind, label) => event[kind]
-                ? `<span class="${kind}">${label} ${event[kind]}</span>` : '';
-            document.getElementById('changeFeed').innerHTML = data.events.slice(0, 6).map(event => `
-                <div class="change-row">
-                    <span class="change-date">${escapeHTML(Site.fmtDate(event.date))}</span>
-                    <span class="change-subject">
-                        <a href="/changes#${escapeHTML(event.id)}">${escapeHTML(event.subject)}</a></span>
-                    <span class="change-counts">
-                        ${count(event, 'added', '+')}
-                        ${count(event, 'removed', '&minus;')}
-                        ${count(event, 'changed', 'revised')}
-                        ${count(event, 'renamed', 'renamed')}
-                    </span>
-                </div>`).join('');
-        }
-
         // Event listeners
         // Debounce the search so a full list re-render + history write doesn't
         // fire on every keystroke — renderPlatforms rebuilds the whole grid, so
@@ -3695,14 +3616,13 @@
             window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
         });
 
-        // Initialize: fetch the dataset, then render. The freshness readouts,
-        // source legend and change feed are independent of the CSV, so they are
-        // kicked off alongside it rather than queued behind it.
+        // Initialize: fetch the dataset, then render. The freshness readouts
+        // and source legend are independent of the CSV, so they are kicked
+        // off alongside it rather than queued behind it.
         loadData();
         Site.loadMeta();
         renderStatusKey();
         renderSourceLegend();
-        renderChangeFeed();
 
         // Title redaction: a censor's marker sweeps across a word, holds, then
         // sweeps off — with a brief RGB glitch as it strikes. Occasionally all

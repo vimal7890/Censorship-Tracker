@@ -12,10 +12,6 @@ JSON files) commit by commit and records, per commit, which rows were added,
 removed, or had their date / notes / source changed. Output:
 
   changelog.json   what changes.html renders
-  changelog-latest.json
-                   a small slice of the same events for the homepage's
-                   "what changed" panel, so visitors do not download the
-                   whole history to read six lines
   feed.xml         RSS 2.0, one item per dated change, so the tracker can be
                    followed in a reader without an account or an email address
   feed/<slug>.xml  the same events filtered to one territory — "what changed
@@ -65,7 +61,6 @@ CSV_NAME = "censorship_data.csv"
 # blocks appearing in the main index.
 DATASET_FILES = [CSV_NAME, "vpn_data.json", "age_verification_data.json"]
 OUT_JSON = ROOT / "changelog.json"
-OUT_LATEST = ROOT / "changelog-latest.json"
 OUT_FEED = ROOT / "feed.xml"
 FEED_DIR = ROOT / "feed"
 
@@ -455,34 +450,6 @@ def write_territory_feeds(events: list[dict]) -> tuple[int, int]:
     return written, kept
 
 
-def latest_slice(events: list[dict], keep: int = 10) -> dict:
-    """The homepage-sized projection: newest few events, counts only.
-
-    The full changelog.json passed 260 KB because every event carries every
-    touched row's prose. The homepage panel needs none of that — a subject, a
-    date and how many rows moved — so it gets a file of its own rather than
-    asking every visitor to download the archive.
-    """
-    slim = []
-    for event in events[:keep]:
-        slim.append({
-            "id": event["id"],
-            "date": event["date"],
-            "subject": event["subject"],
-            "total": event["total"],
-            "added": len(event["added"]),
-            "removed": len(event["removed"]),
-            "changed": len(event["changed"]),
-            "renamed": len(event["renamed"]),
-        })
-    return {
-        "generated_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
-        "count": len(events),
-        "latest": events[0]["date"] if events else "",
-        "events": slim,
-    }
-
-
 def main(argv: list[str]) -> int:
     limit = 0
     if "--limit" in argv:
@@ -501,20 +468,15 @@ def main(argv: list[str]) -> int:
         "latest": events[0]["date"],
         "events": events,
     })
-    # The slice is derived from the same events; rewrite it under the same
-    # condition so the two files never disagree about what happened.
-    wrote_slice = write_json(OUT_LATEST, latest_slice(events))
     # The feed is a projection of the same events, so it only needs rewriting
     # when they changed — its lastBuildDate would otherwise be the sole diff.
-    if wrote or wrote_slice or not OUT_FEED.is_file():
+    if wrote or not OUT_FEED.is_file():
         write_feed(events)
     fw, fk = write_territory_feeds(events)
 
     rows = sum(e["total"] for e in events)
     print(f"{'wrote' if wrote else 'unchanged'} {OUT_JSON.name} and {OUT_FEED.name}: "
           f"{len(events)} dated changes covering {rows} row edits")
-    print(f"{'wrote' if wrote_slice else 'unchanged'} {OUT_LATEST.name}: "
-          f"newest {len(latest_slice(events)['events'])} event(s) as counts")
     print(f"feed/: {fw + fk} territory feeds ({fw} written, {fk} unchanged)")
     print(f"  newest: {events[0]['date']} — {events[0]['subject']} ({summarise(events[0])})")
     return 0
