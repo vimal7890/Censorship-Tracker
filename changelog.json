@@ -1,8 +1,241 @@
 {
-  "generated_utc": "2026-08-23T16:05:06+00:00",
-  "count": 145,
-  "latest": "2026-08-23",
+  "generated_utc": "2026-11-16T11:16:37+00:00",
+  "count": 148,
+  "latest": "2026-11-16",
   "events": [
+    {
+      "id": "9992ddfd28",
+      "sha": "9992ddfd282a1fa9f40b5ba7ec2547001268e4a5",
+      "date": "2026-11-16",
+      "iso": "2026-11-16T11:16:34+00:00",
+      "subject": "Remove Gabon's social media suspension and Venezuela's X block",
+      "author": "Claude",
+      "total": 6,
+      "added": [],
+      "removed": [
+        {
+          "platform": "Facebook",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "Instagram",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "TikTok",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "WhatsApp",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "YouTube",
+          "country": "Gabon",
+          "type": "complete",
+          "since": "18/02/2026"
+        },
+        {
+          "platform": "X",
+          "country": "Venezuela",
+          "type": "complete",
+          "since": "August 2024"
+        }
+      ],
+      "changed": [],
+      "renamed": []
+    },
+    {
+      "id": "b88405be9e",
+      "sha": "b88405be9e6a0bb7dda99404b296af8322dbcccb",
+      "date": "2026-11-16",
+      "iso": "2026-11-16T11:16:34+00:00",
+      "subject": "Add Greece's under-15 ban and date Türkiye's to 1 November 2026",
+      "author": "Claude",
+      "total": 15,
+      "added": [
+        {
+          "platform": "Age verification",
+          "country": "Greece",
+          "type": "Under-15 social media ban + Kids Wallet age verification",
+          "since": "2027-01-01"
+        },
+        {
+          "platform": "Facebook",
+          "country": "Greece",
+          "type": "age",
+          "since": "01/01/2027"
+        },
+        {
+          "platform": "Instagram",
+          "country": "Greece",
+          "type": "age",
+          "since": "01/01/2027"
+        },
+        {
+          "platform": "LinkedIn",
+          "country": "Greece",
+          "type": "age",
+          "since": "01/01/2027"
+        },
+        {
+          "platform": "TikTok",
+          "country": "Greece",
+          "type": "age",
+          "since": "01/01/2027"
+        }
+      ],
+      "removed": [],
+      "changed": [
+        {
+          "platform": "Age verification",
+          "country": "Türkiye",
+          "type": "Under-15 social media ban + age verification",
+          "since": "2026-11-01",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "2026-10-01"
+        },
+        {
+          "platform": "Facebook",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "Instagram",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "Reddit",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "Snapchat",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "Threads",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "TikTok",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "Twitch",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "X",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "late 2026"
+        },
+        {
+          "platform": "YouTube",
+          "country": "Türkiye",
+          "type": "age",
+          "since": "01/11/2026",
+          "fields": [
+            "date",
+            "notes",
+            "source"
+          ],
+          "since_was": "late 2026"
+        }
+      ],
+      "renamed": []
+    },
+    {
+      "id": "f759ad7c0e",
+      "sha": "f759ad7c0ebdf4d3c767eb7cffaa374cc591d528",
+      "date": "2026-11-16",
+      "iso": "2026-11-16T11:08:06+00:00",
+      "subject": "Add Jordan's Telegram ban to the index",
+      "author": "Claude",
+      "total": 1,
+      "added": [
+        {
+          "platform": "Telegram",
+          "country": "Jordan",
+          "type": "complete",
+          "since": "16/11/2026"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "c5fbd4368b",
       "sha": "c5fbd4368bea91dbaf6da53f04fc615894ba7dfe",

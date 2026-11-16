@@ -5,8 +5,29 @@
     <link>https://censorship.my/changes</link>
     <description>Every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms, straight from the dataset's history.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Aug 2026 16:05:06 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 11:16:37 +0000</lastBuildDate>
     <atom:link href="https://censorship.my/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Remove Gabon's social media suspension and Venezuela's X block</title>
+      <link>https://censorship.my/changes#9992ddfd28</link>
+      <guid isPermaLink="false">9992ddfd282a1fa9f40b5ba7ec2547001268e4a5</guid>
+      <pubDate>Mon, 16 Nov 2026 11:16:34 +0000</pubDate>
+      <description>&lt;p&gt;6 removed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Removed&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Facebook — Gabon (complete)&lt;/li&gt;&lt;li&gt;Instagram — Gabon (complete)&lt;/li&gt;&lt;li&gt;TikTok — Gabon (complete)&lt;/li&gt;&lt;li&gt;WhatsApp — Gabon (complete)&lt;/li&gt;&lt;li&gt;YouTube — Gabon (complete)&lt;/li&gt;&lt;li&gt;X — Venezuela (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Greece's under-15 ban and date Türkiye's to 1 November 2026</title>
+      <link>https://censorship.my/changes#b88405be9e</link>
+      <guid isPermaLink="false">b88405be9e6a0bb7dda99404b296af8322dbcccb</guid>
+      <pubDate>Mon, 16 Nov 2026 11:16:34 +0000</pubDate>
+      <description>&lt;p&gt;5 added, 10 changed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — Greece (Under-15 social media ban + Kids Wallet age verification)&lt;/li&gt;&lt;li&gt;Facebook — Greece (age)&lt;/li&gt;&lt;li&gt;Instagram — Greece (age)&lt;/li&gt;&lt;li&gt;LinkedIn — Greece (age)&lt;/li&gt;&lt;li&gt;TikTok — Greece (age)&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;Revised&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Age verification — Türkiye (Under-15 social media ban + age verification): date, notes, source&lt;/li&gt;&lt;li&gt;Facebook — Türkiye (age): date, notes, source&lt;/li&gt;&lt;li&gt;Instagram — Türkiye (age): date, notes, source&lt;/li&gt;&lt;li&gt;Reddit — Türkiye (age): date, notes, source&lt;/li&gt;&lt;li&gt;Snapchat — Türkiye (age): date, notes, source&lt;/li&gt;&lt;li&gt;Threads — Türkiye (age): date, notes&lt;/li&gt;&lt;li&gt;TikTok — Türkiye (age): date, notes, source&lt;/li&gt;&lt;li&gt;Twitch — Türkiye (age): date, notes&lt;/li&gt;&lt;li&gt;X — Türkiye (age): date, notes, source&lt;/li&gt;&lt;li&gt;YouTube — Türkiye (age): date, notes, source&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Add Jordan's Telegram ban to the index</title>
+      <link>https://censorship.my/changes#f759ad7c0e</link>
+      <guid isPermaLink="false">f759ad7c0ebdf4d3c767eb7cffaa374cc591d528</guid>
+      <pubDate>Mon, 16 Nov 2026 11:08:06 +0000</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Jordan (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Add Oman's TikTok block to the index</title>
       <link>https://censorship.my/changes#c5fbd4368b</link>

@@ -241,8 +241,8 @@ entry carries a `status` of `implemented` or `scheduled` — but **the badge on
 the page is not read straight from that field**. The page compares
 `implementation_date` (ISO `YYYY-MM-DD`) against today in the viewer's own
 timezone, so a scheduled law promotes itself to *Implemented* on the morning it
-takes effect, with no edit and no redeploy. Türkiye's under-15 ban flips in
-late 2026 and Gabon's in February 2027.
+takes effect, with no edit and no redeploy. Greece's under-15 ban flips on
+1 January 2027 and Gabon's in February 2027.
 
 So `status` records what was legislated and the page works out whether that
 date has arrived. Keep writing `scheduled` for a future law; there is no need
