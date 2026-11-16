@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-08-23T16:02:39+00:00",
-  "count": 176,
+  "generated_utc": "2026-11-16T11:08:01+00:00",
+  "count": 177,
   "by_kind": {
     "primary": 33,
     "measurement": 8,
     "research": 50,
-    "reporting": 79,
+    "reporting": 80,
     "reference": 6
   },
   "kind_labels": {
@@ -1294,6 +1294,15 @@
       "date": "",
       "archived": false,
       "title": "Sudan to block WhatsApp calls citing security concerns - Dabanga Radio TV Online"
+    },
+    "https://www.dw.com/en/jordan-bans-telegram-app-over-radicalisation-claims/a-79956706": {
+      "url": "https://www.dw.com/en/jordan-bans-telegram-app-over-radicalisation-claims/a-79956706",
+      "domain": "dw.com",
+      "publisher": "DW",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
     },
     "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data": {
       "url": "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data",
