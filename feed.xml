@@ -5,8 +5,15 @@
     <link>https://censorship.my/changes</link>
     <description>Every addition, removal and revision to the tracked index of blocked, restricted and age-gated platforms, straight from the dataset's history.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2026 11:16:37 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 17:52:42 +0000</lastBuildDate>
     <atom:link href="https://censorship.my/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Add Iraq's Telegram ban to the index</title>
+      <link>https://censorship.my/changes#8ec4838d51</link>
+      <guid isPermaLink="false">8ec4838d51859bd1d47d75c95fc9924fd43627bb</guid>
+      <pubDate>Mon, 16 Nov 2026 17:52:39 +0000</pubDate>
+      <description>&lt;p&gt;1 added.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Added&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Telegram — Iraq (complete)&lt;/li&gt;&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Remove Gabon's social media suspension and Venezuela's X block</title>
       <link>https://censorship.my/changes#9992ddfd28</link>

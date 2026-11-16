@@ -1,8 +1,28 @@
 {
-  "generated_utc": "2026-11-16T11:16:37+00:00",
-  "count": 148,
+  "generated_utc": "2026-11-16T17:52:42+00:00",
+  "count": 149,
   "latest": "2026-11-16",
   "events": [
+    {
+      "id": "8ec4838d51",
+      "sha": "8ec4838d51859bd1d47d75c95fc9924fd43627bb",
+      "date": "2026-11-16",
+      "iso": "2026-11-16T17:52:39+00:00",
+      "subject": "Add Iraq's Telegram ban to the index",
+      "author": "Claude",
+      "total": 1,
+      "added": [
+        {
+          "platform": "Telegram",
+          "country": "Iraq",
+          "type": "complete",
+          "since": "16/11/2026"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "9992ddfd28",
       "sha": "9992ddfd282a1fa9f40b5ba7ec2547001268e4a5",
