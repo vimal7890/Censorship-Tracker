@@ -135,6 +135,7 @@ REGISTRY: dict[str, tuple[str, str]] = {
     "aljazeera.com": ("Al Jazeera", "reporting"),
     "dw.com": ("DW", "reporting"),
     "dailysabah.com": ("Daily Sabah", "reporting"),
+    "shafaq.com": ("Shafaq News", "reporting"),
     "arabnews.com": ("Arab News", "reporting"),
     "malaymail.com": ("Malay Mail", "reporting"),
     "themoscowtimes.com": ("The Moscow Times", "reporting"),
