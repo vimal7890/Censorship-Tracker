@@ -1,8 +1,28 @@
 {
-  "generated_utc": "2026-08-23T16:05:06+00:00",
-  "count": 145,
-  "latest": "2026-08-23",
+  "generated_utc": "2026-11-16T11:08:21+00:00",
+  "count": 146,
+  "latest": "2026-11-16",
   "events": [
+    {
+      "id": "f759ad7c0e",
+      "sha": "f759ad7c0ebdf4d3c767eb7cffaa374cc591d528",
+      "date": "2026-11-16",
+      "iso": "2026-11-16T11:08:06+00:00",
+      "subject": "Add Jordan's Telegram ban to the index",
+      "author": "Claude",
+      "total": 1,
+      "added": [
+        {
+          "platform": "Telegram",
+          "country": "Jordan",
+          "type": "complete",
+          "since": "16/11/2026"
+        }
+      ],
+      "removed": [],
+      "changed": [],
+      "renamed": []
+    },
     {
       "id": "c5fbd4368b",
       "sha": "c5fbd4368bea91dbaf6da53f04fc615894ba7dfe",
