@@ -161,6 +161,7 @@ CHALLENGE_TITLES = {
     "you have been blocked",
     "request blocked",
     "too many requests",
+    "429 too many requests",
     "rate limited",
     "are you a robot",
     "are you a human",
