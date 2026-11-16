@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-11-16T11:16:03+00:00",
-  "count": 178,
+  "generated_utc": "2026-11-16T17:52:32+00:00",
+  "count": 179,
   "by_kind": {
     "primary": 33,
     "measurement": 7,
     "research": 50,
-    "reporting": 82,
+    "reporting": 83,
     "reference": 6
   },
   "kind_labels": {
@@ -864,6 +864,15 @@
       "title": "Ukraine introduces a new sanctions package against Russian IT and sports industries - Global Sanctions and Export Controls Blog",
       "snapshot": "https://web.archive.org/web/20240718231911/https://sanctionsnews.bakermckenzie.com/ukraine-introduces-a-new-sanctions-package-against-russian-it-and-sports-industries/",
       "snapshot_date": "2024-07-18"
+    },
+    "https://shafaq.com/en/society/Iraq-bans-Telegram-over-security-concerns": {
+      "url": "https://shafaq.com/en/society/Iraq-bans-Telegram-over-security-concerns",
+      "domain": "shafaq.com",
+      "publisher": "Shafaq News",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
     },
     "https://support.apple.com/HT212614": {
       "url": "https://support.apple.com/HT212614",

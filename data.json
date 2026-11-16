@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-16T11:16:35+00:00",
+  "generated_utc": "2026-11-16T17:52:40+00:00",
   "title": "Global Censorship Tracker",
   "site": "https://censorship.my",
   "repository": "https://github.com/vimal7890/Censorship-Tracker",
@@ -20,7 +20,7 @@
     "status": "Derived: scheduled | enforced | in_force | reported.",
     "evidence": "Derived: dedicated | country-default | uncorroborated."
   },
-  "count": 455,
+  "count": 456,
   "entries": [
     {
       "platform": "Al Jazeera",
@@ -3959,6 +3959,19 @@
       "notes": "Age verification required to access certain material due to the United Kingdom Online Safety Act.",
       "source": "https://on.substack.com/p/our-position-on-the-online-safety",
       "status": "in_force",
+      "evidence": "dedicated"
+    },
+    {
+      "platform": "Telegram",
+      "country": "Iraq",
+      "iso": "IQ",
+      "subnational": false,
+      "since": "16/11/2026",
+      "since_iso": "2026-11-16",
+      "type": "complete",
+      "notes": "Iraq's Communications and Media Commission (CMC) announced on 16 November 2026, acting on directives from Prime Minister Ali Al-Zaidi, that it would block Telegram for failing to comply with national regulations and to address content deemed 'a threat to national security', citing 'extremist rhetoric, incitement to violence and hatred, and cybercrime'. The operator was given 30 days to regularise its legal status and cooperate with the regulator. Jordan banned Telegram the same day.",
+      "source": "https://shafaq.com/en/society/Iraq-bans-Telegram-over-security-concerns",
+      "status": "reported",
       "evidence": "dedicated"
     },
     {
