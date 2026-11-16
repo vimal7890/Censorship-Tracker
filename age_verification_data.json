@@ -58,13 +58,24 @@
         {
             "country": "Türkiye",
             "law": "Under-15 social media ban + age verification",
-            "passed_label": "April 2026 (parliament)",
-            "status": "scheduled",
-            "implementation_date": "2026-10-01",
-            "implementation_label": "Late 2026 (6 months after Official Gazette)",
+            "passed_label": "April 2026 (parliament); regulation October 2026",
+            "status": "implemented",
+            "implementation_date": "2026-11-01",
+            "implementation_label": "1 November 2026",
             "threshold": "Under 15 barred; age verification + parental tools for older minors",
-            "summary": "Parliament banned social media services for under-15s and required age-verification systems. Enters force six months after Official Gazette publication. Separate e-Devlet real-ID login for all users remained a draft as of April 2026.",
-            "source": "https://www.aljazeera.com/news/2026/4/23/turkiye-mps-pass-bill-to-restrict-social-media-use-for-children-under-15"
+            "summary": "Parliament banned social media services for under-15s in April 2026; the implementing regulation in the Official Gazette set 1 November 2026 as the start. Platforms must age-verify new sign-ups and verify existing accounts by 31 March 2027, closing confirmed under-15 ones. 15–17-year-olds get private-by-default accounts, no livestreaming or personalised ads, and parental controls. A separate e-Devlet real-ID login for all users remained a draft as of April 2026.",
+            "source": "https://www.dailysabah.com/turkiye/turkiye-sets-nov-1-start-for-child-focused-social-media-ban/news"
+        },
+        {
+            "country": "Greece",
+            "law": "Under-15 social media ban + Kids Wallet age verification",
+            "passed_label": "23 October 2026",
+            "status": "scheduled",
+            "implementation_date": "2027-01-01",
+            "implementation_label": "1 January 2027",
+            "threshold": "Under 15 barred; no parental consent; state Kids Wallet age check",
+            "summary": "Bars under-15s from social networks such as Facebook, Instagram, TikTok and LinkedIn, with coverage decided by how a service works; messaging apps excluded. Parents cannot consent and existing accounts are not exempt. Platforms that cannot confirm age hand off to the state Kids Wallet app, which returns only over/under 15. Supervised by Greece's broadcasting council and data protection authority, and by the European Commission for the largest platforms under the DSA.",
+            "source": "https://www.techradar.com/vpn/vpn-services/greece-passes-under-15-social-media-ban-and-every-user-may-soon-have-to-prove-their-age"
         },
         {
             "country": "Gabon",

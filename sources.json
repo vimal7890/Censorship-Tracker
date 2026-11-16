@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-11-16T11:08:01+00:00",
-  "count": 177,
+  "generated_utc": "2026-11-16T11:16:03+00:00",
+  "count": 178,
   "by_kind": {
     "primary": 33,
-    "measurement": 8,
+    "measurement": 7,
     "research": 50,
-    "reporting": 80,
+    "reporting": 82,
     "reference": 6
   },
   "kind_labels": {
@@ -198,7 +198,7 @@
       "kind": "primary",
       "date": "",
       "archived": false,
-      "title": "Azure WAF",
+      "title": "Vérification de sécurité / Security Check",
       "snapshot": "https://web.archive.org/web/20260421054446/https://crtc.gc.ca/eng/archive/2022/2022-68.htm",
       "snapshot_date": "2026-04-21"
     },
@@ -350,16 +350,7 @@
       "kind": "measurement",
       "date": "",
       "archived": false,
-      "title": ""
-    },
-    "https://explorer.ooni.org/findings/2026-gabon-blocked-social-media": {
-      "url": "https://explorer.ooni.org/findings/2026-gabon-blocked-social-media",
-      "domain": "explorer.ooni.org",
-      "publisher": "OONI Explorer",
-      "kind": "measurement",
-      "date": "",
-      "archived": false,
-      "title": ""
+      "title": "Tanzania blocked Twitter/X, again | OONI Explorer"
     },
     "https://explorer.ooni.org/findings/2026-uganda-blocked-social-media-following-2026-general-election": {
       "url": "https://explorer.ooni.org/findings/2026-uganda-blocked-social-media-following-2026-general-election",
@@ -368,7 +359,7 @@
       "kind": "measurement",
       "date": "",
       "archived": false,
-      "title": ""
+      "title": "Uganda blocked social media following 2026 general election | OONI Explorer"
     },
     "https://explorer.ooni.org/m/20240406122250.018354_RU_webconnectivity_171d76e7f399ff4f": {
       "url": "https://explorer.ooni.org/m/20240406122250.018354_RU_webconnectivity_171d76e7f399ff4f",
@@ -680,7 +671,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": "US Age Verification Laws Continue Expanding as West Virginia Deadline Approaches"
+      "title": "Account Suspended"
     },
     "https://manassa.news/en/stories/29786": {
       "url": "https://manassa.news/en/stories/29786",
@@ -775,7 +766,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": ""
+      "title": "429 Too Many Requests"
     },
     "https://on.substack.com/p/our-position-on-the-online-safety": {
       "url": "https://on.substack.com/p/our-position-on-the-online-safety",
@@ -828,7 +819,7 @@
       "kind": "primary",
       "date": "",
       "archived": false,
-      "title": ""
+      "title": "Is TikTok banned again in Oman? | Proton VPN"
     },
     "https://reclaimthenet.org/brazil-regulator-bans-discord-live-video-features": {
       "url": "https://reclaimthenet.org/brazil-regulator-bans-discord-live-video-features",
@@ -1142,7 +1133,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": "Egypt blocks popular game-creator Roblox over child safety concerns | Arab News",
+      "title": "Arab News | Egypt blocks popular game-creator Roblox over child safety concerns",
       "snapshot": "https://web.archive.org/web/20260514163906/https://www.arabnews.com/node/2631762/middle-east",
       "snapshot_date": "2026-05-14"
     },
@@ -1295,6 +1286,15 @@
       "archived": false,
       "title": "Sudan to block WhatsApp calls citing security concerns - Dabanga Radio TV Online"
     },
+    "https://www.dailysabah.com/turkiye/turkiye-sets-nov-1-start-for-child-focused-social-media-ban/news": {
+      "url": "https://www.dailysabah.com/turkiye/turkiye-sets-nov-1-start-for-child-focused-social-media-ban/news",
+      "domain": "dailysabah.com",
+      "publisher": "Daily Sabah",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
     "https://www.dw.com/en/jordan-bans-telegram-app-over-radicalisation-claims/a-79956706": {
       "url": "https://www.dw.com/en/jordan-bans-telegram-app-over-radicalisation-claims/a-79956706",
       "domain": "dw.com",
@@ -1302,7 +1302,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": ""
+      "title": "Jordan bans Telegram over 'extremism' and 'radicalization'"
     },
     "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data": {
       "url": "https://www.eff.org/deeplinks/2022/12/india-requires-internet-services-collect-and-store-vast-amount-customer-data",
@@ -1428,7 +1428,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": "Bluesky Back in Mississippi as Social Giants Lack Age Checks"
+      "title": "429 Too Many Requests"
     },
     "https://www.neplp.lv/en/restricting-access-websites": {
       "url": "https://www.neplp.lv/en/restricting-access-websites",
@@ -1473,7 +1473,7 @@
       "kind": "primary",
       "date": "",
       "archived": false,
-      "title": "L15211"
+      "title": "Acesso Temporariamente Interrompido"
     },
     "https://www.reuters.com/business/media-telecom/netflix-suspends-service-russia-report-2022-03-06/": {
       "url": "https://www.reuters.com/business/media-telecom/netflix-suspends-service-russia-report-2022-03-06/",
@@ -1637,6 +1637,15 @@
       "archived": false,
       "title": "Russia is using DNS and DPI to block YouTube, Telegram and WhatsApp while pushing state-controlled MAX as alternative | TechRadar"
     },
+    "https://www.techradar.com/vpn/vpn-services/greece-passes-under-15-social-media-ban-and-every-user-may-soon-have-to-prove-their-age": {
+      "url": "https://www.techradar.com/vpn/vpn-services/greece-passes-under-15-social-media-ban-and-every-user-may-soon-have-to-prove-their-age",
+      "domain": "techradar.com",
+      "publisher": "TechRadar",
+      "kind": "reporting",
+      "date": "",
+      "archived": false,
+      "title": ""
+    },
     "https://www.techradar.com/vpn/vpn-services/russias-battle-against-vpns-is-entering-a-new-phase-heres-what-to-expect-in-2026": {
       "url": "https://www.techradar.com/vpn/vpn-services/russias-battle-against-vpns-is-entering-a-new-phase-heres-what-to-expect-in-2026",
       "domain": "techradar.com",
@@ -1662,7 +1671,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": "Apple removes New York Times app in China | China | The Guardian"
+      "title": "Client Challenge"
     },
     "https://www.theguardian.com/world/2022/mar/04/russia-completely-blocks-access-to-facebook-and-twitter": {
       "url": "https://www.theguardian.com/world/2022/mar/04/russia-completely-blocks-access-to-facebook-and-twitter",
@@ -1671,7 +1680,7 @@
       "kind": "reporting",
       "date": "",
       "archived": false,
-      "title": "Russia blocks access to Facebook and Twitter | Russia | The Guardian"
+      "title": "Client Challenge"
     },
     "https://www.themoscowtimes.com/2022/03/21/russian-court-bans-instagram-facebook-as-extremist-a77017": {
       "url": "https://www.themoscowtimes.com/2022/03/21/russian-court-bans-instagram-facebook-as-extremist-a77017",
@@ -1773,5 +1782,5 @@
       "title": "Russia blocks instant messaging app WeChat - Xinhua | English.news.cn"
     }
   },
-  "titles_captured_utc": "2026-08-23T00:17:21+00:00"
+  "titles_captured_utc": "2026-11-16T11:09:25+00:00"
 }
